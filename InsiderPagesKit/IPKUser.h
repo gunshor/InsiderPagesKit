@@ -1,19 +1,19 @@
 //
-//  CDKUser.h
-//  CheddarKit
+//  IPKUser.h
+//  InsiderPagesKit
 //
-//  Created by Sam Soffes on 4/5/12.
-//  Copyright (c) 2012 Nothing Magical. All rights reserved.
+//  Created by Christopher Truman on 8/1/12.
+//  Inspired by Sam Soffes' CheddarKit.
 //
 
 #import "SSDataKit.h"
 
-@class CDKList;
-@class CDKTask;
+@class IPKList;
+@class IPKTask;
 
-extern NSString *const kCDKCurrentUserChangedNotificationName;
+extern NSString *const kIPKCurrentUserChangedNotificationName;
 
-@interface CDKUser : SSRemoteManagedObject
+@interface IPKUser : SSRemoteManagedObject
 
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
@@ -24,20 +24,20 @@ extern NSString *const kCDKCurrentUserChangedNotificationName;
 @property (nonatomic, strong) NSSet *lists;
 @property (nonatomic, strong) NSString *accessToken;
 
-+ (CDKUser *)currentUser;
-+ (void)setCurrentUser:(CDKUser *)user;
++ (IPKUser *)currentUser;
++ (void)setCurrentUser:(IPKUser *)user;
 
 @end
 
 
-@interface CDKUser (CoreDataGeneratedAccessors)
-- (void)addTasksObject:(CDKTask *)value;
-- (void)removeTasksObject:(CDKTask *)value;
+@interface IPKUser (CoreDataGeneratedAccessors)
+- (void)addTasksObject:(IPKTask *)value;
+- (void)removeTasksObject:(IPKTask *)value;
 - (void)addTasks:(NSSet *)values;
 - (void)removeTasks:(NSSet *)values;
 
-- (void)addListsObject:(CDKList *)value;
-- (void)removeListsObject:(CDKList *)value;
+- (void)addListsObject:(IPKList *)value;
+- (void)removeListsObject:(IPKList *)value;
 - (void)addLists:(NSSet *)values;
 - (void)removeLists:(NSSet *)values;
 @end

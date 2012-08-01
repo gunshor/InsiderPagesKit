@@ -1,25 +1,25 @@
 //
-//  CDKTTPClient.m
-//  CheddarKit
+//  IPKTTPClient.m
+//  InsiderPagesKit
 //
-//  Created by Sam Soffes on 3/30/12.
-//  Copyright (c) 2012 Nothing Magical. All rights reserved.
+//  Created by Christopher Truman on 8/1/12.
+//  Inspired by Sam Soffes' CheddarKit.
 //
 
-#import "CDKHTTPClient.h"
-#import "CDKList.h"
-#import "CDKTask.h"
-#import "CDKUser.h"
-#import "CDKDefines.h"
+#import "IPKHTTPClient.h"
+#import "IPKList.h"
+#import "IPKTask.h"
+#import "IPKUser.h"
+#import "IPKDefines.h"
 #import <Bully/Bully.h>
 
 static BOOL __developmentMode = NO;
 
-@interface CDKHTTPClient ()
+@interface IPKHTTPClient ()
 - (void)_userChanged:(NSNotification *)notification;
 @end
 
-@implementation CDKHTTPClient {
+@implementation IPKHTTPClient {
 	dispatch_queue_t _callbackQueue;
 	NSString *_clientID;
 	NSString *_clientSecret;
@@ -27,8 +27,8 @@ static BOOL __developmentMode = NO;
 
 #pragma mark - Singleton
 
-+ (CDKHTTPClient *)sharedClient {
-	static CDKHTTPClient *sharedClient = nil;
++ (IPKHTTPClient *)sharedClient {
+	static IPKHTTPClient *sharedClient = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		sharedClient = [[self alloc] init];
@@ -53,9 +53,9 @@ static BOOL __developmentMode = NO;
 	NSURL *base = nil;
 	NSString *version = [[self class] apiVersion];
 	if (__developmentMode) {
-		base = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@/%@/", kCDKDevelopmentAPIScheme, kCDKDevelopmentAPIHost, version]];
+		base = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@/%@/", kIPKDevelopmentAPIScheme, kIPKDevelopmentAPIHost, version]];
 	} else {
-		base = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@/%@/", kCDKAPIScheme, kCDKAPIHost, version]];
+		base = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@/%@/", kIPKAPIScheme, kIPKAPIHost, version]];
 	}
 	
 	if ((self = [super initWithBaseURL:base])) {
@@ -63,11 +63,11 @@ static BOOL __developmentMode = NO;
 		[self registerHTTPOperationClass:[AFJSONRequestOperation class]];
 		[self setDefaultHeader:@"Accept" value:@"application/json"];
 		
-		if ([CDKUser currentUser]) {
-			[self changeUser:[CDKUser currentUser]];
+		if ([IPKUser currentUser]) {
+			[self changeUser:[IPKUser currentUser]];
 		}
 		
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_userChanged:) name:kCDKCurrentUserChangedNotificationName object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_userChanged:) name:kIPKCurrentUserChangedNotificationName object:nil];
 		_callbackQueue = dispatch_queue_create("com.nothingmagical.cheddar.network-callback-queue", 0);
 	}
 	return self;
@@ -75,7 +75,7 @@ static BOOL __developmentMode = NO;
 
 
 - (void)dealloc {
-	CDKDispatchRelease(_callbackQueue);
+	IPKDispatchRelease(_callbackQueue);
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -115,15 +115,15 @@ static BOOL __developmentMode = NO;
 	
 	[self setAuthorizationHeaderWithUsername:_clientID password:_clientSecret];
 	[self postPath:@"/oauth/token" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		__weak NSManagedObjectContext *context = [CDKUser mainContext];
+		__weak NSManagedObjectContext *context = [IPKUser mainContext];
 		[context performBlockAndWait:^{
 			NSDictionary *dictionary = (NSDictionary *)responseObject;
-			CDKUser *user = [CDKUser objectWithDictionary:[dictionary objectForKey:@"user"]];
+			IPKUser *user = [IPKUser objectWithDictionary:[dictionary objectForKey:@"user"]];
 			user.accessToken = [dictionary objectForKey:@"access_token"];
 			[user save];
 			
 			[self changeUser:user];
-			[CDKUser setCurrentUser:user];
+			[IPKUser setCurrentUser:user];
 		}];
 
 		if (success) {
@@ -138,7 +138,7 @@ static BOOL __developmentMode = NO;
 }
 
 
-- (void)signInWithAuthorizationCode:(NSString *)code success:(CDKHTTPClientSuccess)success failure:(CDKHTTPClientFailure)failure {
+- (void)signInWithAuthorizationCode:(NSString *)code success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
 							code, @"code",
 							@"authorization_code", @"grant_type",
@@ -146,15 +146,15 @@ static BOOL __developmentMode = NO;
 	
 	[self setAuthorizationHeaderWithUsername:_clientID password:_clientSecret];
 	[self postPath:@"/oauth/token" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		__weak NSManagedObjectContext *context = [CDKUser mainContext];
+		__weak NSManagedObjectContext *context = [IPKUser mainContext];
 		[context performBlockAndWait:^{
 			NSDictionary *dictionary = (NSDictionary *)responseObject;
-			CDKUser *user = [CDKUser objectWithDictionary:[dictionary objectForKey:@"user"]];
+			IPKUser *user = [IPKUser objectWithDictionary:[dictionary objectForKey:@"user"]];
 			user.accessToken = [dictionary objectForKey:@"access_token"];
 			[user save];
 			
 			[self changeUser:user];
-			[CDKUser setCurrentUser:user];
+			[IPKUser setCurrentUser:user];
 		}];
 		
 		if (success) {
@@ -169,7 +169,7 @@ static BOOL __developmentMode = NO;
 }
 
 
-- (void)signUpWithUsername:(NSString *)username email:(NSString *)email password:(NSString *)password success:(CDKHTTPClientSuccess)success failure:(CDKHTTPClientFailure)failure {
+- (void)signUpWithUsername:(NSString *)username email:(NSString *)email password:(NSString *)password success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
 							username, @"user[username]",
 							email, @"user[email]",
@@ -178,13 +178,13 @@ static BOOL __developmentMode = NO;
 	
 	[self setAuthorizationHeaderWithUsername:_clientID password:_clientSecret];
 	[self postPath:@"users" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		__weak NSManagedObjectContext *context = [CDKUser mainContext];
+		__weak NSManagedObjectContext *context = [IPKUser mainContext];
 		[context performBlockAndWait:^{
 			NSDictionary *dictionary = (NSDictionary *)responseObject;
-			CDKUser *user = [CDKUser objectWithDictionary:dictionary];
+			IPKUser *user = [IPKUser objectWithDictionary:dictionary];
 			user.accessToken = [[dictionary objectForKey:@"access_token"] objectForKey:@"access_token"];
 			[self changeUser:user];
-			[CDKUser setCurrentUser:user];
+			[IPKUser setCurrentUser:user];
 		}];
 		
 		if (success) {
@@ -199,11 +199,11 @@ static BOOL __developmentMode = NO;
 }
 
 
-- (void)updateCurrentUserWithSuccess:(CDKHTTPClientSuccess)success failure:(CDKHTTPClientFailure)failure {
+- (void)updateCurrentUserWithSuccess:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 	[self getPath:@"me" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		__weak NSManagedObjectContext *context = [CDKUser mainContext];
+		__weak NSManagedObjectContext *context = [IPKUser mainContext];
 		[context performBlockAndWait:^{
-			CDKUser *currentUser = [CDKUser currentUser];
+			IPKUser *currentUser = [IPKUser currentUser];
 			[currentUser unpackDictionary:responseObject];
 			[currentUser save];
 		}];
@@ -221,12 +221,12 @@ static BOOL __developmentMode = NO;
 
 #pragma mark - Lists
 
-- (void)getListsWithSuccess:(CDKHTTPClientSuccess)success failure:(CDKHTTPClientFailure)failure {
+- (void)getListsWithSuccess:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 	[self getPath:@"lists" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		__weak NSManagedObjectContext *context = [CDKList mainContext];
+		__weak NSManagedObjectContext *context = [IPKList mainContext];
 		[context performBlockAndWait:^{
 			for (NSDictionary *dictionary in responseObject) {
-				[CDKList objectWithDictionary:dictionary];
+				[IPKList objectWithDictionary:dictionary];
 			}
 			[context save:nil];
 		}];
@@ -242,12 +242,12 @@ static BOOL __developmentMode = NO;
 }
 
 
-- (void)createList:(CDKList *)list success:(CDKHTTPClientSuccess)success failure:(CDKHTTPClientFailure)failure {
+- (void)createList:(IPKList *)list success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 							list.title, @"list[title]",
 							nil];
 	
-	__weak NSManagedObjectContext *context = [CDKList mainContext];
+	__weak NSManagedObjectContext *context = [IPKList mainContext];
 	[self postPath:@"lists" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		[context performBlockAndWait:^{
 			[list unpackDictionary:responseObject];
@@ -269,7 +269,7 @@ static BOOL __developmentMode = NO;
 }
 
 
-- (void)updateList:(CDKList *)list success:(CDKHTTPClientSuccess)success failure:(CDKHTTPClientFailure)failure {
+- (void)updateList:(IPKList *)list success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 	NSString *path = [NSString stringWithFormat:@"lists/%@", list.remoteID];
 	id archivedAt = list.archivedAt ? list.archivedAt : @"null";
 	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -278,7 +278,7 @@ static BOOL __developmentMode = NO;
 							nil];
 	
 	[self putPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		__weak NSManagedObjectContext *context = [CDKList mainContext];
+		__weak NSManagedObjectContext *context = [IPKList mainContext];
 		[context performBlockAndWait:^{
 			[list unpackDictionary:responseObject];
 			[list save];
@@ -295,13 +295,13 @@ static BOOL __developmentMode = NO;
 }
 
 
-- (void)sortLists:(NSArray *)lists success:(CDKHTTPClientSuccess)success failure:(CDKHTTPClientFailure)failure {
+- (void)sortLists:(NSArray *)lists success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 	NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"lists/sort" parameters:nil];
 	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
 	
 	// Build the array of indexs
 	NSMutableArray *components = [[NSMutableArray alloc] init];
-	for (CDKList *list in lists) {
+	for (IPKList *list in lists) {
 		[components addObject:[NSString stringWithFormat:@"list[]=%@", list.remoteID]];
 	}
 	request.HTTPBody = [[components componentsJoinedByString:@"&"] dataUsingEncoding:NSUTF8StringEncoding];
@@ -322,13 +322,13 @@ static BOOL __developmentMode = NO;
 
 #pragma mark - Tasks
 
-- (void)getTasksWithList:(CDKList *)list success:(CDKHTTPClientSuccess)success failure:(CDKHTTPClientFailure)failure {
+- (void)getTasksWithList:(IPKList *)list success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 	NSString *path = [NSString stringWithFormat:@"lists/%@/tasks?all=true", list.remoteID];
 	[self getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		__weak NSManagedObjectContext *context = [CDKTask mainContext];
+		__weak NSManagedObjectContext *context = [IPKTask mainContext];
 		[context performBlockAndWait:^{		
 			for (NSDictionary *taskDictionary in responseObject) {
-				CDKTask *task = [CDKTask objectWithDictionary:taskDictionary];
+				IPKTask *task = [IPKTask objectWithDictionary:taskDictionary];
 				task.list = list;
 			}
 			[context save:nil];
@@ -345,13 +345,13 @@ static BOOL __developmentMode = NO;
 }
 
 
-- (void)createTask:(CDKTask *)task success:(CDKHTTPClientSuccess)success failure:(CDKHTTPClientFailure)failure {
+- (void)createTask:(IPKTask *)task success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 	NSString *path = [NSString stringWithFormat:@"lists/%@/tasks", task.list.remoteID];
 	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 							task.text, @"task[text]",
 							nil];
 	
-	__weak NSManagedObjectContext *context = [CDKTask mainContext];
+	__weak NSManagedObjectContext *context = [IPKTask mainContext];
 	[self postPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		[context performBlockAndWait:^{
 			[task unpackDictionary:responseObject];
@@ -373,7 +373,7 @@ static BOOL __developmentMode = NO;
 }
 
 
-- (void)updateTask:(CDKTask *)task success:(CDKHTTPClientSuccess)success failure:(CDKHTTPClientFailure)failure {
+- (void)updateTask:(IPKTask *)task success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 	NSString *path = [NSString stringWithFormat:@"tasks/%@", task.remoteID];
 	id completedAt = task.completedAt ? task.completedAt : @"null";
 	id archivedAt = task.archivedAt ? task.archivedAt : @"null";
@@ -384,7 +384,7 @@ static BOOL __developmentMode = NO;
 							nil];
 	
 	[self putPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		__weak NSManagedObjectContext *context = [CDKTask mainContext];
+		__weak NSManagedObjectContext *context = [IPKTask mainContext];
 		[context performBlockAndWait:^{
 			[task unpackDictionary:responseObject];
 			[task save];
@@ -401,14 +401,14 @@ static BOOL __developmentMode = NO;
 }
 
 
-- (void)sortTasks:(NSArray *)tasks inList:(CDKList *)list success:(CDKHTTPClientSuccess)success failure:(CDKHTTPClientFailure)failure {
+- (void)sortTasks:(NSArray *)tasks inList:(IPKList *)list success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 	NSString *path = [NSString stringWithFormat:@"lists/%@/tasks/sort", list.remoteID];
 	NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:path parameters:nil];
 	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
 	
 	// Build the array of indexs
 	NSMutableArray *components = [[NSMutableArray alloc] init];
-	for (CDKTask *task in tasks) {
+	for (IPKTask *task in tasks) {
 		[components addObject:[NSString stringWithFormat:@"task[]=%@", task.remoteID]];
 	}
 	request.HTTPBody = [[components componentsJoinedByString:@"&"] dataUsingEncoding:NSUTF8StringEncoding];
@@ -427,7 +427,7 @@ static BOOL __developmentMode = NO;
 }
 
 
-- (void)archiveAllTasksInList:(CDKList *)list success:(CDKHTTPClientSuccess)success failure:(CDKHTTPClientFailure)failure {
+- (void)archiveAllTasksInList:(IPKList *)list success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 	NSString *path = [NSString stringWithFormat:@"lists/%@/tasks/archive_all", list.remoteID];
 	[self postPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		if (success) {
@@ -441,7 +441,7 @@ static BOOL __developmentMode = NO;
 }
 
 
-- (void)archiveCompletedTasksInList:(CDKList *)list success:(CDKHTTPClientSuccess)success failure:(CDKHTTPClientFailure)failure {
+- (void)archiveCompletedTasksInList:(IPKList *)list success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 	NSString *path = [NSString stringWithFormat:@"lists/%@/tasks/archive_completed", list.remoteID];
 	[self postPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		if (success) {
@@ -458,11 +458,11 @@ static BOOL __developmentMode = NO;
 #pragma mark - Authentication
 
 - (void)_userChanged:(NSNotification *)notification {
-	[self changeUser:[CDKUser currentUser]];
+	[self changeUser:[IPKUser currentUser]];
 }
 
 
-- (void)changeUser:(CDKUser *)user {
+- (void)changeUser:(IPKUser *)user {
 	if (user.accessToken) {
 		[self setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", user.accessToken]];
 		return;

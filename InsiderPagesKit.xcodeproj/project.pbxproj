@@ -13,37 +13,37 @@
 		B2D8D60615BF808E00A61836 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D8D60515BF808E00A61836 /* libicucore.dylib */; };
 		B2D8D60815BF809300A61836 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D8D60715BF809300A61836 /* CoreData.framework */; };
 		B2D8D60A15BF809700A61836 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D8D60915BF809700A61836 /* CoreText.framework */; };
-		FD764C3B15C9CADE00A3D10A /* CDKDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9015C9CADE00A3D10A /* CDKDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C3C15C9CADE00A3D10A /* CDKDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9115C9CADE00A3D10A /* CDKDefines.m */; };
-		FD764C3D15C9CADE00A3D10A /* CDKDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9115C9CADE00A3D10A /* CDKDefines.m */; };
-		FD764C3E15C9CADE00A3D10A /* CDKHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9215C9CADE00A3D10A /* CDKHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C3F15C9CADE00A3D10A /* CDKHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9315C9CADE00A3D10A /* CDKHTTPClient.m */; };
-		FD764C4015C9CADE00A3D10A /* CDKHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9315C9CADE00A3D10A /* CDKHTTPClient.m */; };
-		FD764C4115C9CADE00A3D10A /* CDKList.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9415C9CADE00A3D10A /* CDKList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C4215C9CADE00A3D10A /* CDKList.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9515C9CADE00A3D10A /* CDKList.m */; };
-		FD764C4315C9CADE00A3D10A /* CDKList.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9515C9CADE00A3D10A /* CDKList.m */; };
-		FD764C4415C9CADE00A3D10A /* CDKPushController.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9615C9CADE00A3D10A /* CDKPushController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C4515C9CADE00A3D10A /* CDKPushController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9715C9CADE00A3D10A /* CDKPushController.m */; };
-		FD764C4615C9CADE00A3D10A /* CDKPushController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9715C9CADE00A3D10A /* CDKPushController.m */; };
-		FD764C4715C9CADE00A3D10A /* CDKRemoteManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9815C9CADE00A3D10A /* CDKRemoteManagedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C4815C9CADE00A3D10A /* CDKRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9915C9CADE00A3D10A /* CDKRemoteManagedObject.m */; };
-		FD764C4915C9CADE00A3D10A /* CDKRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9915C9CADE00A3D10A /* CDKRemoteManagedObject.m */; };
-		FD764C4A15C9CADE00A3D10A /* CDKTag.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9A15C9CADE00A3D10A /* CDKTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C4B15C9CADE00A3D10A /* CDKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9B15C9CADE00A3D10A /* CDKTag.m */; };
-		FD764C4C15C9CADE00A3D10A /* CDKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9B15C9CADE00A3D10A /* CDKTag.m */; };
-		FD764C4D15C9CADE00A3D10A /* CDKTask.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9C15C9CADE00A3D10A /* CDKTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C4E15C9CADE00A3D10A /* CDKTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9D15C9CADE00A3D10A /* CDKTask.m */; };
-		FD764C4F15C9CADE00A3D10A /* CDKTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9D15C9CADE00A3D10A /* CDKTask.m */; };
-		FD764C5015C9CADE00A3D10A /* CDKUser.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9E15C9CADE00A3D10A /* CDKUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C5115C9CADE00A3D10A /* CDKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9F15C9CADE00A3D10A /* CDKUser.m */; };
-		FD764C5215C9CADE00A3D10A /* CDKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9F15C9CADE00A3D10A /* CDKUser.m */; };
-		FD764C5315C9CADE00A3D10A /* CheddarKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764BA015C9CADE00A3D10A /* CheddarKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C5415C9CADE00A3D10A /* NSDictionary+CheddarKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764BA115C9CADE00A3D10A /* NSDictionary+CheddarKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C5515C9CADE00A3D10A /* NSDictionary+CheddarKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA215C9CADE00A3D10A /* NSDictionary+CheddarKit.m */; };
-		FD764C5615C9CADE00A3D10A /* NSDictionary+CheddarKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA215C9CADE00A3D10A /* NSDictionary+CheddarKit.m */; };
-		FD764C5715C9CADE00A3D10A /* NSString+CheddarKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764BA315C9CADE00A3D10A /* NSString+CheddarKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C5815C9CADE00A3D10A /* NSString+CheddarKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA415C9CADE00A3D10A /* NSString+CheddarKit.m */; };
-		FD764C5915C9CADE00A3D10A /* NSString+CheddarKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA415C9CADE00A3D10A /* NSString+CheddarKit.m */; };
+		FD764C3B15C9CADE00A3D10A /* IPKDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9015C9CADE00A3D10A /* IPKDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD764C3C15C9CADE00A3D10A /* IPKDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9115C9CADE00A3D10A /* IPKDefines.m */; };
+		FD764C3D15C9CADE00A3D10A /* IPKDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9115C9CADE00A3D10A /* IPKDefines.m */; };
+		FD764C3E15C9CADE00A3D10A /* IPKHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9215C9CADE00A3D10A /* IPKHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD764C3F15C9CADE00A3D10A /* IPKHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9315C9CADE00A3D10A /* IPKHTTPClient.m */; };
+		FD764C4015C9CADE00A3D10A /* IPKHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9315C9CADE00A3D10A /* IPKHTTPClient.m */; };
+		FD764C4115C9CADE00A3D10A /* IPKList.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9415C9CADE00A3D10A /* IPKList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD764C4215C9CADE00A3D10A /* IPKList.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9515C9CADE00A3D10A /* IPKList.m */; };
+		FD764C4315C9CADE00A3D10A /* IPKList.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9515C9CADE00A3D10A /* IPKList.m */; };
+		FD764C4415C9CADE00A3D10A /* IPKPushController.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9615C9CADE00A3D10A /* IPKPushController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD764C4515C9CADE00A3D10A /* IPKPushController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9715C9CADE00A3D10A /* IPKPushController.m */; };
+		FD764C4615C9CADE00A3D10A /* IPKPushController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9715C9CADE00A3D10A /* IPKPushController.m */; };
+		FD764C4715C9CADE00A3D10A /* IPKRemoteManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9815C9CADE00A3D10A /* IPKRemoteManagedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD764C4815C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9915C9CADE00A3D10A /* IPKRemoteManagedObject.m */; };
+		FD764C4915C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9915C9CADE00A3D10A /* IPKRemoteManagedObject.m */; };
+		FD764C4A15C9CADE00A3D10A /* IPKTag.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9A15C9CADE00A3D10A /* IPKTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD764C4B15C9CADE00A3D10A /* IPKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9B15C9CADE00A3D10A /* IPKTag.m */; };
+		FD764C4C15C9CADE00A3D10A /* IPKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9B15C9CADE00A3D10A /* IPKTag.m */; };
+		FD764C4D15C9CADE00A3D10A /* IPKTask.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9C15C9CADE00A3D10A /* IPKTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD764C4E15C9CADE00A3D10A /* IPKTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9D15C9CADE00A3D10A /* IPKTask.m */; };
+		FD764C4F15C9CADE00A3D10A /* IPKTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9D15C9CADE00A3D10A /* IPKTask.m */; };
+		FD764C5015C9CADE00A3D10A /* IPKUser.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9E15C9CADE00A3D10A /* IPKUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD764C5115C9CADE00A3D10A /* IPKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9F15C9CADE00A3D10A /* IPKUser.m */; };
+		FD764C5215C9CADE00A3D10A /* IPKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9F15C9CADE00A3D10A /* IPKUser.m */; };
+		FD764C5315C9CADE00A3D10A /* InsiderPagesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764BA015C9CADE00A3D10A /* InsiderPagesKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD764C5415C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764BA115C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD764C5515C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA215C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m */; };
+		FD764C5615C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA215C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m */; };
+		FD764C5715C9CADE00A3D10A /* NSString+InsiderPagesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764BA315C9CADE00A3D10A /* NSString+InsiderPagesKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD764C5815C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA415C9CADE00A3D10A /* NSString+InsiderPagesKit.m */; };
+		FD764C5915C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA415C9CADE00A3D10A /* NSString+InsiderPagesKit.m */; };
 		FD764CE815C9CB1400A3D10A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD764CE715C9CB1400A3D10A /* Cocoa.framework */; };
 		FD764F2A15C9CEA100A3D10A /* InsiderPages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */; };
 		FD764F2B15C9CEA100A3D10A /* InsiderPages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */; };
@@ -243,27 +243,27 @@
 		B2D8D60515BF808E00A61836 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libicucore.dylib; sourceTree = DEVELOPER_DIR; };
 		B2D8D60715BF809300A61836 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		B2D8D60915BF809700A61836 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
-		FD764B9015C9CADE00A3D10A /* CDKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDKDefines.h; sourceTree = "<group>"; };
-		FD764B9115C9CADE00A3D10A /* CDKDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDKDefines.m; sourceTree = "<group>"; };
-		FD764B9215C9CADE00A3D10A /* CDKHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDKHTTPClient.h; sourceTree = "<group>"; };
-		FD764B9315C9CADE00A3D10A /* CDKHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDKHTTPClient.m; sourceTree = "<group>"; };
-		FD764B9415C9CADE00A3D10A /* CDKList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDKList.h; sourceTree = "<group>"; };
-		FD764B9515C9CADE00A3D10A /* CDKList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDKList.m; sourceTree = "<group>"; };
-		FD764B9615C9CADE00A3D10A /* CDKPushController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDKPushController.h; sourceTree = "<group>"; };
-		FD764B9715C9CADE00A3D10A /* CDKPushController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDKPushController.m; sourceTree = "<group>"; };
-		FD764B9815C9CADE00A3D10A /* CDKRemoteManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDKRemoteManagedObject.h; sourceTree = "<group>"; };
-		FD764B9915C9CADE00A3D10A /* CDKRemoteManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDKRemoteManagedObject.m; sourceTree = "<group>"; };
-		FD764B9A15C9CADE00A3D10A /* CDKTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDKTag.h; sourceTree = "<group>"; };
-		FD764B9B15C9CADE00A3D10A /* CDKTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDKTag.m; sourceTree = "<group>"; };
-		FD764B9C15C9CADE00A3D10A /* CDKTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDKTask.h; sourceTree = "<group>"; };
-		FD764B9D15C9CADE00A3D10A /* CDKTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDKTask.m; sourceTree = "<group>"; };
-		FD764B9E15C9CADE00A3D10A /* CDKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDKUser.h; sourceTree = "<group>"; };
-		FD764B9F15C9CADE00A3D10A /* CDKUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDKUser.m; sourceTree = "<group>"; };
-		FD764BA015C9CADE00A3D10A /* CheddarKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheddarKit.h; sourceTree = "<group>"; };
-		FD764BA115C9CADE00A3D10A /* NSDictionary+CheddarKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CheddarKit.h"; sourceTree = "<group>"; };
-		FD764BA215C9CADE00A3D10A /* NSDictionary+CheddarKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CheddarKit.m"; sourceTree = "<group>"; };
-		FD764BA315C9CADE00A3D10A /* NSString+CheddarKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CheddarKit.h"; sourceTree = "<group>"; };
-		FD764BA415C9CADE00A3D10A /* NSString+CheddarKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CheddarKit.m"; sourceTree = "<group>"; };
+		FD764B9015C9CADE00A3D10A /* IPKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKDefines.h; sourceTree = "<group>"; };
+		FD764B9115C9CADE00A3D10A /* IPKDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKDefines.m; sourceTree = "<group>"; };
+		FD764B9215C9CADE00A3D10A /* IPKHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKHTTPClient.h; sourceTree = "<group>"; };
+		FD764B9315C9CADE00A3D10A /* IPKHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKHTTPClient.m; sourceTree = "<group>"; };
+		FD764B9415C9CADE00A3D10A /* IPKList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKList.h; sourceTree = "<group>"; };
+		FD764B9515C9CADE00A3D10A /* IPKList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKList.m; sourceTree = "<group>"; };
+		FD764B9615C9CADE00A3D10A /* IPKPushController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKPushController.h; sourceTree = "<group>"; };
+		FD764B9715C9CADE00A3D10A /* IPKPushController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKPushController.m; sourceTree = "<group>"; };
+		FD764B9815C9CADE00A3D10A /* IPKRemoteManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKRemoteManagedObject.h; sourceTree = "<group>"; };
+		FD764B9915C9CADE00A3D10A /* IPKRemoteManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKRemoteManagedObject.m; sourceTree = "<group>"; };
+		FD764B9A15C9CADE00A3D10A /* IPKTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKTag.h; sourceTree = "<group>"; };
+		FD764B9B15C9CADE00A3D10A /* IPKTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKTag.m; sourceTree = "<group>"; };
+		FD764B9C15C9CADE00A3D10A /* IPKTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKTask.h; sourceTree = "<group>"; };
+		FD764B9D15C9CADE00A3D10A /* IPKTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKTask.m; sourceTree = "<group>"; };
+		FD764B9E15C9CADE00A3D10A /* IPKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKUser.h; sourceTree = "<group>"; };
+		FD764B9F15C9CADE00A3D10A /* IPKUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKUser.m; sourceTree = "<group>"; };
+		FD764BA015C9CADE00A3D10A /* InsiderPagesKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsiderPagesKit.h; sourceTree = "<group>"; };
+		FD764BA115C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+InsiderPagesKit.h"; sourceTree = "<group>"; };
+		FD764BA215C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+InsiderPagesKit.m"; sourceTree = "<group>"; };
+		FD764BA315C9CADE00A3D10A /* NSString+InsiderPagesKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+InsiderPagesKit.h"; sourceTree = "<group>"; };
+		FD764BA415C9CADE00A3D10A /* NSString+InsiderPagesKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+InsiderPagesKit.m"; sourceTree = "<group>"; };
 		FD764CE715C9CB1400A3D10A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		FD764DFD15C9CBBE00A3D10A /* InsiderPagesKitMac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "InsiderPagesKitMac-Info.plist"; sourceTree = "<group>"; };
 		FD764F2915C9CEA100A3D10A /* InsiderPages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InsiderPages.xcdatamodel; sourceTree = "<group>"; };
@@ -1605,27 +1605,27 @@
 			isa = PBXGroup;
 			children = (
 				FD764F6715C9D52E00A3D10A /* Vendor */,
-				FD764B9015C9CADE00A3D10A /* CDKDefines.h */,
-				FD764B9115C9CADE00A3D10A /* CDKDefines.m */,
-				FD764B9215C9CADE00A3D10A /* CDKHTTPClient.h */,
-				FD764B9315C9CADE00A3D10A /* CDKHTTPClient.m */,
-				FD764B9415C9CADE00A3D10A /* CDKList.h */,
-				FD764B9515C9CADE00A3D10A /* CDKList.m */,
-				FD764B9615C9CADE00A3D10A /* CDKPushController.h */,
-				FD764B9715C9CADE00A3D10A /* CDKPushController.m */,
-				FD764B9815C9CADE00A3D10A /* CDKRemoteManagedObject.h */,
-				FD764B9915C9CADE00A3D10A /* CDKRemoteManagedObject.m */,
-				FD764B9A15C9CADE00A3D10A /* CDKTag.h */,
-				FD764B9B15C9CADE00A3D10A /* CDKTag.m */,
-				FD764B9C15C9CADE00A3D10A /* CDKTask.h */,
-				FD764B9D15C9CADE00A3D10A /* CDKTask.m */,
-				FD764B9E15C9CADE00A3D10A /* CDKUser.h */,
-				FD764B9F15C9CADE00A3D10A /* CDKUser.m */,
-				FD764BA015C9CADE00A3D10A /* CheddarKit.h */,
-				FD764BA115C9CADE00A3D10A /* NSDictionary+CheddarKit.h */,
-				FD764BA215C9CADE00A3D10A /* NSDictionary+CheddarKit.m */,
-				FD764BA315C9CADE00A3D10A /* NSString+CheddarKit.h */,
-				FD764BA415C9CADE00A3D10A /* NSString+CheddarKit.m */,
+				FD764B9015C9CADE00A3D10A /* IPKDefines.h */,
+				FD764B9115C9CADE00A3D10A /* IPKDefines.m */,
+				FD764B9215C9CADE00A3D10A /* IPKHTTPClient.h */,
+				FD764B9315C9CADE00A3D10A /* IPKHTTPClient.m */,
+				FD764B9415C9CADE00A3D10A /* IPKList.h */,
+				FD764B9515C9CADE00A3D10A /* IPKList.m */,
+				FD764B9615C9CADE00A3D10A /* IPKPushController.h */,
+				FD764B9715C9CADE00A3D10A /* IPKPushController.m */,
+				FD764B9815C9CADE00A3D10A /* IPKRemoteManagedObject.h */,
+				FD764B9915C9CADE00A3D10A /* IPKRemoteManagedObject.m */,
+				FD764B9A15C9CADE00A3D10A /* IPKTag.h */,
+				FD764B9B15C9CADE00A3D10A /* IPKTag.m */,
+				FD764B9C15C9CADE00A3D10A /* IPKTask.h */,
+				FD764B9D15C9CADE00A3D10A /* IPKTask.m */,
+				FD764B9E15C9CADE00A3D10A /* IPKUser.h */,
+				FD764B9F15C9CADE00A3D10A /* IPKUser.m */,
+				FD764BA015C9CADE00A3D10A /* InsiderPagesKit.h */,
+				FD764BA115C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.h */,
+				FD764BA215C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m */,
+				FD764BA315C9CADE00A3D10A /* NSString+InsiderPagesKit.h */,
+				FD764BA415C9CADE00A3D10A /* NSString+InsiderPagesKit.m */,
 			);
 			path = InsiderPagesKit;
 			sourceTree = "<group>";
@@ -3552,17 +3552,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD764C3B15C9CADE00A3D10A /* CDKDefines.h in Headers */,
-				FD764C3E15C9CADE00A3D10A /* CDKHTTPClient.h in Headers */,
-				FD764C4115C9CADE00A3D10A /* CDKList.h in Headers */,
-				FD764C4415C9CADE00A3D10A /* CDKPushController.h in Headers */,
-				FD764C4715C9CADE00A3D10A /* CDKRemoteManagedObject.h in Headers */,
-				FD764C4A15C9CADE00A3D10A /* CDKTag.h in Headers */,
-				FD764C4D15C9CADE00A3D10A /* CDKTask.h in Headers */,
-				FD764C5015C9CADE00A3D10A /* CDKUser.h in Headers */,
-				FD764C5315C9CADE00A3D10A /* CheddarKit.h in Headers */,
-				FD764C5415C9CADE00A3D10A /* NSDictionary+CheddarKit.h in Headers */,
-				FD764C5715C9CADE00A3D10A /* NSString+CheddarKit.h in Headers */,
+				FD764C3B15C9CADE00A3D10A /* IPKDefines.h in Headers */,
+				FD764C3E15C9CADE00A3D10A /* IPKHTTPClient.h in Headers */,
+				FD764C4115C9CADE00A3D10A /* IPKList.h in Headers */,
+				FD764C4415C9CADE00A3D10A /* IPKPushController.h in Headers */,
+				FD764C4715C9CADE00A3D10A /* IPKRemoteManagedObject.h in Headers */,
+				FD764C4A15C9CADE00A3D10A /* IPKTag.h in Headers */,
+				FD764C4D15C9CADE00A3D10A /* IPKTask.h in Headers */,
+				FD764C5015C9CADE00A3D10A /* IPKUser.h in Headers */,
+				FD764C5315C9CADE00A3D10A /* InsiderPagesKit.h in Headers */,
+				FD764C5415C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.h in Headers */,
+				FD764C5715C9CADE00A3D10A /* NSString+InsiderPagesKit.h in Headers */,
 				FD7654C915C9D53300A3D10A /* AFIncrementalStore.h in Headers */,
 				FD7654CC15C9D53300A3D10A /* AFRESTClient.h in Headers */,
 				FD7654CF15C9D53300A3D10A /* AFHTTPClient.h in Headers */,
@@ -3836,16 +3836,16 @@
 				FD76561415C9D6B600A3D10A /* SSFilteredResultsSection.m in Sources */,
 				FD76561515C9D6B600A3D10A /* SSManagedTableViewController.m in Sources */,
 				FD76561615C9D6B600A3D10A /* SSManagedViewController.m in Sources */,
-				FD764C3C15C9CADE00A3D10A /* CDKDefines.m in Sources */,
-				FD764C3F15C9CADE00A3D10A /* CDKHTTPClient.m in Sources */,
-				FD764C4215C9CADE00A3D10A /* CDKList.m in Sources */,
-				FD764C4515C9CADE00A3D10A /* CDKPushController.m in Sources */,
-				FD764C4815C9CADE00A3D10A /* CDKRemoteManagedObject.m in Sources */,
-				FD764C4B15C9CADE00A3D10A /* CDKTag.m in Sources */,
-				FD764C4E15C9CADE00A3D10A /* CDKTask.m in Sources */,
-				FD764C5115C9CADE00A3D10A /* CDKUser.m in Sources */,
-				FD764C5515C9CADE00A3D10A /* NSDictionary+CheddarKit.m in Sources */,
-				FD764C5815C9CADE00A3D10A /* NSString+CheddarKit.m in Sources */,
+				FD764C3C15C9CADE00A3D10A /* IPKDefines.m in Sources */,
+				FD764C3F15C9CADE00A3D10A /* IPKHTTPClient.m in Sources */,
+				FD764C4215C9CADE00A3D10A /* IPKList.m in Sources */,
+				FD764C4515C9CADE00A3D10A /* IPKPushController.m in Sources */,
+				FD764C4815C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */,
+				FD764C4B15C9CADE00A3D10A /* IPKTag.m in Sources */,
+				FD764C4E15C9CADE00A3D10A /* IPKTask.m in Sources */,
+				FD764C5115C9CADE00A3D10A /* IPKUser.m in Sources */,
+				FD764C5515C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m in Sources */,
+				FD764C5815C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */,
 				FD764F2A15C9CEA100A3D10A /* InsiderPages.xcdatamodeld in Sources */,
 				FD7654CA15C9D53300A3D10A /* AFIncrementalStore.m in Sources */,
 				FD7654CD15C9D53300A3D10A /* AFRESTClient.m in Sources */,
@@ -3871,16 +3871,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD764C3D15C9CADE00A3D10A /* CDKDefines.m in Sources */,
-				FD764C4015C9CADE00A3D10A /* CDKHTTPClient.m in Sources */,
-				FD764C4315C9CADE00A3D10A /* CDKList.m in Sources */,
-				FD764C4615C9CADE00A3D10A /* CDKPushController.m in Sources */,
-				FD764C4915C9CADE00A3D10A /* CDKRemoteManagedObject.m in Sources */,
-				FD764C4C15C9CADE00A3D10A /* CDKTag.m in Sources */,
-				FD764C4F15C9CADE00A3D10A /* CDKTask.m in Sources */,
-				FD764C5215C9CADE00A3D10A /* CDKUser.m in Sources */,
-				FD764C5615C9CADE00A3D10A /* NSDictionary+CheddarKit.m in Sources */,
-				FD764C5915C9CADE00A3D10A /* NSString+CheddarKit.m in Sources */,
+				FD764C3D15C9CADE00A3D10A /* IPKDefines.m in Sources */,
+				FD764C4015C9CADE00A3D10A /* IPKHTTPClient.m in Sources */,
+				FD764C4315C9CADE00A3D10A /* IPKList.m in Sources */,
+				FD764C4615C9CADE00A3D10A /* IPKPushController.m in Sources */,
+				FD764C4915C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */,
+				FD764C4C15C9CADE00A3D10A /* IPKTag.m in Sources */,
+				FD764C4F15C9CADE00A3D10A /* IPKTask.m in Sources */,
+				FD764C5215C9CADE00A3D10A /* IPKUser.m in Sources */,
+				FD764C5615C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m in Sources */,
+				FD764C5915C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */,
 				FD764F2B15C9CEA100A3D10A /* InsiderPages.xcdatamodeld in Sources */,
 				FD7654CB15C9D53300A3D10A /* AFIncrementalStore.m in Sources */,
 				FD7654CE15C9D53300A3D10A /* AFRESTClient.m in Sources */,
@@ -4220,6 +4220,7 @@
 				FD76562E15C9D70000A3D10A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

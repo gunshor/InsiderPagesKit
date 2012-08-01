@@ -1,23 +1,23 @@
 //
-//  CDKPushController.m
-//  CheddarKit
+//  IPKPushController.m
+//  InsiderPagesKit
 //
-//  Created by Sam Soffes on 4/9/12.
-//  Copyright (c) 2012 Nothing Magical. All rights reserved.
+//  Created by Christopher Truman on 8/1/12.
+//  Inspired by Sam Soffes' CheddarKit.
 //
 
-#import "CDKPushController.h"
-#import "CDKList.h"
-#import "CDKTask.h"
-#import "CDKHTTPClient.h"
-#import "CDKUser.h"
-#import "CDKDefines.h"
+#import "IPKPushController.h"
+#import "IPKList.h"
+#import "IPKTask.h"
+#import "IPKHTTPClient.h"
+#import "IPKUser.h"
+#import "IPKDefines.h"
 #import <Bully/Bully.h>
 #import "Reachability.h"
 
 static BOOL __developmentMode = NO;
 
-@interface CDKPushController () <BLYClientDelegate>
+@interface IPKPushController () <BLYClientDelegate>
 @property (nonatomic, strong, readwrite) BLYClient *client;
 @property (nonatomic, strong, readwrite) BLYChannel *userChannel;
 @property (nonatomic, strong) NSString *userID;
@@ -27,7 +27,7 @@ static BOOL __developmentMode = NO;
 - (void)_reachabilityChanged:(NSNotification *)notification;
 @end
 
-@implementation CDKPushController {
+@implementation IPKPushController {
 	Reachability *_reachability;
 }
 
@@ -48,7 +48,7 @@ static BOOL __developmentMode = NO;
 	// Subscribe to user channel
 	NSString *channelName = [NSString stringWithFormat:@"private-user-%@", _userID];
 	self.userChannel = [self.client subscribeToChannelWithName:channelName authenticationBlock:^(BLYChannel *channel) {
-		[[CDKHTTPClient sharedClient] postPath:@"/pusher/auth" parameters:channel.authenticationParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		[[IPKHTTPClient sharedClient] postPath:@"/pusher/auth" parameters:channel.authenticationParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
 			[channel subscribeWithAuthentication:responseObject];
 		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 			NSLog(@"Failed to authorize Pusher channel: %@", error);
@@ -57,47 +57,47 @@ static BOOL __developmentMode = NO;
 	
 	// Bind to list create
 	[self.userChannel bindToEvent:@"list-create" block:^(id message) {
-		CDKList *list = [CDKList objectWithDictionary:message];
+		IPKList *list = [IPKList objectWithDictionary:message];
 		[list.managedObjectContext save:nil];
 	}];
 	
 	// Bind to list update
 	[self.userChannel bindToEvent:@"list-update" block:^(id message) {
-		CDKList *list = [CDKList objectWithDictionary:message];
+		IPKList *list = [IPKList objectWithDictionary:message];
 		[list save];
 
-		[[NSNotificationCenter defaultCenter] postNotificationName:kCDKListDidUpdateNotificationName object:list.remoteID];
+		[[NSNotificationCenter defaultCenter] postNotificationName:kIPKListDidUpdateNotificationName object:list.remoteID];
 	}];
 	
 	// Bind to list reorder
 	[self.userChannel bindToEvent:@"list-reorder" block:^(id message) {
 		for (NSDictionary *dictionary in [message objectForKey:@"lists"]) {
-			CDKList *list = [CDKList existingObjectWithRemoteID:[dictionary objectForKey:@"id"]];
+			IPKList *list = [IPKList existingObjectWithRemoteID:[dictionary objectForKey:@"id"]];
 			list.position = [dictionary objectForKey:@"position"];
 		}
-		[[CDKList mainContext] save:nil];
+		[[IPKList mainContext] save:nil];
 	}];
 
 	// Bind to task create
 	[self.userChannel bindToEvent:@"task-create" block:^(id message) {
-		CDKList *list = [CDKList existingObjectWithRemoteID:[message objectForKey:@"list_id"]];
+		IPKList *list = [IPKList existingObjectWithRemoteID:[message objectForKey:@"list_id"]];
 		if (!list) {
 			return;
 		}
 
-		CDKTask *task = [CDKTask objectWithDictionary:message];
+		IPKTask *task = [IPKTask objectWithDictionary:message];
 		task.list = list;
 		[task save];
 	}];
 	
 	// Bind to task update
 	[self.userChannel bindToEvent:@"task-update" block:^(id message) {
-		CDKList *list = [CDKList existingObjectWithRemoteID:[message objectForKey:@"list_id"]];
+		IPKList *list = [IPKList existingObjectWithRemoteID:[message objectForKey:@"list_id"]];
 		if (!list) {
 			return;
 		}
 
-		CDKTask *task = [CDKTask objectWithDictionary:message];
+		IPKTask *task = [IPKTask objectWithDictionary:message];
 		task.list = list;
 		[task save];
 	}];
@@ -105,15 +105,15 @@ static BOOL __developmentMode = NO;
 	// Bind to task reorder
 	[self.userChannel bindToEvent:@"task-reorder" block:^(id message) {
 		for (NSDictionary *dictionary in [message objectForKey:@"tasks"]) {
-			CDKTask *task = [CDKTask existingObjectWithRemoteID:[dictionary objectForKey:@"id"]];
+			IPKTask *task = [IPKTask existingObjectWithRemoteID:[dictionary objectForKey:@"id"]];
 			task.position = [dictionary objectForKey:@"position"];
 		}
-		[[CDKTask mainContext] save:nil];
+		[[IPKTask mainContext] save:nil];
 	}];
 
 	// Bind to user update
 	[self.userChannel bindToEvent:@"user-update" block:^(id message) {
-		CDKUser *user = [CDKUser objectWithDictionary:message];
+		IPKUser *user = [IPKUser objectWithDictionary:message];
 		[user save];
 	}];
 }
@@ -121,8 +121,8 @@ static BOOL __developmentMode = NO;
 
 #pragma mark - Singleton
 
-+ (CDKPushController *)sharedController {
-	static CDKPushController *sharedController = nil;
++ (IPKPushController *)sharedController {
+	static IPKPushController *sharedController = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		sharedController = [[self alloc] init];
@@ -140,12 +140,12 @@ static BOOL __developmentMode = NO;
 
 - (id)init {
 	if ((self = [super init])) {
-		_client = [[BLYClient alloc] initWithAppKey:(__developmentMode ? kCDKDevelopmentPusherAPIKey : kCDKPusherAPIKey) delegate:self];
+		_client = [[BLYClient alloc] initWithAppKey:(__developmentMode ? kIPKDevelopmentPusherAPIKey : kIPKPusherAPIKey) delegate:self];
 
-		self.userID = [CDKUser currentUser].remoteID.description;
+		self.userID = [IPKUser currentUser].remoteID.description;
 
 		NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-		[notificationCenter addObserver:self selector:@selector(_userChanged:) name:kCDKCurrentUserChangedNotificationName object:nil];
+		[notificationCenter addObserver:self selector:@selector(_userChanged:) name:kIPKCurrentUserChangedNotificationName object:nil];
 		
 #if TARGET_OS_IPHONE
 		[notificationCenter addObserver:self selector:@selector(_appDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -169,7 +169,7 @@ static BOOL __developmentMode = NO;
 #pragma mark - Private
 
 - (void)_userChanged:(NSNotification *)notification {
-	self.userID = [CDKUser currentUser].remoteID.description;
+	self.userID = [IPKUser currentUser].remoteID.description;
 }
 
 
@@ -195,7 +195,7 @@ static BOOL __developmentMode = NO;
 #pragma mark - BLYClientDelegate
 
 - (void)bullyClientDidConnect:(BLYClient *)client {
-	[[CDKHTTPClient sharedClient] setDefaultHeader:@"X-Pusher-Socket-ID" value:client.socketID];
+	[[IPKHTTPClient sharedClient] setDefaultHeader:@"X-Pusher-Socket-ID" value:client.socketID];
 }
 
 

@@ -1,23 +1,23 @@
 //
-//  CDKUser.m
-//  CheddarKit
+//  IPKUser.m
+//  InsiderPagesKit
 //
-//  Created by Sam Soffes on 4/5/12.
-//  Copyright (c) 2012 Nothing Magical. All rights reserved.
+//  Created by Christopher Truman on 8/1/12.
+//  Inspired by Sam Soffes' CheddarKit.
 //
 
-#import "CDKUser.h"
-#import "CDKList.h"
-#import "CDKTask.h"
+#import "IPKUser.h"
+#import "IPKList.h"
+#import "IPKTask.h"
 #import "SSKeychain.h"
-#import "NSDictionary+CheddarKit.h"
-#import "CDKDefines.h"
+#import "NSDictionary+InsiderPagesKit.h"
+#import "IPKDefines.h"
 
-NSString *const kCDKCurrentUserChangedNotificationName = @"CHCurrentUserChangedNotification";
-static NSString *const kCDKUserIDKey = @"CDKUserID";
-static CDKUser *__currentUser = nil;
+NSString *const kIPKCurrentUserChangedNotificationName = @"CHCurrentUserChangedNotification";
+static NSString *const kIPKUserIDKey = @"IPKUserID";
+static IPKUser *__currentUser = nil;
 
-@implementation CDKUser
+@implementation IPKUser
 
 @dynamic firstName;
 @dynamic lastName;
@@ -34,15 +34,15 @@ static CDKUser *__currentUser = nil;
 }
 
 
-+ (CDKUser *)currentUser {
++ (IPKUser *)currentUser {
 	if (!__currentUser) {
 		NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-		NSNumber *userID = [userDefaults objectForKey:kCDKUserIDKey];
+		NSNumber *userID = [userDefaults objectForKey:kIPKUserIDKey];
 		if (!userID) {
 			return nil;
 		}
 		
-		NSString *accessToken = [SSKeychain passwordForService:kCDKKeychainServiceName account:userID.description];
+		NSString *accessToken = [SSKeychain passwordForService:kIPKKeychainServiceName account:userID.description];
 		if (!accessToken) {
 			return nil;
 		}
@@ -54,9 +54,9 @@ static CDKUser *__currentUser = nil;
 }
 
 
-+ (void)setCurrentUser:(CDKUser *)user {
++ (void)setCurrentUser:(IPKUser *)user {
 	if (__currentUser) {
-		[SSKeychain deletePasswordForService:kCDKKeychainServiceName account:__currentUser.remoteID.description];
+		[SSKeychain deletePasswordForService:kIPKKeychainServiceName account:__currentUser.remoteID.description];
 	}
 	
 	if (!user.remoteID || !user.accessToken) {
@@ -65,14 +65,14 @@ static CDKUser *__currentUser = nil;
 	}
 	
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	[userDefaults setObject:user.remoteID forKey:kCDKUserIDKey];
+	[userDefaults setObject:user.remoteID forKey:kIPKUserIDKey];
 	[userDefaults synchronize];
 	
-	[SSKeychain setPassword:user.accessToken forService:kCDKKeychainServiceName account:user.remoteID.description];
+	[SSKeychain setPassword:user.accessToken forService:kIPKKeychainServiceName account:user.remoteID.description];
 	
 	__currentUser = user;
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:kCDKCurrentUserChangedNotificationName object:user];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kIPKCurrentUserChangedNotificationName object:user];
 }
 
 

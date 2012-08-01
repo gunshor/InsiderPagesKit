@@ -1,16 +1,16 @@
 //
-//  CDKList.h
-//  CheddarKit
+//  IPKList.h
+//  InsiderPagesKit
 //
-//  Created by Sam Soffes on 4/5/12.
-//  Copyright (c) 2012 Nothing Magical. All rights reserved.
+//  Created by Christopher Truman on 8/1/12.
+//  Inspired by Sam Soffes' CheddarKit.
 //
 
-#import "CDKRemoteManagedObject.h"
+#import "IPKRemoteManagedObject.h"
 
-@class CDKTask;
+@class IPKTask;
 
-@interface CDKList : CDKRemoteManagedObject
+@interface IPKList : IPKRemoteManagedObject
 
 @property (nonatomic, strong) NSDate *archivedAt;
 @property (nonatomic, strong) NSNumber *position;
@@ -30,9 +30,9 @@
 @end
 
 
-@interface CDKList (CoreDataGeneratedAccessors)
-- (void)addTasksObject:(CDKTask *)value;
-- (void)removeTasksObject:(CDKTask *)value;
+@interface IPKList (CoreDataGeneratedAccessors)
+- (void)addTasksObject:(IPKTask *)value;
+- (void)removeTasksObject:(IPKTask *)value;
 - (void)addTasks:(NSSet *)values;
 - (void)removeTasks:(NSSet *)values;
 @end

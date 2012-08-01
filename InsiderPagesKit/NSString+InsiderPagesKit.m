@@ -1,14 +1,14 @@
 //
-//  NSString+CheddarKit.m
-//  CheddarKit
+//  NSString+InsiderPagesKit.m
+//  InsiderPagesKit
 //
 //  Created by Sam Soffes on 6/10/12.
 //  Copyright (c) 2012 Nothing Magical. All rights reserved.
 //
 
-#import "NSString+CheddarKit.h"
+#import "NSString+InsiderPagesKit.h"
 
-@implementation NSString (CheddarKit)
+@implementation NSString (InsiderPagesKit)
 
 - (NSRange)composedRangeWithRange:(NSRange)range {
 	// We're going to make a new range that takes into account surrogate unicode pairs (composed characters)

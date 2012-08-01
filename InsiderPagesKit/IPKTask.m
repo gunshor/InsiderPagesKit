@@ -1,19 +1,19 @@
 //
-//  CDKTask.m
-//  CheddarKit
+//  IPKTask.m
+//  InsiderPagesKit
 //
-//  Created by Sam Soffes on 4/5/12.
-//  Copyright (c) 2012 Nothing Magical. All rights reserved.
+//  Created by Christopher Truman on 8/1/12.
+//  Inspired by Sam Soffes' CheddarKit.
 //
 
-#import "CDKTask.h"
-#import "CDKUser.h"
-#import "CDKList.h"
-#import "CDKTag.h"
-#import "CDKHTTPClient.h"
-#import "NSString+CheddarKit.h"
+#import "IPKTask.h"
+#import "IPKUser.h"
+#import "IPKList.h"
+#import "IPKTag.h"
+#import "IPKHTTPClient.h"
+#import "NSString+InsiderPagesKit.h"
 
-@implementation CDKTask
+@implementation IPKTask
 
 @dynamic archivedAt;
 @dynamic text;
@@ -52,18 +52,18 @@
 	self.entities = [dictionary objectForKey:@"entities"];
 
 	if ([dictionary objectForKey:@"user"]) {
-		self.user = [CDKUser objectWithDictionary:[dictionary objectForKey:@"user"] context:self.managedObjectContext];
+		self.user = [IPKUser objectWithDictionary:[dictionary objectForKey:@"user"] context:self.managedObjectContext];
 	}
 	
 	NSNumber *listID = [dictionary objectForKey:@"list_id"];
 	if (listID) {
-		self.list = [CDKList objectWithRemoteID:listID context:self.managedObjectContext];
+		self.list = [IPKList objectWithRemoteID:listID context:self.managedObjectContext];
 	}
 
 	// Add tags
 	NSMutableSet *tags = [[NSMutableSet alloc] init];
 	for (NSDictionary *tagDictionary in [dictionary objectForKey:@"tags"]) {
-		CDKTag *tag = [CDKTag objectWithDictionary:tagDictionary];
+		IPKTag *tag = [IPKTag objectWithDictionary:tagDictionary];
 		[tags addObject:tag];
 	}
 	self.tags = tags;
@@ -75,10 +75,10 @@
 }
 
 
-#pragma mark - CDKRemoteManagedObject
+#pragma mark - IPKRemoteManagedObject
 
 - (void)createWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *operation, NSError *error))failure {
-	[[CDKHTTPClient sharedClient] createTask:self success:^(AFJSONRequestOperation *operation, id responseObject) {
+	[[IPKHTTPClient sharedClient] createTask:self success:^(AFJSONRequestOperation *operation, id responseObject) {
 		if (success) {
 			success();
 		}
@@ -91,7 +91,7 @@
 
 
 - (void)updateWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *operation, NSError *error))failure {
-	[[CDKHTTPClient sharedClient] updateTask:self success:^(AFJSONRequestOperation *operation, id responseObject) {
+	[[IPKHTTPClient sharedClient] updateTask:self success:^(AFJSONRequestOperation *operation, id responseObject) {
 		if (success) {
 			success();
 		}
@@ -104,8 +104,8 @@
 
 
 + (void)sortWithObjects:(NSArray *)objects success:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *operation, NSError *error))failure {
-	CDKList *list = [(CDKTask *)[objects objectAtIndex:0] list];
-	[[CDKHTTPClient sharedClient] sortTasks:objects inList:list success:^(AFJSONRequestOperation *operation, id responseObject) {
+	IPKList *list = [(IPKTask *)[objects objectAtIndex:0] list];
+	[[IPKHTTPClient sharedClient] sortTasks:objects inList:list success:^(AFJSONRequestOperation *operation, id responseObject) {
 		if (success) {
 			success();
 		}
@@ -136,7 +136,7 @@
 }
 
 
-- (BOOL)hasTag:(CDKTag *)tag {
+- (BOOL)hasTag:(IPKTag *)tag {
 	// There has to be a better way to write this
 	NSArray *names = [self.tags valueForKey:@"name"];
 	NSString *tagName = [tag.name lowercaseString];
@@ -151,7 +151,7 @@
 
 - (BOOL)hasTags:(NSArray *)tags {
 	// There has to be a better way to write this
-	for (CDKTag *tag in tags) {
+	for (IPKTag *tag in tags) {
 		if (![self hasTag:tag]) {
 			return NO;
 		}

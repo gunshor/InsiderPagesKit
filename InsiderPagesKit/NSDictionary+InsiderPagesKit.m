@@ -1,14 +1,14 @@
 //
-//  NSDictionary+CheddarKit.m
-//  CheddarKit
+//  NSDictionary+InsiderPagesKit.m
+//  InsiderPagesKit
 //
 //  Created by Sam Soffes on 6/4/12.
 //  Copyright (c) 2012 Nothing Magical. All rights reserved.
 //
 
-#import "NSDictionary+CheddarKit.h"
+#import "NSDictionary+InsiderPagesKit.h"
 
-@implementation NSDictionary (CheddarKit)
+@implementation NSDictionary (InsiderPagesKit)
 
 
 - (id)safeObjectForKey:(id)key {

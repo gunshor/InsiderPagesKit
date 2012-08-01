@@ -1,6 +1,6 @@
 //
-//  CDKPushController.h
-//  CheddarKit
+//  IPKPushController.h
+//  InsiderPagesKit
 //
 //  Created by Sam Soffes on 4/9/12.
 //  Copyright (c) 2012 Nothing Magical. All rights reserved.
@@ -11,12 +11,12 @@
 @class BLYClient;
 @class BLYChannel;
 
-@interface CDKPushController : NSObject
+@interface IPKPushController : NSObject
 
 @property (nonatomic, strong, readonly) BLYClient *client;
 @property (nonatomic, strong, readonly) BLYChannel *userChannel;
 
-+ (CDKPushController *)sharedController;
++ (IPKPushController *)sharedController;
 + (void)setDevelopmentModeEnabled:(BOOL)enabled;
 
 @end

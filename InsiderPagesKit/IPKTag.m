@@ -1,15 +1,15 @@
 //
-//  CDKTag.m
-//  CheddarKit
+//  IPKTag.m
+//  InisderPagesKit
 //
-//  Created by Sam Soffes on 4/12/12.
-//  Copyright (c) 2012 Nothing Magical. All rights reserved.
+//  Created by Christopher Truman on 8/1/12.
+//  Inspired by Sam Soffes' CheddarKit.
 //
 
-#import "CDKTag.h"
-#import "CDKTask.h"
+#import "IPKTag.h"
+#import "IPKTask.h"
 
-@implementation CDKTag
+@implementation IPKTag
 
 @dynamic name;
 @dynamic tasks;
@@ -38,12 +38,12 @@
 }
 
 
-+ (CDKTag *)existingTagWithName:(NSString *)name {
++ (IPKTag *)existingTagWithName:(NSString *)name {
 	return [self existingTagWithName:name context:nil];
 }
 
 
-+ (CDKTag *)existingTagWithName:(NSString *)name context:(NSManagedObjectContext *)context {
++ (IPKTag *)existingTagWithName:(NSString *)name context:(NSManagedObjectContext *)context {
 	// Default to the main context
 	if (!context) {
 		context = [self mainContext];

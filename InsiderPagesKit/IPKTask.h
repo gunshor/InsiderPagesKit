@@ -1,20 +1,20 @@
 //
-//  CDKTask.h
-//  CheddarKit
+//  IPKTask.h
+//  InsiderPagesKit
 //
-//  Created by Sam Soffes on 4/5/12.
-//  Copyright (c) 2012 Nothing Magical. All rights reserved.
+//  Created by Christopher Truman on 8/1/12.
+//  Inspired by Sam Soffes' CheddarKit.
 //
 
-#import "CDKRemoteManagedObject.h"
+#import "IPKRemoteManagedObject.h"
 
-@class CDKUser;
-@class CDKList;
-@class CDKTag;
+@class IPKUser;
+@class IPKList;
+@class IPKTag;
 @class NSAttributedString;
 @class NSMutableAttributedString;
 
-@interface CDKTask : CDKRemoteManagedObject
+@interface IPKTask : IPKRemoteManagedObject
 
 @property (nonatomic, strong) NSDate *archivedAt;
 @property (nonatomic, strong) NSString *text;
@@ -22,21 +22,21 @@
 @property (nonatomic, strong) NSDictionary *entities;
 @property (nonatomic, strong) NSNumber *position;
 @property (nonatomic, strong) NSDate *completedAt;
-@property (nonatomic, strong) CDKUser *user;
-@property (nonatomic, strong) CDKList *list;
+@property (nonatomic, strong) IPKUser *user;
+@property (nonatomic, strong) IPKList *list;
 @property (nonatomic, strong) NSSet *tags;
 
 - (BOOL)isCompleted;
 - (void)toggleCompleted;
-- (BOOL)hasTag:(CDKTag *)tag;
+- (BOOL)hasTag:(IPKTag *)tag;
 - (BOOL)hasTags:(NSArray *)tags;
 
 @end
 
 
-@interface CDKTask (CoreDataGeneratedAccessors)
-- (void)addTagsObject:(CDKTag *)value;
-- (void)removeTagsObject:(CDKTag *)value;
+@interface IPKTask (CoreDataGeneratedAccessors)
+- (void)addTagsObject:(IPKTag *)value;
+- (void)removeTagsObject:(IPKTag *)value;
 - (void)addTags:(NSSet *)values;
 - (void)removeTags:(NSSet *)values;
 @end

@@ -1,17 +1,17 @@
 //
-//  CDKList.m
-//  CheddarKit
+//  IPKList.m
+//  InsiderPagesKit
 //
-//  Created by Sam Soffes on 4/5/12.
-//  Copyright (c) 2012 Nothing Magical. All rights reserved.
+//  Created by Christopher Truman on 8/1/12.
+//  Inspired by Sam Soffes' CheddarKit.
 //
 
-#import "CDKList.h"
-#import "CDKTask.h"
-#import "CDKUser.h"
-#import "CDKHTTPClient.h"
+#import "IPKList.h"
+#import "IPKTask.h"
+#import "IPKUser.h"
+#import "IPKHTTPClient.h"
 
-@implementation CDKList
+@implementation IPKList
 
 @dynamic archivedAt;
 @dynamic position;
@@ -45,11 +45,11 @@
 	self.slug = [dictionary objectForKey:@"slug"];
 
 	if ([dictionary objectForKey:@"user"]) {
-		self.user = [CDKUser objectWithDictionary:[dictionary objectForKey:@"user"] context:self.managedObjectContext];
+		self.user = [IPKUser objectWithDictionary:[dictionary objectForKey:@"user"] context:self.managedObjectContext];
 	}
 	
 	for (NSDictionary *taskDictionary in [dictionary objectForKey:@"tasks"]) {
-		CDKTask *task = [CDKTask objectWithDictionary:taskDictionary context:self.managedObjectContext];
+		IPKTask *task = [IPKTask objectWithDictionary:taskDictionary context:self.managedObjectContext];
 		task.list = self;
 	}
 }
@@ -60,10 +60,10 @@
 }
 
 
-#pragma mark - CDKRemoteManagedObject
+#pragma mark - IPKRemoteManagedObject
 
 - (void)createWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure {
-	[[CDKHTTPClient sharedClient] createList:self success:^(AFJSONRequestOperation *operation, id responseObject) {
+	[[IPKHTTPClient sharedClient] createList:self success:^(AFJSONRequestOperation *operation, id responseObject) {
 		if (success) {
 			success();
 		}
@@ -76,7 +76,7 @@
 
 
 - (void)updateWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure {
-	[[CDKHTTPClient sharedClient] updateList:self success:^(AFJSONRequestOperation *operation, id responseObject) {
+	[[IPKHTTPClient sharedClient] updateList:self success:^(AFJSONRequestOperation *operation, id responseObject) {
 		if (success) {
 			success();
 		}
@@ -89,7 +89,7 @@
 
 
 + (void)sortWithObjects:(NSArray *)objects success:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure {
-	[[CDKHTTPClient sharedClient] sortLists:objects success:^(AFJSONRequestOperation *operation, id responseObject) {
+	[[IPKHTTPClient sharedClient] sortLists:objects success:^(AFJSONRequestOperation *operation, id responseObject) {
 		if (success) {
 			success();
 		}
@@ -105,7 +105,7 @@
 
 - (NSInteger)highestPosition {
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	fetchRequest.entity = [CDKTask entityWithContext:self.managedObjectContext];
+	fetchRequest.entity = [IPKTask entityWithContext:self.managedObjectContext];
 	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"list = %@", self];
 	fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]];
 	fetchRequest.fetchLimit = 1;
@@ -113,13 +113,13 @@
 	if (results.count == 0) {
 		return 0;
 	}
-	return [[(CDKList *)[results objectAtIndex:0] position] integerValue];
+	return [[(IPKList *)[results objectAtIndex:0] position] integerValue];
 }
 
 
 - (NSArray *)sortedTasks {
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	fetchRequest.entity = [CDKTask entityWithContext:self.managedObjectContext];
+	fetchRequest.entity = [IPKTask entityWithContext:self.managedObjectContext];
 	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"list = %@", self];
 	fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:YES]];
 	return [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
@@ -128,7 +128,7 @@
 
 - (NSArray *)sortedActiveTasks {
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	fetchRequest.entity = [CDKTask entityWithContext:self.managedObjectContext];
+	fetchRequest.entity = [IPKTask entityWithContext:self.managedObjectContext];
 	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"list = %@ AND archivedAt = nil", self];
 	fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:YES]];
 	return [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
@@ -137,7 +137,7 @@
 
 - (NSArray *)sortedCompletedActiveTasks {
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	fetchRequest.entity = [CDKTask entityWithContext:self.managedObjectContext];
+	fetchRequest.entity = [IPKTask entityWithContext:self.managedObjectContext];
 	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"list = %@ AND archivedAt = nil AND completedAt != nil", self];
 	fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:YES]];
 	return [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
@@ -150,12 +150,12 @@
 		return;
 	}
 	
-	for (CDKTask *task in tasks) {
+	for (IPKTask *task in tasks) {
 		task.archivedAt = [NSDate date];
 	}
 	[self.managedObjectContext save:nil];
 	
-	[[CDKHTTPClient sharedClient] archiveAllTasksInList:self success:nil failure:nil];
+	[[IPKHTTPClient sharedClient] archiveAllTasksInList:self success:nil failure:nil];
 }
 
 
@@ -165,12 +165,12 @@
 		return;
 	}
 	
-	for (CDKTask *task in tasks) {
+	for (IPKTask *task in tasks) {
 		task.archivedAt = [NSDate date];
 	}
 	[self.managedObjectContext save:nil];
 	
-	[[CDKHTTPClient sharedClient] archiveCompletedTasksInList:self success:nil failure:nil];
+	[[IPKHTTPClient sharedClient] archiveCompletedTasksInList:self success:nil failure:nil];
 }
 
 @end

@@ -1,14 +1,14 @@
 //
-//  CDKRemoteManagedObject.m
-//  Cheddar
+//  IPKRemoteManagedObject.m
+//  InsiderPagesKit
 //
-//  Created by Sam Soffes on 6/24/12.
-//  Copyright (c) 2012 Nothing Magical. All rights reserved.
+//  Created by Christopher Truman on 8/1/12.
+//  Inspired by Sam Soffes' CheddarKit.
 //
 
-#import "CDKRemoteManagedObject.h"
+#import "IPKRemoteManagedObject.h"
 
-@implementation CDKRemoteManagedObject
+@implementation IPKRemoteManagedObject
 
 - (void)create {
 	[self createWithSuccess:nil failure:nil];

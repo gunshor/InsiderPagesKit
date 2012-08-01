@@ -1,16 +1,16 @@
 //
-//  CDKRemoteManagedObject.h
-//  Cheddar
+//  IPKRemoteManagedObject.h
+//  InsiderPagesKit
 //
-//  Created by Sam Soffes on 6/24/12.
-//  Copyright (c) 2012 Nothing Magical. All rights reserved.
+//  Created by Christopher Truman on 8/1/12.
+//  Inspired by Sam Soffes' CheddarKit.
 //
 
 #import "SSDataKit.h"
 
 @class AFJSONRequestOperation;
 
-@interface CDKRemoteManagedObject : SSRemoteManagedObject
+@interface IPKRemoteManagedObject : SSRemoteManagedObject
 
 - (void)create;
 - (void)createWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure;
