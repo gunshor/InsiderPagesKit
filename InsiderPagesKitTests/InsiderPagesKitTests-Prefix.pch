@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'InsiderPagesKitTests' target in the 'InsiderPagesKitTests' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif

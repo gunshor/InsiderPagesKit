@@ -1,0 +1,15 @@
+[submodule "InsiderPagesKit/Vendor/SSKeychain"]
+	path = InsiderPagesKit/Vendor/SSKeychain
+	url = https://github.com/samsoffes/sskeychain.git
+[submodule "InsiderPagesKit/Vendor/SSDataKit"]
+	path = InsiderPagesKit/Vendor/SSDataKit
+	url = https://github.com/samsoffes/ssdatakit.git
+[submodule "InsiderPagesKit/Vendor/AFIncrementalStore"]
+	path = InsiderPagesKit/Vendor/AFIncrementalStore
+	url = https://github.com/AFNetworking/AFIncrementalStore.git
+[submodule "InsiderPagesKit/Vendor/Bully"]
+	path = InsiderPagesKit/Vendor/Bully
+	url = https://github.com/samsoffes/bully.git
+[submodule "InsiderPagesKit/Vendor/Reachability"]
+	path = InsiderPagesKit/Vendor/Reachability
+	url = https://github.com/samsoffes/Reachability.git
