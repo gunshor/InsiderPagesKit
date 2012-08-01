@@ -1,7 +1,5 @@
-# CheddarKit
+# InsiderPagesKit
 
-CheddarKit is an iOS static library and OS X framework. It handles all of the Core Data, networking, and push interactions of Cheddar for all of our Objective-C based applications.
+InsiderPagesKit is an iOS static library and OS X framework. It handles all of the Core Data, networking, and push interactions of InsiderPages for all of our Objective-C based applications.
 
-## License
-
-CheddarKit is released under the [MIT license](https://github.com/nothingmagical/cheddarkit/blob/master/LICENSE).
+Modeled after the open source project [CheddarKit](https://github.com/nothingmagical/cheddarkit).
