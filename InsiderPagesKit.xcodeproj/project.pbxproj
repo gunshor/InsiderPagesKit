@@ -90,7 +90,7 @@
 		FD7655C715C9D53400A3D10A /* NSManagedObjectContext+SSDataKitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76548715C9D53200A3D10A /* NSManagedObjectContext+SSDataKitAdditions.h */; };
 		FD7655C815C9D53400A3D10A /* NSManagedObjectContext+SSDataKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548815C9D53200A3D10A /* NSManagedObjectContext+SSDataKitAdditions.m */; };
 		FD7655C915C9D53400A3D10A /* NSManagedObjectContext+SSDataKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548815C9D53200A3D10A /* NSManagedObjectContext+SSDataKitAdditions.m */; };
-		FD7655CA15C9D53400A3D10A /* SSDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76548A15C9D53200A3D10A /* SSDataKit.h */; };
+		FD7655CA15C9D53400A3D10A /* SSDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76548A15C9D53200A3D10A /* SSDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD7655D415C9D53400A3D10A /* SSManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76549115C9D53200A3D10A /* SSManagedObject.h */; };
 		FD7655D515C9D53400A3D10A /* SSManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76549215C9D53200A3D10A /* SSManagedObject.m */; };
 		FD7655D615C9D53400A3D10A /* SSManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76549215C9D53200A3D10A /* SSManagedObject.m */; };
@@ -108,27 +108,17 @@
 		FD76561515C9D6B600A3D10A /* SSManagedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76549415C9D53200A3D10A /* SSManagedTableViewController.m */; };
 		FD76561615C9D6B600A3D10A /* SSManagedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76549615C9D53200A3D10A /* SSManagedViewController.m */; };
 		FD76561E15C9D6FF00A3D10A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76561D15C9D6FF00A3D10A /* SenTestingKit.framework */; };
-		FD76562015C9D6FF00A3D10A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76561F15C9D6FF00A3D10A /* UIKit.framework */; };
 		FD76562115C9D6FF00A3D10A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B244408815BE53DC00D4D4CA /* Foundation.framework */; };
 		FD76562715C9D6FF00A3D10A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD76562515C9D6FF00A3D10A /* InfoPlist.strings */; };
 		FD76562A15C9D70000A3D10A /* InsiderPagesKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76562915C9D70000A3D10A /* InsiderPagesKitTests.m */; };
+		FD76568115C9E35000A3D10A /* IPKDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9115C9CADE00A3D10A /* IPKDefines.m */; };
+		FD76568B15C9ED1100A3D10A /* libInsiderPagesKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B244408515BE53DC00D4D4CA /* libInsiderPagesKit.a */; };
+		FD76568C15C9F0C000A3D10A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76568215C9E80100A3D10A /* CoreData.framework */; };
+		FD76568E15C9F0CC00A3D10A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76568D15C9F0CC00A3D10A /* UIKit.framework */; };
+		FD76569015C9F0D200A3D10A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76568F15C9F0D100A3D10A /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FD7655E615C9D53400A3D10A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FD764F8B15C9D52E00A3D10A /* AFNetworking iOS Example.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F8E469601395739C00DB05C8;
-			remoteInfo = "AFNetworking iOS Example";
-		};
-		FD7655E915C9D53400A3D10A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FD764F8E15C9D52E00A3D10A /* AFNetworking Mac Example.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F8129BFB1591061B009BFE23;
-			remoteInfo = "AFNetworking Example";
-		};
 		FD7655ED15C9D53400A3D10A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FD764FD715C9D52E00A3D10A /* Bully.xcodeproj */;
@@ -142,13 +132,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = B2FB4873158AF9B20067FB00;
 			remoteInfo = BullyMac;
-		};
-		FD7655F215C9D53400A3D10A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FD764FC315C9D52E00A3D10A /* IncrementalStoreExample.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F8AFAFAD15AB4F28003FE5BB;
-			remoteInfo = Songs;
 		};
 		FD7655F515C9D53400A3D10A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -220,6 +203,13 @@
 			remoteGlobalIDString = B2587E4A1579E740009D7B44;
 			remoteInfo = Bully;
 		};
+		FD76568915C9ED0C00A3D10A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B244407C15BE53DC00D4D4CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B244408415BE53DC00D4D4CA;
+			remoteInfo = InsiderPagesKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -267,12 +257,10 @@
 		FD764CE715C9CB1400A3D10A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		FD764DFD15C9CBBE00A3D10A /* InsiderPagesKitMac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "InsiderPagesKitMac-Info.plist"; sourceTree = "<group>"; };
 		FD764F2915C9CEA100A3D10A /* InsiderPages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InsiderPages.xcdatamodel; sourceTree = "<group>"; };
-		FD764F6915C9D52E00A3D10A /* .gitmodules */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitmodules; sourceTree = "<group>"; };
 		FD764F6B15C9D52E00A3D10A /* AFIncrementalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFIncrementalStore.h; sourceTree = "<group>"; };
 		FD764F6C15C9D52E00A3D10A /* AFIncrementalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFIncrementalStore.m; sourceTree = "<group>"; };
 		FD764F6D15C9D52E00A3D10A /* AFRESTClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFRESTClient.h; sourceTree = "<group>"; };
 		FD764F6E15C9D52E00A3D10A /* AFRESTClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFRESTClient.m; sourceTree = "<group>"; };
-		FD764F6F15C9D52E00A3D10A /* AFIncrementalStore.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AFIncrementalStore.podspec; sourceTree = "<group>"; };
 		FD764F7215C9D52E00A3D10A /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		FD764F7315C9D52E00A3D10A /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		FD764F7415C9D52E00A3D10A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -294,58 +282,6 @@
 		FD764F8415C9D52E00A3D10A /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		FD764F8515C9D52E00A3D10A /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		FD764F8615C9D52E00A3D10A /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		FD764F8715C9D52E00A3D10A /* AFNetworking.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AFNetworking.podspec; sourceTree = "<group>"; };
-		FD764F8815C9D52E00A3D10A /* AFNetworking.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = AFNetworking.xcworkspace; sourceTree = "<group>"; };
-		FD764F8915C9D52E00A3D10A /* CHANGES */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGES; sourceTree = "<group>"; };
-		FD764F8B15C9D52E00A3D10A /* AFNetworking iOS Example.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "AFNetworking iOS Example.xcodeproj"; sourceTree = "<group>"; };
-		FD764F8E15C9D52E00A3D10A /* AFNetworking Mac Example.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "AFNetworking Mac Example.xcodeproj"; sourceTree = "<group>"; };
-		FD764F9115C9D52E00A3D10A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		FD764F9215C9D52E00A3D10A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FD764F9415C9D52E00A3D10A /* AFTwitterAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTwitterAPIClient.h; sourceTree = "<group>"; };
-		FD764F9515C9D52E00A3D10A /* AFTwitterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTwitterAPIClient.m; sourceTree = "<group>"; };
-		FD764F9715C9D52E00A3D10A /* PublicTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicTimelineViewController.h; sourceTree = "<group>"; };
-		FD764F9815C9D52E00A3D10A /* PublicTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicTimelineViewController.m; sourceTree = "<group>"; };
-		FD764F9A15C9D52E00A3D10A /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
-		FD764F9B15C9D52E00A3D10A /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
-		FD764F9C15C9D52E00A3D10A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		FD764F9D15C9D52E00A3D10A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		FD764F9F15C9D52E00A3D10A /* TweetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetTableViewCell.h; sourceTree = "<group>"; };
-		FD764FA015C9D52E00A3D10A /* TweetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetTableViewCell.m; sourceTree = "<group>"; };
-		FD764FA115C9D52E00A3D10A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		FD764FA215C9D52E00A3D10A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		FD764FA415C9D52E00A3D10A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		FD764FA515C9D52E00A3D10A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		FD764FA615C9D52E00A3D10A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		FD764FA815C9D52E00A3D10A /* profile-image-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-image-placeholder.png"; sourceTree = "<group>"; };
-		FD764FA915C9D52E00A3D10A /* profile-image-placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-image-placeholder@2x.png"; sourceTree = "<group>"; };
-		FD764FAA15C9D52E00A3D10A /* iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iOS-Info.plist"; sourceTree = "<group>"; };
-		FD764FAB15C9D52E00A3D10A /* Mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Mac-Info.plist"; sourceTree = "<group>"; };
-		FD764FAC15C9D52E00A3D10A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FD764FAD15C9D52E00A3D10A /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
-		FD764FAE15C9D52E00A3D10A /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
-		FD764FAF15C9D52E00A3D10A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		FD764FB015C9D52E00A3D10A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		FD764FB215C9D52E00A3D10A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		FD764FB315C9D52E00A3D10A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FD764FB515C9D52E00A3D10A /* Artist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artist.h; sourceTree = "<group>"; };
-		FD764FB615C9D52E00A3D10A /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artist.m; sourceTree = "<group>"; };
-		FD764FB715C9D52E00A3D10A /* ArtistDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistDetailViewController.h; sourceTree = "<group>"; };
-		FD764FB815C9D52E00A3D10A /* ArtistDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistDetailViewController.m; sourceTree = "<group>"; };
-		FD764FB915C9D52E00A3D10A /* ArtistsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistsListViewController.h; sourceTree = "<group>"; };
-		FD764FBA15C9D52E00A3D10A /* ArtistsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistsListViewController.m; sourceTree = "<group>"; };
-		FD764FBB15C9D52E00A3D10A /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
-		FD764FBC15C9D52E00A3D10A /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
-		FD764FBD15C9D52E00A3D10A /* SongAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongAPIClient.h; sourceTree = "<group>"; };
-		FD764FBE15C9D52E00A3D10A /* SongAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongAPIClient.m; sourceTree = "<group>"; };
-		FD764FBF15C9D52E00A3D10A /* SongsIncrementalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongsIncrementalStore.h; sourceTree = "<group>"; };
-		FD764FC015C9D52E00A3D10A /* SongsIncrementalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongsIncrementalStore.m; sourceTree = "<group>"; };
-		FD764FC215C9D52E00A3D10A /* IncrementalStoreExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IncrementalStoreExample.xcdatamodel; sourceTree = "<group>"; };
-		FD764FC315C9D52E00A3D10A /* IncrementalStoreExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = IncrementalStoreExample.xcodeproj; sourceTree = "<group>"; };
-		FD764FC615C9D52E00A3D10A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FD764FC715C9D52E00A3D10A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FD764FC815C9D52E00A3D10A /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
-		FD764FC915C9D52E00A3D10A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		FD764FCA15C9D52E00A3D10A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		FD764FCC15C9D52E00A3D10A /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FD764FCD15C9D52E00A3D10A /* .gitmodules */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitmodules; sourceTree = "<group>"; };
 		FD764FCF15C9D52E00A3D10A /* BLYChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLYChannel.h; sourceTree = "<group>"; };
@@ -1525,6 +1461,9 @@
 		FD76562815C9D70000A3D10A /* InsiderPagesKitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsiderPagesKitTests.h; sourceTree = "<group>"; };
 		FD76562915C9D70000A3D10A /* InsiderPagesKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsiderPagesKitTests.m; sourceTree = "<group>"; };
 		FD76562B15C9D70000A3D10A /* InsiderPagesKitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InsiderPagesKitTests-Prefix.pch"; sourceTree = "<group>"; };
+		FD76568215C9E80100A3D10A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FD76568D15C9F0CC00A3D10A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FD76568F15C9F0D100A3D10A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1555,8 +1494,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD76569015C9F0D200A3D10A /* Security.framework in Frameworks */,
+				FD76568E15C9F0CC00A3D10A /* UIKit.framework in Frameworks */,
+				FD76568C15C9F0C000A3D10A /* CoreData.framework in Frameworks */,
+				FD76568B15C9ED1100A3D10A /* libInsiderPagesKit.a in Frameworks */,
 				FD76561E15C9D6FF00A3D10A /* SenTestingKit.framework in Frameworks */,
-				FD76562015C9D6FF00A3D10A /* UIKit.framework in Frameworks */,
 				FD76562115C9D6FF00A3D10A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1567,6 +1509,9 @@
 		B244407A15BE53DC00D4D4CA = {
 			isa = PBXGroup;
 			children = (
+				FD76568F15C9F0D100A3D10A /* Security.framework */,
+				FD76568D15C9F0CC00A3D10A /* UIKit.framework */,
+				FD76568215C9E80100A3D10A /* CoreData.framework */,
 				FD764DF915C9CBBE00A3D10A /* Other Sources */,
 				FD764CE715C9CB1400A3D10A /* Cocoa.framework */,
 				FD764B8F15C9CADE00A3D10A /* InsiderPagesKit */,
@@ -1654,13 +1599,8 @@
 		FD764F6815C9D52E00A3D10A /* AFIncrementalStore */ = {
 			isa = PBXGroup;
 			children = (
-				FD764F6915C9D52E00A3D10A /* .gitmodules */,
 				FD764F6A15C9D52E00A3D10A /* AFIncrementalStore */,
-				FD764F6F15C9D52E00A3D10A /* AFIncrementalStore.podspec */,
 				FD764F7015C9D52E00A3D10A /* AFNetworking */,
-				FD764FB115C9D52E00A3D10A /* Example */,
-				FD764FC915C9D52E00A3D10A /* LICENSE */,
-				FD764FCA15C9D52E00A3D10A /* README.md */,
 			);
 			path = AFIncrementalStore;
 			sourceTree = "<group>";
@@ -1680,12 +1620,6 @@
 			isa = PBXGroup;
 			children = (
 				FD764F7115C9D52E00A3D10A /* AFNetworking */,
-				FD764F8715C9D52E00A3D10A /* AFNetworking.podspec */,
-				FD764F8815C9D52E00A3D10A /* AFNetworking.xcworkspace */,
-				FD764F8915C9D52E00A3D10A /* CHANGES */,
-				FD764F8A15C9D52E00A3D10A /* Example */,
-				FD764FAF15C9D52E00A3D10A /* LICENSE */,
-				FD764FB015C9D52E00A3D10A /* README.md */,
 			);
 			path = AFNetworking;
 			sourceTree = "<group>";
@@ -1716,137 +1650,6 @@
 				FD764F8615C9D52E00A3D10A /* UIImageView+AFNetworking.m */,
 			);
 			path = AFNetworking;
-			sourceTree = "<group>";
-		};
-		FD764F8A15C9D52E00A3D10A /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				FD764F8B15C9D52E00A3D10A /* AFNetworking iOS Example.xcodeproj */,
-				FD764F8E15C9D52E00A3D10A /* AFNetworking Mac Example.xcodeproj */,
-				FD764F9115C9D52E00A3D10A /* AppDelegate.h */,
-				FD764F9215C9D52E00A3D10A /* AppDelegate.m */,
-				FD764F9315C9D52E00A3D10A /* Classes */,
-				FD764FA115C9D52E00A3D10A /* Default.png */,
-				FD764FA215C9D52E00A3D10A /* Default@2x.png */,
-				FD764FA315C9D52E00A3D10A /* MainMenu.xib */,
-				FD764FA515C9D52E00A3D10A /* Icon.png */,
-				FD764FA615C9D52E00A3D10A /* Icon@2x.png */,
-				FD764FA715C9D52E00A3D10A /* Images */,
-				FD764FAA15C9D52E00A3D10A /* iOS-Info.plist */,
-				FD764FAB15C9D52E00A3D10A /* Mac-Info.plist */,
-				FD764FAC15C9D52E00A3D10A /* main.m */,
-				FD764FAD15C9D52E00A3D10A /* MainMenu.xib */,
-				FD764FAE15C9D52E00A3D10A /* Prefix.pch */,
-			);
-			path = Example;
-			sourceTree = "<group>";
-		};
-		FD764F8C15C9D52E00A3D10A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FD7655E715C9D53400A3D10A /* AFNetworking iOS Example.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		FD764F8F15C9D52E00A3D10A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FD7655EA15C9D53400A3D10A /* AFNetworking Example.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		FD764F9315C9D52E00A3D10A /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				FD764F9415C9D52E00A3D10A /* AFTwitterAPIClient.h */,
-				FD764F9515C9D52E00A3D10A /* AFTwitterAPIClient.m */,
-				FD764F9615C9D52E00A3D10A /* Controllers */,
-				FD764F9915C9D52E00A3D10A /* Models */,
-				FD764F9E15C9D52E00A3D10A /* Views */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		FD764F9615C9D52E00A3D10A /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				FD764F9715C9D52E00A3D10A /* PublicTimelineViewController.h */,
-				FD764F9815C9D52E00A3D10A /* PublicTimelineViewController.m */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		FD764F9915C9D52E00A3D10A /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				FD764F9A15C9D52E00A3D10A /* Tweet.h */,
-				FD764F9B15C9D52E00A3D10A /* Tweet.m */,
-				FD764F9C15C9D52E00A3D10A /* User.h */,
-				FD764F9D15C9D52E00A3D10A /* User.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		FD764F9E15C9D52E00A3D10A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				FD764F9F15C9D52E00A3D10A /* TweetTableViewCell.h */,
-				FD764FA015C9D52E00A3D10A /* TweetTableViewCell.m */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		FD764FA715C9D52E00A3D10A /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				FD764FA815C9D52E00A3D10A /* profile-image-placeholder.png */,
-				FD764FA915C9D52E00A3D10A /* profile-image-placeholder@2x.png */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
-		FD764FB115C9D52E00A3D10A /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				FD764FB215C9D52E00A3D10A /* AppDelegate.h */,
-				FD764FB315C9D52E00A3D10A /* AppDelegate.m */,
-				FD764FB415C9D52E00A3D10A /* Classes */,
-				FD764FC115C9D52E00A3D10A /* IncrementalStoreExample.xcdatamodeld */,
-				FD764FC315C9D52E00A3D10A /* IncrementalStoreExample.xcodeproj */,
-				FD764FC615C9D52E00A3D10A /* Info.plist */,
-				FD764FC715C9D52E00A3D10A /* main.m */,
-				FD764FC815C9D52E00A3D10A /* Prefix.pch */,
-			);
-			path = Example;
-			sourceTree = "<group>";
-		};
-		FD764FB415C9D52E00A3D10A /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				FD764FB515C9D52E00A3D10A /* Artist.h */,
-				FD764FB615C9D52E00A3D10A /* Artist.m */,
-				FD764FB715C9D52E00A3D10A /* ArtistDetailViewController.h */,
-				FD764FB815C9D52E00A3D10A /* ArtistDetailViewController.m */,
-				FD764FB915C9D52E00A3D10A /* ArtistsListViewController.h */,
-				FD764FBA15C9D52E00A3D10A /* ArtistsListViewController.m */,
-				FD764FBB15C9D52E00A3D10A /* Song.h */,
-				FD764FBC15C9D52E00A3D10A /* Song.m */,
-				FD764FBD15C9D52E00A3D10A /* SongAPIClient.h */,
-				FD764FBE15C9D52E00A3D10A /* SongAPIClient.m */,
-				FD764FBF15C9D52E00A3D10A /* SongsIncrementalStore.h */,
-				FD764FC015C9D52E00A3D10A /* SongsIncrementalStore.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		FD764FC415C9D52E00A3D10A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FD7655F315C9D53400A3D10A /* Songs.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		FD764FCB15C9D52E00A3D10A /* Bully */ = {
@@ -3636,6 +3439,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FD76568A15C9ED0C00A3D10A /* PBXTargetDependency */,
 			);
 			name = InsiderPagesKitTests;
 			productName = InsiderPagesKitTests;
@@ -3664,20 +3468,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = FD764F8C15C9D52E00A3D10A /* Products */;
-					ProjectRef = FD764F8B15C9D52E00A3D10A /* AFNetworking iOS Example.xcodeproj */;
-				},
-				{
-					ProductGroup = FD764F8F15C9D52E00A3D10A /* Products */;
-					ProjectRef = FD764F8E15C9D52E00A3D10A /* AFNetworking Mac Example.xcodeproj */;
-				},
-				{
 					ProductGroup = FD764FD815C9D52E00A3D10A /* Products */;
 					ProjectRef = FD764FD715C9D52E00A3D10A /* Bully.xcodeproj */;
-				},
-				{
-					ProductGroup = FD764FC415C9D52E00A3D10A /* Products */;
-					ProjectRef = FD764FC315C9D52E00A3D10A /* IncrementalStoreExample.xcodeproj */;
 				},
 				{
 					ProductGroup = FD76547015C9D53200A3D10A /* Products */;
@@ -3706,20 +3498,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		FD7655E715C9D53400A3D10A /* AFNetworking iOS Example.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "AFNetworking iOS Example.app";
-			remoteRef = FD7655E615C9D53400A3D10A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FD7655EA15C9D53400A3D10A /* AFNetworking Example.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "AFNetworking Example.app";
-			remoteRef = FD7655E915C9D53400A3D10A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		FD7655EE15C9D53400A3D10A /* libBully.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -3732,13 +3510,6 @@
 			fileType = wrapper.framework;
 			path = Bully.framework;
 			remoteRef = FD7655EF15C9D53400A3D10A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FD7655F315C9D53400A3D10A /* Songs.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Songs.app;
-			remoteRef = FD7655F215C9D53400A3D10A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		FD7655F615C9D53400A3D10A /* iOSReachabilityTestARC.app */ = {
@@ -3907,6 +3678,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD76562A15C9D70000A3D10A /* InsiderPagesKitTests.m in Sources */,
+				FD76568115C9E35000A3D10A /* IPKDefines.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3923,17 +3695,14 @@
 			name = Bully;
 			targetProxy = FD76560F15C9D65800A3D10A /* PBXContainerItemProxy */;
 		};
+		FD76568A15C9ED0C00A3D10A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B244408415BE53DC00D4D4CA /* InsiderPagesKit */;
+			targetProxy = FD76568915C9ED0C00A3D10A /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FD764FA315C9D52E00A3D10A /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FD764FA415C9D52E00A3D10A /* en */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 		FD76542D15C9D53200A3D10A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -4057,9 +3826,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/CheddarKit.dst;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/InsiderPagesKit/Vendor/Bully\"",
-					"\"$(SRCROOT)/InsiderPagesKit/Vendor/SSDataKit\"",
+					"\"$(SRCROOT)/CheddarKit/Vendor/SSDataKit\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -4078,9 +3848,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/CheddarKit.dst;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/InsiderPagesKit/Vendor/Bully\"",
-					"\"$(SRCROOT)/InsiderPagesKit/Vendor/SSDataKit\"",
+					"\"$(SRCROOT)/CheddarKit/Vendor/SSDataKit\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -4156,14 +3927,19 @@
 		FD76562D15C9D70000A3D10A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				BUNDLE_LOADER = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "InsiderPagesKitTests/InsiderPagesKitTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/InsiderPagesKit/Vendor/**";
 				INFOPLIST_FILE = "InsiderPagesKitTests/InsiderPagesKitTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/InsiderPagesKit-dkuasncwgpvjswdramitdfdfarzr/Build/Products/Debug-iphoneos\"";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/CheddarKit/Vendor/SSDataKit\"";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -4171,14 +3947,19 @@
 		FD76562E15C9D70000A3D10A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				BUNDLE_LOADER = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "InsiderPagesKitTests/InsiderPagesKitTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/InsiderPagesKit/Vendor/**";
 				INFOPLIST_FILE = "InsiderPagesKitTests/InsiderPagesKitTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/InsiderPagesKit-dkuasncwgpvjswdramitdfdfarzr/Build/Products/Debug-iphoneos\"";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/CheddarKit/Vendor/SSDataKit\"";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -4232,16 +4013,6 @@
 			);
 			currentVersion = FD764F2915C9CEA100A3D10A /* InsiderPages.xcdatamodel */;
 			path = InsiderPages.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		FD764FC115C9D52E00A3D10A /* IncrementalStoreExample.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				FD764FC215C9D52E00A3D10A /* IncrementalStoreExample.xcdatamodel */,
-			);
-			currentVersion = FD764FC215C9D52E00A3D10A /* IncrementalStoreExample.xcdatamodel */;
-			path = IncrementalStoreExample.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

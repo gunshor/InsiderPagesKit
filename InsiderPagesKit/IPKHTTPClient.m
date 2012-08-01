@@ -21,8 +21,6 @@ static BOOL __developmentMode = NO;
 
 @implementation IPKHTTPClient {
 	dispatch_queue_t _callbackQueue;
-	NSString *_clientID;
-	NSString *_clientSecret;
 }
 
 #pragma mark - Singleton
@@ -95,15 +93,6 @@ static BOOL __developmentMode = NO;
 	[super enqueueHTTPRequestOperation:operation];
 }
 
-
-#pragma mark - Client
-
-- (void)setClientID:(NSString *)clientID secret:(NSString *)clientSecret {
-	_clientID = clientID;
-	_clientSecret = clientSecret;
-}
-
-
 #pragma mark - User
 
 - (void)signInWithLogin:(NSString *)login password:(NSString *)password success:(void (^)(AFJSONRequestOperation *operation, id responseObject))success failure:(void (^)(AFJSONRequestOperation *operation, NSError *error))failure {
@@ -113,7 +102,6 @@ static BOOL __developmentMode = NO;
 							@"password", @"grant_type",
 							nil];
 	
-	[self setAuthorizationHeaderWithUsername:_clientID password:_clientSecret];
 	[self postPath:@"/oauth/token" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		__weak NSManagedObjectContext *context = [IPKUser mainContext];
 		[context performBlockAndWait:^{
@@ -144,7 +132,6 @@ static BOOL __developmentMode = NO;
 							@"authorization_code", @"grant_type",
 							nil];
 	
-	[self setAuthorizationHeaderWithUsername:_clientID password:_clientSecret];
 	[self postPath:@"/oauth/token" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		__weak NSManagedObjectContext *context = [IPKUser mainContext];
 		[context performBlockAndWait:^{
@@ -176,7 +163,6 @@ static BOOL __developmentMode = NO;
 							password, @"user[password]",
 							nil];
 	
-	[self setAuthorizationHeaderWithUsername:_clientID password:_clientSecret];
 	[self postPath:@"users" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		__weak NSManagedObjectContext *context = [IPKUser mainContext];
 		[context performBlockAndWait:^{
@@ -222,7 +208,8 @@ static BOOL __developmentMode = NO;
 #pragma mark - Lists
 
 - (void)getListsWithSuccess:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
-	[self getPath:@"lists" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+	[self getPath:@"teams/1" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@", responseObject);
 		__weak NSManagedObjectContext *context = [IPKList mainContext];
 		[context performBlockAndWait:^{
 			for (NSDictionary *dictionary in responseObject) {

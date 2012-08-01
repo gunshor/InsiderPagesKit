@@ -21,7 +21,6 @@ typedef void (^IPKHTTPClientFailure)(AFJSONRequestOperation *operation, NSError 
 + (IPKHTTPClient *)sharedClient;
 + (void)setDevelopmentModeEnabled:(BOOL)enabled;
 + (NSString *)apiVersion;
-- (void)setClientID:(NSString *)clientID secret:(NSString *)clientSecret;
 
 - (void)changeUser:(IPKUser *)user;
 

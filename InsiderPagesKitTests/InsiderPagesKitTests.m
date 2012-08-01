@@ -15,7 +15,10 @@
     [super setUp];
     
     // Set-up code here.
+    [IPKHTTPClient setDevelopmentModeEnabled:YES];
 }
+
+
 
 - (void)tearDown
 {
@@ -24,9 +27,14 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    STFail(@"Unit tests are not implemented yet in InsiderPagesKitTests");
+-(void)testInitial{
+    [[IPKHTTPClient sharedClient] getListsWithSuccess:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@ %@ %@", operation, operation.response, responseObject);
+    }
+      failure:^(AFJSONRequestOperation *operation, NSError *error){
+          NSLog(@"%@ %@", operation, error);
+      }
+     ];
+    sleep(500);
 }
-
 @end
