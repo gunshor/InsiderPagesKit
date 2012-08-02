@@ -116,6 +116,9 @@
 		FD76568C15C9F0C000A3D10A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76568215C9E80100A3D10A /* CoreData.framework */; };
 		FD76568E15C9F0CC00A3D10A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76568D15C9F0CC00A3D10A /* UIKit.framework */; };
 		FD76569015C9F0D200A3D10A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76568F15C9F0D100A3D10A /* Security.framework */; };
+		FD7656A015CA053100A3D10A /* IPKQueryModel.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76569E15CA052F00A3D10A /* IPKQueryModel.h */; };
+		FD7656A115CA053100A3D10A /* IPKQueryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76569F15CA053000A3D10A /* IPKQueryModel.m */; };
+		FD7656A215CA053100A3D10A /* IPKQueryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76569F15CA053000A3D10A /* IPKQueryModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1464,6 +1467,8 @@
 		FD76568215C9E80100A3D10A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FD76568D15C9F0CC00A3D10A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FD76568F15C9F0D100A3D10A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		FD76569E15CA052F00A3D10A /* IPKQueryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKQueryModel.h; sourceTree = "<group>"; };
+		FD76569F15CA053000A3D10A /* IPKQueryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKQueryModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1571,6 +1576,8 @@
 				FD764BA215C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m */,
 				FD764BA315C9CADE00A3D10A /* NSString+InsiderPagesKit.h */,
 				FD764BA415C9CADE00A3D10A /* NSString+InsiderPagesKit.m */,
+				FD76569E15CA052F00A3D10A /* IPKQueryModel.h */,
+				FD76569F15CA053000A3D10A /* IPKQueryModel.m */,
 			);
 			path = InsiderPagesKit;
 			sourceTree = "<group>";
@@ -3385,6 +3392,7 @@
 				FD7655D415C9D53400A3D10A /* SSManagedObject.h in Headers */,
 				FD7655DD15C9D53400A3D10A /* SSRemoteManagedObject.h in Headers */,
 				FD7655E015C9D53400A3D10A /* SSKeychain.h in Headers */,
+				FD7656A015CA053100A3D10A /* IPKQueryModel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3635,6 +3643,7 @@
 				FD7655D515C9D53400A3D10A /* SSManagedObject.m in Sources */,
 				FD7655DE15C9D53400A3D10A /* SSRemoteManagedObject.m in Sources */,
 				FD7655E115C9D53400A3D10A /* SSKeychain.m in Sources */,
+				FD7656A115CA053100A3D10A /* IPKQueryModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3670,6 +3679,7 @@
 				FD7655D615C9D53400A3D10A /* SSManagedObject.m in Sources */,
 				FD7655DF15C9D53400A3D10A /* SSRemoteManagedObject.m in Sources */,
 				FD7655E215C9D53400A3D10A /* SSKeychain.m in Sources */,
+				FD7656A215CA053100A3D10A /* IPKQueryModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
