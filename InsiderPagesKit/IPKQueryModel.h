@@ -19,7 +19,7 @@ enum IPKQueryModelFilterType {
 @property (nonatomic, strong) NSString* queryString;
 @property (nonatomic, strong) NSString* state;
 @property (nonatomic, strong) NSString* city;
-@property (nonatomic, readwrite) IPKQueryModelFilterType filterType;
+@property (nonatomic, readwrite) enum IPKQueryModelFilterType filterType;
 @property (nonatomic, strong) NSString * currentPage;
 @property (nonatomic, strong) NSString * perPageNumber;
 

@@ -13,30 +13,22 @@
 		B2D8D60615BF808E00A61836 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D8D60515BF808E00A61836 /* libicucore.dylib */; };
 		B2D8D60815BF809300A61836 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D8D60715BF809300A61836 /* CoreData.framework */; };
 		B2D8D60A15BF809700A61836 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D8D60915BF809700A61836 /* CoreText.framework */; };
+		FD260E1415CC4F160002C801 /* InsiderPages.xcdatamodeld in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */; };
+		FD260E1515CC5E420002C801 /* InsiderPages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */; };
+		FD260E1815CC90AE0002C801 /* NSRunLoop+TimeOutAndFlag.m in Resources */ = {isa = PBXBuildFile; fileRef = FD260E1715CC90AE0002C801 /* NSRunLoop+TimeOutAndFlag.m */; };
+		FD260E1915CC91590002C801 /* NSRunLoop+TimeOutAndFlag.m in Sources */ = {isa = PBXBuildFile; fileRef = FD260E1715CC90AE0002C801 /* NSRunLoop+TimeOutAndFlag.m */; };
 		FD764C3B15C9CADE00A3D10A /* IPKDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9015C9CADE00A3D10A /* IPKDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD764C3C15C9CADE00A3D10A /* IPKDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9115C9CADE00A3D10A /* IPKDefines.m */; };
 		FD764C3D15C9CADE00A3D10A /* IPKDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9115C9CADE00A3D10A /* IPKDefines.m */; };
 		FD764C3E15C9CADE00A3D10A /* IPKHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9215C9CADE00A3D10A /* IPKHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD764C3F15C9CADE00A3D10A /* IPKHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9315C9CADE00A3D10A /* IPKHTTPClient.m */; };
 		FD764C4015C9CADE00A3D10A /* IPKHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9315C9CADE00A3D10A /* IPKHTTPClient.m */; };
-		FD764C4115C9CADE00A3D10A /* IPKList.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9415C9CADE00A3D10A /* IPKList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C4215C9CADE00A3D10A /* IPKList.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9515C9CADE00A3D10A /* IPKList.m */; };
-		FD764C4315C9CADE00A3D10A /* IPKList.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9515C9CADE00A3D10A /* IPKList.m */; };
 		FD764C4415C9CADE00A3D10A /* IPKPushController.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9615C9CADE00A3D10A /* IPKPushController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD764C4515C9CADE00A3D10A /* IPKPushController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9715C9CADE00A3D10A /* IPKPushController.m */; };
 		FD764C4615C9CADE00A3D10A /* IPKPushController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9715C9CADE00A3D10A /* IPKPushController.m */; };
 		FD764C4715C9CADE00A3D10A /* IPKRemoteManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9815C9CADE00A3D10A /* IPKRemoteManagedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD764C4815C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9915C9CADE00A3D10A /* IPKRemoteManagedObject.m */; };
 		FD764C4915C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9915C9CADE00A3D10A /* IPKRemoteManagedObject.m */; };
-		FD764C4A15C9CADE00A3D10A /* IPKTag.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9A15C9CADE00A3D10A /* IPKTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C4B15C9CADE00A3D10A /* IPKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9B15C9CADE00A3D10A /* IPKTag.m */; };
-		FD764C4C15C9CADE00A3D10A /* IPKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9B15C9CADE00A3D10A /* IPKTag.m */; };
-		FD764C4D15C9CADE00A3D10A /* IPKTask.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9C15C9CADE00A3D10A /* IPKTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C4E15C9CADE00A3D10A /* IPKTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9D15C9CADE00A3D10A /* IPKTask.m */; };
-		FD764C4F15C9CADE00A3D10A /* IPKTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9D15C9CADE00A3D10A /* IPKTask.m */; };
-		FD764C5015C9CADE00A3D10A /* IPKUser.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9E15C9CADE00A3D10A /* IPKUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C5115C9CADE00A3D10A /* IPKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9F15C9CADE00A3D10A /* IPKUser.m */; };
-		FD764C5215C9CADE00A3D10A /* IPKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9F15C9CADE00A3D10A /* IPKUser.m */; };
 		FD764C5315C9CADE00A3D10A /* InsiderPagesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764BA015C9CADE00A3D10A /* InsiderPagesKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD764C5415C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764BA115C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD764C5515C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA215C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m */; };
@@ -119,6 +111,33 @@
 		FD7656A015CA053100A3D10A /* IPKQueryModel.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76569E15CA052F00A3D10A /* IPKQueryModel.h */; };
 		FD7656A115CA053100A3D10A /* IPKQueryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76569F15CA053000A3D10A /* IPKQueryModel.m */; };
 		FD7656A215CA053100A3D10A /* IPKQueryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76569F15CA053000A3D10A /* IPKQueryModel.m */; };
+		FD7656B015CAF2B500A3D10A /* IPKList.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656A415CAF2B500A3D10A /* IPKList.h */; };
+		FD7656B115CAF2B500A3D10A /* IPKList.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656A515CAF2B500A3D10A /* IPKList.m */; };
+		FD7656B215CAF2B500A3D10A /* IPKList.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656A515CAF2B500A3D10A /* IPKList.m */; };
+		FD7656B915CAF2B500A3D10A /* IPKTag.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656AA15CAF2B500A3D10A /* IPKTag.h */; };
+		FD7656BA15CAF2B500A3D10A /* IPKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656AB15CAF2B500A3D10A /* IPKTag.m */; };
+		FD7656BB15CAF2B500A3D10A /* IPKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656AB15CAF2B500A3D10A /* IPKTag.m */; };
+		FD7656BC15CAF2B500A3D10A /* IPKTask.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656AC15CAF2B500A3D10A /* IPKTask.h */; };
+		FD7656BD15CAF2B500A3D10A /* IPKTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656AD15CAF2B500A3D10A /* IPKTask.m */; };
+		FD7656BE15CAF2B500A3D10A /* IPKTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656AD15CAF2B500A3D10A /* IPKTask.m */; };
+		FD7656BF15CAF2B500A3D10A /* IPKUser.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656AE15CAF2B500A3D10A /* IPKUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD7656C015CAF2B500A3D10A /* IPKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656AF15CAF2B500A3D10A /* IPKUser.m */; };
+		FD7656C115CAF2B500A3D10A /* IPKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656AF15CAF2B500A3D10A /* IPKUser.m */; };
+		FD7656C915CB833B00A3D10A /* IPKNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656C715CB833A00A3D10A /* IPKNotification.h */; };
+		FD7656CA15CB833B00A3D10A /* IPKNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656C815CB833B00A3D10A /* IPKNotification.m */; };
+		FD7656CB15CB833B00A3D10A /* IPKNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656C815CB833B00A3D10A /* IPKNotification.m */; };
+		FD7656CE15CB833D00A3D10A /* IPKPage.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656CC15CB833C00A3D10A /* IPKPage.h */; };
+		FD7656CF15CB833D00A3D10A /* IPKPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656CD15CB833D00A3D10A /* IPKPage.m */; };
+		FD7656D015CB833D00A3D10A /* IPKPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656CD15CB833D00A3D10A /* IPKPage.m */; };
+		FD7656D815CB834000A3D10A /* IPKProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656D615CB833F00A3D10A /* IPKProvider.h */; };
+		FD7656D915CB834000A3D10A /* IPKProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656D715CB833F00A3D10A /* IPKProvider.m */; };
+		FD7656DA15CB834000A3D10A /* IPKProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656D715CB833F00A3D10A /* IPKProvider.m */; };
+		FD7656DD15CB834100A3D10A /* IPKActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656DB15CB834000A3D10A /* IPKActivity.h */; };
+		FD7656DE15CB834100A3D10A /* IPKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656DC15CB834100A3D10A /* IPKActivity.m */; };
+		FD7656DF15CB834100A3D10A /* IPKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656DC15CB834100A3D10A /* IPKActivity.m */; };
+		FD7656E215CB8CE500A3D10A /* User.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656E015CB8CE400A3D10A /* User.h */; };
+		FD7656E315CB8CE500A3D10A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656E115CB8CE500A3D10A /* User.m */; };
+		FD7656E415CB8CE500A3D10A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656E115CB8CE500A3D10A /* User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,6 +241,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				FD260E1415CC4F160002C801 /* InsiderPages.xcdatamodeld in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,22 +256,16 @@
 		B2D8D60515BF808E00A61836 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libicucore.dylib; sourceTree = DEVELOPER_DIR; };
 		B2D8D60715BF809300A61836 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		B2D8D60915BF809700A61836 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
+		FD260E1615CC90AE0002C801 /* NSRunLoop+TimeOutAndFlag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+TimeOutAndFlag.h"; sourceTree = "<group>"; };
+		FD260E1715CC90AE0002C801 /* NSRunLoop+TimeOutAndFlag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+TimeOutAndFlag.m"; sourceTree = "<group>"; };
 		FD764B9015C9CADE00A3D10A /* IPKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKDefines.h; sourceTree = "<group>"; };
 		FD764B9115C9CADE00A3D10A /* IPKDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKDefines.m; sourceTree = "<group>"; };
 		FD764B9215C9CADE00A3D10A /* IPKHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKHTTPClient.h; sourceTree = "<group>"; };
 		FD764B9315C9CADE00A3D10A /* IPKHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKHTTPClient.m; sourceTree = "<group>"; };
-		FD764B9415C9CADE00A3D10A /* IPKList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKList.h; sourceTree = "<group>"; };
-		FD764B9515C9CADE00A3D10A /* IPKList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKList.m; sourceTree = "<group>"; };
 		FD764B9615C9CADE00A3D10A /* IPKPushController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKPushController.h; sourceTree = "<group>"; };
 		FD764B9715C9CADE00A3D10A /* IPKPushController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKPushController.m; sourceTree = "<group>"; };
 		FD764B9815C9CADE00A3D10A /* IPKRemoteManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKRemoteManagedObject.h; sourceTree = "<group>"; };
 		FD764B9915C9CADE00A3D10A /* IPKRemoteManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKRemoteManagedObject.m; sourceTree = "<group>"; };
-		FD764B9A15C9CADE00A3D10A /* IPKTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKTag.h; sourceTree = "<group>"; };
-		FD764B9B15C9CADE00A3D10A /* IPKTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKTag.m; sourceTree = "<group>"; };
-		FD764B9C15C9CADE00A3D10A /* IPKTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKTask.h; sourceTree = "<group>"; };
-		FD764B9D15C9CADE00A3D10A /* IPKTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKTask.m; sourceTree = "<group>"; };
-		FD764B9E15C9CADE00A3D10A /* IPKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKUser.h; sourceTree = "<group>"; };
-		FD764B9F15C9CADE00A3D10A /* IPKUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKUser.m; sourceTree = "<group>"; };
 		FD764BA015C9CADE00A3D10A /* InsiderPagesKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsiderPagesKit.h; sourceTree = "<group>"; };
 		FD764BA115C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+InsiderPagesKit.h"; sourceTree = "<group>"; };
 		FD764BA215C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+InsiderPagesKit.m"; sourceTree = "<group>"; };
@@ -1469,6 +1483,24 @@
 		FD76568F15C9F0D100A3D10A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FD76569E15CA052F00A3D10A /* IPKQueryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKQueryModel.h; sourceTree = "<group>"; };
 		FD76569F15CA053000A3D10A /* IPKQueryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKQueryModel.m; sourceTree = "<group>"; };
+		FD7656A415CAF2B500A3D10A /* IPKList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKList.h; sourceTree = "<group>"; };
+		FD7656A515CAF2B500A3D10A /* IPKList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKList.m; sourceTree = "<group>"; };
+		FD7656AA15CAF2B500A3D10A /* IPKTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKTag.h; sourceTree = "<group>"; };
+		FD7656AB15CAF2B500A3D10A /* IPKTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKTag.m; sourceTree = "<group>"; };
+		FD7656AC15CAF2B500A3D10A /* IPKTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKTask.h; sourceTree = "<group>"; };
+		FD7656AD15CAF2B500A3D10A /* IPKTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKTask.m; sourceTree = "<group>"; };
+		FD7656AE15CAF2B500A3D10A /* IPKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKUser.h; sourceTree = "<group>"; };
+		FD7656AF15CAF2B500A3D10A /* IPKUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKUser.m; sourceTree = "<group>"; };
+		FD7656C715CB833A00A3D10A /* IPKNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKNotification.h; sourceTree = "<group>"; };
+		FD7656C815CB833B00A3D10A /* IPKNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKNotification.m; sourceTree = "<group>"; };
+		FD7656CC15CB833C00A3D10A /* IPKPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKPage.h; sourceTree = "<group>"; };
+		FD7656CD15CB833D00A3D10A /* IPKPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKPage.m; sourceTree = "<group>"; };
+		FD7656D615CB833F00A3D10A /* IPKProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKProvider.h; sourceTree = "<group>"; };
+		FD7656D715CB833F00A3D10A /* IPKProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKProvider.m; sourceTree = "<group>"; };
+		FD7656DB15CB834000A3D10A /* IPKActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKActivity.h; sourceTree = "<group>"; };
+		FD7656DC15CB834100A3D10A /* IPKActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKActivity.m; sourceTree = "<group>"; };
+		FD7656E015CB8CE400A3D10A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		FD7656E115CB8CE500A3D10A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1514,10 +1546,11 @@
 		B244407A15BE53DC00D4D4CA = {
 			isa = PBXGroup;
 			children = (
+				FD7656E015CB8CE400A3D10A /* User.h */,
+				FD7656E115CB8CE500A3D10A /* User.m */,
 				FD76568F15C9F0D100A3D10A /* Security.framework */,
 				FD76568D15C9F0CC00A3D10A /* UIKit.framework */,
 				FD76568215C9E80100A3D10A /* CoreData.framework */,
-				FD764DF915C9CBBE00A3D10A /* Other Sources */,
 				FD764CE715C9CB1400A3D10A /* Cocoa.framework */,
 				FD764B8F15C9CADE00A3D10A /* InsiderPagesKit */,
 				FD76562215C9D6FF00A3D10A /* InsiderPagesKitTests */,
@@ -1554,23 +1587,17 @@
 		FD764B8F15C9CADE00A3D10A /* InsiderPagesKit */ = {
 			isa = PBXGroup;
 			children = (
+				FD764DF915C9CBBE00A3D10A /* Other Sources */,
+				FD7656A315CAF2B400A3D10A /* Models */,
 				FD764F6715C9D52E00A3D10A /* Vendor */,
 				FD764B9015C9CADE00A3D10A /* IPKDefines.h */,
 				FD764B9115C9CADE00A3D10A /* IPKDefines.m */,
 				FD764B9215C9CADE00A3D10A /* IPKHTTPClient.h */,
 				FD764B9315C9CADE00A3D10A /* IPKHTTPClient.m */,
-				FD764B9415C9CADE00A3D10A /* IPKList.h */,
-				FD764B9515C9CADE00A3D10A /* IPKList.m */,
 				FD764B9615C9CADE00A3D10A /* IPKPushController.h */,
 				FD764B9715C9CADE00A3D10A /* IPKPushController.m */,
 				FD764B9815C9CADE00A3D10A /* IPKRemoteManagedObject.h */,
 				FD764B9915C9CADE00A3D10A /* IPKRemoteManagedObject.m */,
-				FD764B9A15C9CADE00A3D10A /* IPKTag.h */,
-				FD764B9B15C9CADE00A3D10A /* IPKTag.m */,
-				FD764B9C15C9CADE00A3D10A /* IPKTask.h */,
-				FD764B9D15C9CADE00A3D10A /* IPKTask.m */,
-				FD764B9E15C9CADE00A3D10A /* IPKUser.h */,
-				FD764B9F15C9CADE00A3D10A /* IPKUser.m */,
 				FD764BA015C9CADE00A3D10A /* InsiderPagesKit.h */,
 				FD764BA115C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.h */,
 				FD764BA215C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m */,
@@ -1588,7 +1615,8 @@
 				FD764DFD15C9CBBE00A3D10A /* InsiderPagesKitMac-Info.plist */,
 				FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */,
 			);
-			path = "Other Sources";
+			name = "Other Sources";
+			path = "../Other Sources";
 			sourceTree = "<group>";
 		};
 		FD764F6715C9D52E00A3D10A /* Vendor */ = {
@@ -3338,6 +3366,8 @@
 		FD76562215C9D6FF00A3D10A /* InsiderPagesKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				FD260E1615CC90AE0002C801 /* NSRunLoop+TimeOutAndFlag.h */,
+				FD260E1715CC90AE0002C801 /* NSRunLoop+TimeOutAndFlag.m */,
 				FD76562815C9D70000A3D10A /* InsiderPagesKitTests.h */,
 				FD76562915C9D70000A3D10A /* InsiderPagesKitTests.m */,
 				FD76562315C9D6FF00A3D10A /* Supporting Files */,
@@ -3355,6 +3385,29 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FD7656A315CAF2B400A3D10A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FD7656DB15CB834000A3D10A /* IPKActivity.h */,
+				FD7656DC15CB834100A3D10A /* IPKActivity.m */,
+				FD7656D615CB833F00A3D10A /* IPKProvider.h */,
+				FD7656D715CB833F00A3D10A /* IPKProvider.m */,
+				FD7656CC15CB833C00A3D10A /* IPKPage.h */,
+				FD7656CD15CB833D00A3D10A /* IPKPage.m */,
+				FD7656C715CB833A00A3D10A /* IPKNotification.h */,
+				FD7656C815CB833B00A3D10A /* IPKNotification.m */,
+				FD7656A415CAF2B500A3D10A /* IPKList.h */,
+				FD7656A515CAF2B500A3D10A /* IPKList.m */,
+				FD7656AA15CAF2B500A3D10A /* IPKTag.h */,
+				FD7656AB15CAF2B500A3D10A /* IPKTag.m */,
+				FD7656AC15CAF2B500A3D10A /* IPKTask.h */,
+				FD7656AD15CAF2B500A3D10A /* IPKTask.m */,
+				FD7656AE15CAF2B500A3D10A /* IPKUser.h */,
+				FD7656AF15CAF2B500A3D10A /* IPKUser.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -3364,12 +3417,8 @@
 			files = (
 				FD764C3B15C9CADE00A3D10A /* IPKDefines.h in Headers */,
 				FD764C3E15C9CADE00A3D10A /* IPKHTTPClient.h in Headers */,
-				FD764C4115C9CADE00A3D10A /* IPKList.h in Headers */,
 				FD764C4415C9CADE00A3D10A /* IPKPushController.h in Headers */,
 				FD764C4715C9CADE00A3D10A /* IPKRemoteManagedObject.h in Headers */,
-				FD764C4A15C9CADE00A3D10A /* IPKTag.h in Headers */,
-				FD764C4D15C9CADE00A3D10A /* IPKTask.h in Headers */,
-				FD764C5015C9CADE00A3D10A /* IPKUser.h in Headers */,
 				FD764C5315C9CADE00A3D10A /* InsiderPagesKit.h in Headers */,
 				FD764C5415C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.h in Headers */,
 				FD764C5715C9CADE00A3D10A /* NSString+InsiderPagesKit.h in Headers */,
@@ -3393,6 +3442,15 @@
 				FD7655DD15C9D53400A3D10A /* SSRemoteManagedObject.h in Headers */,
 				FD7655E015C9D53400A3D10A /* SSKeychain.h in Headers */,
 				FD7656A015CA053100A3D10A /* IPKQueryModel.h in Headers */,
+				FD7656B015CAF2B500A3D10A /* IPKList.h in Headers */,
+				FD7656B915CAF2B500A3D10A /* IPKTag.h in Headers */,
+				FD7656BC15CAF2B500A3D10A /* IPKTask.h in Headers */,
+				FD7656BF15CAF2B500A3D10A /* IPKUser.h in Headers */,
+				FD7656C915CB833B00A3D10A /* IPKNotification.h in Headers */,
+				FD7656CE15CB833D00A3D10A /* IPKPage.h in Headers */,
+				FD7656D815CB834000A3D10A /* IPKProvider.h in Headers */,
+				FD7656DD15CB834100A3D10A /* IPKActivity.h in Headers */,
+				FD7656E215CB8CE500A3D10A /* User.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3584,6 +3642,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD76562715C9D6FF00A3D10A /* InfoPlist.strings in Resources */,
+				FD260E1815CC90AE0002C801 /* NSRunLoop+TimeOutAndFlag.m in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3617,12 +3676,8 @@
 				FD76561615C9D6B600A3D10A /* SSManagedViewController.m in Sources */,
 				FD764C3C15C9CADE00A3D10A /* IPKDefines.m in Sources */,
 				FD764C3F15C9CADE00A3D10A /* IPKHTTPClient.m in Sources */,
-				FD764C4215C9CADE00A3D10A /* IPKList.m in Sources */,
 				FD764C4515C9CADE00A3D10A /* IPKPushController.m in Sources */,
 				FD764C4815C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */,
-				FD764C4B15C9CADE00A3D10A /* IPKTag.m in Sources */,
-				FD764C4E15C9CADE00A3D10A /* IPKTask.m in Sources */,
-				FD764C5115C9CADE00A3D10A /* IPKUser.m in Sources */,
 				FD764C5515C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m in Sources */,
 				FD764C5815C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */,
 				FD764F2A15C9CEA100A3D10A /* InsiderPages.xcdatamodeld in Sources */,
@@ -3644,6 +3699,15 @@
 				FD7655DE15C9D53400A3D10A /* SSRemoteManagedObject.m in Sources */,
 				FD7655E115C9D53400A3D10A /* SSKeychain.m in Sources */,
 				FD7656A115CA053100A3D10A /* IPKQueryModel.m in Sources */,
+				FD7656B115CAF2B500A3D10A /* IPKList.m in Sources */,
+				FD7656BA15CAF2B500A3D10A /* IPKTag.m in Sources */,
+				FD7656BD15CAF2B500A3D10A /* IPKTask.m in Sources */,
+				FD7656C015CAF2B500A3D10A /* IPKUser.m in Sources */,
+				FD7656CA15CB833B00A3D10A /* IPKNotification.m in Sources */,
+				FD7656CF15CB833D00A3D10A /* IPKPage.m in Sources */,
+				FD7656D915CB834000A3D10A /* IPKProvider.m in Sources */,
+				FD7656DE15CB834100A3D10A /* IPKActivity.m in Sources */,
+				FD7656E315CB8CE500A3D10A /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3653,12 +3717,8 @@
 			files = (
 				FD764C3D15C9CADE00A3D10A /* IPKDefines.m in Sources */,
 				FD764C4015C9CADE00A3D10A /* IPKHTTPClient.m in Sources */,
-				FD764C4315C9CADE00A3D10A /* IPKList.m in Sources */,
 				FD764C4615C9CADE00A3D10A /* IPKPushController.m in Sources */,
 				FD764C4915C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */,
-				FD764C4C15C9CADE00A3D10A /* IPKTag.m in Sources */,
-				FD764C4F15C9CADE00A3D10A /* IPKTask.m in Sources */,
-				FD764C5215C9CADE00A3D10A /* IPKUser.m in Sources */,
 				FD764C5615C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m in Sources */,
 				FD764C5915C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */,
 				FD764F2B15C9CEA100A3D10A /* InsiderPages.xcdatamodeld in Sources */,
@@ -3680,6 +3740,15 @@
 				FD7655DF15C9D53400A3D10A /* SSRemoteManagedObject.m in Sources */,
 				FD7655E215C9D53400A3D10A /* SSKeychain.m in Sources */,
 				FD7656A215CA053100A3D10A /* IPKQueryModel.m in Sources */,
+				FD7656B215CAF2B500A3D10A /* IPKList.m in Sources */,
+				FD7656BB15CAF2B500A3D10A /* IPKTag.m in Sources */,
+				FD7656BE15CAF2B500A3D10A /* IPKTask.m in Sources */,
+				FD7656C115CAF2B500A3D10A /* IPKUser.m in Sources */,
+				FD7656CB15CB833B00A3D10A /* IPKNotification.m in Sources */,
+				FD7656D015CB833D00A3D10A /* IPKPage.m in Sources */,
+				FD7656DA15CB834000A3D10A /* IPKProvider.m in Sources */,
+				FD7656DF15CB834100A3D10A /* IPKActivity.m in Sources */,
+				FD7656E415CB8CE500A3D10A /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3687,6 +3756,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD260E1915CC91590002C801 /* NSRunLoop+TimeOutAndFlag.m in Sources */,
+				FD260E1515CC5E420002C801 /* InsiderPages.xcdatamodeld in Sources */,
 				FD76562A15C9D70000A3D10A /* InsiderPagesKitTests.m in Sources */,
 				FD76568115C9E35000A3D10A /* IPKDefines.m in Sources */,
 			);

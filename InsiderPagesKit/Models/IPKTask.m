@@ -77,44 +77,44 @@
 
 #pragma mark - IPKRemoteManagedObject
 
-- (void)createWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *operation, NSError *error))failure {
-	[[IPKHTTPClient sharedClient] createTask:self success:^(AFJSONRequestOperation *operation, id responseObject) {
-		if (success) {
-			success();
-		}
-	} failure:^(AFJSONRequestOperation *operation, NSError *error) {
-		if (failure) {
-			failure(operation, error);
-		}
-	}];
-}
-
-
-- (void)updateWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *operation, NSError *error))failure {
-	[[IPKHTTPClient sharedClient] updateTask:self success:^(AFJSONRequestOperation *operation, id responseObject) {
-		if (success) {
-			success();
-		}
-	} failure:^(AFJSONRequestOperation *operation, NSError *error) {
-		if (failure) {
-			failure(operation, error);
-		}
-	}];
-}
-
-
-+ (void)sortWithObjects:(NSArray *)objects success:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *operation, NSError *error))failure {
-	IPKList *list = [(IPKTask *)[objects objectAtIndex:0] list];
-	[[IPKHTTPClient sharedClient] sortTasks:objects inList:list success:^(AFJSONRequestOperation *operation, id responseObject) {
-		if (success) {
-			success();
-		}
-	} failure:^(AFJSONRequestOperation *operation, NSError *error) {
-		if (failure) {
-			failure(operation, error);
-		}
-	}];
-}
+//- (void)createWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *operation, NSError *error))failure {
+//	[[IPKHTTPClient sharedClient] createTask:self success:^(AFJSONRequestOperation *operation, id responseObject) {
+//		if (success) {
+//			success();
+//		}
+//	} failure:^(AFJSONRequestOperation *operation, NSError *error) {
+//		if (failure) {
+//			failure(operation, error);
+//		}
+//	}];
+//}
+//
+//
+//- (void)updateWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *operation, NSError *error))failure {
+//	[[IPKHTTPClient sharedClient] updateTask:self success:^(AFJSONRequestOperation *operation, id responseObject) {
+//		if (success) {
+//			success();
+//		}
+//	} failure:^(AFJSONRequestOperation *operation, NSError *error) {
+//		if (failure) {
+//			failure(operation, error);
+//		}
+//	}];
+//}
+//
+//
+//+ (void)sortWithObjects:(NSArray *)objects success:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *operation, NSError *error))failure {
+//	IPKList *list = [(IPKTask *)[objects objectAtIndex:0] list];
+//	[[IPKHTTPClient sharedClient] sortTasks:objects inList:list success:^(AFJSONRequestOperation *operation, id responseObject) {
+//		if (success) {
+//			success();
+//		}
+//	} failure:^(AFJSONRequestOperation *operation, NSError *error) {
+//		if (failure) {
+//			failure(operation, error);
+//		}
+//	}];
+//}
 
 
 #pragma mark - Task

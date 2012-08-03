@@ -7,8 +7,10 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-
+#import <InsiderPagesKit/InsiderPagesKit.h>
 
 @interface InsiderPagesKitTests : SenTestCase
+
+@property (nonatomic, strong) NSConditionLock * lock;
 
 @end
