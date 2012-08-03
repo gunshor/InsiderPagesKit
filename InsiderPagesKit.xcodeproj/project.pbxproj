@@ -135,9 +135,6 @@
 		FD7656DD15CB834100A3D10A /* IPKActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656DB15CB834000A3D10A /* IPKActivity.h */; };
 		FD7656DE15CB834100A3D10A /* IPKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656DC15CB834100A3D10A /* IPKActivity.m */; };
 		FD7656DF15CB834100A3D10A /* IPKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656DC15CB834100A3D10A /* IPKActivity.m */; };
-		FD7656E215CB8CE500A3D10A /* User.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656E015CB8CE400A3D10A /* User.h */; };
-		FD7656E315CB8CE500A3D10A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656E115CB8CE500A3D10A /* User.m */; };
-		FD7656E415CB8CE500A3D10A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656E115CB8CE500A3D10A /* User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1499,8 +1496,6 @@
 		FD7656D715CB833F00A3D10A /* IPKProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKProvider.m; sourceTree = "<group>"; };
 		FD7656DB15CB834000A3D10A /* IPKActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKActivity.h; sourceTree = "<group>"; };
 		FD7656DC15CB834100A3D10A /* IPKActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKActivity.m; sourceTree = "<group>"; };
-		FD7656E015CB8CE400A3D10A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		FD7656E115CB8CE500A3D10A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1546,8 +1541,6 @@
 		B244407A15BE53DC00D4D4CA = {
 			isa = PBXGroup;
 			children = (
-				FD7656E015CB8CE400A3D10A /* User.h */,
-				FD7656E115CB8CE500A3D10A /* User.m */,
 				FD76568F15C9F0D100A3D10A /* Security.framework */,
 				FD76568D15C9F0CC00A3D10A /* UIKit.framework */,
 				FD76568215C9E80100A3D10A /* CoreData.framework */,
@@ -3450,7 +3443,6 @@
 				FD7656CE15CB833D00A3D10A /* IPKPage.h in Headers */,
 				FD7656D815CB834000A3D10A /* IPKProvider.h in Headers */,
 				FD7656DD15CB834100A3D10A /* IPKActivity.h in Headers */,
-				FD7656E215CB8CE500A3D10A /* User.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3707,7 +3699,6 @@
 				FD7656CF15CB833D00A3D10A /* IPKPage.m in Sources */,
 				FD7656D915CB834000A3D10A /* IPKProvider.m in Sources */,
 				FD7656DE15CB834100A3D10A /* IPKActivity.m in Sources */,
-				FD7656E315CB8CE500A3D10A /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3748,7 +3739,6 @@
 				FD7656D015CB833D00A3D10A /* IPKPage.m in Sources */,
 				FD7656DA15CB834000A3D10A /* IPKProvider.m in Sources */,
 				FD7656DF15CB834100A3D10A /* IPKActivity.m in Sources */,
-				FD7656E415CB8CE500A3D10A /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
