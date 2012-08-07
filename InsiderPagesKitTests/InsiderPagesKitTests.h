@@ -11,6 +11,4 @@
 
 @interface InsiderPagesKitTests : SenTestCase
 
-@property (nonatomic, strong) NSConditionLock * lock;
-
 @end

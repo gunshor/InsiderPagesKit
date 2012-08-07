@@ -30,28 +30,26 @@ typedef void (^IPKHTTPClientFailure)(AFJSONRequestOperation *operation, NSError 
 #pragma mark - Registration/Auth/Login
 - (void)signInWithFacebookUserID:(NSString*)fbUserId accessToken:(NSString*)fbAccessToken success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
-- (void)authenticateWithFacebookUserID:(NSString*)fbUserId accessToken:(NSString*)fbAccessToken success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
-
 - (void)registerWithFacebookMeResponse:(NSDictionary*)fb_data success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
-- (void)updateCurrentUserWithSuccess:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
-
-#pragma mark - User Actions
-- (void)followPageWithId:(NSString*)userId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
-
-- (void)followUserWithId:(NSString*)userId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
-
-- (void)unfollowPageWithId:(NSString*)userId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
-
-- (void)unfollowUserWithId:(NSString*)userId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+- (void)updateCurrentUserWithSuccess:(void (^)(IPKUser*))success failure:(IPKHTTPClientFailure)failure;
 
 #pragma mark - User Resources
-- (void)teamsForUserWithId:(NSString*)userId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
-
-- (void)followersForUserWithId:(NSString*)userId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 - (void)createPage:(IPKPage *)page success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
+- (void)deletePageWithId:(NSString *)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+
+- (void)getPagesForUserWithId:(NSString*)userId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+
+#pragma mark - User Actions
+- (void)followPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+
+- (void)followUserWithId:(NSString*)userId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+
+- (void)unfollowPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+
+- (void)unfollowUserWithId:(NSString*)userId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 #pragma mark - Public Users
 - (void)getUserInfoWithId:(NSString*)userId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
@@ -69,7 +67,7 @@ typedef void (^IPKHTTPClientFailure)(AFJSONRequestOperation *operation, NSError 
 
 - (void)addProvidersToPageWithId:(NSString*)pageId providerId:(NSString*)providerId scoopText:(NSString*)scoopText success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
-- (void)removeProvidersFromoPageWithId:(NSString*)pageId providerId:(NSString*)providerId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+- (void)removeProvidersFromPageWithId:(NSString*)pageId providerId:(NSString*)providerId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 #pragma mark - Providers
 
@@ -91,7 +89,7 @@ typedef void (^IPKHTTPClientFailure)(AFJSONRequestOperation *operation, NSError 
 #pragma mark - Scoops
 
 
-#pragma mark - User
+//#pragma mark - User
 
 
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SSManagedObject.h"
 
 enum IPKQueryModelFilterType {
     kIPKQueryModelFilterAll = 0,
@@ -14,13 +15,17 @@ enum IPKQueryModelFilterType {
     kIPKQueryModelFilterNetwork = 2
     };
 
-@interface IPKQueryModel : NSObject
+@interface IPKQueryModel : SSManagedObject
 
+@property (nonatomic, strong) NSDate* created_at;
+@property (nonatomic, strong) NSDate* updated_at;
 @property (nonatomic, strong) NSString* queryString;
 @property (nonatomic, strong) NSString* state;
 @property (nonatomic, strong) NSString* city;
-@property (nonatomic, readwrite) enum IPKQueryModelFilterType filterType;
+@property (nonatomic, readwrite) NSNumber * filterType;
 @property (nonatomic, strong) NSString * currentPage;
 @property (nonatomic, strong) NSString * perPageNumber;
+
+-(NSDictionary*)packToDictionary;
 
 @end

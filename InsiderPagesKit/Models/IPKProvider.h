@@ -30,4 +30,6 @@
 @property (nonatomic, retain) NSNumber * user_id;
 @property (nonatomic, retain) id updated_from_ip_at;
 
+-(NSDictionary*)packToDictionary;
+
 @end

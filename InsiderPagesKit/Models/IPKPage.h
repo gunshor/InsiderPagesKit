@@ -30,6 +30,9 @@
 @property (nonatomic, retain) NSOrderedSet *providers;
 @property (nonatomic, retain) IPKUser *owner;
 @property (nonatomic, retain) NSSet *followers;
+
+-(NSDictionary*)packToDictionary;
+
 @end
 
 @interface IPKPage (CoreDataGeneratedAccessors)

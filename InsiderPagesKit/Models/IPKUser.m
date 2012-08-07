@@ -6,6 +6,7 @@
 //  Inspired by Sam Soffes' CheddarKit.
 //
 
+#import "IPKHTTPClient.h"
 #import "IPKUser.h"
 #import "IPKList.h"
 #import "IPKTask.h"
@@ -23,7 +24,6 @@ static IPKUser *__currentUser = nil;
 @dynamic add_ip_to_fb;
 @dynamic admin;
 @dynamic city_id;
-@dynamic created_at;
 @dynamic email;
 @dynamic first_name;
 @dynamic gender;
@@ -37,22 +37,21 @@ static IPKUser *__currentUser = nil;
 @dynamic link_to_twitter;
 @dynamic name;
 @dynamic tos;
-@dynamic updated_at;
 @dynamic wants_email;
 @dynamic website;
 @dynamic work_email;
 @dynamic zip_code;
 @dynamic fb_access_token;
 @dynamic fb_user_id;
-@dynamic followed_pages;
-@dynamic followed_users;
+@dynamic followedPages;
+@dynamic followedUsers;
 @dynamic followers;
 @dynamic notifications;
 @dynamic pages;
 
 
 + (NSString *)entityName {
-	return @"User";
+	return @"IPKUser";
 }
 
 
@@ -108,7 +107,6 @@ static IPKUser *__currentUser = nil;
     self.add_ip_to_fb = [dictionary safeObjectForKey:@"add_ip_to_fb"];
     self.admin = [dictionary safeObjectForKey:@"first_name"];
     self.city_id = [dictionary safeObjectForKey:@"city_id"];
-    self.created_at = [dictionary safeObjectForKey:@"created_at"];
     self.gender = [dictionary safeObjectForKey:@"gender"];
     self.id = [dictionary safeObjectForKey:@"id"];
     self.image_content_type = [dictionary safeObjectForKey:@"image_content_type"];
@@ -119,16 +117,45 @@ static IPKUser *__currentUser = nil;
     self.link_to_twitter = [dictionary safeObjectForKey:@"link_to_twitter"];
     self.name = [dictionary safeObjectForKey:@"name"];
     self.tos = [dictionary safeObjectForKey:@"tos"];
-    self.updated_at = [dictionary safeObjectForKey:@"updated_at"];
     self.wants_email = [dictionary safeObjectForKey:@"wants_email"];
     self.website = [dictionary safeObjectForKey:@"website"];
     self.work_email = [dictionary safeObjectForKey:@"work_email"];
     self.zip_code = [dictionary safeObjectForKey:@"zip_code"];
-    self.followed_pages = [dictionary safeObjectForKey:@"followed_pages"];
-    self.followed_users = [dictionary safeObjectForKey:@"followed_users"];
+    self.followedPages = [dictionary safeObjectForKey:@"followed_pages"];
+    self.followedUsers = [dictionary safeObjectForKey:@"followed_users"];
     self.followers = [dictionary safeObjectForKey:@"followers"];
     self.notifications = [dictionary safeObjectForKey:@"notifications"];
     self.pages = [dictionary safeObjectForKey:@"pages"];
+}
+
+#pragma mark IPKRemoteManagedObject
+
+- (void)update {
+	[self updateWithSuccess:nil failure:nil];
+}
+
+
+- (void)updateWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure {
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            self.remoteID, @"id",
+                            nil];
+    
+    [[IPKHTTPClient sharedClient] getPath:@"users" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __weak NSManagedObjectContext *context = [IPKUser mainContext];
+        [context performBlock:^{
+            IPKUser * user = [IPKUser existingObjectWithRemoteID:self.remoteID];
+            [user unpackDictionary:responseObject];
+            [user save];
+        }];
+        
+        if (success) {
+            success();
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
 }
 
 @end

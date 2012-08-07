@@ -2,12 +2,13 @@
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1480" systemVersion="12A269" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="IPKActivity" representedClassName="IPKActivity" syncable="YES">
         <attribute name="action" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="team_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="trackable_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="trackable_type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="visibility" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="page" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKPage" syncable="YES"/>
@@ -16,16 +17,17 @@
     <entity name="IPKNotification" representedClassName="IPKNotification" syncable="YES">
         <attribute name="action_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="activity_parent" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="read" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="updated_at" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" syncable="YES"/>
     </entity>
     <entity name="IPKPage" representedClassName="IPKPage" syncable="YES">
-        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="description_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="image_content_type" optional="YES" attributeType="String" syncable="YES"/>
@@ -34,9 +36,10 @@
         <attribute name="image_updated_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="privacy_setting" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="sort" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" syncable="YES"/>
         <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="pages" inverseEntity="IPKUser" syncable="YES"/>
@@ -46,26 +49,37 @@
         <attribute name="attribution_url" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="business_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cg_listing_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="created_by_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="description_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email_address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="last_updated_by_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="updated_from_ip_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="IPKUser" representedClassName="User" syncable="YES">
+    <entity name="IPKQueryModel" representedClassName="IPKQueryModel" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="currentPage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="filterType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="perPageNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="queryString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="IPKUser" representedClassName="IPKUser" syncable="YES">
         <attribute name="about_me" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="add_ip_to_fb" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="admin" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="city_id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="city_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fb_access_token" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fb_user_id" optional="YES" attributeType="String" syncable="YES"/>
@@ -80,14 +94,15 @@
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="link_to_twitter" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="tos" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="wants_email" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="work_email" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="zip_code" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="followed_pages" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKPage" syncable="YES"/>
-        <relationship name="followed_users" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" syncable="YES"/>
+        <attribute name="zip_code" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="followedPages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKPage" syncable="YES"/>
+        <relationship name="followedUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" syncable="YES"/>
         <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" syncable="YES"/>
         <relationship name="notifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="notifications" inverseEntity="IPKUser" syncable="YES"/>
         <relationship name="pages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IPKPage" inverseName="owner" inverseEntity="IPKPage" syncable="YES"/>
@@ -97,6 +112,7 @@
         <element name="IPKNotification" positionX="0" positionY="0" width="0" height="0"/>
         <element name="IPKPage" positionX="0" positionY="0" width="0" height="0"/>
         <element name="IPKProvider" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKUser" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="IPKUser" positionX="0" positionY="0" width="0" height="510"/>
+        <element name="IPKQueryModel" positionX="160" positionY="192" width="128" height="165"/>
     </elements>
 </model>

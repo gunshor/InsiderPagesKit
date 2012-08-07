@@ -13,7 +13,7 @@
 
 - (id)safeObjectForKey:(id)key {
 	id value = [self valueForKey:key];
-	if (value == [NSNull null]) {
+	if (value == [NSNull null] || value == nil) {
 		return nil;
 	}
 	return value;
