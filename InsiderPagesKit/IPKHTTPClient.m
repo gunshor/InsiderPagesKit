@@ -636,7 +636,8 @@ static BOOL __developmentMode = NO;
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
         [context performBlock:^{
             for (NSDictionary* activityDictionary in [responseObject objectForKey:urlString]) {
-                NSLog(@"%@", activityDictionary);
+                IPKActivity * activity = [IPKActivity objectWithDictionary:activityDictionary];
+                [activity save];
             }
         }];
         
