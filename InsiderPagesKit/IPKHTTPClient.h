@@ -17,6 +17,14 @@ typedef void (^IPKHTTPClientFailure)(AFJSONRequestOperation *operation, NSError 
 @class IPKPage;
 @class BLYChannel;
 
+enum IPKActivityType {
+    IPKActivityTypeAll = 0,
+    IPKActivityTypeProvider = 1,
+    IPKActivityTypeReview = 2,
+    IPKActivityTypeUser = 3,
+    IPKActivityTypeTeam = 4
+    };
+
 
 @interface IPKHTTPClient : AFHTTPClient
 
@@ -28,9 +36,7 @@ typedef void (^IPKHTTPClientFailure)(AFJSONRequestOperation *operation, NSError 
 
 #pragma mark - Current User
 #pragma mark - Registration/Auth/Login
-- (void)signInWithFacebookUserID:(NSString*)fbUserId accessToken:(NSString*)fbAccessToken success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
-
-- (void)registerWithFacebookMeResponse:(NSDictionary*)fb_data success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+- (void)signInWithFacebookUserID:(NSString*)fbUserId accessToken:(NSString*)fbAccessToken facebookMeResponse:(NSDictionary *)fb_data success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 - (void)updateCurrentUserWithSuccess:(void (^)(IPKUser*))success failure:(IPKHTTPClientFailure)failure;
 
@@ -81,12 +87,14 @@ typedef void (^IPKHTTPClientFailure)(AFJSONRequestOperation *operation, NSError 
 
 
 #pragma mark - Activities
-
+- (void)getMyActivititesOfType:(enum IPKActivityType)type currentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 #pragma mark - Notifications
+- (void)getNotificationsWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 
 #pragma mark - Scoops
+- (void)getMyScoopsWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 
 //#pragma mark - User

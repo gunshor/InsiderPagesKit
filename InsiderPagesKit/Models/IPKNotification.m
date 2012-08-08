@@ -8,7 +8,7 @@
 
 #import "IPKNotification.h"
 #import "IPKUser.h"
-
+#import "NSDictionary+InsiderPagesKit.h"
 
 @implementation IPKNotification
 
@@ -25,7 +25,7 @@
 #pragma mark - SSManagedObject
 
 + (NSString *)entityName {
-	return @"List";
+	return @"IPKNotification";
 }
 
 
@@ -40,20 +40,14 @@
 #pragma mark - SSRemoteManagedObject
 
 - (void)unpackDictionary:(NSDictionary *)dictionary {
-//	[super unpackDictionary:dictionary];
-//	self.archivedAt = [[self class] parseDate:[dictionary objectForKey:@"archived_at"]];
-//	self.position = [dictionary objectForKey:@"position"];
-//	self.title = [dictionary objectForKey:@"title"];
-//	self.slug = [dictionary objectForKey:@"slug"];
-//    
-//	if ([dictionary objectForKey:@"user"]) {
-//		self.user = [IPKUser objectWithDictionary:[dictionary objectForKey:@"user"] context:self.managedObjectContext];
-//	}
-//	
-//	for (NSDictionary *taskDictionary in [dictionary objectForKey:@"tasks"]) {
-//		IPKTask *task = [IPKTask objectWithDictionary:taskDictionary context:self.managedObjectContext];
-//		task.list = self;
-//	}
+	[super unpackDictionary:dictionary];
+	self.action_text = [dictionary safeObjectForKey:@"action_text"];
+    self.activity_parent = [dictionary safeObjectForKey:@"activity_parent"];
+    self.id = [dictionary safeObjectForKey:@"id"];
+    self.path = [dictionary safeObjectForKey:@"path"];
+    self.read = [dictionary safeObjectForKey:@"read"];
+    self.read = [dictionary safeObjectForKey:@"user_id"];
+    self.user = [IPKUser objectWithRemoteID:self.user_id];
 }
 
 

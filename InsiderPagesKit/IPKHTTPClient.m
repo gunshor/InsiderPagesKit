@@ -11,6 +11,8 @@
 #import "IPKPage.h"
 #import "IPKProvider.h"
 #import "IPKQueryModel.h"
+#import "IPKNotification.h"
+#import "IPKActivity.h"
 #import "IPKDefines.h"
 #import <Bully/Bully.h>
 
@@ -98,42 +100,19 @@ static BOOL __developmentMode = NO;
 
 #pragma mark - Current User
 #pragma mark - Registration/Auth/Login
-- (void)signInWithFacebookUserID:(NSString*)fbUserId accessToken:(NSString*)fbAccessToken success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+- (void)signInWithFacebookUserID:(NSString*)fbUserId accessToken:(NSString*)fbAccessToken facebookMeResponse:(NSDictionary *)fb_data success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            							fbUserId, @"fb_user_id",
-                            							fbAccessToken, @"fb_access_token",
-                            							nil];
-                            	
+                            fbUserId, @"fb_user_id",
+                            fbAccessToken, @"fb_access_token",
+                            fb_data, @"fb_data",
+                            nil];
+    
     [self postPath:@"login" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
         [context performBlock:^{
             NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:responseObject];
             IPKUser *user = [IPKUser objectWithDictionary:[dictionary objectForKey:@"user"]];
             user.fb_access_token = fbAccessToken;
-            [user save];
-            [self changeUser:user];
-            [IPKUser setCurrentUser:user];
-        }];
-
-        if (success) {
-            success((AFJSONRequestOperation *)operation, responseObject);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (failure) {
-            failure((AFJSONRequestOperation *)operation, error);
-        }
-    }];
-}
-
-- (void)registerWithFacebookMeResponse:(NSDictionary*)fb_data success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            fb_data, @"fb_data",
-                            nil];
-    
-    [self postPath:@"create" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        __weak NSManagedObjectContext *context = [IPKUser mainContext];
-        [context performBlock:^{
-            IPKUser * user = [IPKUser objectWithDictionary:responseObject];
             [user save];
             [self changeUser:user];
             [IPKUser setCurrentUser:user];
@@ -153,15 +132,15 @@ static BOOL __developmentMode = NO;
     [[IPKUser currentUser] updateWithSuccess:^(){
         [self changeUser:[IPKUser currentUser]];
         [IPKUser setCurrentUser:[IPKUser currentUser]];
-
+        
         if (success) {
             success([IPKUser currentUser]);
         }
     }
-    failure:^(AFHTTPRequestOperation *operation, NSError *error){
-    if (failure) {
-        failure((AFJSONRequestOperation *)operation, error);
-    }}];
+                                     failure:^(AFHTTPRequestOperation *operation, NSError *error){
+                                         if (failure) {
+                                             failure((AFJSONRequestOperation *)operation, error);
+                                         }}];
 }
 
 #pragma mark - User Actions
@@ -629,126 +608,92 @@ static BOOL __developmentMode = NO;
 
 
 #pragma mark - Activities
-
+- (void)getMyActivititesOfType:(enum IPKActivityType)type currentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    __block NSString *urlString = nil;
+    
+    switch (type) {
+        case IPKActivityTypeAll:
+            urlString = @"activities";
+            break;
+        case IPKActivityTypeProvider:
+            urlString = @"provider_activities";
+            break;
+        case IPKActivityTypeReview:
+            urlString = @"review_activities";
+            break;
+        case IPKActivityTypeTeam:
+            urlString = @"team_activities";
+            break;
+        case IPKActivityTypeUser:
+            urlString = @"user_activities";
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self getPath:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __weak NSManagedObjectContext *context = [IPKUser mainContext];
+        [context performBlock:^{
+            for (NSDictionary* activityDictionary in [responseObject objectForKey:urlString]) {
+                NSLog(@"%@", activityDictionary);
+            }
+        }];
+        
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+}
 
 #pragma mark - Notifications
+- (void)getNotificationsWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    [self getPath:@"notifications" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __weak NSManagedObjectContext *context = [IPKUser mainContext];
+        [context performBlock:^{
+            if ([[responseObject objectForKey:@"notifications"] isKindOfClass:[NSArray class]]) {
+                for (NSDictionary* notificationDictionary in [responseObject objectForKey:@"notifications"]) {
+                    IPKNotification * notification = [IPKNotification objectWithDictionary:notificationDictionary];
+                    [notification save];
+                }
 
+            }
+        }];
+        
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+}
 
 #pragma mark - Scoops
+- (void)getMyScoopsWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    [self getPath:@"plugs" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __weak NSManagedObjectContext *context = [IPKUser mainContext];
+        [context performBlock:^{
+            for (NSDictionary* plugDictionary in [responseObject objectForKey:@"plugs"]) {
+                NSLog(@"%@", plugDictionary);
+            }
+        }];
+        
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+}
 
-
-//#pragma mark - User
-
-//- (void)signInWithLogin:(NSString *)login password:(NSString *)password success:(void (^)(AFJSONRequestOperation *operation, id responseObject))success failure:(void (^)(AFJSONRequestOperation *operation, NSError *error))failure {
-//	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-//							login, @"username",
-//							password, @"password",
-//							@"password", @"grant_type",
-//							nil];
-//	
-//	[self postPath:@"/oauth/token" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//		__weak NSManagedObjectContext *context = [IPKUser mainContext];
-//		[context performBlockAndWait:^{
-//			NSDictionary *dictionary = (NSDictionary *)responseObject;
-//			IPKUser *user = [IPKUser objectWithDictionary:[dictionary objectForKey:@"user"]];
-//			user.accessToken = [dictionary objectForKey:@"access_token"];
-//			[user save];
-//			
-//			[self changeUser:user];
-//			[IPKUser setCurrentUser:user];
-//		}];
-//
-//		if (success) {
-//			success((AFJSONRequestOperation *)operation, responseObject);
-//		}
-//	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//		if (failure) {
-//			failure((AFJSONRequestOperation *)operation, error);
-//		}
-//	}];
-//	[self clearAuthorizationHeader];
-//}
-//
-//
-//- (void)signInWithAuthorizationCode:(NSString *)code success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
-//	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-//							code, @"code",
-//							@"authorization_code", @"grant_type",
-//							nil];
-//	
-//	[self postPath:@"/oauth/token" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//		__weak NSManagedObjectContext *context = [IPKUser mainContext];
-//		[context performBlockAndWait:^{
-//			NSDictionary *dictionary = (NSDictionary *)responseObject;
-//			IPKUser *user = [IPKUser objectWithDictionary:[dictionary objectForKey:@"user"]];
-//			user.accessToken = [dictionary objectForKey:@"access_token"];
-//			[user save];
-//			
-//			[self changeUser:user];
-//			[IPKUser setCurrentUser:user];
-//		}];
-//		
-//		if (success) {
-//			success((AFJSONRequestOperation *)operation, responseObject);
-//		}
-//	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//		if (failure) {
-//			failure((AFJSONRequestOperation *)operation, error);
-//		}
-//	}];
-//	[self clearAuthorizationHeader];
-//}
-//
-//
-//- (void)signUpWithUsername:(NSString *)username email:(NSString *)email password:(NSString *)password success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
-//	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-//							username, @"user[username]",
-//							email, @"user[email]",
-//							password, @"user[password]",
-//							nil];
-//	
-//	[self postPath:@"users" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//		__weak NSManagedObjectContext *context = [IPKUser mainContext];
-//		[context performBlockAndWait:^{
-//			NSDictionary *dictionary = (NSDictionary *)responseObject;
-//			IPKUser *user = [IPKUser objectWithDictionary:dictionary];
-//			user.accessToken = [[dictionary objectForKey:@"access_token"] objectForKey:@"access_token"];
-//			[self changeUser:user];
-//			[IPKUser setCurrentUser:user];
-//		}];
-//		
-//		if (success) {
-//			success((AFJSONRequestOperation *)operation, responseObject);
-//		}
-//	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//		if (failure) {
-//			failure((AFJSONRequestOperation *)operation, error);
-//		}
-//	}];
-//	[self clearAuthorizationHeader];
-//}
-//
-//
-//- (void)updateCurrentUserWithSuccess:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
-//	[self getPath:@"me" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//		__weak NSManagedObjectContext *context = [IPKUser mainContext];
-//		[context performBlockAndWait:^{
-//			IPKUser *currentUser = [IPKUser currentUser];
-//			[currentUser unpackDictionary:responseObject];
-//			[currentUser save];
-//		}];
-//		
-//		if (success) {
-//			success((AFJSONRequestOperation *)operation, responseObject);
-//		}
-//	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//		if (failure) {
-//			failure((AFJSONRequestOperation *)operation, error);
-//		}
-//	}];
-//}
-//
-//
 //#pragma mark - Lists
 //
 //- (void)getListsWithSuccess:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {

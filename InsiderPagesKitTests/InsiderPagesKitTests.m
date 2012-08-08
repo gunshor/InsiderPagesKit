@@ -17,7 +17,7 @@
 - (void)setUp
 {
     [super setUp];
-
+    
     // Set-up code here.
     [IPKHTTPClient setDevelopmentModeEnabled:YES];
     NSIndexSet * set = [[NSIndexSet alloc] initWithIndex:500];
@@ -25,10 +25,16 @@
     [SSManagedObject setTesting:@YES];
     [IPKUser mainContext];
     [[NSRunLoop mainRunLoop] runUntilDate:[[NSDate date] dateByAddingTimeInterval:1]];
-
+    
     __block BOOL finished = NO;
-
-    [[IPKHTTPClient sharedClient] signInWithFacebookUserID:@"1574820006" accessToken:@"BAADT9DxG8csBALZCAWzmNfqa8EcaEpGU4ekoNhtfkdYtynCZCQlA1VZBUGxeZBz7DUS4M1enge8i3CDCIwfLrWTusbayH66B3Q10OFAinyhDo4BAeeQJcuSgJvuxmtciDwnuGH1uNwZDZD" success:^(AFJSONRequestOperation *operation, id responseObject){
+    NSMutableDictionary * results  = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1574820006",@"id",
+                                      @"Christopher Lee Truman",@"name",
+                                      @"Christopher",@"first_name",
+                                      @"Lee",@"middle_name",
+                                      @"Truman",@"last_name",
+                                      @"09/10/1990",@"birthday",
+                                      [NSDictionary dictionaryWithObjectsAndKeys:@"103122293060974", @"id", @"Gardena, California", @"name", nil],  @"location", @"cleetruman@gmail.com", @"email", nil];
+    [[IPKHTTPClient sharedClient] signInWithFacebookUserID:@"1574820006" accessToken:@"BAADT9DxG8csBALZCAWzmNfqa8EcaEpGU4ekoNhtfkdYtynCZCQlA1VZBUGxeZBz7DUS4M1enge8i3CDCIwfLrWTusbayH66B3Q10OFAinyhDo4BAeeQJcuSgJvuxmtciDwnuGH1uNwZDZD" facebookMeResponse:results success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         STAssertTrue([[responseObject objectForKey:@"message"] isEqualToString:@"logged in"], @"Server should respond with logged in message");
         finished = YES;
@@ -46,33 +52,6 @@
 
 -(void)testRegistration{
     __block BOOL finished = NO;
-    
-    [[IPKHTTPClient sharedClient] signInWithFacebookUserID:@"1574820006" accessToken:@"BAADT9DxG8csBALZCAWzmNfqa8EcaEpGU4ekoNhtfkdYtynCZCQlA1VZBUGxeZBz7DUS4M1enge8i3CDCIwfLrWTusbayH66B3Q10OFAinyhDo4BAeeQJcuSgJvuxmtciDwnuGH1uNwZDZD" success:^(AFJSONRequestOperation *operation, id responseObject){
-        NSLog(@"%@", responseObject);
-        finished = YES;
-    } failure:^(AFJSONRequestOperation *operation, NSError *error){
-        NSLog(@"Fail %@, %@", error, operation.response);
-        STAssertEquals(operation.response.statusCode,
-                       500,
-                       @"Facebook Authorization should return 500 if we send fb info for a user that doesn't exist.");
-        finished = YES;
-    }];
-    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
-    
-    finished = NO;
-    [[IPKHTTPClient sharedClient] signInWithFacebookUserID:@"1574820006" accessToken:@"BAADT9DxG8csBALZCAWzmNfqa8EcaEpGU4ekoNhtfkdYtynCZCQlA1VZBUGxeZBz7DUS4M1enge8i3CDCIwfLrWTusbayH66B3Q10OFAinyhDo4BAeeQJcuSgJvuxmtciDwnuGH1uNwZDZD" success:^(AFJSONRequestOperation *operation, id responseObject){
-        NSLog(@"%@", responseObject);
-        finished = YES;
-    } failure:^(AFJSONRequestOperation *operation, NSError *error){
-        NSLog(@"Fail %@, %@", error, operation.response);
-        STAssertEquals(operation.response.statusCode,
-                       500,
-                       @"Facebook Authorization should return 500 if we send fb info for a user that doesn't exist.");
-        finished = YES;
-    }];
-    
-    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
-    finished = NO;
     NSMutableDictionary * results  = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1574820006",@"id",
                                       @"Christopher Lee Truman",@"name",
                                       @"Christopher",@"first_name",
@@ -80,11 +59,14 @@
                                       @"Truman",@"last_name",
                                       @"09/10/1990",@"birthday",
                                       [NSDictionary dictionaryWithObjectsAndKeys:@"103122293060974", @"id", @"Gardena, California", @"name", nil],  @"location", @"cleetruman@gmail.com", @"email", nil];
-    [[IPKHTTPClient sharedClient] registerWithFacebookMeResponse:results success:^(AFJSONRequestOperation *operation, id responseObject){
+    [[IPKHTTPClient sharedClient] signInWithFacebookUserID:@"1574820006" accessToken:@"BAADT9DxG8csBALZCAWzmNfqa8EcaEpGU4ekoNhtfkdYtynCZCQlA1VZBUGxeZBz7DUS4M1enge8i3CDCIwfLrWTusbayH66B3Q10OFAinyhDo4BAeeQJcuSgJvuxmtciDwnuGH1uNwZDZD" facebookMeResponse:results success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         finished = YES;
     } failure:^(AFJSONRequestOperation *operation, NSError *error){
-        STAssertTrue(NO, [error debugDescription]);
+        NSLog(@"Fail %@, %@", error, operation.response);
+        STAssertEquals(operation.response.statusCode,
+                       500,
+                       @"Facebook Authorization should return 500 if we send fb info for a user that doesn't exist.");
         finished = YES;
     }];
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
@@ -166,7 +148,7 @@
 -(void)testUserActions{
     __block BOOL finished = NO;
     NSString * pageID = [NSString stringWithFormat:@"%d", 1];
-
+    
     [[IPKHTTPClient sharedClient] followPageWithId:pageID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after following page");
@@ -188,7 +170,7 @@
     }];
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
-        
+    
     finished = NO;
     NSString * userID = [NSString stringWithFormat:@"%d", 1];
     [[IPKHTTPClient sharedClient] unfollowUserWithId:userID success:^(AFJSONRequestOperation *operation, id responseObject){
@@ -280,7 +262,7 @@
     [[IPKHTTPClient sharedClient] addProvidersToPageWithId:pageID providerId:providerID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after adding provider to page");
-
+        
         finished = YES;
     } failure:^(AFJSONRequestOperation *operation, NSError *error){
         STAssertTrue(NO, [error debugDescription]);        
@@ -303,7 +285,7 @@
     [[IPKHTTPClient sharedClient] removeProvidersFromPageWithId:pageID providerId:providerID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after removing provider from page");
-
+        
         finished = YES;
     } failure:^(AFJSONRequestOperation *operation, NSError *error){
         STAssertTrue(NO, [error debugDescription]);        
@@ -373,6 +355,54 @@
         finished = YES;
     }];
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+}
+
+-(void)testActivities{
+    __block BOOL finished = NO;
+
+    for (int i = 0; i <= 4; i++) {
+        enum IPKActivityType type = i;
+        [[IPKHTTPClient sharedClient] getMyActivititesOfType:(enum IPKActivityType)type currentPage:@1 perPage:@10 success:^(AFJSONRequestOperation *operation, id responseObject){
+            NSLog(@"%@", responseObject);
+            finished = YES;
+        } failure:^(AFJSONRequestOperation *operation, NSError *error){
+            STAssertTrue(NO, [error debugDescription]);
+            finished = YES;
+        }];
+        [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+        
+        finished = NO;
+    }
+}
+
+-(void)testNotifications{
+    __block BOOL finished = NO;
+    
+    [[IPKHTTPClient sharedClient] getNotificationsWithCurrentPage:@1 perPage:@10 success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        STAssertTrue(NO, [error debugDescription]);
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+    
+    finished = NO;
+}
+
+-(void)testPlugs{
+    __block BOOL finished = NO;
+    
+    [[IPKHTTPClient sharedClient] getMyScoopsWithCurrentPage:@1 perPage:@10 success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        STAssertTrue(NO, [error debugDescription]);
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+    
+    finished = NO;
 }
 
 - (void)tearDown
