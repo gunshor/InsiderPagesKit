@@ -95,8 +95,8 @@ static IPKUser *__currentUser = nil;
             default:
                 break;
         }
-        [imageProfilePath stringByAppendingString:fb_size];
-//    }
+       imageProfilePath = [self.image_profile_path stringByAppendingString:fb_size];
+    //    }
 
     return imageProfilePath;
 }
