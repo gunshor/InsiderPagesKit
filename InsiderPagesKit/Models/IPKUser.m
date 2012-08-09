@@ -28,6 +28,7 @@ static IPKUser *__currentUser = nil;
 @dynamic first_name;
 @dynamic gender;
 @dynamic id;
+@dynamic image_profile_path;
 @dynamic image_content_type;
 @dynamic image_file_name;
 @dynamic image_file_size;
@@ -72,6 +73,32 @@ static IPKUser *__currentUser = nil;
 		__currentUser.fb_access_token = accessToken;
 	}
 	return __currentUser;
+}
+
+- (NSString *)imageProfilePathForSize:(enum IPKUserProfileImageSize)size{
+    NSString * imageProfilePath = nil;
+//    if (self.add_ip_to_fb){
+        NSString * fb_size = nil;
+        switch (size) {
+            case IPKUserProfileImageSizeNano:
+                fb_size = @"nano";
+                break;
+            case IPKUserProfileImageSizeMini:
+                fb_size = @"nano";
+                break;
+            case IPKUserProfileImageSizeThumb:
+                fb_size = @"normal";
+                break;
+            case IPKUserProfileImageSizeMedium:
+                fb_size = @"normal";
+                break;
+            default:
+                break;
+        }
+        [imageProfilePath stringByAppendingString:fb_size];
+//    }
+
+    return imageProfilePath;
 }
 
 

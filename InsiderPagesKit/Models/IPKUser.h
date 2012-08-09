@@ -13,6 +13,13 @@
 @class IPKTask;
 @class IPKPage;
 
+enum IPKUserProfileImageSize {
+    IPKUserProfileImageSizeNano = 0,
+    IPKUserProfileImageSizeMini = 1,
+    IPKUserProfileImageSizeThumb = 2,
+    IPKUserProfileImageSizeMedium = 3
+    };
+
 extern NSString *const kIPKCurrentUserChangedNotificationName;
 
 @interface IPKUser : IPKRemoteManagedObject
@@ -30,6 +37,7 @@ extern NSString *const kIPKCurrentUserChangedNotificationName;
 @property (nonatomic, retain) NSString * last_name;
 @property (nonatomic, retain) NSNumber * gender;
 @property (nonatomic, retain) NSNumber * id;
+@property (nonatomic, retain) NSString * image_profile_path;
 @property (nonatomic, retain) NSString * image_content_type;
 @property (nonatomic, retain) NSString * image_file_name;
 @property (nonatomic, retain) NSString * image_file_size;
@@ -50,6 +58,8 @@ extern NSString *const kIPKCurrentUserChangedNotificationName;
 + (IPKUser *)currentUser;
 + (void)setCurrentUser:(IPKUser *)user;
 
+// Helpers
+- (NSString *)imageProfilePathForSize:(enum IPKUserProfileImageSize)size;
 @end
 
 @interface IPKUser (CoreDataGeneratedAccessors)
