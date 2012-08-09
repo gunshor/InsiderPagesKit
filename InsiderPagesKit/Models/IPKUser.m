@@ -68,7 +68,7 @@ static IPKUser *__currentUser = nil;
 		if (!accessToken) {
 			return nil;
 		}
-
+        
 		__currentUser = [self existingObjectWithRemoteID:userID];
 		__currentUser.fb_access_token = accessToken;
 	}
@@ -77,27 +77,27 @@ static IPKUser *__currentUser = nil;
 
 - (NSString *)imageProfilePathForSize:(enum IPKUserProfileImageSize)size{
     NSString * imageProfilePath = nil;
-//    if (self.add_ip_to_fb){
-        NSString * fb_size = nil;
-        switch (size) {
-            case IPKUserProfileImageSizeNano:
-                fb_size = @"nano";
-                break;
-            case IPKUserProfileImageSizeMini:
-                fb_size = @"nano";
-                break;
-            case IPKUserProfileImageSizeThumb:
-                fb_size = @"normal";
-                break;
-            case IPKUserProfileImageSizeMedium:
-                fb_size = @"normal";
-                break;
-            default:
-                break;
-        }
-       imageProfilePath = [self.image_profile_path stringByAppendingString:fb_size];
+    //    if (self.add_ip_to_fb){
+    NSString * fb_size = nil;
+    switch (size) {
+        case IPKUserProfileImageSizeNano:
+            fb_size = @"nano";
+            break;
+        case IPKUserProfileImageSizeMini:
+            fb_size = @"nano";
+            break;
+        case IPKUserProfileImageSizeThumb:
+            fb_size = @"normal";
+            break;
+        case IPKUserProfileImageSizeMedium:
+            fb_size = @"normal";
+            break;
+        default:
+            break;
+    }
+    imageProfilePath = [self.image_profile_path stringByAppendingString:fb_size];
     //    }
-
+    
     return imageProfilePath;
 }
 
@@ -136,6 +136,7 @@ static IPKUser *__currentUser = nil;
     self.city_id = [dictionary safeObjectForKey:@"city_id"];
     self.gender = [dictionary safeObjectForKey:@"gender"];
     self.id = [dictionary safeObjectForKey:@"id"];
+    self.image_profile_path = [dictionary safeObjectForKey:@"image_profile_path"];
     self.image_content_type = [dictionary safeObjectForKey:@"image_content_type"];
     self.image_file_name = [dictionary safeObjectForKey:@"image_file_name"];
     self.image_file_size = [dictionary safeObjectForKey:@"image_file_size"];
