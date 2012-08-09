@@ -8,12 +8,12 @@
 #import <InsiderPagesKit/IPKDefines.h>
 
 // Models
-#import <InsiderPagesKit/IPKUser.h>
-#import <InsiderPagesKit/IPKPage.h>
-#import <InsiderPagesKit/IPKProvider.h>
+#import <InsiderPagesKit/Models/IPKUser.h>
+#import <InsiderPagesKit/Models/IPKPage.h>
+#import <InsiderPagesKit/Models/IPKProvider.h>
 #import <InsiderPagesKit/IPKQueryModel.h>
-#import <InsiderPagesKit/IPKActivity.h>
-#import <InsiderPagesKit/IPKNotification.h>
+#import <InsiderPagesKit/Models/IPKActivity.h>
+#import <InsiderPagesKit/Models/IPKNotification.h>
 
 // Networking
 #import <InsiderPagesKit/IPKHTTPClient.h>
@@ -25,7 +25,9 @@
 
 // Vendor
 #if TARGET_OS_IPHONE
-#import <InsiderPagesKit/SSDataKit.h>
+#import <InsiderPagesKit/Vendor/SSDataKit/SSDataKit.h>
+#import <InsiderPagesKit/Vendor/AFIncrementalStore/AFNetworking/AFNetworking/AFNetworking.h>
+#import <InsiderPagesKit/Vendor/Reachability/Reachability.h>
 #else
 #import <InsiderPagesKit/SSDataKit.h>
 #import <InsiderPagesKit/AFNetworking.h>

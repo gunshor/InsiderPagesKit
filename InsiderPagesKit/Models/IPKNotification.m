@@ -28,15 +28,6 @@
 	return @"IPKNotification";
 }
 
-
-+ (NSArray *)defaultSortDescriptors {
-	return [NSArray arrayWithObjects:
-			[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:YES],
-			[NSSortDescriptor sortDescriptorWithKey:@"remoteID" ascending:YES],
-			nil];
-}
-
-
 #pragma mark - SSRemoteManagedObject
 
 - (void)unpackDictionary:(NSDictionary *)dictionary {
