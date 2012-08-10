@@ -7,6 +7,7 @@
 //
 
 #import "IPKAbstractModel.h"
+#import "IPKDefines.h"
 
 @class IPKPage, IPKUser;
 
