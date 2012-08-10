@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 Nothing Magical. All rights reserved.
 //
 
-#import <InsiderPagesKit/InsiderPagesKit.h>
-#import "SSDataKit.h"
 #import "IPKRemoteManagedObject.h"
 
 @interface IPKAbstractModel : IPKRemoteManagedObject
