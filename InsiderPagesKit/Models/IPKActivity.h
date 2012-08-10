@@ -6,14 +6,11 @@
 //  Copyright (c) 2012 Nothing Magical. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-#import "IPKRemoteManagedObject.h"
-#import "IPKHTTPClient.h"
+#import "IPKAbstractModel.h"
 
 @class IPKPage, IPKUser;
 
-@interface IPKActivity : IPKRemoteManagedObject
+@interface IPKActivity : IPKAbstractModel
 
 @property (nonatomic, retain) NSString * action;
 @property (nonatomic, retain) NSDate * created_at;

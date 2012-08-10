@@ -137,6 +137,7 @@
 		FD7656DD15CB834100A3D10A /* IPKActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656DB15CB834000A3D10A /* IPKActivity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD7656DE15CB834100A3D10A /* IPKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656DC15CB834100A3D10A /* IPKActivity.m */; };
 		FD7656DF15CB834100A3D10A /* IPKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656DC15CB834100A3D10A /* IPKActivity.m */; };
+		FD91BFE715D5CBD9008158A6 /* IPKAbstractModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD91BFE615D5CBD9008158A6 /* IPKAbstractModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -321,6 +322,8 @@
 		FD7656D715CB833F00A3D10A /* IPKProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKProvider.m; sourceTree = "<group>"; };
 		FD7656DB15CB834000A3D10A /* IPKActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKActivity.h; sourceTree = "<group>"; };
 		FD7656DC15CB834100A3D10A /* IPKActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKActivity.m; sourceTree = "<group>"; };
+		FD91BFE515D5CBD9008158A6 /* IPKAbstractModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKAbstractModel.h; sourceTree = "<group>"; };
+		FD91BFE615D5CBD9008158A6 /* IPKAbstractModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKAbstractModel.m; sourceTree = "<group>"; };
 		FDAA2E5615D57A0C00793375 /* InsiderPagesKitTestsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsiderPagesKitTestsHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -638,6 +641,8 @@
 				FD7656AD15CAF2B500A3D10A /* IPKTask.m */,
 				FD7656AE15CAF2B500A3D10A /* IPKUser.h */,
 				FD7656AF15CAF2B500A3D10A /* IPKUser.m */,
+				FD91BFE515D5CBD9008158A6 /* IPKAbstractModel.h */,
+				FD91BFE615D5CBD9008158A6 /* IPKAbstractModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -874,6 +879,7 @@
 				FD7656D915CB834000A3D10A /* IPKProvider.m in Sources */,
 				FD7656DE15CB834100A3D10A /* IPKActivity.m in Sources */,
 				FD32632915D077780050F394 /* NSMutableDictionary+InsiderPagesKit.m in Sources */,
+				FD91BFE715D5CBD9008158A6 /* IPKAbstractModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

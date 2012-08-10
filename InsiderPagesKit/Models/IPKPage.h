@@ -6,13 +6,11 @@
 //  Copyright (c) 2012 Nothing Magical. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-#import "IPKRemoteManagedObject.h"
+#import "IPKAbstractModel.h"
 
 @class IPKUser;
 
-@interface IPKPage : IPKRemoteManagedObject
+@interface IPKPage : IPKAbstractModel
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * description_text;

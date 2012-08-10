@@ -6,13 +6,11 @@
 //  Copyright (c) 2012 Nothing Magical. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-#import "IPKRemoteManagedObject.h"
+#import "IPKAbstractModel.h"
 
 @class IPKPage;
 
-@interface IPKProvider : IPKRemoteManagedObject
+@interface IPKProvider : IPKAbstractModel
 
 @property (nonatomic, retain) NSNumber * attribution_url;
 @property (nonatomic, retain) NSString * business_name;

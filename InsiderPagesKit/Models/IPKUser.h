@@ -5,9 +5,7 @@
 //  Created by Christopher Truman on 8/1/12.
 //  Inspired by Sam Soffes' CheddarKit.
 //
-
-#import "SSDataKit.h"
-#import "IPKRemoteManagedObject.h"
+#import "IPKAbstractModel.h"
 
 @class IPKList;
 @class IPKTask;
@@ -22,7 +20,7 @@ enum IPKUserProfileImageSize {
 
 extern NSString *const kIPKCurrentUserChangedNotificationName;
 
-@interface IPKUser : IPKRemoteManagedObject
+@interface IPKUser : IPKAbstractModel
 
 @property (nonatomic, retain) NSString * fb_access_token;
 @property (nonatomic, retain) NSString * fb_user_id;
