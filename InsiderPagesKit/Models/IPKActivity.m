@@ -83,13 +83,13 @@
     
     switch ([self activityType]) {
         case IPKActivityTypeCreate:
-            actionText = [NSString stringWithFormat:@"%@ created ", self.user.name];
+            actionText = [NSString stringWithFormat:@"%@ added a ", self.user.name];
             break;
         case IPKActivityTypeUpdate:
             actionText = [NSString stringWithFormat:@"%@ updated ", self.user.name];
             break;
         case IPKActivityTypeTeam:
-            actionText = [NSString stringWithFormat:@"%@ team ", self.user.name];
+            actionText = [NSString stringWithFormat:@"%@ posted ", self.user.name];
             break;
         case IPKActivityTypeView:
             actionText = [NSString stringWithFormat:@"%@ viewed ", self.user.name];
@@ -108,20 +108,20 @@
     
     switch ([self trackableType]) {
         case IPKTrackableTypeProvider:
-            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", self.trackable_type, self.trackable_id];
+            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", [self.trackable_type lowercaseString], self.trackable_id];
             break;
         case IPKTrackableTypeReview:
-            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", self.trackable_type, self.trackable_id];
+            actionText = [actionText stringByAppendingFormat:@"a scoop with ID %@ ", self.trackable_id];
             break;
         case IPKTrackableTypeTeam:
-            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", self.trackable_type, self.trackable_id];
+            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", [self.trackable_type lowercaseString], self.trackable_id];
             break;
         case IPKTrackableTypeUser:
-            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", self.trackable_type, self.trackable_id];
+            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", [self.trackable_type lowercaseString], self.trackable_id];
             break;
             
         default:
-            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", self.trackable_type, self.trackable_id];
+            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", [self.trackable_type lowercaseString], self.trackable_id];
             break;
     }
 
