@@ -48,4 +48,22 @@ extern NSString *const kIPKKeychainServiceName;
 extern NSString *const kIPKListDidUpdateNotificationName;
 extern NSString *const kIPKPlusDidChangeNotificationName;
 
+#pragma mark - Enum defs
+
+enum IPKTrackableType {
+    IPKTrackableTypeAll = 0,
+    IPKTrackableTypeProvider = 1,
+    IPKTrackableTypeReview = 2,
+    IPKTrackableTypeUser = 3,
+    IPKTrackableTypeTeam = 4
+};
+
+enum IPKActivityType {
+    IPKActivityTypeAll = 0,
+    IPKActivityTypeCreate = 1,
+    IPKActivityTypeView = 2,
+    IPKActivityTypeUpdate = 3,
+    IPKActivityTypeTeam = 4
+};
+
 #endif
