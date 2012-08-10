@@ -71,11 +71,62 @@
         return IPKActivityTypeView;
     }
     else if ([self.action isEqualToString:@"follow"]){
-        return IPKActivityTypeView;
+        return IPKActivityTypeFollow;
     }
     else{
         return IPKActivityTypeAll;
     }
+}
+
+-(NSString *)actionText{
+    NSString * actionText = nil;
+    
+    switch ([self activityType]) {
+        case IPKActivityTypeCreate:
+            actionText = [NSString stringWithFormat:@"%@ created ", self.user.name];
+            break;
+        case IPKActivityTypeUpdate:
+            actionText = [NSString stringWithFormat:@"%@ updated ", self.user.name];
+            break;
+        case IPKActivityTypeTeam:
+            actionText = [NSString stringWithFormat:@"%@ team ", self.user.name];
+            break;
+        case IPKActivityTypeView:
+            actionText = [NSString stringWithFormat:@"%@ viewed ", self.user.name];
+            break;
+        case IPKActivityTypeFollow:
+            actionText = [NSString stringWithFormat:@"%@ followed ", self.user.name];
+            break;
+        case IPKActivityTypeAll:
+            actionText = [NSString stringWithFormat:@"%@ activity ", self.user.name];
+            break;
+            
+        default:
+            actionText = [NSString stringWithFormat:@"%@ activity ", self.user.name];
+            break;
+    }
+    
+    switch ([self trackableType]) {
+        case IPKTrackableTypeProvider:
+            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", self.trackable_type, self.trackable_id];
+            break;
+        case IPKTrackableTypeReview:
+            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", self.trackable_type, self.trackable_id];
+            break;
+        case IPKTrackableTypeTeam:
+            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", self.trackable_type, self.trackable_id];
+            break;
+        case IPKTrackableTypeUser:
+            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", self.trackable_type, self.trackable_id];
+            break;
+            
+        default:
+            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", self.trackable_type, self.trackable_id];
+            break;
+    }
+
+    
+    return actionText;
 }
 
 @end
