@@ -8,6 +8,7 @@
 #import <InsiderPagesKit/IPKDefines.h>
 
 // Models
+#import <InsiderPagesKit/Models/IPKAbstractModel.h>
 #import <InsiderPagesKit/Models/IPKUser.h>
 #import <InsiderPagesKit/Models/IPKPage.h>
 #import <InsiderPagesKit/Models/IPKProvider.h>

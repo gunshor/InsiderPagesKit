@@ -138,6 +138,7 @@
 		FD7656DE15CB834100A3D10A /* IPKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656DC15CB834100A3D10A /* IPKActivity.m */; };
 		FD7656DF15CB834100A3D10A /* IPKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656DC15CB834100A3D10A /* IPKActivity.m */; };
 		FD91BFE715D5CBD9008158A6 /* IPKAbstractModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD91BFE615D5CBD9008158A6 /* IPKAbstractModel.m */; };
+		FD91BFFB15D5D13E008158A6 /* IPKAbstractModel.h in Headers */ = {isa = PBXBuildFile; fileRef = FD91BFE515D5CBD9008158A6 /* IPKAbstractModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -690,6 +691,7 @@
 				FD7656BF15CAF2B500A3D10A /* IPKUser.h in Headers */,
 				FD7656C915CB833B00A3D10A /* IPKNotification.h in Headers */,
 				FD7656CE15CB833D00A3D10A /* IPKPage.h in Headers */,
+				FD91BFFB15D5D13E008158A6 /* IPKAbstractModel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
