@@ -58,16 +58,16 @@
 }
 
 -(enum IPKActivityType)activityType{
-    if ([self.trackable_type isEqualToString:@"create"]) {
+    if ([self.action isEqualToString:@"create"]) {
         return IPKActivityTypeCreate;
     }
-    else if ([self.trackable_type isEqualToString:@"update"]){
+    else if ([self.action isEqualToString:@"update"]){
         return IPKActivityTypeUpdate;
     }
-    else if ([self.trackable_type isEqualToString:@"team"]){
+    else if ([self.action isEqualToString:@"team"]){
         return IPKActivityTypeTeam;
     }
-    else if ([self.trackable_type isEqualToString:@"view"]){
+    else if ([self.action isEqualToString:@"view"]){
         return IPKActivityTypeView;
     }
     else{
