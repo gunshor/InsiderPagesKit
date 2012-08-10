@@ -614,23 +614,23 @@ static BOOL __developmentMode = NO;
 
 
 #pragma mark - Activities
-- (void)getMyActivititesOfType:(enum IPKActivityType)type currentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+- (void)getMyActivititesOfType:(enum IPKTrackableType)type currentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     __block NSString *urlString = nil;
     
     switch (type) {
-        case IPKActivityTypeAll:
+        case IPKTrackableTypeAll:
             urlString = @"activities";
             break;
-        case IPKActivityTypeProvider:
+        case IPKTrackableTypeProvider:
             urlString = @"provider_activities";
             break;
-        case IPKActivityTypeReview:
+        case IPKTrackableTypeReview:
             urlString = @"review_activities";
             break;
-        case IPKActivityTypeTeam:
+        case IPKTrackableTypeTeam:
             urlString = @"team_activities";
             break;
-        case IPKActivityTypeUser:
+        case IPKTrackableTypeUser:
             urlString = @"user_activities";
             break;
             

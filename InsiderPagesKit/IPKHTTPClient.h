@@ -7,7 +7,7 @@
 //
 
 #import "AFNetworking.h"
-
+#import "IPKDefines.h"
 typedef void (^IPKHTTPClientSuccess)(AFJSONRequestOperation *operation, id responseObject);
 typedef void (^IPKHTTPClientFailure)(AFJSONRequestOperation *operation, NSError *error);
 
