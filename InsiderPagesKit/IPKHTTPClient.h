@@ -17,15 +17,6 @@ typedef void (^IPKHTTPClientFailure)(AFJSONRequestOperation *operation, NSError 
 @class IPKPage;
 @class BLYChannel;
 
-enum IPKActivityType {
-    IPKActivityTypeAll = 0,
-    IPKActivityTypeProvider = 1,
-    IPKActivityTypeReview = 2,
-    IPKActivityTypeUser = 3,
-    IPKActivityTypeTeam = 4
-    };
-
-
 @interface IPKHTTPClient : AFHTTPClient
 
 + (IPKHTTPClient *)sharedClient;
@@ -87,7 +78,7 @@ enum IPKActivityType {
 
 
 #pragma mark - Activities
-- (void)getMyActivititesOfType:(enum IPKActivityType)type currentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+- (void)getMyActivititesOfType:(enum IPKTrackableType)type currentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 #pragma mark - Notifications
 - (void)getNotificationsWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;

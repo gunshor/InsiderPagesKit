@@ -27,6 +27,7 @@
 @property (nonatomic, retain) IPKUser *user;
 @property (nonatomic, retain) IPKPage *page;
 
+-(enum IPKTrackableType)trackableType;
 -(enum IPKActivityType)activityType;
 
 @end

@@ -35,3 +35,21 @@ NSString *const kIPKKeychainServiceName = @"InsiderPages";
 
 NSString *const kIPKListDidUpdateNotificationName = @"IPListDidUpdateNotification";
 NSString *const kIPKPlusDidChangeNotificationName = @"IPPlusDidChangeNotification";
+
+#pragma mark - Enum defs
+
+enum IPKTrackableType {
+    IPKTrackableTypeAll = 0,
+    IPKTrackableTypeProvider = 1,
+    IPKTrackableTypeReview = 2,
+    IPKTrackableTypeUser = 3,
+    IPKTrackableTypeTeam = 4
+};
+
+enum IPKActivityType {
+    IPKActivityTypeAll = 0,
+    IPKActivityTypeCreate = 1,
+    IPKActivityTypeView = 2,
+    IPKActivityTypeUpdate = 3,
+    IPKActivityTypeTeam = 4
+};

@@ -31,7 +31,7 @@
 
 - (void)unpackDictionary:(NSDictionary *)dictionary {
 	[super unpackDictionary:dictionary];    
-	self.action = [dictionary safeObjectForKey:@"name"];
+	self.action = [dictionary safeObjectForKey:@"action"];
     self.id = [dictionary safeObjectForKey:@"id"];
     self.team_id = [dictionary safeObjectForKey:@"team_id"];
     self.page = [IPKPage objectWithRemoteID:self.team_id];
@@ -42,15 +42,33 @@
     self.visibility = [dictionary safeObjectForKey:@"visibility"];
 }
 
--(enum IPKActivityType)activityType{
+-(enum IPKTrackableType)trackableType{
     if ([self.trackable_type isEqualToString:@"User"]) {
-        return IPKActivityTypeUser;
+        return IPKTrackableTypeUser;
     }
     else if ([self.trackable_type isEqualToString:@"Provider"]){
-        return IPKActivityTypeProvider;
+        return IPKTrackableTypeProvider;
     }
     else if ([self.trackable_type isEqualToString:@"Review"]){
-        return IPKActivityTypeReview;
+        return IPKTrackableTypeReview;
+    }
+    else{
+        return IPKTrackableTypeAll;
+    }
+}
+
+-(enum IPKActivityType)activityType{
+    if ([self.trackable_type isEqualToString:@"create"]) {
+        return IPKActivityTypeCreate;
+    }
+    else if ([self.trackable_type isEqualToString:@"update"]){
+        return IPKActivityTypeUpdate;
+    }
+    else if ([self.trackable_type isEqualToString:@"team"]){
+        return IPKActivityTypeTeam;
+    }
+    else if ([self.trackable_type isEqualToString:@"view"]){
+        return IPKActivityTypeView;
     }
     else{
         return IPKActivityTypeAll;
