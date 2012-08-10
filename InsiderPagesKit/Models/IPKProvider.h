@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "IPKRemoteManagedObject.h"
 
+@class IPKPage;
 
 @interface IPKProvider : IPKRemoteManagedObject
 
@@ -31,5 +32,14 @@
 @property (nonatomic, retain) id updated_from_ip_at;
 
 -(NSDictionary*)packToDictionary;
+
+@end
+
+@interface IPKProvider (CoreDataGeneratedAccessors)
+
+- (void)addPagesObject:(IPKPage *)value;
+- (void)removePagesObject:(IPKPage *)value;
+- (void)addPages:(NSSet *)values;
+- (void)removePages:(NSSet *)values;
 
 @end

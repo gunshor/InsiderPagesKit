@@ -321,6 +321,7 @@
 		FD7656D715CB833F00A3D10A /* IPKProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKProvider.m; sourceTree = "<group>"; };
 		FD7656DB15CB834000A3D10A /* IPKActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKActivity.h; sourceTree = "<group>"; };
 		FD7656DC15CB834100A3D10A /* IPKActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKActivity.m; sourceTree = "<group>"; };
+		FDAA2E5615D57A0C00793375 /* InsiderPagesKitTestsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsiderPagesKitTestsHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -603,6 +604,7 @@
 				FD76562815C9D70000A3D10A /* InsiderPagesKitTests.h */,
 				FD76562915C9D70000A3D10A /* InsiderPagesKitTests.m */,
 				FD76562315C9D6FF00A3D10A /* Supporting Files */,
+				FDAA2E5615D57A0C00793375 /* InsiderPagesKitTestsHeader.h */,
 			);
 			path = InsiderPagesKitTests;
 			sourceTree = "<group>";

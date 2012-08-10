@@ -7,7 +7,7 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import <InsiderPagesKit/InsiderPagesKit.h>
+#import "InsiderPagesKitTestsHeader.h"
 
 @interface InsiderPagesKitTests : SenTestCase
 

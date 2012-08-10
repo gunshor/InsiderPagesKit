@@ -410,10 +410,13 @@ static BOOL __developmentMode = NO;
             for (NSDictionary * providerDictionary in [responseObject objectForKey:@"providers"]) {
                 IPKProvider * provider = [IPKProvider existingObjectWithDictionary:providerDictionary];
                 if (provider) {
+                    [provider unpackDictionary:providerDictionary];
+                    [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId intValue])]];
                     [provider save];
                 }
                 else{
                     provider = [IPKProvider objectWithDictionary:providerDictionary];
+                    [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId intValue])]];
                     [provider save];
                 }
             }

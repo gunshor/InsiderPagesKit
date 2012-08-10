@@ -43,7 +43,7 @@
         <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" syncable="YES"/>
         <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="pages" inverseEntity="IPKUser" syncable="YES"/>
-        <relationship name="providers" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="IPKProvider" syncable="YES"/>
+        <relationship name="providers" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="IPKProvider" inverseName="pages" inverseEntity="IPKProvider" syncable="YES"/>
     </entity>
     <entity name="IPKProvider" representedClassName="IPKProvider" syncable="YES">
         <attribute name="attribution_url" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -63,6 +63,7 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="pages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKPage" inverseName="providers" inverseEntity="IPKPage" syncable="YES"/>
     </entity>
     <entity name="IPKQueryModel" representedClassName="IPKQueryModel" syncable="YES">
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
@@ -112,7 +113,7 @@
         <element name="IPKActivity" positionX="0" positionY="0" width="0" height="225"/>
         <element name="IPKNotification" positionX="0" positionY="0" width="0" height="0"/>
         <element name="IPKPage" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKProvider" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="IPKProvider" positionX="0" positionY="0" width="0" height="315"/>
         <element name="IPKQueryModel" positionX="160" positionY="192" width="128" height="165"/>
         <element name="IPKUser" positionX="0" positionY="0" width="0" height="525"/>
     </elements>
