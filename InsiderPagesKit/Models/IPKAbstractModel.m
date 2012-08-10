@@ -15,7 +15,7 @@
     NSDate *todaysDate = [NSDate date];
     NSInteger days = [IPKAbstractModel daysBetweenDate:updatedDate andDate:todaysDate];
     if (days >= 1) {
-        if (day == 1) {
+        if (days == 1) {
             return [NSString stringWithFormat:@"%d day ago", days];
         }else{
             return [NSString stringWithFormat:@"%d days ago", days];
