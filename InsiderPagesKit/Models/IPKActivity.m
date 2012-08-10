@@ -70,6 +70,9 @@
     else if ([self.action isEqualToString:@"view"]){
         return IPKActivityTypeView;
     }
+    else if ([self.action isEqualToString:@"follow"]){
+        return IPKActivityTypeView;
+    }
     else{
         return IPKActivityTypeAll;
     }
