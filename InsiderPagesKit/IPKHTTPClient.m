@@ -944,7 +944,9 @@ static BOOL __developmentMode = NO;
 
 - (void)changeUser:(IPKUser *)user {
 	if (user.accessToken) {
-		[self setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", user.accessToken]];
+		[self setDefaultHeader:@"Authorization" value:user.accessToken];
+        NSString * user_id = [NSString stringWithFormat:@"%@", user.id];
+        [self setDefaultHeader:@"User_ID" value:user_id];
 		return;
 	}
 	
