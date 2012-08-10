@@ -42,4 +42,19 @@
     self.visibility = [dictionary safeObjectForKey:@"visibility"];
 }
 
+-(enum IPKActivityType)activityType{
+    if ([self.trackable_type isEqualToString:@"User"]) {
+        return IPKActivityTypeUser;
+    }
+    else if ([self.trackable_type isEqualToString:@"Provider"]){
+        return IPKActivityTypeProvider;
+    }
+    else if ([self.trackable_type isEqualToString:@"Review"]){
+        return IPKActivityTypeReview;
+    }
+    else{
+        return IPKActivityTypeAll;
+    }
+}
+
 @end

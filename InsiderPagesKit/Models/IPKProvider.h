@@ -32,6 +32,7 @@
 @property (nonatomic, retain) id updated_from_ip_at;
 
 -(NSDictionary*)packToDictionary;
+-(NSString*)full_name;
 
 @end
 

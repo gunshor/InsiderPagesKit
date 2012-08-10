@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "IPKRemoteManagedObject.h"
+#import "IPKHTTPClient.h"
 
 @class IPKPage, IPKUser;
 
@@ -25,5 +26,7 @@
 @property (nonatomic, retain) NSNumber * visibility;
 @property (nonatomic, retain) IPKUser *user;
 @property (nonatomic, retain) IPKPage *page;
+
+-(enum IPKActivityType)activityType;
 
 @end

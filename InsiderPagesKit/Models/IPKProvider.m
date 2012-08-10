@@ -64,4 +64,8 @@
     self.updated_from_ip_at = [dictionary safeObjectForKey:@"updated_from_ip_at"];
 }
 
+-(NSString *)full_name{
+    return [self.first_name stringByAppendingFormat:@" %@", self.last_name];
+}
+
 @end
