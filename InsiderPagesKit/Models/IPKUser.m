@@ -49,7 +49,7 @@ static IPKUser *__currentUser = nil;
 @dynamic followers;
 @dynamic notifications;
 @dynamic pages;
-
+@synthesize accessToken;
 
 + (NSString *)entityName {
 	return @"IPKUser";
@@ -70,7 +70,7 @@ static IPKUser *__currentUser = nil;
 		}
         
 		__currentUser = [self existingObjectWithRemoteID:userID];
-		__currentUser.fb_access_token = accessToken;
+		__currentUser.accessToken = accessToken;
 	}
 	return __currentUser;
 }
@@ -107,7 +107,7 @@ static IPKUser *__currentUser = nil;
 		[SSKeychain deletePasswordForService:kIPKKeychainServiceName account:__currentUser.remoteID.description];
 	}
 	
-	if (!user.remoteID || !user.fb_access_token) {
+	if (!user.remoteID || !user.accessToken) {
 		__currentUser = nil;
 		return;
 	}
@@ -116,7 +116,7 @@ static IPKUser *__currentUser = nil;
 	[userDefaults setObject:user.remoteID forKey:kIPKUserIDKey];
 	[userDefaults synchronize];
 	
-	[SSKeychain setPassword:user.fb_access_token forService:kIPKKeychainServiceName account:user.remoteID.description];
+	[SSKeychain setPassword:user.accessToken forService:kIPKKeychainServiceName account:user.remoteID.description];
 	
 	__currentUser = user;
 	

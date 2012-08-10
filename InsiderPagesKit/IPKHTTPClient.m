@@ -109,10 +109,13 @@ static BOOL __developmentMode = NO;
     
     [self postPath:@"login" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
+        
         [context performBlock:^{
             NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:responseObject];
             IPKUser *user = [IPKUser objectWithDictionary:[dictionary objectForKey:@"user"]];
             user.fb_access_token = fbAccessToken;
+            NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL: [NSURL URLWithString:@"http://local.insiderpages.com"]];
+            user.accessToken = [(NSHTTPCookie*)[cookies objectAtIndex:0] value];
             [user save];
             [self changeUser:user];
             [IPKUser setCurrentUser:user];
@@ -661,7 +664,7 @@ static BOOL __developmentMode = NO;
                     IPKNotification * notification = [IPKNotification objectWithDictionary:notificationDictionary];
                     [notification save];
                 }
-
+                
             }
         }];
         
@@ -940,8 +943,8 @@ static BOOL __developmentMode = NO;
 
 
 - (void)changeUser:(IPKUser *)user {
-	if (user.fb_access_token) {
-		[self setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", user.fb_access_token]];
+	if (user.accessToken) {
+		[self setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", user.accessToken]];
 		return;
 	}
 	

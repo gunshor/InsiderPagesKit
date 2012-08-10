@@ -54,6 +54,7 @@ extern NSString *const kIPKCurrentUserChangedNotificationName;
 @property (nonatomic, retain) NSSet *followers;
 @property (nonatomic, retain) IPKPage *followedPages;
 @property (nonatomic, retain) IPKUser *followedUsers;
+@property (nonatomic, retain) NSString *accessToken;
 
 + (IPKUser *)currentUser;
 + (void)setCurrentUser:(IPKUser *)user;
