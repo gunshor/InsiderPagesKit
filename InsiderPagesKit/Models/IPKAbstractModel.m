@@ -56,7 +56,48 @@
 }
 
 -(NSString*)formattedTimeElapsedSinceCreated {
-    
+    NSDate *updatedDate = self.createdAt;
+    NSDate *todaysDate = [NSDate date];
+    NSInteger days = [IPKAbstractModel daysBetweenDate:updatedDate andDate:todaysDate];
+    if (days >= 1) {
+        if (days == 1) {
+            return [NSString stringWithFormat:@"%d day ago", days];
+        }else{
+            return [NSString stringWithFormat:@"%d days ago", days];
+        }
+    }else{
+        NSInteger hours = [IPKAbstractModel hoursBetweenDate:updatedDate andDate:todaysDate];
+        if (hours >= 1) {
+            if (hours == 1) {
+                return [NSString stringWithFormat:@"%d hour ago", hours];
+            }else{
+                return [NSString stringWithFormat:@"%d hours ago", hours];
+            }
+        }
+        else{
+            NSInteger minutes = [IPKAbstractModel minutesBetweenDate:updatedDate andDate:todaysDate];
+            if (minutes >= 1) {
+                if (minutes == 1) {
+                    return [NSString stringWithFormat:@"%d minute ago", minutes];
+                }else{
+                    return [NSString stringWithFormat:@"%d minutes ago", minutes];
+                }
+            }
+            else{
+                NSInteger seconds = [IPKAbstractModel secondsBetweenDate:updatedDate andDate:todaysDate];
+                if (seconds >= 1) {
+                    if (seconds == 1) {
+                        return [NSString stringWithFormat:@"%d second ago", seconds];
+                    }else{
+                        return [NSString stringWithFormat:@"%d seconds ago", seconds];
+                    }
+                }
+                else{
+                    return [NSString stringWithFormat:@"%d error", seconds];
+                }
+            }
+        }
+    }
 }
 
 + (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
