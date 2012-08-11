@@ -9,7 +9,7 @@
 #import "IPKAbstractModel.h"
 #import "IPKDefines.h"
 
-@class IPKPage, IPKUser;
+@class IPKPage, IPKUser, IPKProvider, IPKReview;
 
 @interface IPKActivity : IPKAbstractModel
 
@@ -24,6 +24,8 @@
 @property (nonatomic, retain) NSNumber * visibility;
 @property (nonatomic, retain) IPKUser *user;
 @property (nonatomic, retain) IPKPage *page;
+@property (nonatomic, retain) IPKProvider *provider;
+@property (nonatomic, retain) IPKReview *review;
 
 -(enum IPKTrackableType)trackableType;
 -(enum IPKActivityType)activityType;

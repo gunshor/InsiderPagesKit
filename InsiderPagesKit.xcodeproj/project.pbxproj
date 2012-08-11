@@ -139,6 +139,7 @@
 		FD7656DF15CB834100A3D10A /* IPKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656DC15CB834100A3D10A /* IPKActivity.m */; };
 		FD91BFE715D5CBD9008158A6 /* IPKAbstractModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD91BFE615D5CBD9008158A6 /* IPKAbstractModel.m */; };
 		FD91BFFB15D5D13E008158A6 /* IPKAbstractModel.h in Headers */ = {isa = PBXBuildFile; fileRef = FD91BFE515D5CBD9008158A6 /* IPKAbstractModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FDB6169215D5F3B200148606 /* IPKReview.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB6169115D5F3B200148606 /* IPKReview.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -326,6 +327,8 @@
 		FD91BFE515D5CBD9008158A6 /* IPKAbstractModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKAbstractModel.h; sourceTree = "<group>"; };
 		FD91BFE615D5CBD9008158A6 /* IPKAbstractModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKAbstractModel.m; sourceTree = "<group>"; };
 		FDAA2E5615D57A0C00793375 /* InsiderPagesKitTestsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsiderPagesKitTestsHeader.h; sourceTree = "<group>"; };
+		FDB6169015D5F3B200148606 /* IPKReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPKReview.h; path = ../../../IPKReview.h; sourceTree = "<group>"; };
+		FDB6169115D5F3B200148606 /* IPKReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPKReview.m; path = ../../../IPKReview.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -626,6 +629,8 @@
 		FD7656A315CAF2B400A3D10A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FDB6169015D5F3B200148606 /* IPKReview.h */,
+				FDB6169115D5F3B200148606 /* IPKReview.m */,
 				FD7656DB15CB834000A3D10A /* IPKActivity.h */,
 				FD7656DC15CB834100A3D10A /* IPKActivity.m */,
 				FD7656D615CB833F00A3D10A /* IPKProvider.h */,
@@ -882,6 +887,7 @@
 				FD7656DE15CB834100A3D10A /* IPKActivity.m in Sources */,
 				FD32632915D077780050F394 /* NSMutableDictionary+InsiderPagesKit.m in Sources */,
 				FD91BFE715D5CBD9008158A6 /* IPKAbstractModel.m in Sources */,
+				FDB6169215D5F3B200148606 /* IPKReview.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

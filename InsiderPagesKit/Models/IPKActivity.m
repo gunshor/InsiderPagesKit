@@ -9,6 +9,8 @@
 #import "IPKActivity.h"
 #import "IPKPage.h"
 #import "IPKUser.h"
+#import "IPKProvider.h"
+#import "IPKReview.h"
 #import "NSDictionary+InsiderPagesKit.h"
 
 @implementation IPKActivity
@@ -24,6 +26,8 @@
 @dynamic visibility;
 @dynamic user;
 @dynamic page;
+@dynamic provider;
+@dynamic review;
 
 + (NSString *)entityName {
 	return @"IPKActivity";
@@ -50,6 +54,14 @@
     }else{
         self.user = [IPKUser objectWithRemoteID:self.user_id];
         [self.user save];
+    }
+    if ([dictionary safeObjectForKey:@"trackable"] && [self.trackable_type isEqualToString:@"Provider"]) {
+        self.provider = [IPKProvider objectWithDictionary:[dictionary safeObjectForKey:@"trackable"]];
+        [self.provider save];
+    }
+    if ([dictionary safeObjectForKey:@"trackable"] && [self.trackable_type isEqualToString:@"Review"]) {
+        self.review = [IPKReview objectWithDictionary:[dictionary safeObjectForKey:@"trackable"]];
+        [self.review save];
     }
     self.visibility = [dictionary safeObjectForKey:@"visibility"];
 }
