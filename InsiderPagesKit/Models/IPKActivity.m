@@ -34,11 +34,19 @@
 	self.action = [dictionary safeObjectForKey:@"action"];
     self.id = [dictionary safeObjectForKey:@"id"];
     self.team_id = [dictionary safeObjectForKey:@"team_id"];
-    self.page = [IPKPage objectWithRemoteID:self.team_id];
+    if ([dictionary safeObjectForKey:@"team"]) {
+        self.page = [IPKPage objectWithDictionary:[dictionary safeObjectForKey:@"team"]];
+    }else{
+        self.page = [IPKPage objectWithRemoteID:self.team_id];
+    }
     self.trackable_id = [dictionary safeObjectForKey:@"trackable_id"];
     self.trackable_type = [dictionary safeObjectForKey:@"trackable_type"];
     self.user_id = [dictionary safeObjectForKey:@"user_id"];
-    self.user = [IPKUser objectWithRemoteID:self.user_id];
+    if ([dictionary safeObjectForKey:@"user"]) {
+        self.user = [IPKUser objectWithDictionary:[dictionary safeObjectForKey:@"user"]];
+    }else{
+        self.user = [IPKUser objectWithRemoteID:self.user_id];
+    }
     self.visibility = [dictionary safeObjectForKey:@"visibility"];
 }
 
