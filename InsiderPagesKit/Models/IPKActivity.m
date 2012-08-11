@@ -107,7 +107,7 @@
     
     switch ([self activityType]) {
         case IPKActivityTypeCreate:
-            actionText = [NSString stringWithFormat:@"%@ added a ", self.user.name];
+            actionText = [NSString stringWithFormat:@"%@ added ", self.user.name];
             break;
         case IPKActivityTypeUpdate:
             actionText = [NSString stringWithFormat:@"%@ updated ", self.user.name];
@@ -132,23 +132,23 @@
     
     switch ([self trackableType]) {
         case IPKTrackableTypeProvider:
-            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", [self.trackable_type lowercaseString], self.trackable_id];
+            actionText = [actionText stringByAppendingFormat:@"%@", self.provider.full_name];
             break;
         case IPKTrackableTypeReview:
-            actionText = [actionText stringByAppendingFormat:@"a scoop with ID %@ ", self.trackable_id];
+            actionText = [actionText stringByAppendingFormat:@"a scoop for %@ ", ((IPKProvider*)[IPKProvider objectWithRemoteID:self.review.listing_id]).full_name];
             break;
         case IPKTrackableTypeTeam:
             actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", [self.trackable_type lowercaseString], self.trackable_id];
             break;
         case IPKTrackableTypeUser:
-            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", [self.trackable_type lowercaseString], self.trackable_id];
+            actionText = [actionText stringByAppendingFormat:@"profile"];
             break;
             
         default:
             actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", [self.trackable_type lowercaseString], self.trackable_id];
             break;
     }
-
+    
     
     return actionText;
 }
