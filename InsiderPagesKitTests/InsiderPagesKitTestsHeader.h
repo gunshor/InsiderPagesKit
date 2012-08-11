@@ -12,7 +12,9 @@
 #import <InsiderPagesKit/IPKDefines.h>
 
 // Models
+#import <InsiderPagesKit/IPKAbstractModel.h>
 #import <InsiderPagesKit/IPKUser.h>
+#import <InsiderPagesKit/IPKReview.h>
 #import <InsiderPagesKit/IPKPage.h>
 #import <InsiderPagesKit/IPKProvider.h>
 #import <InsiderPagesKit/IPKQueryModel.h>
