@@ -16,6 +16,7 @@
 		FD260E1415CC4F160002C801 /* InsiderPages.xcdatamodeld in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */; };
 		FD260E1515CC5E420002C801 /* InsiderPages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */; };
 		FD260E1915CC91590002C801 /* NSRunLoop+TimeOutAndFlag.m in Sources */ = {isa = PBXBuildFile; fileRef = FD260E1715CC90AE0002C801 /* NSRunLoop+TimeOutAndFlag.m */; };
+		FD269EC815D784EF0050BF46 /* IPKPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FD269EC715D784EF0050BF46 /* IPKPage.m */; };
 		FD32632415D040550050F394 /* NSDictionary+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA215C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m */; };
 		FD32632515D0407F0050F394 /* NSDictionary+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA215C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m */; };
 		FD32632815D077780050F394 /* NSMutableDictionary+InsiderPagesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FD32632615D077780050F394 /* NSMutableDictionary+InsiderPagesKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -220,6 +221,8 @@
 		B2D8D60915BF809700A61836 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
 		FD260E1615CC90AE0002C801 /* NSRunLoop+TimeOutAndFlag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+TimeOutAndFlag.h"; sourceTree = "<group>"; };
 		FD260E1715CC90AE0002C801 /* NSRunLoop+TimeOutAndFlag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+TimeOutAndFlag.m"; sourceTree = "<group>"; };
+		FD269EC615D784EE0050BF46 /* IPKPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPKPage.h; path = ../../IPKPage.h; sourceTree = "<group>"; };
+		FD269EC715D784EF0050BF46 /* IPKPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPKPage.m; path = ../../IPKPage.m; sourceTree = "<group>"; };
 		FD32632615D077780050F394 /* NSMutableDictionary+InsiderPagesKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+InsiderPagesKit.h"; sourceTree = "<group>"; };
 		FD32632715D077780050F394 /* NSMutableDictionary+InsiderPagesKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+InsiderPagesKit.m"; sourceTree = "<group>"; };
 		FD764B9015C9CADE00A3D10A /* IPKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKDefines.h; sourceTree = "<group>"; };
@@ -444,6 +447,8 @@
 			children = (
 				FD764DFD15C9CBBE00A3D10A /* InsiderPagesKitMac-Info.plist */,
 				FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */,
+				FD269EC615D784EE0050BF46 /* IPKPage.h */,
+				FD269EC715D784EF0050BF46 /* IPKPage.m */,
 			);
 			name = "Other Sources";
 			path = "../Other Sources";
@@ -891,6 +896,7 @@
 				FD32632915D077780050F394 /* NSMutableDictionary+InsiderPagesKit.m in Sources */,
 				FD91BFE715D5CBD9008158A6 /* IPKAbstractModel.m in Sources */,
 				FDB616BB15D5F66C00148606 /* IPKReview.m in Sources */,
+				FD269EC815D784EF0050BF46 /* IPKPage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
