@@ -30,7 +30,7 @@
 @dynamic providers;
 @dynamic owner;
 @dynamic followers;
-@dynamic isFavorite;
+@dynamic is_favorite;
 
 -(NSDictionary*)packToDictionary{
     NSMutableDictionary * packedDictionary = [NSMutableDictionary dictionary];
