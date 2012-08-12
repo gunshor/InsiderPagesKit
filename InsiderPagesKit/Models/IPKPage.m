@@ -71,7 +71,7 @@
         self.is_favorite = [dictionary safeObjectForKey:@"is_favorite"];
     }
     else {
-        self.is_favorite = [NSNumber numberWithInt:1];
+        [self setValue:[NSNumber numberWithInt:1] forKey:@"is_favorite"];
     }
 }
 
