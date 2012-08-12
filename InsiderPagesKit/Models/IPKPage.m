@@ -16,6 +16,7 @@
 @dynamic name;
 @dynamic description_text;
 @dynamic id;
+@dynamic remoteID;
 @dynamic image_content_type;
 @dynamic image_file_name;
 @dynamic image_file_size;
