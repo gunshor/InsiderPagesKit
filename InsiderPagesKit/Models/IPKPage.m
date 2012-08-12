@@ -14,6 +14,7 @@
 @implementation IPKPage
 
 @dynamic name;
+@dynamic is_favorite;
 @dynamic description_text;
 @dynamic id;
 @dynamic remoteID;
@@ -30,7 +31,6 @@
 @dynamic providers;
 @dynamic owner;
 @dynamic followers;
-@dynamic is_favorite;
 
 -(NSDictionary*)packToDictionary{
     NSMutableDictionary * packedDictionary = [NSMutableDictionary dictionary];
@@ -71,7 +71,7 @@
         self.is_favorite = [dictionary safeObjectForKey:@"is_favorite"];
     }
     else {
-        [self setValue:[NSNumber numberWithInt:1] forKey:@"is_favorite"];
+        self.is_favorite = [NSNumber numberWithInt:0];
     }
 }
 
