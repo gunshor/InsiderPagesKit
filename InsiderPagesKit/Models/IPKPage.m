@@ -23,9 +23,9 @@
 @dynamic privacy_setting;
 @dynamic sequence;
 @dynamic sort;
-@dynamic updated_at;
+@dynamic updatedAt;
 @dynamic user_id;
-@dynamic created_at;
+@dynamic createdAt;
 @dynamic providers;
 @dynamic owner;
 @dynamic followers;
