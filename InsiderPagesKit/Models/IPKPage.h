@@ -9,6 +9,7 @@
 #import "IPKAbstractModel.h"
 
 @class IPKUser;
+@class IPKProvider;
 
 @interface IPKPage : IPKAbstractModel
 
