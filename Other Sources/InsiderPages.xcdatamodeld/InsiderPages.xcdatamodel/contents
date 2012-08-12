@@ -36,7 +36,7 @@
         <attribute name="image_file_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_file_size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_updated_at" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isFavorite" attributeType="Integer 16" defaultValueString="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="privacy_setting" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
