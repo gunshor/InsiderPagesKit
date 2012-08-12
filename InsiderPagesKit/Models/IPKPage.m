@@ -46,8 +46,7 @@
     [packedDictionary setSafeObject:self.sort forKey:@"sort"];
 //    [packedDictionary setSafeObject:self.user_id forKey:@"user_id"];
 //    [packedDictionary setSafeObject:self.providers forKey:@"providers"];
-    [packedDictionary setSafeObject:self.owner forKey:@"owner"];
-    [packedDictionary setSafeObject:self.is_favorite forKey:@"is_favorite"];
+//    [packedDictionary setSafeObject:self.owner forKey:@"owner"];
 //    [packedDictionary setSafeObject:self.followers forKey:@"followers"];
     return packedDictionary;
 }
