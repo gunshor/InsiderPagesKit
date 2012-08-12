@@ -139,7 +139,7 @@
 		FD7656DF15CB834100A3D10A /* IPKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656DC15CB834100A3D10A /* IPKActivity.m */; };
 		FD91BFE715D5CBD9008158A6 /* IPKAbstractModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD91BFE615D5CBD9008158A6 /* IPKAbstractModel.m */; };
 		FD91BFFB15D5D13E008158A6 /* IPKAbstractModel.h in Headers */ = {isa = PBXBuildFile; fileRef = FD91BFE515D5CBD9008158A6 /* IPKAbstractModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FDB616BA15D5F66C00148606 /* IPKReview.h in Headers */ = {isa = PBXBuildFile; fileRef = FDB616B815D5F66C00148606 /* IPKReview.h */; };
+		FDB616BA15D5F66C00148606 /* IPKReview.h in Headers */ = {isa = PBXBuildFile; fileRef = FDB616B815D5F66C00148606 /* IPKReview.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FDB616BB15D5F66C00148606 /* IPKReview.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB616B915D5F66C00148606 /* IPKReview.m */; };
 		FDB616BC15D5F66C00148606 /* IPKReview.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB616B915D5F66C00148606 /* IPKReview.m */; };
 /* End PBXBuildFile section */

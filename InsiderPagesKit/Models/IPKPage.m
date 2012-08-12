@@ -29,6 +29,7 @@
 @dynamic providers;
 @dynamic owner;
 @dynamic followers;
+@dynamic is_favorite;
 
 -(NSDictionary*)packToDictionary{
     NSMutableDictionary * packedDictionary = [NSMutableDictionary dictionary];
@@ -45,6 +46,7 @@
 //    [packedDictionary setSafeObject:self.user_id forKey:@"user_id"];
 //    [packedDictionary setSafeObject:self.providers forKey:@"providers"];
     [packedDictionary setSafeObject:self.owner forKey:@"owner"];
+    [packedDictionary setSafeObject:self.is_favorite forKey:@"is_favorite"];
 //    [packedDictionary setSafeObject:self.followers forKey:@"followers"];
     return packedDictionary;
 }
@@ -65,6 +67,7 @@
     self.providers = [dictionary safeObjectForKey:@"providers"];
     self.owner = [dictionary safeObjectForKey:@"owner"];
     self.followers = [dictionary safeObjectForKey:@"followers"];
+    self.is_favorite = [dictionary safeObjectForKey:@"is_favorite"];
 }
 
 @end

@@ -28,6 +28,7 @@
 @property (nonatomic, retain) NSOrderedSet *providers;
 @property (nonatomic, retain) IPKUser *owner;
 @property (nonatomic, retain) NSSet *followers;
+@property (nonatomic, retain) NSNumber *is_favorite;
 
 -(NSDictionary*)packToDictionary;
 

@@ -36,6 +36,7 @@
         <attribute name="image_file_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_file_size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="is_favorite" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="privacy_setting" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -134,10 +135,10 @@
     <elements>
         <element name="IPKActivity" positionX="0" positionY="0" width="0" height="225"/>
         <element name="IPKNotification" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKPage" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="IPKPage" positionX="0" positionY="0" width="0" height="315"/>
         <element name="IPKProvider" positionX="0" positionY="0" width="0" height="315"/>
         <element name="IPKQueryModel" positionX="160" positionY="192" width="128" height="165"/>
-        <element name="IPKUser" positionX="0" positionY="0" width="0" height="525"/>
         <element name="IPKReview" positionX="160" positionY="192" width="128" height="315"/>
+        <element name="IPKUser" positionX="0" positionY="0" width="0" height="525"/>
     </elements>
 </model>
