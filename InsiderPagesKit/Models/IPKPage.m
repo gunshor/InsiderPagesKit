@@ -68,10 +68,10 @@
     self.owner = [dictionary safeObjectForKey:@"owner"];
     self.followers = [dictionary safeObjectForKey:@"followers"];
     if ([dictionary safeObjectForKey:@"is_favorite"]) {
-        self.isFavorite = [dictionary safeObjectForKey:@"is_favorite"];
+        self.is_favorite = [dictionary safeObjectForKey:@"is_favorite"];
     }
     else {
-        self.isFavorite = [NSNumber numberWithBool:NO];
+        self.is_favorite = [NSNumber numberWithBool:NO];
     }
 }
 
