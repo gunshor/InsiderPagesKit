@@ -66,6 +66,10 @@ typedef void (^IPKHTTPClientFailure)(AFJSONRequestOperation *operation, NSError 
 
 - (void)removeProvidersFromPageWithId:(NSString*)pageId providerId:(NSString*)providerId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
+- (void)favoritePageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+
+- (void)unfavoritePageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+
 #pragma mark - Providers
 
 

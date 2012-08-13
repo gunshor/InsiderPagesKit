@@ -11,10 +11,10 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="visibility" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="page" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKPage" syncable="YES"/>
-        <relationship name="provider" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKProvider" syncable="YES"/>
-        <relationship name="review" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKReview" syncable="YES"/>
-        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" syncable="YES"/>
+        <relationship name="page" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKPage" inverseName="activities" inverseEntity="IPKPage" syncable="YES"/>
+        <relationship name="provider" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKProvider" inverseName="activities" inverseEntity="IPKProvider" syncable="YES"/>
+        <relationship name="review" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKReview" inverseName="activities" inverseEntity="IPKReview" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="activities" inverseEntity="IPKUser" syncable="YES"/>
     </entity>
     <entity name="IPKNotification" representedClassName="IPKNotification" syncable="YES">
         <attribute name="action_text" optional="YES" attributeType="String" syncable="YES"/>
@@ -26,7 +26,7 @@
         <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="notifications" inverseEntity="IPKUser" syncable="YES"/>
     </entity>
     <entity name="IPKPage" representedClassName="IPKPage" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -44,7 +44,8 @@
         <attribute name="sort" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" syncable="YES"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKActivity" inverseName="page" inverseEntity="IPKActivity" syncable="YES"/>
+        <relationship name="following_users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="followedPages" inverseEntity="IPKUser" syncable="YES"/>
         <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="pages" inverseEntity="IPKUser" syncable="YES"/>
         <relationship name="providers" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="IPKProvider" inverseName="pages" inverseEntity="IPKProvider" syncable="YES"/>
     </entity>
@@ -66,6 +67,7 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKActivity" inverseName="provider" inverseEntity="IPKActivity" syncable="YES"/>
         <relationship name="pages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKPage" inverseName="providers" inverseEntity="IPKPage" syncable="YES"/>
     </entity>
     <entity name="IPKQueryModel" representedClassName="IPKQueryModel" syncable="YES">
@@ -97,6 +99,7 @@
         <attribute name="user_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="user_ip" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="why_recommended" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKActivity" inverseName="review" inverseEntity="IPKActivity" syncable="YES"/>
     </entity>
     <entity name="IPKUser" representedClassName="IPKUser" syncable="YES">
         <attribute name="about_me" optional="YES" attributeType="String" syncable="YES"/>
@@ -126,19 +129,20 @@
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="work_email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip_code" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="followedPages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKPage" syncable="YES"/>
-        <relationship name="followedUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" syncable="YES"/>
-        <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" syncable="YES"/>
-        <relationship name="notifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="notifications" inverseEntity="IPKUser" syncable="YES"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKActivity" inverseName="user" inverseEntity="IPKActivity" syncable="YES"/>
+        <relationship name="followedPages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKPage" inverseName="following_users" inverseEntity="IPKPage" syncable="YES"/>
+        <relationship name="followedUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="followers" inverseEntity="IPKUser" syncable="YES"/>
+        <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="followedUsers" inverseEntity="IPKUser" syncable="YES"/>
+        <relationship name="notifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKNotification" inverseName="user" inverseEntity="IPKNotification" syncable="YES"/>
         <relationship name="pages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IPKPage" inverseName="owner" inverseEntity="IPKPage" syncable="YES"/>
     </entity>
     <elements>
-        <element name="IPKActivity" positionX="0" positionY="0" width="0" height="225"/>
+        <element name="IPKActivity" positionX="0" positionY="0" width="0" height="255"/>
         <element name="IPKNotification" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKPage" positionX="0" positionY="0" width="0" height="315"/>
-        <element name="IPKProvider" positionX="0" positionY="0" width="0" height="315"/>
+        <element name="IPKPage" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="IPKProvider" positionX="0" positionY="0" width="0" height="330"/>
         <element name="IPKQueryModel" positionX="160" positionY="192" width="128" height="165"/>
         <element name="IPKReview" positionX="160" positionY="192" width="128" height="315"/>
-        <element name="IPKUser" positionX="0" positionY="0" width="0" height="525"/>
+        <element name="IPKUser" positionX="0" positionY="0" width="0" height="540"/>
     </elements>
 </model>

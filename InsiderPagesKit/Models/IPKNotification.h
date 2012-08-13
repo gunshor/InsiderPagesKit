@@ -14,11 +14,12 @@
 
 @property (nonatomic, retain) NSString * action_text;
 @property (nonatomic, retain) id activity_parent;
-@property (nonatomic, retain) NSDate * created_at;
+@property (nonatomic, retain) NSDate * createdAt;
 @property (nonatomic, retain) NSNumber * id;
-@property (nonatomic, retain) id path;
+@property (nonatomic, retain) NSString * path;
 @property (nonatomic, retain) NSNumber * read;
-@property (nonatomic, retain) NSNumber * updated_at;
+@property (nonatomic, retain) NSNumber * remoteID;
+@property (nonatomic, retain) NSDate * updatedAt;
 @property (nonatomic, retain) NSNumber * user_id;
 @property (nonatomic, retain) IPKUser *user;
 

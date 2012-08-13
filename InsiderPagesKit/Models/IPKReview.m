@@ -11,10 +11,8 @@
 @implementation IPKReview
 
 @dynamic about;
-@dynamic id;
-@dynamic remoteId;
 @dynamic createdAt;
-@dynamic updatedAt;
+@dynamic id;
 @dynamic image_content_type;
 @dynamic image_file_name;
 @dynamic image_file_size;
@@ -23,11 +21,15 @@
 @dynamic listing_id;
 @dynamic listing_type;
 @dynamic privacy_setting;
+@dynamic remoteID;
 @dynamic reviewed_by;
 @dynamic team_id;
+@dynamic updatedAt;
 @dynamic user_id;
 @dynamic user_ip;
 @dynamic why_recommended;
+@dynamic activities;
+
 
 + (NSString *)entityName {
 	return @"IPKReview";

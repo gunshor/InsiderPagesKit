@@ -28,9 +28,10 @@
 @property (nonatomic, retain) NSDate * updatedAt;
 @property (nonatomic, retain) NSNumber * user_id;
 @property (nonatomic, retain) NSNumber * is_favorite;
-@property (nonatomic, retain) NSSet *followers;
+@property (nonatomic, retain) NSSet *following_users;
 @property (nonatomic, retain) IPKUser *owner;
 @property (nonatomic, retain) NSOrderedSet *providers;
+@property (nonatomic, retain) NSSet *activities;
 
 -(NSDictionary*)packToDictionary;
 

@@ -13,24 +13,25 @@
 
 @implementation IPKPage
 
-@dynamic name;
-@dynamic is_favorite;
+@dynamic createdAt;
 @dynamic description_text;
 @dynamic id;
-@dynamic remoteID;
 @dynamic image_content_type;
 @dynamic image_file_name;
 @dynamic image_file_size;
 @dynamic image_updated_at;
+@dynamic name;
 @dynamic privacy_setting;
+@dynamic remoteID;
 @dynamic sequence;
 @dynamic sort;
 @dynamic updatedAt;
 @dynamic user_id;
-@dynamic createdAt;
-@dynamic providers;
+@dynamic is_favorite;
+@dynamic following_users;
 @dynamic owner;
-@dynamic followers;
+@dynamic providers;
+@dynamic activities;
 
 -(NSDictionary*)packToDictionary{
     NSMutableDictionary * packedDictionary = [NSMutableDictionary dictionary];
@@ -66,7 +67,7 @@
     self.user_id = [dictionary safeObjectForKey:@"user_id"];
     self.providers = [dictionary safeObjectForKey:@"providers"];
     self.owner = [dictionary safeObjectForKey:@"owner"];
-    self.followers = [dictionary safeObjectForKey:@"followers"];
+    self.following_users = [dictionary safeObjectForKey:@"followers"];
     if ([dictionary safeObjectForKey:@"is_favorite"]) {
         self.is_favorite = [dictionary safeObjectForKey:@"is_favorite"];
     }

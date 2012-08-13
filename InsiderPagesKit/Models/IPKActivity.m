@@ -16,18 +16,19 @@
 @implementation IPKActivity
 
 @dynamic action;
-@dynamic created_at;
+@dynamic createdAt;
 @dynamic id;
+@dynamic remoteID;
 @dynamic team_id;
 @dynamic trackable_id;
 @dynamic trackable_type;
-@dynamic updated_at;
+@dynamic updatedAt;
 @dynamic user_id;
 @dynamic visibility;
-@dynamic user;
 @dynamic page;
 @dynamic provider;
 @dynamic review;
+@dynamic user;
 
 + (NSString *)entityName {
 	return @"IPKActivity";

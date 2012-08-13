@@ -15,19 +15,22 @@
 @dynamic attribution_url;
 @dynamic business_name;
 @dynamic cg_listing_id;
-@dynamic created_at;
 @dynamic created_by_id;
+@dynamic createdAt;
 @dynamic description_text;
 @dynamic email_address;
 @dynamic first_name;
 @dynamic id;
 @dynamic last_name;
 @dynamic last_updated_by_id;
+@dynamic remoteID;
 @dynamic state;
-@dynamic updated_at;
+@dynamic updated_from_ip_at;
+@dynamic updatedAt;
 @dynamic url;
 @dynamic user_id;
-@dynamic updated_from_ip_at;
+@dynamic pages;
+@dynamic activities;
 
 -(NSDictionary*)packToDictionary{
     NSMutableDictionary * packedDictionary = [NSMutableDictionary dictionary];

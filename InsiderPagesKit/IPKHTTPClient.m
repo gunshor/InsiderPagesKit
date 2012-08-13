@@ -523,6 +523,48 @@ static BOOL __developmentMode = NO;
     }];
 }
 
+- (void)favoritePageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure  {  NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:pageId, @"id", nil];
+    NSString * urlString = [NSString stringWithFormat:@"teams/%@/favorite", pageId];
+    [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __weak NSManagedObjectContext *context = [IPKUser mainContext];
+        [context performBlock:^{
+            IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
+            [page setIs_favorite:[NSNumber numberWithBool:YES]];
+            [page save];
+        }];
+        
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+}
+
+
+- (void)unfavoritePageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{  NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:pageId, @"id",nil];
+    NSString * urlString = [NSString stringWithFormat:@"teams/%@/unfavorite", pageId];
+    [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __weak NSManagedObjectContext *context = [IPKUser mainContext];
+        [context performBlock:^{
+            IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
+            [page setIs_favorite:[NSNumber numberWithBool:NO]];
+            [page save];
+        }];
+        
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+}
+
+
 #pragma mark - Providers
 
 

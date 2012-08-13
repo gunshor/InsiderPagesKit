@@ -292,6 +292,31 @@
         finished = YES;
     }];
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+    
+    finished = NO;
+    [[IPKHTTPClient sharedClient] favoritePageWithId:pageID success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after favorite-ing a page");
+        
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        STAssertTrue(NO, [error debugDescription]);        
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+
+    finished = NO;
+    [[IPKHTTPClient sharedClient] unfavoritePageWithId:pageID success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after removing provider from page");
+        
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        STAssertTrue(NO, [error debugDescription]);        
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+
 }
 
 -(void)testSearch{

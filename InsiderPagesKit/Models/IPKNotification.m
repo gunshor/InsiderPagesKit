@@ -14,11 +14,12 @@
 
 @dynamic action_text;
 @dynamic activity_parent;
-@dynamic created_at;
+@dynamic createdAt;
 @dynamic id;
 @dynamic path;
 @dynamic read;
-@dynamic updated_at;
+@dynamic remoteID;
+@dynamic updatedAt;
 @dynamic user_id;
 @dynamic user;
 
