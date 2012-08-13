@@ -294,7 +294,7 @@ static BOOL __developmentMode = NO;
         [context performBlock:^{
             for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
                 IPKPage * page = nil;
-                page = [IPKPage objectWithRemoteID:[pageDictionary objectForKey:@"id"]];
+                page = [IPKPage objectWithDictionary:pageDictionary];
                 [page save];
             }
         }];
@@ -359,15 +359,8 @@ static BOOL __developmentMode = NO;
     [[IPKHTTPClient sharedClient] getPath:@"users" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
         [context performBlock:^{
-            IPKUser * user = [IPKUser existingObjectWithRemoteID:@([userId integerValue])];
-            if (user) {
-                [user unpackDictionary:responseObject];
-                [user save];
-            }
-            else{
-                user = [IPKUser objectWithDictionary:responseObject];
-                [user save];
-            }
+            IPKUser * user = [IPKUser objectWithDictionary:responseObject];
+            [user save];
         }];
         
         if (success) {
@@ -388,15 +381,8 @@ static BOOL __developmentMode = NO;
         [context performBlock:^{
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
                 IPKUser * user = nil;
-                user = [IPKUser existingObjectWithRemoteID:[userDictionary objectForKey:@"id"]];
-                if (user){
-                    [user unpackDictionary:userDictionary];
-                    [user save];
-                }
-                else{
-                    user = [IPKUser objectWithDictionary:userDictionary];
-                    [user save];
-                }
+                user = [IPKUser objectWithDictionary:userDictionary];
+                [user save];
             }
         }];
         
@@ -418,15 +404,8 @@ static BOOL __developmentMode = NO;
         [context performBlock:^{
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"following"]) {
                 IPKUser * user = nil;
-                user = [IPKUser existingObjectWithRemoteID:[userDictionary objectForKey:@"id"]];
-                if (user){
-                    [user unpackDictionary:userDictionary];
-                    [user save];
-                }
-                else{
-                    user = [IPKUser objectWithDictionary:userDictionary];
-                    [user save];
-                }
+                user = [IPKUser objectWithDictionary:userDictionary];
+                [user save];
             }
         }];
         
@@ -478,15 +457,8 @@ static BOOL __developmentMode = NO;
         [context performBlock:^{
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
                 IPKUser * user = nil;
-                user = [IPKUser existingObjectWithRemoteID:[userDictionary objectForKey:@"id"]];
-                if (user){
-                    [user unpackDictionary:userDictionary];
-                    [user save];
-                }
-                else{
-                    user = [IPKUser objectWithDictionary:userDictionary];
-                    [user save];
-                }
+                user = [IPKUser objectWithDictionary:userDictionary];
+                [user save];
             }
         }];
         
