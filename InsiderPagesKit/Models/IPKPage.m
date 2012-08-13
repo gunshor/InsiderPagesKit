@@ -27,6 +27,7 @@
 @dynamic sort;
 @dynamic updatedAt;
 @dynamic user_id;
+@dynamic section_header;
 @dynamic is_favorite;
 @dynamic is_following;
 @dynamic following_users;
@@ -81,6 +82,22 @@
     else {
         self.is_following = [NSNumber numberWithBool:NO];
     }
+}
+
+- (NSString *) section_header
+{
+    [self willAccessValueForKey:@"section_header"];
+    NSString * section_header = nil;
+    
+    if ([self.is_favorite boolValue]) {
+        section_header = @"Favorite";
+    }else if ([self.is_following boolValue]){
+        section_header = @"Following";
+    }else{
+        section_header = @"Mine";
+    }
+    [self didAccessValueForKey:@"section_header"];
+    return section_header;
 }
 
 @end

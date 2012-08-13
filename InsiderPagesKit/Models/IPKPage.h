@@ -27,6 +27,7 @@
 @property (nonatomic, retain) NSNumber * sort;
 @property (nonatomic, retain) NSDate * updatedAt;
 @property (nonatomic, retain) NSNumber * user_id;
+@property (nonatomic, retain) NSString * section_header;
 @property (nonatomic, retain) NSNumber * is_favorite;
 @property (nonatomic, retain) NSNumber * is_following;
 @property (nonatomic, retain) NSSet *following_users;
