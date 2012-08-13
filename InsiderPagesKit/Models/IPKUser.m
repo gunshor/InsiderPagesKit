@@ -47,6 +47,9 @@ static IPKUser *__currentUser = nil;
 @dynamic website;
 @dynamic work_email;
 @dynamic zip_code;
+@dynamic is_following;
+@dynamic is_collaborator;
+
 @dynamic followedPages;
 @dynamic followedUsers;
 @dynamic followers;
@@ -154,6 +157,9 @@ static IPKUser *__currentUser = nil;
     self.website = [dictionary safeObjectForKey:@"website"];
     self.work_email = [dictionary safeObjectForKey:@"work_email"];
     self.zip_code = [dictionary safeObjectForKey:@"zip_code"];
+    self.is_following = [dictionary safeObjectForKey:@"is_following"];
+    self.is_collaborator = [dictionary safeObjectForKey:@"is_collaborator"];
+    
     self.followedPages = [dictionary safeObjectForKey:@"followed_pages"];
     self.followedUsers = [dictionary safeObjectForKey:@"followed_users"];
     self.followers = [dictionary safeObjectForKey:@"followers"];

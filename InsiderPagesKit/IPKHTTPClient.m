@@ -263,6 +263,52 @@ static BOOL __developmentMode = NO;
     }];
 }
 
+- (void)getFavoritePagesForUserWithId:(NSString*)userId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    NSString *url = [NSString stringWithFormat:@"users/%@/teams", userId];
+    
+    [self getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __weak NSManagedObjectContext *context = [IPKUser mainContext];
+        [context performBlock:^{
+            for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
+                IPKPage * page = nil;
+                page = [IPKPage objectWithRemoteID:[pageDictionary objectForKey:@"id"]];
+                [page save];
+            }
+        }];
+        
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+}
+
+- (void)getFollowingPagesForUserWithId:(NSString*)userId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    NSString *url = [NSString stringWithFormat:@"users/%@/following_teams", userId];
+    
+    [self getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __weak NSManagedObjectContext *context = [IPKUser mainContext];
+        [context performBlock:^{
+            for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
+                IPKPage * page = nil;
+                page = [IPKPage objectWithRemoteID:[pageDictionary objectForKey:@"id"]];
+                [page save];
+            }
+        }];
+        
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+}
+
 - (void)createPage:(IPKPage *)page success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSMutableDictionary * pageDictionary = [[page packToDictionary] mutableCopy];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:pageDictionary
@@ -465,6 +511,7 @@ static BOOL __developmentMode = NO;
             IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
             IPKProvider * providerToAdd = [IPKProvider existingObjectWithRemoteID:@([providerId intValue])];
             [page addProvidersObject:providerToAdd];
+            [page save];
         }];
         
         if (success) {
@@ -488,6 +535,7 @@ static BOOL __developmentMode = NO;
             IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
             IPKProvider * providerToAdd = [IPKProvider existingObjectWithRemoteID:@([providerId intValue])];
             [page addProvidersObject:providerToAdd];
+            [page save];
         }];
         
         if (success) {
@@ -511,6 +559,7 @@ static BOOL __developmentMode = NO;
             IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
             IPKProvider * providerToRemove = [IPKProvider existingObjectWithRemoteID:@([providerId intValue])];
             [page removeProvidersObject:providerToRemove];
+            [page save];
         }];
         
         if (success) {
@@ -574,14 +623,8 @@ static BOOL __developmentMode = NO;
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
         [context performBlock:^{
             for (NSDictionary * providerDictionary in [responseObject objectForKey:@"results"]) {
-                IPKProvider * provider = [IPKProvider existingObjectWithDictionary:providerDictionary];
-                if (provider) {
-                    [provider save];
-                }
-                else{
-                    provider = [IPKProvider objectWithDictionary:providerDictionary];
-                    [provider save];
-                }
+                IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
+                [provider save];
             }
         }];
         
@@ -600,14 +643,8 @@ static BOOL __developmentMode = NO;
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
         [context performBlock:^{
             for (NSDictionary * providerDictionary in [responseObject objectForKey:@"results"]) {
-                IPKProvider * provider = [IPKProvider existingObjectWithDictionary:providerDictionary];
-                if (provider) {
-                    [provider save];
-                }
-                else{
-                    provider = [IPKProvider objectWithDictionary:providerDictionary];
-                    [provider save];
-                }
+                IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
+                [provider save];
             }
         }];
         
@@ -626,14 +663,8 @@ static BOOL __developmentMode = NO;
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
         [context performBlock:^{
             for (NSDictionary * providerDictionary in [responseObject objectForKey:@"results"]) {
-                IPKProvider * provider = [IPKProvider existingObjectWithDictionary:providerDictionary];
-                if (provider) {
-                    [provider save];
-                }
-                else{
-                    provider = [IPKProvider objectWithDictionary:providerDictionary];
-                    [provider save];
-                }
+                IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
+                [provider save];
             }
         }];
         
@@ -702,7 +733,6 @@ static BOOL __developmentMode = NO;
                     IPKNotification * notification = [IPKNotification objectWithDictionary:notificationDictionary];
                     [notification save];
                 }
-                
             }
         }];
         

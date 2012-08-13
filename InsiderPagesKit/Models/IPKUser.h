@@ -50,6 +50,9 @@ extern NSString *const kIPKCurrentUserChangedNotificationName;
 @property (nonatomic, retain) NSString * website;
 @property (nonatomic, retain) NSString * work_email;
 @property (nonatomic, retain) NSString * zip_code;
+@property (nonatomic, retain) NSNumber * is_following;
+@property (nonatomic, retain) NSNumber * is_collaborator;
+
 @property (nonatomic, retain) NSSet *followedPages;
 @property (nonatomic, retain) NSSet *followedUsers;
 @property (nonatomic, retain) NSSet *followers;

@@ -28,6 +28,7 @@
 @dynamic updatedAt;
 @dynamic user_id;
 @dynamic is_favorite;
+@dynamic is_following;
 @dynamic following_users;
 @dynamic owner;
 @dynamic providers;
@@ -73,6 +74,12 @@
     }
     else {
         self.is_favorite = [NSNumber numberWithBool:NO];
+    }
+    if ([dictionary safeObjectForKey:@"is_following"]) {
+        self.is_following = [dictionary safeObjectForKey:@"is_following"];
+    }
+    else {
+        self.is_following = [NSNumber numberWithBool:NO];
     }
 }
 

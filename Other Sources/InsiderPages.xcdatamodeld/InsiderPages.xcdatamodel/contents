@@ -37,6 +37,7 @@
         <attribute name="image_file_size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_updated_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="is_favorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="is_following" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="privacy_setting" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -119,6 +120,8 @@
         <attribute name="image_profile_path" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_to_show" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="image_updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="is_collaborator" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="is_following" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="link_to_twitter" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -137,12 +140,12 @@
         <relationship name="pages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IPKPage" inverseName="owner" inverseEntity="IPKPage" syncable="YES"/>
     </entity>
     <elements>
-        <element name="IPKActivity" positionX="0" positionY="0" width="0" height="255"/>
+        <element name="IPKActivity" positionX="0" positionY="0" width="0" height="225"/>
         <element name="IPKNotification" positionX="0" positionY="0" width="0" height="0"/>
         <element name="IPKPage" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKProvider" positionX="0" positionY="0" width="0" height="330"/>
+        <element name="IPKProvider" positionX="0" positionY="0" width="0" height="315"/>
         <element name="IPKQueryModel" positionX="160" positionY="192" width="128" height="165"/>
         <element name="IPKReview" positionX="160" positionY="192" width="128" height="315"/>
-        <element name="IPKUser" positionX="0" positionY="0" width="0" height="540"/>
+        <element name="IPKUser" positionX="0" positionY="0" width="0" height="570"/>
     </elements>
 </model>

@@ -97,6 +97,33 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
+    [[IPKHTTPClient sharedClient] getFavoritePagesForUserWithId:remoteIDString success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        for (NSDictionary * teamDict in [responseObject objectForKey:@"team"]) {
+            STAssertTrue([[teamDict objectForKey:@"is_favorite"] boolValue], @"All favorite pages should have their 'is_favorite' property set as such");
+        }
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        STAssertTrue(NO, [error debugDescription]);        
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+    
+    finished = NO;
+    [[IPKHTTPClient sharedClient] getFollowingPagesForUserWithId:remoteIDString success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        for (NSDictionary * teamDict in [responseObject objectForKey:@"teams"]) {
+            STAssertFalse([[teamDict objectForKey:@"user_id"] isEqualToNumber:[IPKUser currentUser].id], @"following pages should not have been created by the user requesting the pages %@", teamDict);
+        }
+
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        STAssertTrue(NO, [error debugDescription]);        
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+    
+    finished = NO;
     [[IPKHTTPClient sharedClient] getFollowersForUserWithId:remoteIDString success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         finished = YES;
@@ -148,7 +175,6 @@
 -(void)testUserActions{
     __block BOOL finished = NO;
     NSString * pageID = [NSString stringWithFormat:@"%d", 1];
-    
     [[IPKHTTPClient sharedClient] followPageWithId:pageID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after following page");
@@ -233,9 +259,10 @@
 -(void)testPageActions{
     
     __block BOOL finished = NO;
-    NSString * pageID = [NSString stringWithFormat:@"%d", 39];
+    NSString * otherUsersPageID = [NSString stringWithFormat:@"%d", 45];
+    NSString * myPageID = [NSString stringWithFormat:@"%d", 40];
     NSString * providerID = [NSString stringWithFormat:@"%d", 1];
-    [[IPKHTTPClient sharedClient] getProvidersForPageWithId:pageID success:^(AFJSONRequestOperation *operation, id responseObject){
+    [[IPKHTTPClient sharedClient] getProvidersForPageWithId:myPageID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         STAssertTrue([[[responseObject allKeys] objectAtIndex:0] isEqualToString: @"providers"], @"Server should respond with list of providers");
         STAssertTrue([[responseObject objectForKey:@"providers"] isKindOfClass: [NSArray class]], @"Server should provide an array of providers.");
@@ -247,7 +274,7 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
-    [[IPKHTTPClient sharedClient] getFollowersForPageWithId:pageID success:^(AFJSONRequestOperation *operation, id responseObject){
+    [[IPKHTTPClient sharedClient] getFollowersForPageWithId:myPageID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         STAssertTrue([[[responseObject allKeys] objectAtIndex:0] isEqualToString:@"followers" ], @"Server should respond with list of followers");
         STAssertTrue([[responseObject objectForKey:@"followers"] isKindOfClass:[NSArray class]], @"Server should respond with array of followers");
@@ -259,7 +286,7 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
-    [[IPKHTTPClient sharedClient] addProvidersToPageWithId:pageID providerId:providerID success:^(AFJSONRequestOperation *operation, id responseObject){
+    [[IPKHTTPClient sharedClient] addProvidersToPageWithId:myPageID providerId:providerID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after adding provider to page");
         
@@ -271,7 +298,7 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
-    [[IPKHTTPClient sharedClient] addProvidersToPageWithId:pageID providerId:providerID scoopText:@"scoop" success:^(AFJSONRequestOperation *operation, id responseObject){
+    [[IPKHTTPClient sharedClient] addProvidersToPageWithId:myPageID providerId:providerID scoopText:@"scoop" success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after adding provider to page");
         finished = YES;
@@ -282,7 +309,7 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
-    [[IPKHTTPClient sharedClient] removeProvidersFromPageWithId:pageID providerId:providerID success:^(AFJSONRequestOperation *operation, id responseObject){
+    [[IPKHTTPClient sharedClient] removeProvidersFromPageWithId:myPageID providerId:providerID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after removing provider from page");
         
@@ -294,7 +321,7 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
-    [[IPKHTTPClient sharedClient] favoritePageWithId:pageID success:^(AFJSONRequestOperation *operation, id responseObject){
+    [[IPKHTTPClient sharedClient] favoritePageWithId:otherUsersPageID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after favorite-ing a page");
         
@@ -306,7 +333,7 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
 
     finished = NO;
-    [[IPKHTTPClient sharedClient] unfavoritePageWithId:pageID success:^(AFJSONRequestOperation *operation, id responseObject){
+    [[IPKHTTPClient sharedClient] unfavoritePageWithId:otherUsersPageID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after removing provider from page");
         
