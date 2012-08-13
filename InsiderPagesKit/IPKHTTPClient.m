@@ -680,34 +680,16 @@ static BOOL __developmentMode = NO;
 
 
 #pragma mark - Activities
-- (void)getMyActivititesOfType:(enum IPKTrackableType)type currentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
-    __block NSString *urlString = nil;
-    
-    switch (type) {
-        case IPKTrackableTypeAll:
-            urlString = @"activities";
-            break;
-        case IPKTrackableTypeProvider:
-            urlString = @"provider_activities";
-            break;
-        case IPKTrackableTypeReview:
-            urlString = @"review_activities";
-            break;
-        case IPKTrackableTypeTeam:
-            urlString = @"team_activities";
-            break;
-        case IPKTrackableTypeUser:
-            urlString = @"user_activities";
-            break;
-            
-        default:
-            break;
-    }
-    
-    [self getPath:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+- (void)getActivititesOfType:(enum IPKTrackableType)type includeFollowing:(BOOL)shouldIncludeFollowing currentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @(type), @"type",
+                            @(shouldIncludeFollowing), @"following",
+                            nil];
+
+    [self getPath:@"activities" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
         [context performBlock:^{
-            for (NSDictionary* activityDictionary in [responseObject objectForKey:urlString]) {
+            for (NSDictionary* activityDictionary in [responseObject objectForKey:@"activities"]) {
                 IPKActivity * activity = [IPKActivity objectWithDictionary:activityDictionary];
                 [activity save];
             }

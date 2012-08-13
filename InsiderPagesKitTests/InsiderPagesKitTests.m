@@ -101,6 +101,7 @@
         NSLog(@"%@", responseObject);
         for (NSDictionary * teamDict in [responseObject objectForKey:@"team"]) {
             STAssertTrue([[teamDict objectForKey:@"is_favorite"] boolValue], @"All favorite pages should have their 'is_favorite' property set as such");
+            STAssertFalse([[teamDict objectForKey:@"user_id"] isEqualToNumber:[IPKUser currentUser].id], @"following pages should not have been created by the user requesting the pages %@", teamDict);
         }
         finished = YES;
     } failure:^(AFJSONRequestOperation *operation, NSError *error){
@@ -414,7 +415,21 @@
 
     for (int i = 0; i <= 4; i++) {
         enum IPKActivityType type = i;
-        [[IPKHTTPClient sharedClient] getMyActivititesOfType:(enum IPKActivityType)type currentPage:@1 perPage:@10 success:^(AFJSONRequestOperation *operation, id responseObject){
+        [[IPKHTTPClient sharedClient] getActivititesOfType:(enum IPKActivityType)type includeFollowing:YES currentPage:@1 perPage:@10 success:^(AFJSONRequestOperation *operation, id responseObject){
+            NSLog(@"%@", responseObject);
+            finished = YES;
+        } failure:^(AFJSONRequestOperation *operation, NSError *error){
+            STAssertTrue(NO, [error debugDescription]);
+            finished = YES;
+        }];
+        [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+        
+        finished = NO;
+    }
+    
+    for (int i = 0; i <= 4; i++) {
+        enum IPKActivityType type = i;
+        [[IPKHTTPClient sharedClient] getActivititesOfType:(enum IPKActivityType)type includeFollowing:NO currentPage:@1 perPage:@10 success:^(AFJSONRequestOperation *operation, id responseObject){
             NSLog(@"%@", responseObject);
             finished = YES;
         } failure:^(AFJSONRequestOperation *operation, NSError *error){

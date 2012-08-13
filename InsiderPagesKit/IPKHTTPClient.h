@@ -86,7 +86,7 @@ typedef void (^IPKHTTPClientFailure)(AFJSONRequestOperation *operation, NSError 
 
 
 #pragma mark - Activities
-- (void)getMyActivititesOfType:(enum IPKTrackableType)type currentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+- (void)getActivititesOfType:(enum IPKTrackableType)type includeFollowing:(BOOL)shouldIncludeFollowing currentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 #pragma mark - Notifications
 - (void)getNotificationsWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
