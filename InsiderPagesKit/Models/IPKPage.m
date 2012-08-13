@@ -67,12 +67,12 @@
     self.providers = [dictionary safeObjectForKey:@"providers"];
     self.owner = [dictionary safeObjectForKey:@"owner"];
     self.followers = [dictionary safeObjectForKey:@"followers"];
-//    if ([dictionary safeObjectForKey:@"is_favorite"]) {
-//        self.is_favorite = [dictionary safeObjectForKey:@"is_favorite"];
-//    }
-//    else {
-//        self.is_favorite = [NSNumber numberWithInt:0];
-//    }
+    if ([dictionary safeObjectForKey:@"is_favorite"]) {
+        self.is_favorite = [dictionary safeObjectForKey:@"is_favorite"];
+    }
+    else {
+        self.is_favorite = [NSNumber numberWithInt:0];
+    }
 }
 
 @end
