@@ -248,7 +248,7 @@ static BOOL __developmentMode = NO;
         [context performBlock:^{
             for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
                 IPKPage * page = nil;
-                page = [IPKPage objectWithRemoteID:[pageDictionary objectForKey:@"id"]];
+                page = [IPKPage objectWithDictionary:pageDictionary];
                 [page save];
             }
         }];
@@ -271,7 +271,7 @@ static BOOL __developmentMode = NO;
         [context performBlock:^{
             for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
                 IPKPage * page = nil;
-                page = [IPKPage objectWithRemoteID:[pageDictionary objectForKey:@"id"]];
+                page = [IPKPage objectWithDictionary:pageDictionary];
                 [page save];
             }
         }];
@@ -685,7 +685,7 @@ static BOOL __developmentMode = NO;
                             @(type), @"type",
                             @(shouldIncludeFollowing), @"following",
                             nil];
-
+    
     [self getPath:@"activities" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
         [context performBlock:^{
