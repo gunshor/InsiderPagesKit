@@ -248,15 +248,8 @@ static BOOL __developmentMode = NO;
         [context performBlock:^{
             for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
                 IPKPage * page = nil;
-                page = [IPKPage existingObjectWithRemoteID:[pageDictionary objectForKey:@"id"]];
-                if (page){
-                    [page unpackDictionary:pageDictionary];
-                    [page save];
-                }
-                else{
-                    page = [IPKPage objectWithDictionary:pageDictionary];
-                    [page save];
-                }
+                page = [IPKPage objectWithRemoteID:[pageDictionary objectForKey:@"id"]];
+                [page save];
             }
         }];
         
