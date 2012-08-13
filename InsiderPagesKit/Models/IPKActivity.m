@@ -43,6 +43,7 @@
         [self.page save];
     }else{
         self.page = [IPKPage objectWithRemoteID:self.team_id];
+        self.page.name = @"";
         [self.page save];
     }
     self.trackable_id = [dictionary safeObjectForKey:@"trackable_id"];
