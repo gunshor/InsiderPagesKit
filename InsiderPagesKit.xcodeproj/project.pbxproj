@@ -1143,7 +1143,7 @@
 					"\"$(SRCROOT)/InsiderPagesKit/Models\"/**",
 				);
 				INFOPLIST_FILE = "InsiderPagesKitTests/InsiderPagesKitTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/InsiderPagesKit-dkuasncwgpvjswdramitdfdfarzr/Build/Products/Debug-iphoneos\"";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = octest;
@@ -1166,7 +1166,7 @@
 					"\"$(SRCROOT)/InsiderPagesKit/Models\"/**",
 				);
 				INFOPLIST_FILE = "InsiderPagesKitTests/InsiderPagesKitTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/InsiderPagesKit-dkuasncwgpvjswdramitdfdfarzr/Build/Products/Debug-iphoneos\"";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = octest;
