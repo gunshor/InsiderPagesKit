@@ -41,7 +41,7 @@
         <attribute name="name" attributeType="String" defaultValueString=" " syncable="YES"/>
         <attribute name="privacy_setting" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="section_header" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="section_header" attributeType="String" defaultValueString="Following" syncable="YES"/>
         <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="sort" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
