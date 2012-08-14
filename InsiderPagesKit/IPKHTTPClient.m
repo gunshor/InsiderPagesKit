@@ -656,6 +656,8 @@ static BOOL __developmentMode = NO;
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             @(type), @"type",
                             @(shouldIncludeFollowing), @"following",
+                            perPage, @"perPage",
+                            currentPage, @"currentPage",
                             nil];
     
     [self getPath:@"activities" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -679,7 +681,11 @@ static BOOL __developmentMode = NO;
 
 #pragma mark - Notifications
 - (void)getNotificationsWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
-    [self getPath:@"notifications" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            perPage, @"perPage",
+                            currentPage, @"currentPage",
+                            nil];
+    [self getPath:@"notifications" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
         [context performBlock:^{
             if ([[responseObject objectForKey:@"notifications"] isKindOfClass:[NSArray class]]) {
@@ -702,7 +708,11 @@ static BOOL __developmentMode = NO;
 
 #pragma mark - Scoops
 - (void)getMyScoopsWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
-    [self getPath:@"plugs" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            perPage, @"perPage",
+                            currentPage, @"currentPage",
+                            nil];
+    [self getPath:@"plugs" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
         [context performBlock:^{
             for (NSDictionary* plugDictionary in [responseObject objectForKey:@"plugs"]) {
