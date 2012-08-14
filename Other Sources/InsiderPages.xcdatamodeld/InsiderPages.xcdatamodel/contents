@@ -38,7 +38,7 @@
         <attribute name="image_updated_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="is_favorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="is_following" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="name" attributeType="String" defaultValueString="@&quot;&quot;" syncable="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString=" " syncable="YES"/>
         <attribute name="privacy_setting" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="section_header" optional="YES" attributeType="String" syncable="YES"/>
@@ -143,7 +143,7 @@
     <elements>
         <element name="IPKActivity" positionX="0" positionY="0" width="0" height="225"/>
         <element name="IPKNotification" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKPage" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="IPKPage" positionX="0" positionY="0" width="0" height="360"/>
         <element name="IPKProvider" positionX="0" positionY="0" width="0" height="315"/>
         <element name="IPKQueryModel" positionX="160" positionY="192" width="128" height="165"/>
         <element name="IPKReview" positionX="160" positionY="192" width="128" height="315"/>
