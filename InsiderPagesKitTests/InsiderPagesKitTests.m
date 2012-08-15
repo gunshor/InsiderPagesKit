@@ -175,10 +175,10 @@
 
 -(void)testUserActions{
     __block BOOL finished = NO;
-    NSString * pageID = [NSString stringWithFormat:@"%d", 1];
+    NSString * pageID = [NSString stringWithFormat:@"%d", 25];
     [[IPKHTTPClient sharedClient] followPageWithId:pageID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
-        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after following page");
+        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after following page, %@", responseObject);
         finished = YES;
     } failure:^(AFJSONRequestOperation *operation, NSError *error){
         STAssertTrue(NO, [error debugDescription]);        
@@ -189,7 +189,7 @@
     finished = NO;
     [[IPKHTTPClient sharedClient] unfollowPageWithId:pageID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
-        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after unfollowing page");
+        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after unfollowing page, %@", responseObject);
         finished = YES;
     } failure:^(AFJSONRequestOperation *operation, NSError *error){
         STAssertTrue(NO, [error debugDescription]);        
@@ -199,14 +199,14 @@
     
     
     finished = NO;
-    NSString * userID = [NSString stringWithFormat:@"%d", 1];
+    NSString * userID = [NSString stringWithFormat:@"%d", 8];
     [[IPKHTTPClient sharedClient] unfollowUserWithId:userID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
-        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after following user");
+        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after following user, %@", responseObject);
         finished = YES;
     } failure:^(AFJSONRequestOperation *operation, NSError *error){
         NSLog(@"Fail %@, %@, %@", error, operation.response, operation.request.URL);
-        
+        STAssertTrue(NO, [error debugDescription]);  
         finished = YES;
     }];
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
@@ -214,11 +214,11 @@
     finished = NO;
     [[IPKHTTPClient sharedClient] followUserWithId:userID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
-        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after following user");
+        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after following user, %@", responseObject);
         finished = YES;
     } failure:^(AFJSONRequestOperation *operation, NSError *error){
         NSLog(@"Fail %@, %@, %@", error, operation.response, operation.request.URL);
-        
+        STAssertTrue(NO, [error debugDescription]);  
         finished = YES;
     }];
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
@@ -226,7 +226,7 @@
 
 -(void)testPublicUserAccess{
     __block BOOL finished = NO;
-    NSString * userID = [NSString stringWithFormat:@"%d", 1];
+    NSString * userID = [NSString stringWithFormat:@"%@", [IPKUser currentUser].id];
     [[IPKHTTPClient sharedClient] getUserInfoWithId:userID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         finished = YES;
@@ -458,18 +458,19 @@
 }
 
 -(void)testPlugs{
-    __block BOOL finished = NO;
+//  Waiting on plugs TODO
+//    __block BOOL finished = NO;
     
-    [[IPKHTTPClient sharedClient] getMyScoopsWithCurrentPage:@1 perPage:@10 success:^(AFJSONRequestOperation *operation, id responseObject){
-        NSLog(@"%@", responseObject);
-        finished = YES;
-    } failure:^(AFJSONRequestOperation *operation, NSError *error){
-        STAssertTrue(NO, [error debugDescription]);
-        finished = YES;
-    }];
-    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
-    
-    finished = NO;
+//    [[IPKHTTPClient sharedClient] getMyScoopsWithCurrentPage:@1 perPage:@10 success:^(AFJSONRequestOperation *operation, id responseObject){
+//        NSLog(@"%@", responseObject);
+//        finished = YES;
+//    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+//        STAssertTrue(NO, [error debugDescription]);
+//        finished = YES;
+//    }];
+//    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+//    
+//    finished = NO;
 }
 
 - (void)tearDown

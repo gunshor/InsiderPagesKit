@@ -178,7 +178,7 @@ static BOOL __developmentMode = NO;
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
         [context performBlock:^{
-            IPKUser * userToFollow = [IPKUser existingObjectWithRemoteID:@([userId integerValue])];
+            IPKUser * userToFollow = [IPKUser objectWithRemoteID:@([userId integerValue])];
             [[IPKUser currentUser] addFollowedUsersObject:userToFollow];
             [[IPKUser currentUser] save];
         }];
@@ -480,8 +480,8 @@ static BOOL __developmentMode = NO;
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
         [context performBlock:^{
-            IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
-            IPKProvider * providerToAdd = [IPKProvider existingObjectWithRemoteID:@([providerId intValue])];
+            IPKPage * page = [IPKPage objectWithRemoteID:@([pageId intValue])];
+            IPKProvider * providerToAdd = [IPKProvider objectWithRemoteID:@([providerId intValue])];
             [page addProvidersObject:providerToAdd];
             [page save];
         }];
