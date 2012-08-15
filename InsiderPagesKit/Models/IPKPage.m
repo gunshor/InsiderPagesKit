@@ -92,6 +92,8 @@
     }
 }
 
+#pragma mark - Apple Bug NSMutableSet issue
+// added this based on advice found here: http://stackoverflow.com/questions/7385439/exception-thrown-in-nsorderedset-generated-accessors
 static NSString *const kItemsKey = @"providers";
 
 - (void)insertObject:(IPKProvider *)value inProvidersAtIndex:(NSUInteger)idx {
