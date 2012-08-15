@@ -15,7 +15,7 @@ NSString *const kIPKAPIVersion = @"v1";
 NSString *const kIPKPusherAPIKey = @"675f10a650f18b4eb0a8";
 
 NSString *const kIPKDevelopmentAPIScheme = @"http";
-NSString *const kIPKDevelopmentAPIHost = @"172.26.85.46/api";
+NSString *const kIPKDevelopmentAPIHost = @"local.insiderpages.com/api";
 NSString *const kIPKDevelopmentAPIVersion = @"v1";
 NSString *const kIPKDevelopmentPusherAPIKey = @"a02cb793e9d5fb919023";
 
