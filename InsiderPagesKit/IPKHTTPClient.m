@@ -656,8 +656,8 @@ static BOOL __developmentMode = NO;
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             @(type), @"type",
                             @(shouldIncludeFollowing), @"following",
-                            perPage, @"perPage",
-                            currentPage, @"currentPage",
+                            perPage, @"per_page",
+                            currentPage, @"page",
                             nil];
     
     [self getPath:@"activities" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -682,8 +682,8 @@ static BOOL __developmentMode = NO;
 #pragma mark - Notifications
 - (void)getNotificationsWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            perPage, @"perPage",
-                            currentPage, @"currentPage",
+                            perPage, @"per_page",
+                            currentPage, @"page",
                             nil];
     [self getPath:@"notifications" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
@@ -709,8 +709,8 @@ static BOOL __developmentMode = NO;
 #pragma mark - Scoops
 - (void)getMyScoopsWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            perPage, @"perPage",
-                            currentPage, @"currentPage",
+                            perPage, @"per_page",
+                            currentPage, @"page",
                             nil];
     [self getPath:@"plugs" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __weak NSManagedObjectContext *context = [IPKUser mainContext];
