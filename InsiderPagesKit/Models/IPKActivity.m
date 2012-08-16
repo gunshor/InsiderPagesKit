@@ -11,6 +11,7 @@
 #import "IPKUser.h"
 #import "IPKProvider.h"
 #import "IPKReview.h"
+#import "RHManagedObjectContextManager.h"
 #import "NSDictionary+InsiderPagesKit.h"
 
 @implementation IPKActivity
@@ -43,7 +44,7 @@
         self.page = [IPKPage objectWithDictionary:[dictionary safeObjectForKey:@"team"]];
         [self.page save];
     }else{
-        self.page = [IPKPage objectWithRemoteID:self.team_id];
+        self.page = [IPKPage objectWithRemoteID:self.team_id context:[[RHManagedObjectContextManager sharedInstance] managedObjectContext]];
         [self.page save];
     }
     self.trackable_id = [dictionary safeObjectForKey:@"trackable_id"];

@@ -180,12 +180,12 @@ static IPKUser *__currentUser = nil;
                             nil];
     
     [[IPKHTTPClient sharedClient] getPath:@"users" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        __weak NSManagedObjectContext *context = [IPKUser mainContext];
-        [context performBlock:^{
+//        __weak NSManagedObjectContext *context = [IPKUser mainContext];
+//        [context performBlock:^{
             IPKUser * user = [IPKUser existingObjectWithRemoteID:self.remoteID];
             [user unpackDictionary:responseObject];
             [user save];
-        }];
+//        }];
         
         if (success) {
             success();
