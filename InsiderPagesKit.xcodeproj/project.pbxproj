@@ -197,6 +197,13 @@
 			remoteGlobalIDString = B244408415BE53DC00D4D4CA;
 			remoteInfo = InsiderPagesKit;
 		};
+		FDD954B415DF14A700F38150 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD764FD715C9D52E00A3D10A /* Bully.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B2EB6BBC15DB69FC0035AD92;
+			remoteInfo = BullyMacLibrary;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -535,6 +542,7 @@
 			children = (
 				FD7655EE15C9D53400A3D10A /* libBully.a */,
 				FD7655F015C9D53400A3D10A /* Bully.framework */,
+				FDD954B515DF14A700F38150 /* libBullyMacLibrary.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -834,6 +842,13 @@
 			fileType = wrapper.cfbundle;
 			path = SSKeychainTestsARC.octest;
 			remoteRef = FD76560A15C9D53400A3D10A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FDD954B515DF14A700F38150 /* libBullyMacLibrary.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBullyMacLibrary.a;
+			remoteRef = FDD954B415DF14A700F38150 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

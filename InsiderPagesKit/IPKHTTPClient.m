@@ -71,7 +71,7 @@ static BOOL __developmentMode = NO;
 		}
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_userChanged:) name:kIPKCurrentUserChangedNotificationName object:nil];
-		_callbackQueue = dispatch_queue_create("com.nothingmagical.cheddar.network-callback-queue", 0);
+		_callbackQueue = dispatch_queue_create("com.insiderpages.ios.network-callback-queue", 0);
 	}
     [self setDefaultHeader:@"User-Agent" value:@"InsiderPages/1.0"];
 	return self;
@@ -119,7 +119,6 @@ static BOOL __developmentMode = NO;
             NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
             user.accessToken = [cookie value];
             [user save];
-            [self changeUser:user];
             [IPKUser setCurrentUser:user];
 //        }];
         
@@ -135,7 +134,6 @@ static BOOL __developmentMode = NO;
 
 - (void)updateCurrentUserWithSuccess:(void (^)(IPKUser*))success failure:(IPKHTTPClientFailure)failure{    
     [[IPKUser currentUser] updateWithSuccess:^(){
-        [self changeUser:[IPKUser currentUser]];
         [IPKUser setCurrentUser:[IPKUser currentUser]];
         
         if (success) {
@@ -174,13 +172,17 @@ static BOOL __developmentMode = NO;
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             userId, @"follow_id",
                             nil];
-    NSString * urlString = [NSString stringWithFormat:@"users/%@/following", [IPKUser currentUser].id];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString * urlString = [NSString stringWithFormat:@"users/%@/following", [IPKUser currentUser].id ? [IPKUser currentUser].id : [userDefaults objectForKey:@"IPKUserID"]];
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
 //        [context performBlock:^{
+        if (operation.response.statusCode != 403) {
             IPKUser * userToFollow = [IPKUser objectWithRemoteID:@([userId integerValue])];
             [[IPKUser currentUser] addFollowedUsersObject:userToFollow];
             [[IPKUser currentUser] save];
+        }
+
 //        }];
         
         if (success) {
@@ -224,7 +226,7 @@ static BOOL __developmentMode = NO;
     [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
 //        [context performBlock:^{
-            IPKUser * userToUnfollow = [IPKUser existingObjectWithRemoteID:@([userId integerValue])];
+            IPKUser * userToUnfollow = [IPKUser objectWithRemoteID:@([userId integerValue])];
             [[IPKUser currentUser] removeFollowedUsersObject:userToUnfollow];
             [[IPKUser currentUser] save];
 //        }];
@@ -426,17 +428,8 @@ static BOOL __developmentMode = NO;
 //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
 //        [context performBlock:^{
             for (NSDictionary * providerDictionary in [responseObject objectForKey:@"providers"]) {
-                IPKProvider * provider = [IPKProvider existingObjectWithDictionary:providerDictionary];
-                if (provider) {
-                    [provider unpackDictionary:providerDictionary];
-                    [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId intValue])]];
-                    [provider save];
-                }
-                else{
-                    provider = [IPKProvider objectWithDictionary:providerDictionary];
-                    [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId intValue])]];
-                    [provider save];
-                }
+                IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
+                [provider save];
             }
 //        }];
         
