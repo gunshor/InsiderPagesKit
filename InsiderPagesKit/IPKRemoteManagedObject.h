@@ -18,6 +18,15 @@
 - (void)update;
 - (void)updateWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure;
 
+- (void)deleteLocalOnly;
+- (void)deleteLocalOnlyWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure;
+
+- (void)deleteRemote;
+- (void)deleteRemoteWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure;
+
++ (void)deleteAllLocal;
++ (void)deleteAllLocal:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure;
+
 + (void)sortWithObjects:(NSArray *)objects;
 + (void)sortWithObjects:(NSArray *)objects success:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure;
 
