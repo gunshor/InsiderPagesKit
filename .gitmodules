@@ -16,3 +16,6 @@
 [submodule "Vendor/MagicalRecord"]
 	path = Vendor/MagicalRecord
 	url = git://github.com/magicalpanda/MagicalRecord.git
+[submodule "InsiderPagesKit/Vendor/MagicalRecord"]
+	path = InsiderPagesKit/Vendor/MagicalRecord
+	url = git://github.com/magicalpanda/MagicalRecord.git
