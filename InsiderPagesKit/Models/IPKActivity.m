@@ -42,28 +42,22 @@
     self.team_id = [dictionary safeObjectForKey:@"team_id"];
     if ([dictionary safeObjectForKey:@"team"]) {
         self.page = [IPKPage objectWithDictionary:[dictionary safeObjectForKey:@"team"]];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
     }else if(self.team_id != nil){
         self.page = [IPKPage objectWithRemoteID:self.team_id];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
     }
     self.trackable_id = [dictionary safeObjectForKey:@"trackable_id"];
     self.trackable_type = [dictionary safeObjectForKey:@"trackable_type"];
     self.user_id = [dictionary safeObjectForKey:@"user_id"];
     if ([dictionary safeObjectForKey:@"user"]) {
         self.user = [IPKUser objectWithDictionary:[dictionary safeObjectForKey:@"user"]];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
     }else{
         self.user = [IPKUser objectWithRemoteID:self.user_id];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
     }
     if ([dictionary safeObjectForKey:@"trackable"] && [self.trackable_type isEqualToString:@"Provider"]) {
         self.provider = [IPKProvider objectWithDictionary:[dictionary safeObjectForKey:@"trackable"]];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
     }
     if ([dictionary safeObjectForKey:@"trackable"] && [self.trackable_type isEqualToString:@"Review"]) {
         self.review = [IPKReview objectWithDictionary:[dictionary safeObjectForKey:@"trackable"]];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
     }
     self.visibility = [dictionary safeObjectForKey:@"visibility"];
 }
