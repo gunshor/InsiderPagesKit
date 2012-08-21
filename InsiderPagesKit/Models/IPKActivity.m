@@ -154,18 +154,4 @@
     return actionText;
 }
 
-+(void)deleteAllLocal{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	fetchRequest.entity = [self entityWithContext:context];
-    NSArray *results = [context executeFetchRequest:fetchRequest error:nil];
-	
-	// If the object is not found, return nil
-	if (results.count == 0) {
-		return;
-	}
-    for (IPKActivity * activity in results) {
-        [[IPKActivity managedObjectContext] deleteObject:activity];
-    }
-}
-
 @end

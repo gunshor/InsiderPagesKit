@@ -7,6 +7,7 @@
 //
 
 #import "SSDataKit.h"
+#import "SSRemoteManagedObject.h"
 
 @class AFJSONRequestOperation;
 
