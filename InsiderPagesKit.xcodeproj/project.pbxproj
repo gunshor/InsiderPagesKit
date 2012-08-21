@@ -1352,6 +1352,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/InsiderPagesKit/Vendor/Bully\"",
 					"\"$(SRCROOT)/InsiderPagesKit/Vendor/SSDataKit\"",
+					"$(SRCROOT)/InsiderPagesKit/Vendor/MagicalRecord/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1376,6 +1377,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/InsiderPagesKit/Vendor/Bully\"",
 					"\"$(SRCROOT)/InsiderPagesKit/Vendor/SSDataKit\"",
+					"$(SRCROOT)/InsiderPagesKit/Vendor/MagicalRecord/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
