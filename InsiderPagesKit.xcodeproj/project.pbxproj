@@ -31,9 +31,6 @@
 		FD764C3E15C9CADE00A3D10A /* IPKHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9215C9CADE00A3D10A /* IPKHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD764C3F15C9CADE00A3D10A /* IPKHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9315C9CADE00A3D10A /* IPKHTTPClient.m */; };
 		FD764C4015C9CADE00A3D10A /* IPKHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9315C9CADE00A3D10A /* IPKHTTPClient.m */; };
-		FD764C4415C9CADE00A3D10A /* IPKPushController.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9615C9CADE00A3D10A /* IPKPushController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD764C4515C9CADE00A3D10A /* IPKPushController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9715C9CADE00A3D10A /* IPKPushController.m */; };
-		FD764C4615C9CADE00A3D10A /* IPKPushController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9715C9CADE00A3D10A /* IPKPushController.m */; };
 		FD764C4715C9CADE00A3D10A /* IPKRemoteManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9815C9CADE00A3D10A /* IPKRemoteManagedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD764C4815C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9915C9CADE00A3D10A /* IPKRemoteManagedObject.m */; };
 		FD764C4915C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9915C9CADE00A3D10A /* IPKRemoteManagedObject.m */; };
@@ -99,7 +96,6 @@
 		FD7655E115C9D53400A3D10A /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7654A015C9D53200A3D10A /* SSKeychain.m */; };
 		FD7655E215C9D53400A3D10A /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7654A015C9D53200A3D10A /* SSKeychain.m */; };
 		FD76560E15C9D5D300A3D10A /* Bully.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7655F015C9D53400A3D10A /* Bully.framework */; };
-		FD76561115C9D65C00A3D10A /* libBully.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7655EE15C9D53400A3D10A /* libBully.a */; };
 		FD76561215C9D6B600A3D10A /* SSFilterableFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548C15C9D53200A3D10A /* SSFilterableFetchedResultsController.m */; };
 		FD76561315C9D6B600A3D10A /* SSFilteredResultsFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548E15C9D53200A3D10A /* SSFilteredResultsFilter.m */; };
 		FD76561415C9D6B600A3D10A /* SSFilteredResultsSection.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76549015C9D53200A3D10A /* SSFilteredResultsSection.m */; };
@@ -108,23 +104,14 @@
 		FD76561E15C9D6FF00A3D10A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76561D15C9D6FF00A3D10A /* SenTestingKit.framework */; };
 		FD76562115C9D6FF00A3D10A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B244408815BE53DC00D4D4CA /* Foundation.framework */; };
 		FD76562A15C9D70000A3D10A /* InsiderPagesKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76562915C9D70000A3D10A /* InsiderPagesKitTests.m */; };
-		FD76568115C9E35000A3D10A /* IPKDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9115C9CADE00A3D10A /* IPKDefines.m */; };
 		FD76568B15C9ED1100A3D10A /* libInsiderPagesKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B244408515BE53DC00D4D4CA /* libInsiderPagesKit.a */; };
 		FD76568C15C9F0C000A3D10A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76568215C9E80100A3D10A /* CoreData.framework */; };
-		FD76568E15C9F0CC00A3D10A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76568D15C9F0CC00A3D10A /* UIKit.framework */; };
-		FD76569015C9F0D200A3D10A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76568F15C9F0D100A3D10A /* Security.framework */; };
 		FD7656A015CA053100A3D10A /* IPKQueryModel.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76569E15CA052F00A3D10A /* IPKQueryModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD7656A115CA053100A3D10A /* IPKQueryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76569F15CA053000A3D10A /* IPKQueryModel.m */; };
 		FD7656A215CA053100A3D10A /* IPKQueryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76569F15CA053000A3D10A /* IPKQueryModel.m */; };
-		FD7656B015CAF2B500A3D10A /* IPKList.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656A415CAF2B500A3D10A /* IPKList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7656B115CAF2B500A3D10A /* IPKList.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656A515CAF2B500A3D10A /* IPKList.m */; };
-		FD7656B215CAF2B500A3D10A /* IPKList.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656A515CAF2B500A3D10A /* IPKList.m */; };
 		FD7656B915CAF2B500A3D10A /* IPKTag.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656AA15CAF2B500A3D10A /* IPKTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD7656BA15CAF2B500A3D10A /* IPKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656AB15CAF2B500A3D10A /* IPKTag.m */; };
 		FD7656BB15CAF2B500A3D10A /* IPKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656AB15CAF2B500A3D10A /* IPKTag.m */; };
-		FD7656BC15CAF2B500A3D10A /* IPKTask.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656AC15CAF2B500A3D10A /* IPKTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7656BD15CAF2B500A3D10A /* IPKTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656AD15CAF2B500A3D10A /* IPKTask.m */; };
-		FD7656BE15CAF2B500A3D10A /* IPKTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656AD15CAF2B500A3D10A /* IPKTask.m */; };
 		FD7656BF15CAF2B500A3D10A /* IPKUser.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7656AE15CAF2B500A3D10A /* IPKUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD7656C015CAF2B500A3D10A /* IPKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656AF15CAF2B500A3D10A /* IPKUser.m */; };
 		FD7656C115CAF2B500A3D10A /* IPKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7656AF15CAF2B500A3D10A /* IPKUser.m */; };
@@ -154,10 +141,6 @@
 		FDD9553C15E3EBB100F38150 /* NSEntityDescription+MagicalDataImport.h in Headers */ = {isa = PBXBuildFile; fileRef = FDD9550115E3EBB100F38150 /* NSEntityDescription+MagicalDataImport.h */; };
 		FDD9553D15E3EBB100F38150 /* NSEntityDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD9550215E3EBB100F38150 /* NSEntityDescription+MagicalDataImport.m */; };
 		FDD9553E15E3EBB100F38150 /* NSEntityDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD9550215E3EBB100F38150 /* NSEntityDescription+MagicalDataImport.m */; };
-		FDD9553F15E3EBB100F38150 /* NSNumber+MagicalDataImport.h in Headers */ = {isa = PBXBuildFile; fileRef = FDD9550315E3EBB100F38150 /* NSNumber+MagicalDataImport.h */; };
-		FDD9554015E3EBB100F38150 /* NSNumber+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD9550415E3EBB100F38150 /* NSNumber+MagicalDataImport.m */; };
-		FDD9554115E3EBB100F38150 /* NSNumber+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD9550415E3EBB100F38150 /* NSNumber+MagicalDataImport.m */; };
-		FDD9554215E3EBB100F38150 /* NSObject+MagicalDataImport.h in Headers */ = {isa = PBXBuildFile; fileRef = FDD9550515E3EBB100F38150 /* NSObject+MagicalDataImport.h */; };
 		FDD9554315E3EBB100F38150 /* NSObject+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD9550615E3EBB100F38150 /* NSObject+MagicalDataImport.m */; };
 		FDD9554415E3EBB100F38150 /* NSObject+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD9550615E3EBB100F38150 /* NSObject+MagicalDataImport.m */; };
 		FDD9554515E3EBB100F38150 /* NSRelationshipDescription+MagicalDataImport.h in Headers */ = {isa = PBXBuildFile; fileRef = FDD9550715E3EBB100F38150 /* NSRelationshipDescription+MagicalDataImport.h */; };
@@ -225,6 +208,14 @@
 		FDD9558315E3EBB100F38150 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD9553315E3EBB100F38150 /* MagicalRecord.m */; };
 		FDD9558415E3EBB100F38150 /* MagicalRecordShorthand.h in Headers */ = {isa = PBXBuildFile; fileRef = FDD9553415E3EBB100F38150 /* MagicalRecordShorthand.h */; };
 		FDD9558515E3EBB100F38150 /* CoreData+MagicalRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = FDD9553515E3EBB100F38150 /* CoreData+MagicalRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FDD955AF15E3F51200F38150 /* NSNumber+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD9550415E3EBB100F38150 /* NSNumber+MagicalDataImport.m */; };
+		FDD955B015E3F51200F38150 /* NSNumber+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD9550415E3EBB100F38150 /* NSNumber+MagicalDataImport.m */; };
+		FDD955B115E3F51D00F38150 /* NSNumber+MagicalDataImport.h in Headers */ = {isa = PBXBuildFile; fileRef = FDD9550315E3EBB100F38150 /* NSNumber+MagicalDataImport.h */; };
+		FDD955B415E3F9B900F38150 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD955B315E3F9B800F38150 /* UIKit.framework */; };
+		FDD955B915E3FCA500F38150 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD955B815E3FCA400F38150 /* CoreGraphics.framework */; };
+		FDD955BB15E3FCEF00F38150 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD955BA15E3FCEE00F38150 /* CFNetwork.framework */; };
+		FDD955BD15E3FD1100F38150 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD955BC15E3FD1000F38150 /* SystemConfiguration.framework */; };
+		FDD955BE15E3FD5400F38150 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76568F15C9F0D100A3D10A /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -262,13 +253,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = B2FB4872158AF9B20067FB00;
 			remoteInfo = BullyMac;
-		};
-		FD76560F15C9D65800A3D10A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FD764FD715C9D52E00A3D10A /* Bully.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B2587E4A1579E740009D7B44;
-			remoteInfo = Bully;
 		};
 		FD76568915C9ED0C00A3D10A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -391,14 +375,12 @@
 		FD7654A915C9D53200A3D10A /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 		FD76561C15C9D6FF00A3D10A /* InsiderPagesKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsiderPagesKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD76561D15C9D6FF00A3D10A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		FD76561F15C9D6FF00A3D10A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		FD76562415C9D6FF00A3D10A /* InsiderPagesKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InsiderPagesKitTests-Info.plist"; sourceTree = "<group>"; };
 		FD76562615C9D6FF00A3D10A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FD76562815C9D70000A3D10A /* InsiderPagesKitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsiderPagesKitTests.h; sourceTree = "<group>"; };
 		FD76562915C9D70000A3D10A /* InsiderPagesKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsiderPagesKitTests.m; sourceTree = "<group>"; };
 		FD76562B15C9D70000A3D10A /* InsiderPagesKitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InsiderPagesKitTests-Prefix.pch"; sourceTree = "<group>"; };
 		FD76568215C9E80100A3D10A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		FD76568D15C9F0CC00A3D10A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FD76568F15C9F0D100A3D10A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FD76569E15CA052F00A3D10A /* IPKQueryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKQueryModel.h; sourceTree = "<group>"; };
 		FD76569F15CA053000A3D10A /* IPKQueryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKQueryModel.m; sourceTree = "<group>"; };
@@ -477,6 +459,11 @@
 		FDD9553315E3EBB100F38150 /* MagicalRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalRecord.m; sourceTree = "<group>"; };
 		FDD9553415E3EBB100F38150 /* MagicalRecordShorthand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordShorthand.h; sourceTree = "<group>"; };
 		FDD9553515E3EBB100F38150 /* CoreData+MagicalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreData+MagicalRecord.h"; sourceTree = "<group>"; };
+		FDD955B215E3F94F00F38150 /* InsiderPagesKit-Prefix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InsiderPagesKit-Prefix.h"; sourceTree = "<group>"; };
+		FDD955B315E3F9B800F38150 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FDD955B815E3FCA400F38150 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FDD955BA15E3FCEE00F38150 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		FDD955BC15E3FD1000F38150 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,7 +471,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD76561115C9D65C00A3D10A /* libBully.a in Frameworks */,
 				B244408915BE53DC00D4D4CA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,8 +493,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD76569015C9F0D200A3D10A /* Security.framework in Frameworks */,
-				FD76568E15C9F0CC00A3D10A /* UIKit.framework in Frameworks */,
+				FDD955BE15E3FD5400F38150 /* Security.framework in Frameworks */,
+				FDD955BD15E3FD1100F38150 /* SystemConfiguration.framework in Frameworks */,
+				FDD955BB15E3FCEF00F38150 /* CFNetwork.framework in Frameworks */,
+				FDD955B915E3FCA500F38150 /* CoreGraphics.framework in Frameworks */,
+				FDD955B415E3F9B900F38150 /* UIKit.framework in Frameworks */,
 				FD76568C15C9F0C000A3D10A /* CoreData.framework in Frameworks */,
 				FD76568B15C9ED1100A3D10A /* libInsiderPagesKit.a in Frameworks */,
 				FD76561E15C9D6FF00A3D10A /* SenTestingKit.framework in Frameworks */,
@@ -522,8 +511,11 @@
 		B244407A15BE53DC00D4D4CA = {
 			isa = PBXGroup;
 			children = (
+				FDD955BC15E3FD1000F38150 /* SystemConfiguration.framework */,
+				FDD955BA15E3FCEE00F38150 /* CFNetwork.framework */,
+				FDD955B815E3FCA400F38150 /* CoreGraphics.framework */,
+				FDD955B315E3F9B800F38150 /* UIKit.framework */,
 				FD76568F15C9F0D100A3D10A /* Security.framework */,
-				FD76568D15C9F0CC00A3D10A /* UIKit.framework */,
 				FD76568215C9E80100A3D10A /* CoreData.framework */,
 				FD764CE715C9CB1400A3D10A /* Cocoa.framework */,
 				FD764B8F15C9CADE00A3D10A /* InsiderPagesKit */,
@@ -553,7 +545,6 @@
 				B2D8D60115BF808200A61836 /* Security.framework */,
 				B244408815BE53DC00D4D4CA /* Foundation.framework */,
 				FD76561D15C9D6FF00A3D10A /* SenTestingKit.framework */,
-				FD76561F15C9D6FF00A3D10A /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -590,6 +581,7 @@
 			children = (
 				FD764DFD15C9CBBE00A3D10A /* InsiderPagesKitMac-Info.plist */,
 				FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */,
+				FDD955B215E3F94F00F38150 /* InsiderPagesKit-Prefix.h */,
 			);
 			name = "Other Sources";
 			path = "../Other Sources";
@@ -916,7 +908,6 @@
 			files = (
 				FD764C3B15C9CADE00A3D10A /* IPKDefines.h in Headers */,
 				FD764C3E15C9CADE00A3D10A /* IPKHTTPClient.h in Headers */,
-				FD764C4415C9CADE00A3D10A /* IPKPushController.h in Headers */,
 				FD764C4715C9CADE00A3D10A /* IPKRemoteManagedObject.h in Headers */,
 				FD764C5315C9CADE00A3D10A /* InsiderPagesKit.h in Headers */,
 				FD764C5415C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.h in Headers */,
@@ -944,9 +935,7 @@
 				FD7655E015C9D53400A3D10A /* SSKeychain.h in Headers */,
 				FD32632815D077780050F394 /* NSMutableDictionary+InsiderPagesKit.h in Headers */,
 				FD7655CA15C9D53400A3D10A /* SSDataKit.h in Headers */,
-				FD7656B015CAF2B500A3D10A /* IPKList.h in Headers */,
 				FD7656B915CAF2B500A3D10A /* IPKTag.h in Headers */,
-				FD7656BC15CAF2B500A3D10A /* IPKTask.h in Headers */,
 				FD7656BF15CAF2B500A3D10A /* IPKUser.h in Headers */,
 				FD7656C915CB833B00A3D10A /* IPKNotification.h in Headers */,
 				FD7656CE15CB833D00A3D10A /* IPKPage.h in Headers */,
@@ -956,8 +945,6 @@
 				FDD9553615E3EBB100F38150 /* MagicalImportFunctions.h in Headers */,
 				FDD9553915E3EBB100F38150 /* NSAttributeDescription+MagicalDataImport.h in Headers */,
 				FDD9553C15E3EBB100F38150 /* NSEntityDescription+MagicalDataImport.h in Headers */,
-				FDD9553F15E3EBB100F38150 /* NSNumber+MagicalDataImport.h in Headers */,
-				FDD9554215E3EBB100F38150 /* NSObject+MagicalDataImport.h in Headers */,
 				FDD9554515E3EBB100F38150 /* NSRelationshipDescription+MagicalDataImport.h in Headers */,
 				FDD9554815E3EBB100F38150 /* NSString+MagicalDataImport.h in Headers */,
 				FDD9554B15E3EBB100F38150 /* NSManagedObject+MagicalAggregation.h in Headers */,
@@ -981,6 +968,7 @@
 				FDD9558115E3EBB100F38150 /* MagicalRecord.h in Headers */,
 				FDD9558415E3EBB100F38150 /* MagicalRecordShorthand.h in Headers */,
 				FDD9558515E3EBB100F38150 /* CoreData+MagicalRecord.h in Headers */,
+				FDD955B115E3F51D00F38150 /* NSNumber+MagicalDataImport.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -998,7 +986,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				FD76561015C9D65800A3D10A /* PBXTargetDependency */,
 			);
 			name = InsiderPagesKit;
 			productName = CheddarKit;
@@ -1147,7 +1134,6 @@
 				FD76561615C9D6B600A3D10A /* SSManagedViewController.m in Sources */,
 				FD764C3C15C9CADE00A3D10A /* IPKDefines.m in Sources */,
 				FD764C3F15C9CADE00A3D10A /* IPKHTTPClient.m in Sources */,
-				FD764C4515C9CADE00A3D10A /* IPKPushController.m in Sources */,
 				FD764C4815C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */,
 				FD764C5815C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */,
 				FD7654CA15C9D53300A3D10A /* AFIncrementalStore.m in Sources */,
@@ -1168,9 +1154,7 @@
 				FD7655DE15C9D53400A3D10A /* SSRemoteManagedObject.m in Sources */,
 				FD7655E115C9D53400A3D10A /* SSKeychain.m in Sources */,
 				FD7656A115CA053100A3D10A /* IPKQueryModel.m in Sources */,
-				FD7656B115CAF2B500A3D10A /* IPKList.m in Sources */,
 				FD7656BA15CAF2B500A3D10A /* IPKTag.m in Sources */,
-				FD7656BD15CAF2B500A3D10A /* IPKTask.m in Sources */,
 				FD7656C015CAF2B500A3D10A /* IPKUser.m in Sources */,
 				FD7656CA15CB833B00A3D10A /* IPKNotification.m in Sources */,
 				FD7656CF15CB833D00A3D10A /* IPKPage.m in Sources */,
@@ -1183,7 +1167,6 @@
 				FDD9553715E3EBB100F38150 /* MagicalImportFunctions.m in Sources */,
 				FDD9553A15E3EBB100F38150 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				FDD9553D15E3EBB100F38150 /* NSEntityDescription+MagicalDataImport.m in Sources */,
-				FDD9554015E3EBB100F38150 /* NSNumber+MagicalDataImport.m in Sources */,
 				FDD9554315E3EBB100F38150 /* NSObject+MagicalDataImport.m in Sources */,
 				FDD9554615E3EBB100F38150 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				FDD9554915E3EBB100F38150 /* NSString+MagicalDataImport.m in Sources */,
@@ -1206,6 +1189,7 @@
 				FDD9557C15E3EBB100F38150 /* MagicalRecord+Setup.m in Sources */,
 				FDD9557F15E3EBB100F38150 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				FDD9558215E3EBB100F38150 /* MagicalRecord.m in Sources */,
+				FDD955B015E3F51200F38150 /* NSNumber+MagicalDataImport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1215,7 +1199,6 @@
 			files = (
 				FD764C3D15C9CADE00A3D10A /* IPKDefines.m in Sources */,
 				FD764C4015C9CADE00A3D10A /* IPKHTTPClient.m in Sources */,
-				FD764C4615C9CADE00A3D10A /* IPKPushController.m in Sources */,
 				FD764C4915C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */,
 				FD764C5615C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m in Sources */,
 				FD764C5915C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */,
@@ -1238,9 +1221,7 @@
 				FD7655DF15C9D53400A3D10A /* SSRemoteManagedObject.m in Sources */,
 				FD7655E215C9D53400A3D10A /* SSKeychain.m in Sources */,
 				FD7656A215CA053100A3D10A /* IPKQueryModel.m in Sources */,
-				FD7656B215CAF2B500A3D10A /* IPKList.m in Sources */,
 				FD7656BB15CAF2B500A3D10A /* IPKTag.m in Sources */,
-				FD7656BE15CAF2B500A3D10A /* IPKTask.m in Sources */,
 				FD7656C115CAF2B500A3D10A /* IPKUser.m in Sources */,
 				FD7656CB15CB833B00A3D10A /* IPKNotification.m in Sources */,
 				FD7656D015CB833D00A3D10A /* IPKPage.m in Sources */,
@@ -1252,7 +1233,6 @@
 				FDD9553815E3EBB100F38150 /* MagicalImportFunctions.m in Sources */,
 				FDD9553B15E3EBB100F38150 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				FDD9553E15E3EBB100F38150 /* NSEntityDescription+MagicalDataImport.m in Sources */,
-				FDD9554115E3EBB100F38150 /* NSNumber+MagicalDataImport.m in Sources */,
 				FDD9554415E3EBB100F38150 /* NSObject+MagicalDataImport.m in Sources */,
 				FDD9554715E3EBB100F38150 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				FDD9554A15E3EBB100F38150 /* NSString+MagicalDataImport.m in Sources */,
@@ -1275,6 +1255,7 @@
 				FDD9557D15E3EBB100F38150 /* MagicalRecord+Setup.m in Sources */,
 				FDD9558015E3EBB100F38150 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				FDD9558315E3EBB100F38150 /* MagicalRecord.m in Sources */,
+				FDD955AF15E3F51200F38150 /* NSNumber+MagicalDataImport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1286,7 +1267,6 @@
 				FD260E1915CC91590002C801 /* NSRunLoop+TimeOutAndFlag.m in Sources */,
 				FD260E1515CC5E420002C801 /* InsiderPages.xcdatamodeld in Sources */,
 				FD76562A15C9D70000A3D10A /* InsiderPagesKitTests.m in Sources */,
-				FD76568115C9E35000A3D10A /* IPKDefines.m in Sources */,
 				FD32632B15D078240050F394 /* NSMutableDictionary+InsiderPagesKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1298,11 +1278,6 @@
 			isa = PBXTargetDependency;
 			name = BullyMac;
 			targetProxy = FD76560C15C9D5CD00A3D10A /* PBXContainerItemProxy */;
-		};
-		FD76561015C9D65800A3D10A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Bully;
-			targetProxy = FD76560F15C9D65800A3D10A /* PBXContainerItemProxy */;
 		};
 		FD76568A15C9ED0C00A3D10A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1371,11 +1346,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/CheddarKit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Other Sources/InsiderPagesKit-Prefix.h";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/InsiderPagesKit/Vendor/Bully\"",
 					"\"$(SRCROOT)/InsiderPagesKit/Vendor/SSDataKit\"",
-					"$(SRCROOT)/InsiderPagesKit/Vendor/MagicalRecord/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1394,11 +1370,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/CheddarKit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Other Sources/InsiderPagesKit-Prefix.h";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/InsiderPagesKit/Vendor/Bully\"",
 					"\"$(SRCROOT)/InsiderPagesKit/Vendor/SSDataKit\"",
-					"$(SRCROOT)/InsiderPagesKit/Vendor/MagicalRecord/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1488,6 +1465,7 @@
 				);
 				INFOPLIST_FILE = "InsiderPagesKitTests/InsiderPagesKitTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = octest;
@@ -1511,6 +1489,7 @@
 				);
 				INFOPLIST_FILE = "InsiderPagesKitTests/InsiderPagesKitTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = octest;

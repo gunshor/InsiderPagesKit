@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SSManagedObject.h"
+#import "IPKRemoteManagedObject.h"
 
 enum IPKQueryModelFilterType {
     kIPKQueryModelFilterAll = 0,
@@ -15,10 +15,8 @@ enum IPKQueryModelFilterType {
     kIPKQueryModelFilterNetwork = 2
     };
 
-@interface IPKQueryModel : SSManagedObject
+@interface IPKQueryModel : IPKRemoteManagedObject
 
-@property (nonatomic, strong) NSDate* created_at;
-@property (nonatomic, strong) NSDate* updated_at;
 @property (nonatomic, strong) NSString* queryString;
 @property (nonatomic, strong) NSString* state;
 @property (nonatomic, strong) NSString* city;

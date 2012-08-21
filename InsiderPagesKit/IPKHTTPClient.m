@@ -13,7 +13,6 @@
 #import "IPKQueryModel.h"
 #import "IPKNotification.h"
 #import "IPKActivity.h"
-#import "RHManagedObjectContextManager.h"
 #import "IPKDefines.h"
 #import <Bully/Bully.h>
 
@@ -34,7 +33,6 @@ static BOOL __developmentMode = NO;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		sharedClient = [[self alloc] init];
-        [RHManagedObjectContextManager sharedInstance];
 	});
 	return sharedClient;
 }
@@ -118,7 +116,7 @@ static BOOL __developmentMode = NO;
             user.fb_access_token = fbAccessToken;
             NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
             user.accessToken = [cookie value];
-            [user save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             [IPKUser setCurrentUser:user];
 //        }];
         
@@ -156,7 +154,7 @@ static BOOL __developmentMode = NO;
 //        __weak NSManagedObjectContext *context = [[RHManagedObjectContextManager sharedInstance] managedObjectContext];
             IPKPage * pageToFollow = [IPKPage objectWithRemoteID:@([pageId integerValue])];
             [[IPKUser currentUser] addFollowedPagesObject:pageToFollow];
-            [[IPKUser currentUser] save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -180,7 +178,7 @@ static BOOL __developmentMode = NO;
         if (operation.response.statusCode != 403) {
             IPKUser * userToFollow = [IPKUser objectWithRemoteID:@([userId integerValue])];
             [[IPKUser currentUser] addFollowedUsersObject:userToFollow];
-            [[IPKUser currentUser] save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
 
 //        }];
@@ -205,7 +203,7 @@ static BOOL __developmentMode = NO;
 //        [context performBlock:^{
             IPKPage * pageToFollow = [IPKPage objectWithRemoteID:@([pageId integerValue])];
             [[IPKUser currentUser] removeFollowedPagesObject:pageToFollow];
-            [[IPKUser currentUser] save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 //        }];
         
         if (success) {
@@ -228,7 +226,7 @@ static BOOL __developmentMode = NO;
 //        [context performBlock:^{
             IPKUser * userToUnfollow = [IPKUser objectWithRemoteID:@([userId integerValue])];
             [[IPKUser currentUser] removeFollowedUsersObject:userToUnfollow];
-            [[IPKUser currentUser] save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 //        }];
         
         if (success) {
@@ -251,7 +249,7 @@ static BOOL __developmentMode = NO;
             for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
                 IPKPage * page = nil;
                 page = [IPKPage objectWithDictionary:pageDictionary];
-                [page save];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
 //        }];
         
@@ -274,7 +272,7 @@ static BOOL __developmentMode = NO;
             for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
                 IPKPage * page = nil;
                 page = [IPKPage objectWithDictionary:pageDictionary];
-                [page save];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
 //        }];
         
@@ -297,7 +295,7 @@ static BOOL __developmentMode = NO;
             for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
                 IPKPage * page = nil;
                 page = [IPKPage objectWithDictionary:pageDictionary];
-                [page save];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
 //        }];
         
@@ -320,7 +318,7 @@ static BOOL __developmentMode = NO;
 //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
 //        [context performBlock:^{
             IPKPage * page = [IPKPage objectWithDictionary:responseObject];
-            [page save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 //        }];
         
         if (success) {
@@ -339,7 +337,7 @@ static BOOL __developmentMode = NO;
 //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
 //        [context performBlock:^{
             IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
-            [page delete];
+            [page MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 //        }];
         
         if (success) {
@@ -362,7 +360,7 @@ static BOOL __developmentMode = NO;
 //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
 //        [context performBlock:^{
             IPKUser * user = [IPKUser objectWithDictionary:responseObject];
-            [user save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 //        }];
         
         if (success) {
@@ -384,7 +382,7 @@ static BOOL __developmentMode = NO;
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
                 IPKUser * user = nil;
                 user = [IPKUser objectWithDictionary:userDictionary];
-                [user save];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
 //        }];
         
@@ -407,7 +405,7 @@ static BOOL __developmentMode = NO;
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"following"]) {
                 IPKUser * user = nil;
                 user = [IPKUser objectWithDictionary:userDictionary];
-                [user save];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
 //        }];
         
@@ -429,7 +427,7 @@ static BOOL __developmentMode = NO;
 //        [context performBlock:^{
             for (NSDictionary * providerDictionary in [responseObject objectForKey:@"providers"]) {
                 IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
-                [provider save];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
 //        }];
         
@@ -451,7 +449,7 @@ static BOOL __developmentMode = NO;
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
                 IPKUser * user = nil;
                 user = [IPKUser objectWithDictionary:userDictionary];
-                [user save];
+               [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
 //        }];
         
@@ -476,7 +474,7 @@ static BOOL __developmentMode = NO;
             IPKPage * page = [IPKPage objectWithRemoteID:@([pageId intValue])];
             IPKProvider * providerToAdd = [IPKProvider objectWithRemoteID:@([providerId intValue])];
             [page addProvidersObject:providerToAdd];
-            [page save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 //        }];
         
         if (success) {
@@ -500,7 +498,7 @@ static BOOL __developmentMode = NO;
             IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
             IPKProvider * providerToAdd = [IPKProvider existingObjectWithRemoteID:@([providerId intValue])];
             [page addProvidersObject:providerToAdd];
-            [page save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 //        }];
         
         if (success) {
@@ -524,7 +522,7 @@ static BOOL __developmentMode = NO;
             IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
             IPKProvider * providerToRemove = [IPKProvider existingObjectWithRemoteID:@([providerId intValue])];
             [page removeProvidersObject:providerToRemove];
-            [page save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 //        }];
         
         if (success) {
@@ -544,7 +542,7 @@ static BOOL __developmentMode = NO;
 //        [context performBlock:^{
             IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
             [page setIs_favorite:[NSNumber numberWithBool:YES]];
-            [page save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 //        }];
         
         if (success) {
@@ -565,7 +563,7 @@ static BOOL __developmentMode = NO;
 //        [context performBlock:^{
             IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
             [page setIs_favorite:[NSNumber numberWithBool:NO]];
-            [page save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 //        }];
         
         if (success) {
@@ -589,7 +587,7 @@ static BOOL __developmentMode = NO;
 //        [context performBlock:^{
             for (NSDictionary * providerDictionary in [responseObject objectForKey:@"results"]) {
                 IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
-                [provider save];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
 //        }];
         
@@ -609,7 +607,7 @@ static BOOL __developmentMode = NO;
 //        [context performBlock:^{
             for (NSDictionary * providerDictionary in [responseObject objectForKey:@"results"]) {
                 IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
-                [provider save];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
 //        }];
         
@@ -629,7 +627,7 @@ static BOOL __developmentMode = NO;
 //        [context performBlock:^{
             for (NSDictionary * providerDictionary in [responseObject objectForKey:@"results"]) {
                 IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
-                [provider save];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
 //        }];
         
@@ -658,9 +656,9 @@ static BOOL __developmentMode = NO;
 //        [context performBlock:^{
             for (NSDictionary* activityDictionary in [responseObject objectForKey:@"activities"]) {
                 IPKActivity * activity = [IPKActivity objectWithDictionary:activityDictionary];
-                [activity save];
             }
-        [[RHManagedObjectContextManager sharedInstance] commit];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+
 //        }];
         
         if (success) {
@@ -685,7 +683,7 @@ static BOOL __developmentMode = NO;
             if ([[responseObject objectForKey:@"notifications"] isKindOfClass:[NSArray class]]) {
                 for (NSDictionary* notificationDictionary in [responseObject objectForKey:@"notifications"]) {
                     IPKNotification * notification = [IPKNotification objectWithDictionary:notificationDictionary];
-                    [notification save];
+                    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
                 }
             }
 //        }];

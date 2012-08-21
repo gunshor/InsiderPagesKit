@@ -19,7 +19,7 @@
 
 // Networking
 #import <InsiderPagesKit/IPKHTTPClient.h>
-#import <InsiderPagesKit/IPKPushController.h>
+//#import <InsiderPagesKit/IPKPushController.h>
 
 // Categories
 #import <InsiderPagesKit/NSDictionary+InsiderPagesKit.h>
@@ -27,14 +27,12 @@
 
 // Vendor
 #if TARGET_OS_IPHONE
-#import <InsiderPagesKit/Vendor/SSDataKit/SSDataKit.h>
+//#import <InsiderPagesKit/Vendor/SSDataKit/SSDataKit.h>s
 #import <InsiderPagesKit/Vendor/AFIncrementalStore/AFNetworking/AFNetworking/AFNetworking.h>
 #import <InsiderPagesKit/Vendor/Reachability/Reachability.h>
-#import <InsiderPagesKit/Vendor/MagicalRecord/CoreData+MagicalRecord.h>
+#import <InsiderPagesKit/Vendor/MagicalRecord/MagicalRecord/CoreData+MagicalRecord.h>
 #else
-#import <InsiderPagesKit/SSDataKit.h>
+//#import <InsiderPagesKit/SSDataKit.h>
 #import <InsiderPagesKit/AFNetworking.h>
 #import <InsiderPagesKit/Reachability.h>
 #endif
-
-#define MR_SHORTHAND 0

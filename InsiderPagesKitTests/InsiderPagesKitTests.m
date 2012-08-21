@@ -22,8 +22,9 @@
     [IPKHTTPClient setDevelopmentModeEnabled:YES];
     NSIndexSet * set = [[NSIndexSet alloc] initWithIndex:500];
     [AFHTTPRequestOperation addAcceptableStatusCodes:set];
-    [SSManagedObject setTesting:@YES];
-    [IPKUser mainContext];
+//    [SSManagedObject setTesting:@YES];
+    [MagicalRecord setDefaultModelFromClass:[self class]];
+    [MagicalRecord setupCoreDataStackWithInMemoryStore];
     [[NSRunLoop mainRunLoop] runUntilDate:[[NSDate date] dateByAddingTimeInterval:1]];
     
     __block BOOL finished = NO;
@@ -145,14 +146,14 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
-    __block IPKPage * page = [[IPKPage alloc] init];
+    __block IPKPage * page = [IPKPage MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     page.name = @"Unit Test Mobile";
     page.description_text = @"Unit Test Mobile Description";
     page.privacy_setting = @0;
     [[IPKHTTPClient sharedClient] createPage:page success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         [page unpackDictionary:[responseObject objectForKey:@"team"]];
-        [page save];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         finished = YES;
     } failure:^(AFJSONRequestOperation *operation, NSError *error){
         STAssertTrue(NO, [error debugDescription]);        
@@ -354,16 +355,16 @@
 -(void)testSearch{
     __block BOOL finished = NO;
     
-    IPKQueryModel * providerQueryModel = [IPKQueryModel new];
-    providerQueryModel.created_at = [NSDate date];
-    providerQueryModel.updated_at = [NSDate date];
+    IPKQueryModel * providerQueryModel = [IPKQueryModel MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    providerQueryModel.createdAt = [NSDate date];
+    providerQueryModel.updatedAt = [NSDate date];
     providerQueryModel.queryString = @"doctor";
     providerQueryModel.state = @"CA";
     providerQueryModel.city = @"San Francisco";
     providerQueryModel.filterType = [NSNumber numberWithInt:kIPKQueryModelFilterAll];
     providerQueryModel.currentPage = @"1";
     providerQueryModel.perPageNumber = @"20";
-    [providerQueryModel save];
+    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
     [[IPKHTTPClient sharedClient] providerSearchWithQueryModel:providerQueryModel success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         finished = YES;
@@ -374,16 +375,16 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
-    IPKQueryModel * insiderQueryModel = [IPKQueryModel new];
-    insiderQueryModel.created_at = [NSDate date];
-    insiderQueryModel.updated_at = [NSDate date];
+    IPKQueryModel * insiderQueryModel = [IPKQueryModel MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    insiderQueryModel.createdAt = [NSDate date];
+    insiderQueryModel.updatedAt = [NSDate date];
     insiderQueryModel.queryString = @"Chris";
     insiderQueryModel.state = @"CA";
     insiderQueryModel.city = @"San Francisco";
     insiderQueryModel.filterType = [NSNumber numberWithInt:kIPKQueryModelFilterAll];
     insiderQueryModel.currentPage = @"1";
     insiderQueryModel.perPageNumber = @"20";
-    [insiderQueryModel save];
+    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
     [[IPKHTTPClient sharedClient] insiderSearchWithQueryModel:insiderQueryModel success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         finished = YES;
@@ -394,16 +395,16 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
-    IPKQueryModel * pageQueryModel = [IPKQueryModel new];
-    pageQueryModel.created_at = [NSDate date];
-    pageQueryModel.updated_at = [NSDate date];
+    IPKQueryModel * pageQueryModel = [IPKQueryModel MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    pageQueryModel.createdAt = [NSDate date];
+    pageQueryModel.updatedAt = [NSDate date];
     pageQueryModel.queryString = @"Health";
     pageQueryModel.state = @"CA";
     pageQueryModel.city = @"San Francisco";
     pageQueryModel.filterType = [NSNumber numberWithInt:kIPKQueryModelFilterAll];
     pageQueryModel.currentPage = @"1";
     pageQueryModel.perPageNumber = @"20";
-    [pageQueryModel save];
+    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
     [[IPKHTTPClient sharedClient] pageSearchWithQueryModel:pageQueryModel success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         finished = YES;

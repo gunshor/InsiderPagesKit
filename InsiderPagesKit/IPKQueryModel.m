@@ -11,8 +11,6 @@
 
 @implementation IPKQueryModel
 
-@dynamic created_at;
-@dynamic updated_at;
 @dynamic queryString;
 @dynamic state;
 @dynamic city;

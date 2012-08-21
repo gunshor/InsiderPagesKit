@@ -105,7 +105,7 @@
 
 - (NSInteger)highestPosition {
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	fetchRequest.entity = [IPKTask entityWithContext:self.managedObjectContext];
+	fetchRequest.entity = [IPKTask entityDescriptionInContext:[NSManagedObjectContext contextForCurrentThread]];
 	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"list = %@", self];
 	fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]];
 	fetchRequest.fetchLimit = 1;
@@ -119,7 +119,7 @@
 
 - (NSArray *)sortedTasks {
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	fetchRequest.entity = [IPKTask entityWithContext:self.managedObjectContext];
+	fetchRequest.entity = [IPKTask entityDescriptionInContext:[NSManagedObjectContext contextForCurrentThread]];
 	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"list = %@", self];
 	fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:YES]];
 	return [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
@@ -128,7 +128,7 @@
 
 - (NSArray *)sortedActiveTasks {
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	fetchRequest.entity = [IPKTask entityWithContext:self.managedObjectContext];
+	fetchRequest.entity = [IPKTask entityDescriptionInContext:[NSManagedObjectContext contextForCurrentThread]];
 	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"list = %@ AND archivedAt = nil", self];
 	fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:YES]];
 	return [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
@@ -137,7 +137,7 @@
 
 - (NSArray *)sortedCompletedActiveTasks {
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	fetchRequest.entity = [IPKTask entityWithContext:self.managedObjectContext];
+	fetchRequest.entity = [IPKTask entityDescriptionInContext:[NSManagedObjectContext contextForCurrentThread]];
 	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"list = %@ AND archivedAt = nil AND completedAt != nil", self];
 	fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:YES]];
 	return [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];

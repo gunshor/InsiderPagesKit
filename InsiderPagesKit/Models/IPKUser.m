@@ -183,7 +183,7 @@ static IPKUser *__currentUser = nil;
 //        [context performBlock:^{
             IPKUser * user = [IPKUser existingObjectWithRemoteID:self.remoteID];
             [user unpackDictionary:responseObject];
-            [user save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 //        }];
         
         if (success) {

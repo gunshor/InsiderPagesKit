@@ -7,6 +7,7 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "CoreData+MagicalRecord.h"
 #import "InsiderPagesKitTestsHeader.h"
 
 @interface InsiderPagesKitTests : SenTestCase
