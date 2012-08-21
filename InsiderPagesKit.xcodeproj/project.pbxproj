@@ -224,7 +224,7 @@
 		FDD9558215E3EBB100F38150 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD9553315E3EBB100F38150 /* MagicalRecord.m */; };
 		FDD9558315E3EBB100F38150 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD9553315E3EBB100F38150 /* MagicalRecord.m */; };
 		FDD9558415E3EBB100F38150 /* MagicalRecordShorthand.h in Headers */ = {isa = PBXBuildFile; fileRef = FDD9553415E3EBB100F38150 /* MagicalRecordShorthand.h */; };
-		FDD9558515E3EBB100F38150 /* CoreData+MagicalRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = FDD9553515E3EBB100F38150 /* CoreData+MagicalRecord.h */; };
+		FDD9558515E3EBB100F38150 /* CoreData+MagicalRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = FDD9553515E3EBB100F38150 /* CoreData+MagicalRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
