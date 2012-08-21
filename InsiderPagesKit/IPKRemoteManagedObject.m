@@ -61,9 +61,12 @@
 + (void)deleteAllLocal{
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSManagedObjectContext * context = [[self class] mainContext];
-	fetchRequest.entity = [self entityWithContext:context];
+	[fetchRequest setEntity:[NSEntityDescription entityForName:[self entityName] inManagedObjectContext:[[self class] mainContext]]];
+	[fetchRequest setIncludesPendingChanges:YES];
+	[fetchRequest setReturnsObjectsAsFaults:YES];
+    
     NSArray *results = [context executeFetchRequest:fetchRequest error:nil];
-	
+
 	// If the object is not found, return nil
 	if (results.count == 0) {
 		return;
