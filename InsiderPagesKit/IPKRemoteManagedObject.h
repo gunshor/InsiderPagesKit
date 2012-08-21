@@ -6,12 +6,9 @@
 //  Inspired by Sam Soffes' CheddarKit.
 //
 
-#import "SSDataKit.h"
-#import "SSRemoteManagedObject.h"
-
 @class AFJSONRequestOperation;
 
-@interface IPKRemoteManagedObject : SSRemoteManagedObject
+@interface IPKRemoteManagedObject : NSManagedObject
 
 - (void)create;
 - (void)createWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure;
