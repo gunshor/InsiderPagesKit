@@ -208,7 +208,7 @@
 		FD9AB92315E40A0F0049B2C0 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9AB8D415E40A0F0049B2C0 /* MagicalRecord.m */; };
 		FD9AB92415E40A0F0049B2C0 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9AB8D415E40A0F0049B2C0 /* MagicalRecord.m */; };
 		FD9AB92515E40A0F0049B2C0 /* MagicalRecordShorthand.h in Headers */ = {isa = PBXBuildFile; fileRef = FD9AB8D515E40A0F0049B2C0 /* MagicalRecordShorthand.h */; };
-		FD9AB92615E40A0F0049B2C0 /* CoreData+MagicalRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = FD9AB8D615E40A0F0049B2C0 /* CoreData+MagicalRecord.h */; };
+		FD9AB92615E40A0F0049B2C0 /* CoreData+MagicalRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = FD9AB8D615E40A0F0049B2C0 /* CoreData+MagicalRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FDB616BA15D5F66C00148606 /* IPKReview.h in Headers */ = {isa = PBXBuildFile; fileRef = FDB616B815D5F66C00148606 /* IPKReview.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FDB616BB15D5F66C00148606 /* IPKReview.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB616B915D5F66C00148606 /* IPKReview.m */; };
 		FDB616BC15D5F66C00148606 /* IPKReview.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB616B915D5F66C00148606 /* IPKReview.m */; };
@@ -1359,7 +1359,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/InsiderPagesKit/Vendor/Bully\"",
 					"\"$(SRCROOT)/InsiderPagesKit/Vendor/SSDataKit\"",
-					"$(SRCROOT)/InsiderPagesKit/Vendor/MagicalRecord/**",
+					"$(SRCROOT)/InsiderPagesKit/Vendor/MagicalRecord/MagicalRecord/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1391,7 +1391,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/InsiderPagesKit/Vendor/Bully\"",
 					"\"$(SRCROOT)/InsiderPagesKit/Vendor/SSDataKit\"",
-					"$(SRCROOT)/InsiderPagesKit/Vendor/MagicalRecord/**",
+					"$(SRCROOT)/InsiderPagesKit/Vendor/MagicalRecord/MagicalRecord/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
