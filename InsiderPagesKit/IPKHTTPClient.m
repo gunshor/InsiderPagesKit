@@ -427,6 +427,7 @@ static BOOL __developmentMode = NO;
 //        [context performBlock:^{
             for (NSDictionary * providerDictionary in [responseObject objectForKey:@"providers"]) {
                 IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
+                [provider addPagesObject:[IPKPage existingObjectWithRemoteID:@([pageId integerValue])]];
                 [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
 //        }];
