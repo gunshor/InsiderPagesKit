@@ -12,5 +12,6 @@
 
 -(NSString*)formattedTimeElapsedSinceUpdated;
 -(NSString*)formattedTimeElapsedSinceCreated;
++(NSString*)defaultSortDescriptors;
 
 @end

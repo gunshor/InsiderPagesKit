@@ -172,4 +172,7 @@
     return [difference second];
 }
 
++(NSString*)defaultSortDescriptors{
+    return @"createdAt,remoteID";
+}
 @end
