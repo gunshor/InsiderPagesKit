@@ -176,7 +176,8 @@
 
 -(void)testUserActions{
     __block BOOL finished = NO;
-    NSString * pageID = [NSString stringWithFormat:@"%d", 25];
+    //    http://qa.insiderpages.com/users/ChristopherBBaker/teams/396
+    NSString * pageID = [NSString stringWithFormat:@"%d", 396];
     [[IPKHTTPClient sharedClient] followPageWithId:pageID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after following page, %@", responseObject);
@@ -265,8 +266,10 @@
 -(void)testPageActions{
     
     __block BOOL finished = NO;
-    NSString * otherUsersPageID = [NSString stringWithFormat:@"%d", 45];
-    NSString * myPageID = [NSString stringWithFormat:@"%d", 40];
+    //    http://qa.insiderpages.com/users/ChristopherBBaker/teams/396
+    NSString * otherUsersPageID = [NSString stringWithFormat:@"%d", 396];
+    //    http://qa.insiderpages.com/users/cleetruman/teams/454
+    NSString * myPageID = [NSString stringWithFormat:@"%d", 454];
     NSString * providerID = [NSString stringWithFormat:@"%d", 1];
     [[IPKHTTPClient sharedClient] getProvidersForPageWithId:myPageID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);

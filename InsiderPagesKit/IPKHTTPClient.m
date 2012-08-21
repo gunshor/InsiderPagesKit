@@ -202,6 +202,8 @@ static BOOL __developmentMode = NO;
 //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
 //        [context performBlock:^{
             IPKPage * pageToFollow = [IPKPage objectWithRemoteID:@([pageId integerValue])];
+        //force fault
+            [pageToFollow name];
             [[IPKUser currentUser] removeFollowedPagesObject:pageToFollow];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 //        }];

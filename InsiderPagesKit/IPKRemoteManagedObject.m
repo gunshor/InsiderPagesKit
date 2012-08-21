@@ -132,6 +132,7 @@
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	fetchRequest.entity = [self MR_entityDescriptionInContext:context];
 	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"remoteID = %@", remoteID];
+    fetchRequest.includesPendingChanges = YES;
 	fetchRequest.fetchLimit = 1;
 	
 	// Execute the fetch request
