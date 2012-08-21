@@ -251,8 +251,8 @@ static BOOL __developmentMode = NO;
         for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
             IPKPage * page = nil;
             page = [IPKPage objectWithDictionary:pageDictionary];
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
         if (success) {
@@ -274,8 +274,8 @@ static BOOL __developmentMode = NO;
         for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
             IPKPage * page = nil;
             page = [IPKPage objectWithDictionary:pageDictionary];
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
         if (success) {
@@ -297,8 +297,8 @@ static BOOL __developmentMode = NO;
         for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
             IPKPage * page = nil;
             page = [IPKPage objectWithDictionary:pageDictionary];
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
         if (success) {
