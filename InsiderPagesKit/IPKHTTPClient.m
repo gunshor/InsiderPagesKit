@@ -660,6 +660,7 @@ static BOOL __developmentMode = NO;
                 IPKActivity * activity = [IPKActivity objectWithDictionary:activityDictionary];
                 [activity save];
             }
+        [[RHManagedObjectContextManager sharedInstance] commit];
 //        }];
         
         if (success) {

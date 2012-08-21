@@ -7,7 +7,7 @@
 //
 
 #import "IPKRemoteManagedObject.h"
-
+#import "RHManagedObjectContextManager.h"
 @implementation IPKRemoteManagedObject
 
 - (void)create {
@@ -71,6 +71,7 @@
     for (IPKRemoteManagedObject * object in results) {
         [object delete];
     }
+    [[RHManagedObjectContextManager sharedInstance] commit];
 }
 
 + (void)deleteAllLocal:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure{
