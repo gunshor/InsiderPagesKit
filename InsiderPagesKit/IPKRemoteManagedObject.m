@@ -69,7 +69,7 @@
 		return;
 	}
     for (IPKRemoteManagedObject * object in results) {
-        [context deleteObject:object];
+        [object delete];
     }
 }
 
