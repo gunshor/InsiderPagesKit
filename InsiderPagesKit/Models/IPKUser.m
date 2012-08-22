@@ -126,7 +126,7 @@ static IPKUser *__currentUser = nil;
 	
 	__currentUser = user;
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:kIPKCurrentUserChangedNotificationName object:user];
+//	[[NSNotificationCenter defaultCenter] postNotificationName:kIPKCurrentUserChangedNotificationName object:user];
 }
 
 - (void)unpackDictionary:(NSDictionary *)dictionary {
