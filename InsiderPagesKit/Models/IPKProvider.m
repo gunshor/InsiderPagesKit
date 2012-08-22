@@ -68,7 +68,7 @@
 }
 
 -(NSString *)full_name{
-    if (![self.first_name isEqualToString:@""] && ![self.last_name isEqualToString:@""]) {
+    if (self.first_name != nil && self.last_name != nil) {
         return [self.first_name stringByAppendingFormat:@" %@", self.last_name];
     }
     return self.business_name;
