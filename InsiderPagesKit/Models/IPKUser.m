@@ -76,7 +76,7 @@ static IPKUser *__currentUser = nil;
         return nil;
     }
     
-    __currentUser = [self existingObjectWithRemoteID:userID];
+    __currentUser = [self existingObjectWithRemoteID:userID context:[NSManagedObjectContext MR_defaultContext]];
     __currentUser.accessToken = accessToken;
 	return __currentUser;
 }
