@@ -428,9 +428,15 @@ static BOOL __developmentMode = NO;
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
         for (NSDictionary * providerDictionary in [responseObject objectForKey:@"providers"]) {
-            IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
-            [provider addPagesObject:[IPKPage existingObjectWithRemoteID:@([pageId integerValue])]];
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+            if ([providerDictionary objectForKey:@"cg_listing"]) {
+                IPKProvider * provider = [IPKProvider objectWithDictionary:[providerDictionary objectForKey:@"cg_listing"]];
+                [provider addPagesObject:[IPKPage existingObjectWithRemoteID:@([pageId integerValue])]];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+            }else{
+                IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
+                [provider addPagesObject:[IPKPage existingObjectWithRemoteID:@([pageId integerValue])]];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+            }
         }
         //        }];
         
