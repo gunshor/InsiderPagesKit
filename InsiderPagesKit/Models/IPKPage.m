@@ -87,7 +87,7 @@
         self.section_header = @"Favorite";
     }else if ([self.is_following boolValue]){
         self.section_header = @"Following";
-    }else if(self.user_id == [IPKUser currentUser].id){
+    }else if([self.user_id isEqualToNumber: [[IPKUser currentUser] id]]){
         self.section_header = @"Mine";
     }
 }
