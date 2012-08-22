@@ -65,21 +65,19 @@ static IPKUser *__currentUser = nil;
 
 
 + (IPKUser *)currentUser {
-	if (!__currentUser) {
-		NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-		NSNumber *userID = [userDefaults objectForKey:kIPKUserIDKey];
-		if (!userID) {
-			return nil;
-		}
-		
-		NSString *accessToken = [SSKeychain passwordForService:kIPKKeychainServiceName account:userID.description];
-		if (!accessToken) {
-			return nil;
-		}
-        
-		__currentUser = [self existingObjectWithRemoteID:userID];
-		__currentUser.accessToken = accessToken;
-	}
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *userID = [userDefaults objectForKey:kIPKUserIDKey];
+    if (!userID) {
+        return nil;
+    }
+    
+    NSString *accessToken = [SSKeychain passwordForService:kIPKKeychainServiceName account:userID.description];
+    if (!accessToken) {
+        return nil;
+    }
+    
+    __currentUser = [self existingObjectWithRemoteID:userID];
+    __currentUser.accessToken = accessToken;
 	return __currentUser;
 }
 
@@ -179,12 +177,12 @@ static IPKUser *__currentUser = nil;
                             nil];
     
     [[IPKHTTPClient sharedClient] getPath:@"users" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        __weak NSManagedObjectContext *context = [IPKUser mainContext];
-//        [context performBlock:^{
-            IPKUser * user = [IPKUser existingObjectWithRemoteID:self.remoteID];
-            [user unpackDictionary:responseObject];
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-//        }];
+        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
+        //        [context performBlock:^{
+        IPKUser * user = [IPKUser existingObjectWithRemoteID:self.remoteID];
+        [user unpackDictionary:responseObject];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        //        }];
         
         if (success) {
             success();

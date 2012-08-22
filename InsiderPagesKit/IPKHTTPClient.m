@@ -116,8 +116,8 @@ static BOOL __developmentMode = NO;
         user.fb_access_token = fbAccessToken;
         NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
         user.accessToken = [cookie value];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         [IPKUser setCurrentUser:user];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
         if (success) {
