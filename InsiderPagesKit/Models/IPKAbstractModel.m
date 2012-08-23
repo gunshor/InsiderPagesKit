@@ -48,7 +48,7 @@
                     }
                 }
                 else{
-                    return [NSString stringWithFormat:@"%d error", seconds];
+                    return [NSString stringWithFormat:@"just now"];
                 }
             }
         }
@@ -125,9 +125,9 @@
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
-    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate
+    [calendar rangeOfUnit:NSHourCalendarUnit startDate:&fromDate
                  interval:NULL forDate:fromDateTime];
-    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate
+    [calendar rangeOfUnit:NSHourCalendarUnit startDate:&toDate
                  interval:NULL forDate:toDateTime];
     
     NSDateComponents *difference = [calendar components:NSHourCalendarUnit
@@ -143,9 +143,9 @@
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
-    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate
+    [calendar rangeOfUnit:NSMinuteCalendarUnit startDate:&fromDate
                  interval:NULL forDate:fromDateTime];
-    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate
+    [calendar rangeOfUnit:NSMinuteCalendarUnit startDate:&toDate
                  interval:NULL forDate:toDateTime];
     
     NSDateComponents *difference = [calendar components:NSMinuteCalendarUnit
@@ -161,9 +161,9 @@
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
-    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate
+    [calendar rangeOfUnit:NSSecondCalendarUnit startDate:&fromDate
                  interval:NULL forDate:fromDateTime];
-    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate
+    [calendar rangeOfUnit:NSSecondCalendarUnit startDate:&toDate
                  interval:NULL forDate:toDateTime];
     
     NSDateComponents *difference = [calendar components:NSSecondCalendarUnit

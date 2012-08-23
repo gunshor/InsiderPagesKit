@@ -139,7 +139,7 @@ static IPKUser *__currentUser = nil;
 	
 	__currentUser = user;
 	
-//	[[NSNotificationCenter defaultCenter] postNotificationName:kIPKCurrentUserChangedNotificationName object:user];
+    //	[[NSNotificationCenter defaultCenter] postNotificationName:kIPKCurrentUserChangedNotificationName object:user];
 }
 
 - (void)unpackDictionary:(NSDictionary *)dictionary {
@@ -170,11 +170,11 @@ static IPKUser *__currentUser = nil;
     self.is_following = [dictionary safeObjectForKey:@"is_following"];
     self.is_collaborator = [dictionary safeObjectForKey:@"is_collaborator"];
     
-    self.followedPages = [dictionary safeObjectForKey:@"followed_pages"];
-    self.followedUsers = [dictionary safeObjectForKey:@"followed_users"];
-    self.followers = [dictionary safeObjectForKey:@"followers"];
-    self.notifications = [dictionary safeObjectForKey:@"notifications"];
-    self.pages = [dictionary safeObjectForKey:@"pages"];
+    //    self.followedPages = [dictionary safeObjectForKey:@"followed_pages"];
+    //    self.followedUsers = [dictionary safeObjectForKey:@"followed_users"];
+    //    self.followers = [dictionary safeObjectForKey:@"followers"];
+    //    self.notifications = [dictionary safeObjectForKey:@"notifications"];
+    //    self.pages = [dictionary safeObjectForKey:@"pages"];
 }
 
 #pragma mark IPKRemoteManagedObject
