@@ -63,6 +63,7 @@ extern NSString *const kIPKCurrentUserChangedNotificationName;
 @property (nonatomic, retain) NSString *accessToken;
 + (IPKUser *)currentUser;
 + (void)setCurrentUser:(IPKUser *)user;
++ (BOOL)userHasLoggedIn;
 
 // Helpers
 - (NSString *)imageProfilePathForSize:(enum IPKUserProfileImageSize)size;

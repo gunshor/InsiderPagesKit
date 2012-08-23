@@ -63,6 +63,19 @@ static IPKUser *__currentUser = nil;
 	return @"IPKUser";
 }
 
++(BOOL)userHasLoggedIn{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *userID = [userDefaults objectForKey:kIPKUserIDKey];
+    if (!userID) {
+        return NO;
+    }
+    
+    NSString *accessToken = [SSKeychain passwordForService:kIPKKeychainServiceName account:userID.description];
+    if (!accessToken) {
+        return NO;
+    }
+    return YES;
+}
 
 + (IPKUser *)currentUser {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
