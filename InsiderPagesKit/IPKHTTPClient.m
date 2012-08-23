@@ -154,6 +154,7 @@ static BOOL __developmentMode = NO;
         //        __weak NSManagedObjectContext *context = [[RHManagedObjectContextManager sharedInstance] managedObjectContext];
         IPKPage * pageToFollow = [IPKPage objectWithRemoteID:@([pageId integerValue])];
         [[IPKUser currentUser] addFollowedPagesObject:pageToFollow];
+        [pageToFollow setIs_following:[NSNumber numberWithBool:YES]];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
         if (success) {
@@ -205,6 +206,7 @@ static BOOL __developmentMode = NO;
         //force fault
         [pageToFollow name];
         [[IPKUser currentUser] removeFollowedPagesObject:pageToFollow];
+        [pageToFollow setIs_following:[NSNumber numberWithBool:NO]];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
