@@ -92,6 +92,16 @@
     }
 }
 
+-(void)updateSectionHeader{
+    if ([self.is_favorite boolValue]) {
+        self.section_header = @"Favorite";
+    }else if ([self.is_following boolValue]){
+        self.section_header = @"Following";
+    }else if([self.user_id isEqualToNumber: [[IPKUser currentUser] id]]){
+        self.section_header = @"Mine";
+    }
+}
+
 #pragma mark - Apple Bug NSMutableSet issue
 // added this based on advice found here: http://stackoverflow.com/questions/7385439/exception-thrown-in-nsorderedset-generated-accessors
 static NSString *const kItemsKey = @"providers";

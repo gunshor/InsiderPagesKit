@@ -36,6 +36,7 @@
 @property (nonatomic, retain) NSSet *activities;
 
 -(NSDictionary*)packToDictionary;
+-(void)updateSectionHeader;
 
 @end
 

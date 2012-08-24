@@ -155,6 +155,7 @@ static BOOL __developmentMode = NO;
         IPKPage * pageToFollow = [IPKPage objectWithRemoteID:@([pageId integerValue])];
         [[IPKUser currentUser] addFollowedPagesObject:pageToFollow];
         [pageToFollow setIs_following:[NSNumber numberWithBool:YES]];
+        [pageToFollow updateSectionHeader];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
         if (success) {
@@ -207,6 +208,7 @@ static BOOL __developmentMode = NO;
         [pageToFollow name];
         [[IPKUser currentUser] removeFollowedPagesObject:pageToFollow];
         [pageToFollow setIs_following:[NSNumber numberWithBool:NO]];
+        [pageToFollow updateSectionHeader];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
@@ -553,6 +555,7 @@ static BOOL __developmentMode = NO;
         //        [context performBlock:^{
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
         [page setIs_favorite:[NSNumber numberWithBool:YES]];
+        [page updateSectionHeader];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
@@ -574,6 +577,7 @@ static BOOL __developmentMode = NO;
         //        [context performBlock:^{
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
         [page setIs_favorite:[NSNumber numberWithBool:NO]];
+        [page updateSectionHeader];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
