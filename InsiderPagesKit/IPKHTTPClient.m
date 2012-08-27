@@ -601,7 +601,7 @@ static BOOL __developmentMode = NO;
     [self getPath:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         for (NSDictionary * pageDictionary in [responseObject objectForKey:@"pages"]) {
             IPKPage * page = [IPKPage objectWithDictionary:pageDictionary];
-            IPKProvider * provider = [IPKProvider objectWithRemoteID:@[providerId intValue]];
+            IPKProvider * provider = [IPKProvider objectWithRemoteID:@([providerId intValue])];
             [page addProvidersObject:provider];
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
