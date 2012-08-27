@@ -113,6 +113,8 @@ static BOOL __developmentMode = NO;
         
         //        [context performBlock:^{
         NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:responseObject];
+        [[NSUserDefaults standardUserDefaults] setObject:[dictionary objectForKey:@"user"] forKey:@"CurrentUserDictionary"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         IPKUser *user = [IPKUser objectWithDictionary:[dictionary objectForKey:@"user"]];
         user.fb_access_token = fbAccessToken;
         NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
