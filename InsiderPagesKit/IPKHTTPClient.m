@@ -13,6 +13,7 @@
 #import "IPKQueryModel.h"
 #import "IPKNotification.h"
 #import "IPKActivity.h"
+#import "IPKReview.h"
 #import "IPKDefines.h"
 #import <Bully/Bully.h>
 
@@ -323,7 +324,7 @@ static BOOL __developmentMode = NO;
     [self postPath:@"teams" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        IPKPage * page = [IPKPage objectWithDictionary:responseObject];
+        [IPKPage objectWithDictionary:responseObject];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
@@ -365,7 +366,7 @@ static BOOL __developmentMode = NO;
     [[IPKHTTPClient sharedClient] getPath:@"users" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        IPKUser * user = [IPKUser objectWithDictionary:responseObject];
+        [IPKUser objectWithDictionary:responseObject];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
@@ -593,7 +594,22 @@ static BOOL __developmentMode = NO;
 
 
 #pragma mark - Providers
-
+- (void)getPagesForProviderWithId:(NSString*)providerId withCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    NSString * urlString = [NSString stringWithFormat:@"providers/%@/pages", providerId];
+    [self getPath:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        for (NSDictionary * pageDictionary in [responseObject objectForKey:@"pages"]) {
+            [IPKPage objectWithDictionary:pageDictionary];
+        }
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+}
 
 #pragma mark - Search
 - (void)providerSearchWithQueryModel:(IPKQueryModel*)queryModel success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
@@ -601,7 +617,7 @@ static BOOL __developmentMode = NO;
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
         for (NSDictionary * providerDictionary in [responseObject objectForKey:@"results"]) {
-            IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
+            [IPKProvider objectWithDictionary:providerDictionary];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
         //        }];
@@ -621,7 +637,7 @@ static BOOL __developmentMode = NO;
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
         for (NSDictionary * insiderDictionary in [responseObject objectForKey:@"results"]) {
-            IPKUser * insider = [IPKUser objectWithDictionary:insiderDictionary];
+            [IPKUser objectWithDictionary:insiderDictionary];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
         //        }];
@@ -641,7 +657,7 @@ static BOOL __developmentMode = NO;
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
         for (NSDictionary * pageDictionary in [responseObject objectForKey:@"results"]) {
-            IPKPage * page = [IPKPage objectWithDictionary:pageDictionary];
+            [IPKPage objectWithDictionary:pageDictionary];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
         //        }];
@@ -670,7 +686,7 @@ static BOOL __developmentMode = NO;
         //        __weak NSManagedObjectContext *context = [[RHManagedObjectContextManager sharedInstance] managedObjectContext];
         //        [context performBlock:^{
         for (NSDictionary* activityDictionary in [responseObject objectForKey:@"activities"]) {
-            IPKActivity * activity = [IPKActivity objectWithDictionary:activityDictionary];
+            [IPKActivity objectWithDictionary:activityDictionary];
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
@@ -697,7 +713,7 @@ static BOOL __developmentMode = NO;
         //        [context performBlock:^{
         if ([[responseObject objectForKey:@"notifications"] isKindOfClass:[NSArray class]]) {
             for (NSDictionary* notificationDictionary in [responseObject objectForKey:@"notifications"]) {
-                IPKNotification * notification = [IPKNotification objectWithDictionary:notificationDictionary];
+                [IPKNotification objectWithDictionary:notificationDictionary];
                 [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
         }
@@ -714,18 +730,44 @@ static BOOL __developmentMode = NO;
 }
 
 #pragma mark - Scoops
-- (void)getMyScoopsWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+
+- (void)getScoopsForUserWithId:(NSString*)userId withCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            userId, @"user_id",
                             perPage, @"per_page",
                             currentPage, @"page",
                             nil];
-    [self getPath:@"plugs" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
-        //        [context performBlock:^{
-        for (NSDictionary* plugDictionary in [responseObject objectForKey:@"plugs"]) {
-            NSLog(@"%@", plugDictionary);
+    [self _getScoopsWithParams:params success:success failure:failure];
+}
+
+- (void)getScoopsForProviderWithId:(NSString*)providerId withCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            providerId, @"provider_id",
+                            perPage, @"per_page",
+                            currentPage, @"page",
+                            nil];
+    [self _getScoopsWithParams:params success:success failure:failure];
+}
+
+- (void)getScoopsForPageWithId:(NSString*)pageId withCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            pageId, @"team_id",
+                            perPage, @"per_page",
+                            currentPage, @"page",
+                            nil];
+    [self _getScoopsWithParams:params success:success failure:failure];
+}
+
+- (void)_getScoopsWithParams:(NSDictionary*)params success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+
+    [self getPath:@"scoops" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        for (NSDictionary* plugDictionary in [responseObject objectForKey:@"scoops"]) {
+            for (NSDictionary * scoopDictionary in [responseObject objectForKey:@"scoops"]) {
+                [IPKReview objectWithDictionary:scoopDictionary];
+            }
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
-        //        }];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);

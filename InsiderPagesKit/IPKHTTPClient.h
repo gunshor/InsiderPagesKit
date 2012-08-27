@@ -10,7 +10,7 @@
 
 typedef void (^IPKHTTPClientSuccess)(AFJSONRequestOperation *operation, id responseObject);
 typedef void (^IPKHTTPClientFailure)(AFJSONRequestOperation *operation, NSError *error);
-
+enum IPKTrackableType;
 @class IPKQueryModel;
 
 @class IPKUser;
@@ -75,7 +75,7 @@ typedef void (^IPKHTTPClientFailure)(AFJSONRequestOperation *operation, NSError 
 - (void)unfavoritePageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 #pragma mark - Providers
-
+- (void)getPagesForProviderWithId:(NSString*)providerId withCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 #pragma mark - Search
 - (void)providerSearchWithQueryModel:(IPKQueryModel*)queryModel success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
@@ -93,8 +93,11 @@ typedef void (^IPKHTTPClientFailure)(AFJSONRequestOperation *operation, NSError 
 
 
 #pragma mark - Scoops
-- (void)getMyScoopsWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+- (void)getScoopsForUserWithId:(NSString*)userId withCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
+- (void)getScoopsForProviderWithId:(NSString*)providerId withCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+
+- (void)getScoopsForPageWithId:(NSString*)pageId withCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 //#pragma mark - User
 

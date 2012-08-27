@@ -72,16 +72,16 @@
     }];
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
-//    finished = NO;
-//    
-//    [[IPKHTTPClient sharedClient] updateCurrentUserWithSuccess:^(IPKUser * currentUser){
-//        NSLog(@"%@", currentUser);
-//        finished = YES;
-//    } failure:^(AFJSONRequestOperation *operation, NSError *error){
-//        STAssertTrue(NO, [error debugDescription]);        
-//        finished = YES;
-//    }];
-//    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+    finished = NO;
+    
+    [[IPKHTTPClient sharedClient] updateCurrentUserWithSuccess:^(IPKUser * currentUser){
+        NSLog(@"%@", currentUser);
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        STAssertTrue(NO, [error debugDescription]);        
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
 }
 
@@ -115,7 +115,7 @@
     [[IPKHTTPClient sharedClient] getFollowingPagesForUserWithId:remoteIDString success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         for (NSDictionary * teamDict in [responseObject objectForKey:@"teams"]) {
-            STAssertFalse([[teamDict objectForKey:@"user_id"] isEqualToNumber:[IPKUser currentUser].id], @"following pages should not have been created by the user requesting the pages %@", teamDict);
+
         }
 
         finished = YES;
@@ -200,33 +200,32 @@
     }];
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
-#warning bug where currentUser can not be faulted during follow request
-//    finished = NO;
-//    NSString * userID = [NSString stringWithFormat:@"%d", 8];
-//    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
-//
-//    [[IPKHTTPClient sharedClient] followUserWithId:userID success:^(AFJSONRequestOperation *operation, id responseObject){
-//        NSLog(@"%@", responseObject);
-//        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after following user, %@", responseObject);
-//        finished = YES;
-//    } failure:^(AFJSONRequestOperation *operation, NSError *error){
-//        NSLog(@"Fail %@, %@, %@", error, operation.response, operation.request.URL);
-//        STAssertTrue(NO, [error debugDescription]);  
-//        finished = YES;
-//    }];
-//    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
-//    
-//    finished = NO;
-//    [[IPKHTTPClient sharedClient] unfollowUserWithId:userID success:^(AFJSONRequestOperation *operation, id responseObject){
-//        NSLog(@"%@", responseObject);
-//        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after following user, %@", responseObject);
-//        finished = YES;
-//    } failure:^(AFJSONRequestOperation *operation, NSError *error){
-//        NSLog(@"Fail %@, %@, %@", error, operation.response, operation.request.URL);
-//        STAssertTrue(NO, [error debugDescription]);  
-//        finished = YES;
-//    }];
-//    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+    finished = NO;
+    NSString * userID = [NSString stringWithFormat:@"%d", 8];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+
+    [[IPKHTTPClient sharedClient] followUserWithId:userID success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after following user, %@", responseObject);
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        NSLog(@"Fail %@, %@, %@", error, operation.response, operation.request.URL);
+        STAssertTrue(NO, [error debugDescription]);  
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+    
+    finished = NO;
+    [[IPKHTTPClient sharedClient] unfollowUserWithId:userID success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after following user, %@", responseObject);
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        NSLog(@"Fail %@, %@, %@", error, operation.response, operation.request.URL);
+        STAssertTrue(NO, [error debugDescription]);  
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
 }
 
@@ -307,7 +306,8 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
-    [[IPKHTTPClient sharedClient] addProvidersToPageWithId:myPageID providerId:providerID scoopText:@"scoop" success:^(AFJSONRequestOperation *operation, id responseObject){
+    NSString * localTestId = [(@41) stringValue];
+    [[IPKHTTPClient sharedClient] addProvidersToPageWithId:localTestId providerId:providerID scoopText:@"scoop" success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after adding provider to page");
         finished = YES;
@@ -353,6 +353,22 @@
     }];
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
 
+}
+
+-(void)testProviderActions{
+    
+    __block BOOL finished = NO;
+    NSString * providerID = [NSString stringWithFormat:@"%d", 1];
+    [[IPKHTTPClient sharedClient] getPagesForProviderWithId:providerID withCurrentPage:@1 perPage:@10 success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        STAssertTrue([[[responseObject allKeys] objectAtIndex:0] isEqualToString: @"pages"], @"Server should respond with list of pages");
+        STAssertTrue([[responseObject objectForKey:@"pages"] isKindOfClass: [NSArray class]], @"Server should provide an array of pages.");
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        STAssertTrue(NO, [error debugDescription]);        
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
 }
 
 -(void)testSearch{
@@ -465,20 +481,63 @@
     finished = NO;
 }
 
--(void)testPlugs{
-//  Waiting on plugs TODO
-//    __block BOOL finished = NO;
+-(void)testScoops{
+
+    __block BOOL finished = NO;
+    NSString * userIDString = [NSString stringWithFormat:@"%@",[IPKUser currentUser].id];
+    [[IPKHTTPClient sharedClient] getScoopsForUserWithId:userIDString withCurrentPage:@1 perPage:@3 success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        for (NSDictionary* plugDictionary in [responseObject objectForKey:@"scoops"]) {
+            for (NSDictionary * scoopDictionary in [responseObject objectForKey:@"scoops"]) {
+                STAssertTrue([[scoopDictionary objectForKey:@"why_recommended"] isKindOfClass:[NSString class]], @"Should contain why_recommended string");
+            }
+        }
+
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        STAssertTrue(NO, [error debugDescription]);
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
-//    [[IPKHTTPClient sharedClient] getMyScoopsWithCurrentPage:@1 perPage:@10 success:^(AFJSONRequestOperation *operation, id responseObject){
-//        NSLog(@"%@", responseObject);
-//        finished = YES;
-//    } failure:^(AFJSONRequestOperation *operation, NSError *error){
-//        STAssertTrue(NO, [error debugDescription]);
-//        finished = YES;
-//    }];
-//    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
-//    
-//    finished = NO;
+    finished = NO;
+    
+    finished = NO;
+    NSString * localProviderID = [NSString stringWithFormat:@"%d", 1];
+    [[IPKHTTPClient sharedClient] getScoopsForProviderWithId:localProviderID withCurrentPage:@1 perPage:@3 success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        for (NSDictionary* plugDictionary in [responseObject objectForKey:@"scoops"]) {
+            for (NSDictionary * scoopDictionary in [responseObject objectForKey:@"scoops"]) {
+                STAssertTrue([[scoopDictionary objectForKey:@"why_recommended"] isKindOfClass:[NSString class]], @"Should contain why_recommended string");
+            }
+        }
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        STAssertTrue(NO, [error debugDescription]);
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+    
+    finished = NO;
+    
+    finished = NO;
+    NSString * localPageId = [(@41) stringValue];
+    [[IPKHTTPClient sharedClient] getScoopsForPageWithId:localPageId withCurrentPage:@1 perPage:@3 success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        for (NSDictionary* plugDictionary in [responseObject objectForKey:@"scoops"]) {
+            for (NSDictionary * scoopDictionary in [responseObject objectForKey:@"scoops"]) {
+                STAssertTrue([[scoopDictionary objectForKey:@"why_recommended"] isKindOfClass:[NSString class]], @"Should contain why_recommended string");
+            }
+        }
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        STAssertTrue(NO, [error debugDescription]);
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+    
+    finished = NO;
+    
 }
 
 - (void)tearDown

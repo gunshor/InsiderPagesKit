@@ -192,7 +192,7 @@ static IPKUser *__currentUser = nil;
     [[IPKHTTPClient sharedClient] getPath:@"users" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        IPKUser * user = [IPKUser objectWithDictionary:responseObject[@"user"]];
+        [IPKUser objectWithDictionary:[responseObject objectForKey:@"user"]];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         

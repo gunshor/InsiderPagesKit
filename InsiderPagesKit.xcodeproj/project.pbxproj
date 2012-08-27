@@ -22,9 +22,6 @@
 		FD32632915D077780050F394 /* NSMutableDictionary+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD32632715D077780050F394 /* NSMutableDictionary+InsiderPagesKit.m */; };
 		FD32632A15D077780050F394 /* NSMutableDictionary+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD32632715D077780050F394 /* NSMutableDictionary+InsiderPagesKit.m */; };
 		FD32632B15D078240050F394 /* NSMutableDictionary+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD32632715D077780050F394 /* NSMutableDictionary+InsiderPagesKit.m */; };
-		FD547A2215DCF4B300922D5A /* RHManagedObjectContextManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FD547A2015DCF4B200922D5A /* RHManagedObjectContextManager.h */; };
-		FD547A2315DCF4B300922D5A /* RHManagedObjectContextManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD547A2115DCF4B200922D5A /* RHManagedObjectContextManager.m */; };
-		FD547A2415DCF4B300922D5A /* RHManagedObjectContextManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD547A2115DCF4B200922D5A /* RHManagedObjectContextManager.m */; };
 		FD764C3B15C9CADE00A3D10A /* IPKDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9015C9CADE00A3D10A /* IPKDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD764C3C15C9CADE00A3D10A /* IPKDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9115C9CADE00A3D10A /* IPKDefines.m */; };
 		FD764C3D15C9CADE00A3D10A /* IPKDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9115C9CADE00A3D10A /* IPKDefines.m */; };
@@ -82,16 +79,7 @@
 		FD7655C415C9D53400A3D10A /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76548215C9D53200A3D10A /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD7655C515C9D53400A3D10A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548315C9D53200A3D10A /* Reachability.m */; };
 		FD7655C615C9D53400A3D10A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548315C9D53200A3D10A /* Reachability.m */; };
-		FD7655C715C9D53400A3D10A /* NSManagedObjectContext+SSDataKitAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76548715C9D53200A3D10A /* NSManagedObjectContext+SSDataKitAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7655C815C9D53400A3D10A /* NSManagedObjectContext+SSDataKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548815C9D53200A3D10A /* NSManagedObjectContext+SSDataKitAdditions.m */; };
-		FD7655C915C9D53400A3D10A /* NSManagedObjectContext+SSDataKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548815C9D53200A3D10A /* NSManagedObjectContext+SSDataKitAdditions.m */; };
 		FD7655CA15C9D53400A3D10A /* SSDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76548A15C9D53200A3D10A /* SSDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7655D415C9D53400A3D10A /* SSManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76549115C9D53200A3D10A /* SSManagedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7655D515C9D53400A3D10A /* SSManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76549215C9D53200A3D10A /* SSManagedObject.m */; };
-		FD7655D615C9D53400A3D10A /* SSManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76549215C9D53200A3D10A /* SSManagedObject.m */; };
-		FD7655DD15C9D53400A3D10A /* SSRemoteManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76549715C9D53200A3D10A /* SSRemoteManagedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7655DE15C9D53400A3D10A /* SSRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76549815C9D53200A3D10A /* SSRemoteManagedObject.m */; };
-		FD7655DF15C9D53400A3D10A /* SSRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76549815C9D53200A3D10A /* SSRemoteManagedObject.m */; };
 		FD7655E015C9D53400A3D10A /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76549F15C9D53200A3D10A /* SSKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD7655E115C9D53400A3D10A /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7654A015C9D53200A3D10A /* SSKeychain.m */; };
 		FD7655E215C9D53400A3D10A /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7654A015C9D53200A3D10A /* SSKeychain.m */; };
@@ -217,6 +205,12 @@
 		FDD955BB15E3FCEF00F38150 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD955BA15E3FCEE00F38150 /* CFNetwork.framework */; };
 		FDD955BD15E3FD1100F38150 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD955BC15E3FD1000F38150 /* SystemConfiguration.framework */; };
 		FDD955BE15E3FD5400F38150 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76568F15C9F0D100A3D10A /* Security.framework */; };
+		FDDD54F515EBF0A10020CFF1 /* SSManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FDDD54F115EBF0A10020CFF1 /* SSManagedObject.h */; };
+		FDDD54F615EBF0A10020CFF1 /* SSManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD54F215EBF0A10020CFF1 /* SSManagedObject.m */; };
+		FDDD54F715EBF0A10020CFF1 /* SSManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD54F215EBF0A10020CFF1 /* SSManagedObject.m */; };
+		FDDD54F815EBF0A10020CFF1 /* SSRemoteManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FDDD54F315EBF0A10020CFF1 /* SSRemoteManagedObject.h */; };
+		FDDD54F915EBF0A10020CFF1 /* SSRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */; };
+		FDDD54FA15EBF0A10020CFF1 /* SSRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -297,8 +291,6 @@
 		FD260E1715CC90AE0002C801 /* NSRunLoop+TimeOutAndFlag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+TimeOutAndFlag.m"; sourceTree = "<group>"; };
 		FD32632615D077780050F394 /* NSMutableDictionary+InsiderPagesKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+InsiderPagesKit.h"; sourceTree = "<group>"; };
 		FD32632715D077780050F394 /* NSMutableDictionary+InsiderPagesKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+InsiderPagesKit.m"; sourceTree = "<group>"; };
-		FD547A2015DCF4B200922D5A /* RHManagedObjectContextManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHManagedObjectContextManager.h; sourceTree = "<group>"; };
-		FD547A2115DCF4B200922D5A /* RHManagedObjectContextManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHManagedObjectContextManager.m; sourceTree = "<group>"; };
 		FD764B9015C9CADE00A3D10A /* IPKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKDefines.h; sourceTree = "<group>"; };
 		FD764B9115C9CADE00A3D10A /* IPKDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKDefines.m; sourceTree = "<group>"; };
 		FD764B9215C9CADE00A3D10A /* IPKHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKHTTPClient.h; sourceTree = "<group>"; };
@@ -343,8 +335,6 @@
 		FD764FD715C9D52E00A3D10A /* Bully.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Bully.xcodeproj; sourceTree = "<group>"; };
 		FD76548215C9D53200A3D10A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		FD76548315C9D53200A3D10A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		FD76548715C9D53200A3D10A /* NSManagedObjectContext+SSDataKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+SSDataKitAdditions.h"; sourceTree = "<group>"; };
-		FD76548815C9D53200A3D10A /* NSManagedObjectContext+SSDataKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+SSDataKitAdditions.m"; sourceTree = "<group>"; };
 		FD76548915C9D53200A3D10A /* Readme.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.markdown; sourceTree = "<group>"; };
 		FD76548A15C9D53200A3D10A /* SSDataKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSDataKit.h; sourceTree = "<group>"; };
 		FD76548B15C9D53200A3D10A /* SSFilterableFetchedResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFilterableFetchedResultsController.h; sourceTree = "<group>"; };
@@ -353,14 +343,10 @@
 		FD76548E15C9D53200A3D10A /* SSFilteredResultsFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFilteredResultsFilter.m; sourceTree = "<group>"; };
 		FD76548F15C9D53200A3D10A /* SSFilteredResultsSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFilteredResultsSection.h; sourceTree = "<group>"; };
 		FD76549015C9D53200A3D10A /* SSFilteredResultsSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFilteredResultsSection.m; sourceTree = "<group>"; };
-		FD76549115C9D53200A3D10A /* SSManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSManagedObject.h; sourceTree = "<group>"; };
-		FD76549215C9D53200A3D10A /* SSManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSManagedObject.m; sourceTree = "<group>"; };
 		FD76549315C9D53200A3D10A /* SSManagedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSManagedTableViewController.h; sourceTree = "<group>"; };
 		FD76549415C9D53200A3D10A /* SSManagedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSManagedTableViewController.m; sourceTree = "<group>"; };
 		FD76549515C9D53200A3D10A /* SSManagedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSManagedViewController.h; sourceTree = "<group>"; };
 		FD76549615C9D53200A3D10A /* SSManagedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSManagedViewController.m; sourceTree = "<group>"; };
-		FD76549715C9D53200A3D10A /* SSRemoteManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRemoteManagedObject.h; sourceTree = "<group>"; };
-		FD76549815C9D53200A3D10A /* SSRemoteManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRemoteManagedObject.m; sourceTree = "<group>"; };
 		FD76549A15C9D53200A3D10A /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FD76549B15C9D53200A3D10A /* Changelog.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Changelog.markdown; sourceTree = "<group>"; };
 		FD76549C15C9D53200A3D10A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -465,6 +451,10 @@
 		FDD955B815E3FCA400F38150 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FDD955BA15E3FCEE00F38150 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		FDD955BC15E3FD1000F38150 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		FDDD54F115EBF0A10020CFF1 /* SSManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSManagedObject.h; sourceTree = "<group>"; };
+		FDDD54F215EBF0A10020CFF1 /* SSManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSManagedObject.m; sourceTree = "<group>"; };
+		FDDD54F315EBF0A10020CFF1 /* SSRemoteManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRemoteManagedObject.h; sourceTree = "<group>"; };
+		FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRemoteManagedObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -687,10 +677,10 @@
 		FD76548615C9D53200A3D10A /* SSDataKit */ = {
 			isa = PBXGroup;
 			children = (
-				FD547A2015DCF4B200922D5A /* RHManagedObjectContextManager.h */,
-				FD547A2115DCF4B200922D5A /* RHManagedObjectContextManager.m */,
-				FD76548715C9D53200A3D10A /* NSManagedObjectContext+SSDataKitAdditions.h */,
-				FD76548815C9D53200A3D10A /* NSManagedObjectContext+SSDataKitAdditions.m */,
+				FDDD54F115EBF0A10020CFF1 /* SSManagedObject.h */,
+				FDDD54F215EBF0A10020CFF1 /* SSManagedObject.m */,
+				FDDD54F315EBF0A10020CFF1 /* SSRemoteManagedObject.h */,
+				FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */,
 				FD76548915C9D53200A3D10A /* Readme.markdown */,
 				FD76548A15C9D53200A3D10A /* SSDataKit.h */,
 				FD76548B15C9D53200A3D10A /* SSFilterableFetchedResultsController.h */,
@@ -699,14 +689,10 @@
 				FD76548E15C9D53200A3D10A /* SSFilteredResultsFilter.m */,
 				FD76548F15C9D53200A3D10A /* SSFilteredResultsSection.h */,
 				FD76549015C9D53200A3D10A /* SSFilteredResultsSection.m */,
-				FD76549115C9D53200A3D10A /* SSManagedObject.h */,
-				FD76549215C9D53200A3D10A /* SSManagedObject.m */,
 				FD76549315C9D53200A3D10A /* SSManagedTableViewController.h */,
 				FD76549415C9D53200A3D10A /* SSManagedTableViewController.m */,
 				FD76549515C9D53200A3D10A /* SSManagedViewController.h */,
 				FD76549615C9D53200A3D10A /* SSManagedViewController.m */,
-				FD76549715C9D53200A3D10A /* SSRemoteManagedObject.h */,
-				FD76549815C9D53200A3D10A /* SSRemoteManagedObject.m */,
 			);
 			path = SSDataKit;
 			sourceTree = "<group>";
@@ -930,9 +916,6 @@
 				FD7654E815C9D53300A3D10A /* AFXMLRequestOperation.h in Headers */,
 				FD7654EB15C9D53300A3D10A /* UIImageView+AFNetworking.h in Headers */,
 				FD7655C415C9D53400A3D10A /* Reachability.h in Headers */,
-				FD7655C715C9D53400A3D10A /* NSManagedObjectContext+SSDataKitAdditions.h in Headers */,
-				FD7655D415C9D53400A3D10A /* SSManagedObject.h in Headers */,
-				FD7655DD15C9D53400A3D10A /* SSRemoteManagedObject.h in Headers */,
 				FD7655E015C9D53400A3D10A /* SSKeychain.h in Headers */,
 				FD32632815D077780050F394 /* NSMutableDictionary+InsiderPagesKit.h in Headers */,
 				FD7655CA15C9D53400A3D10A /* SSDataKit.h in Headers */,
@@ -942,7 +925,6 @@
 				FD7656CE15CB833D00A3D10A /* IPKPage.h in Headers */,
 				FD91BFFB15D5D13E008158A6 /* IPKAbstractModel.h in Headers */,
 				FDB616BA15D5F66C00148606 /* IPKReview.h in Headers */,
-				FD547A2215DCF4B300922D5A /* RHManagedObjectContextManager.h in Headers */,
 				FD9AB8D715E40A0F0049B2C0 /* MagicalImportFunctions.h in Headers */,
 				FD9AB8DA15E40A0F0049B2C0 /* NSAttributeDescription+MagicalDataImport.h in Headers */,
 				FD9AB8DD15E40A0F0049B2C0 /* NSEntityDescription+MagicalDataImport.h in Headers */,
@@ -971,6 +953,8 @@
 				FD9AB92215E40A0F0049B2C0 /* MagicalRecord.h in Headers */,
 				FD9AB92515E40A0F0049B2C0 /* MagicalRecordShorthand.h in Headers */,
 				FD9AB92615E40A0F0049B2C0 /* CoreData+MagicalRecord.h in Headers */,
+				FDDD54F515EBF0A10020CFF1 /* SSManagedObject.h in Headers */,
+				FDDD54F815EBF0A10020CFF1 /* SSRemoteManagedObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1151,9 +1135,6 @@
 				FD7654E915C9D53300A3D10A /* AFXMLRequestOperation.m in Sources */,
 				FD7654EC15C9D53300A3D10A /* UIImageView+AFNetworking.m in Sources */,
 				FD7655C515C9D53400A3D10A /* Reachability.m in Sources */,
-				FD7655C815C9D53400A3D10A /* NSManagedObjectContext+SSDataKitAdditions.m in Sources */,
-				FD7655D515C9D53400A3D10A /* SSManagedObject.m in Sources */,
-				FD7655DE15C9D53400A3D10A /* SSRemoteManagedObject.m in Sources */,
 				FD7655E115C9D53400A3D10A /* SSKeychain.m in Sources */,
 				FD7656A115CA053100A3D10A /* IPKQueryModel.m in Sources */,
 				FD7656BA15CAF2B500A3D10A /* IPKTag.m in Sources */,
@@ -1165,7 +1146,6 @@
 				FD32632915D077780050F394 /* NSMutableDictionary+InsiderPagesKit.m in Sources */,
 				FD91BFE715D5CBD9008158A6 /* IPKAbstractModel.m in Sources */,
 				FDB616BB15D5F66C00148606 /* IPKReview.m in Sources */,
-				FD547A2315DCF4B300922D5A /* RHManagedObjectContextManager.m in Sources */,
 				FD9AB8D815E40A0F0049B2C0 /* MagicalImportFunctions.m in Sources */,
 				FD9AB8DB15E40A0F0049B2C0 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				FD9AB8DE15E40A0F0049B2C0 /* NSEntityDescription+MagicalDataImport.m in Sources */,
@@ -1192,6 +1172,8 @@
 				FD9AB91D15E40A0F0049B2C0 /* MagicalRecord+Setup.m in Sources */,
 				FD9AB92015E40A0F0049B2C0 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				FD9AB92315E40A0F0049B2C0 /* MagicalRecord.m in Sources */,
+				FDDD54F615EBF0A10020CFF1 /* SSManagedObject.m in Sources */,
+				FDDD54F915EBF0A10020CFF1 /* SSRemoteManagedObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1218,9 +1200,6 @@
 				FD7654EA15C9D53300A3D10A /* AFXMLRequestOperation.m in Sources */,
 				FD7654ED15C9D53300A3D10A /* UIImageView+AFNetworking.m in Sources */,
 				FD7655C615C9D53400A3D10A /* Reachability.m in Sources */,
-				FD7655C915C9D53400A3D10A /* NSManagedObjectContext+SSDataKitAdditions.m in Sources */,
-				FD7655D615C9D53400A3D10A /* SSManagedObject.m in Sources */,
-				FD7655DF15C9D53400A3D10A /* SSRemoteManagedObject.m in Sources */,
 				FD7655E215C9D53400A3D10A /* SSKeychain.m in Sources */,
 				FD7656A215CA053100A3D10A /* IPKQueryModel.m in Sources */,
 				FD7656BB15CAF2B500A3D10A /* IPKTag.m in Sources */,
@@ -1231,7 +1210,6 @@
 				FD7656DF15CB834100A3D10A /* IPKActivity.m in Sources */,
 				FD32632A15D077780050F394 /* NSMutableDictionary+InsiderPagesKit.m in Sources */,
 				FDB616BC15D5F66C00148606 /* IPKReview.m in Sources */,
-				FD547A2415DCF4B300922D5A /* RHManagedObjectContextManager.m in Sources */,
 				FD9AB8D915E40A0F0049B2C0 /* MagicalImportFunctions.m in Sources */,
 				FD9AB8DC15E40A0F0049B2C0 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				FD9AB8DF15E40A0F0049B2C0 /* NSEntityDescription+MagicalDataImport.m in Sources */,
@@ -1258,6 +1236,8 @@
 				FD9AB91E15E40A0F0049B2C0 /* MagicalRecord+Setup.m in Sources */,
 				FD9AB92115E40A0F0049B2C0 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				FD9AB92415E40A0F0049B2C0 /* MagicalRecord.m in Sources */,
+				FDDD54F715EBF0A10020CFF1 /* SSManagedObject.m in Sources */,
+				FDDD54FA15EBF0A10020CFF1 /* SSRemoteManagedObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
