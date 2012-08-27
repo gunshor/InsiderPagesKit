@@ -434,11 +434,11 @@ static BOOL __developmentMode = NO;
         for (NSDictionary * providerDictionary in [responseObject objectForKey:@"providers"]) {
             if ([providerDictionary objectForKey:@"cg_listing"]) {
                 IPKProvider * provider = [IPKProvider objectWithDictionary:[providerDictionary objectForKey:@"cg_listing"]];
-                [provider addPagesObject:[IPKPage existingObjectWithRemoteID:@([pageId integerValue])]];
+                [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId integerValue])]];
                 [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }else{
                 IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
-                [provider addPagesObject:[IPKPage existingObjectWithRemoteID:@([pageId integerValue])]];
+                [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId integerValue])]];
                 [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
         }
@@ -620,8 +620,8 @@ static BOOL __developmentMode = NO;
     [self postPath:@"insider_search" parameters:[queryModel packToDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        for (NSDictionary * providerDictionary in [responseObject objectForKey:@"results"]) {
-            IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
+        for (NSDictionary * insiderDictionary in [responseObject objectForKey:@"results"]) {
+            IPKUser * insider = [IPKUser objectWithDictionary:insiderDictionary];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
         //        }];
@@ -640,8 +640,8 @@ static BOOL __developmentMode = NO;
     [self postPath:@"page_search" parameters:[queryModel packToDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        for (NSDictionary * providerDictionary in [responseObject objectForKey:@"results"]) {
-            IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
+        for (NSDictionary * pageDictionary in [responseObject objectForKey:@"results"]) {
+            IPKPage * page = [IPKPage objectWithDictionary:pageDictionary];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
         //        }];
