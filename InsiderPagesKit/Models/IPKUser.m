@@ -79,7 +79,7 @@ static IPKUser *__currentUser = nil;
 
 + (IPKUser *)currentUser {
     if (!__currentUser) {
-    
+        
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSNumber *userID = [userDefaults objectForKey:kIPKUserIDKey];
         if (!userID) {
@@ -90,9 +90,14 @@ static IPKUser *__currentUser = nil;
         if (!accessToken) {
             return nil;
         }
-        
-        __currentUser = [self existingObjectWithRemoteID:userID context:[NSManagedObjectContext MR_contextForCurrentThread]];
-        __currentUser.accessToken = accessToken;
+        if ([self existingObjectWithRemoteID:userID]) {
+            __currentUser = [self existingObjectWithRemoteID:userID];
+        }else{
+            __currentUser = [self objectWithRemoteID:userID];
+            __currentUser.accessToken = accessToken;
+            [__currentUser updateWithSuccess:nil failure:nil];
+            NSLog(@"Forcing user to update from server because nothing was found in core data, userID: %@", userID);
+        }
     }
 	return __currentUser;
 }
