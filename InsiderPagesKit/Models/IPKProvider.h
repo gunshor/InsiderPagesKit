@@ -9,6 +9,7 @@
 #import "IPKAbstractModel.h"
 
 @class IPKPage;
+@class IPKReview;
 
 @interface IPKProvider : IPKAbstractModel
 
@@ -30,6 +31,7 @@
 @property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) NSNumber * user_id;
 @property (nonatomic, retain) NSSet *pages;
+@property (nonatomic, retain) IPKReview *reviews;
 @property (nonatomic, retain) NSSet *activities;
 
 -(NSDictionary*)packToDictionary;

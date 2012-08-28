@@ -31,6 +31,7 @@
 @dynamic user_id;
 @dynamic pages;
 @dynamic activities;
+@dynamic reviews;
 
 -(NSDictionary*)packToDictionary{
     NSMutableDictionary * packedDictionary = [NSMutableDictionary dictionary];
@@ -53,7 +54,7 @@
 	[super unpackDictionary:dictionary];    
 	self.attribution_url = [dictionary safeObjectForKey:@"attribution_url"];
     self.business_name = [dictionary safeObjectForKey:@"business_name"];
-    self.cg_listing_id = [dictionary safeObjectForKey:@"cg_listing_id"];
+    self.cg_listing_id = [[[[dictionary safeObjectForKey:@"primary_address"] safeObjectForKey:@"owner"] safeObjectForKey:@"cg_listing"] safeObjectForKey:@"id"];
     self.created_by_id = [dictionary safeObjectForKey:@"created_by_id"];
     self.description_text = [dictionary safeObjectForKey:@"description"];
     self.email_address = [dictionary safeObjectForKey:@"email_address"];

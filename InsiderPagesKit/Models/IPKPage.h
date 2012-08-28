@@ -10,6 +10,7 @@
 
 @class IPKUser;
 @class IPKProvider;
+@class IPKReview;
 
 @interface IPKPage : IPKAbstractModel
 
@@ -34,6 +35,7 @@
 @property (nonatomic, retain) IPKUser *owner;
 @property (nonatomic, retain) NSOrderedSet *providers;
 @property (nonatomic, retain) NSSet *activities;
+@property (nonatomic, retain) IPKReview *reviews;
 
 -(NSDictionary*)packToDictionary;
 -(void)updateSectionHeader;

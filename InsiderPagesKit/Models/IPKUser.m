@@ -56,6 +56,7 @@ static IPKUser *__currentUser = nil;
 @dynamic notifications;
 @dynamic pages;
 @dynamic activities;
+@dynamic reviews;
 
 @synthesize accessToken;
 
@@ -95,7 +96,7 @@ static IPKUser *__currentUser = nil;
         }else{
             __currentUser = [self objectWithRemoteID:userID];
             __currentUser.accessToken = accessToken;
-            [__currentUser updateWithSuccess:nil failure:nil];
+//            [__currentUser updateWithSuccess:nil failure:nil];
             NSLog(@"Forcing user to update from server because nothing was found in core data, userID: %@", userID);
         }
     }

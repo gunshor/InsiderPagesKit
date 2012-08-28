@@ -7,6 +7,10 @@
 
 #import "IPKAbstractModel.h"
 
+@class IPKUser;
+@class IPKPage;
+@class IPKProvider;
+
 @interface IPKReview : IPKAbstractModel
 
 @property (nonatomic, retain) NSString * about;
@@ -28,5 +32,8 @@
 @property (nonatomic, retain) NSString * user_ip;
 @property (nonatomic, retain) NSString * why_recommended;
 @property (nonatomic, retain) NSSet *activities;
+@property (nonatomic, retain) IPKUser *reviewer;
+@property (nonatomic, retain) IPKProvider *provider;
+@property (nonatomic, retain) IPKPage *page;
 
 @end

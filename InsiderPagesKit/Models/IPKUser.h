@@ -7,9 +7,8 @@
 //
 #import "IPKAbstractModel.h"
 
-@class IPKList;
-@class IPKTask;
 @class IPKPage;
+@class IPKReview;
 
 enum IPKUserProfileImageSize {
     IPKUserProfileImageSizeNano = 0,
@@ -59,6 +58,7 @@ extern NSString *const kIPKCurrentUserChangedNotificationName;
 @property (nonatomic, retain) NSSet *notifications;
 @property (nonatomic, retain) NSSet *pages;
 @property (nonatomic, retain) NSSet *activities;
+@property (nonatomic, retain) IPKReview *reviews;
 
 @property (nonatomic, retain) NSString *accessToken;
 + (IPKUser *)currentUser;

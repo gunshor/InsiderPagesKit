@@ -34,6 +34,7 @@
 @dynamic owner;
 @dynamic providers;
 @dynamic activities;
+@dynamic reviews;
 
 -(NSDictionary*)packToDictionary{
     NSMutableDictionary * packedDictionary = [NSMutableDictionary dictionary];
