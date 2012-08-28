@@ -78,19 +78,22 @@ static IPKUser *__currentUser = nil;
 }
 
 + (IPKUser *)currentUser {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *userID = [userDefaults objectForKey:kIPKUserIDKey];
-    if (!userID) {
-        return nil;
-    }
+    if (!__currentUser) {
     
-    NSString *accessToken = [SSKeychain passwordForService:kIPKKeychainServiceName account:userID.description];
-    if (!accessToken) {
-        return nil;
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSNumber *userID = [userDefaults objectForKey:kIPKUserIDKey];
+        if (!userID) {
+            return nil;
+        }
+        
+        NSString *accessToken = [SSKeychain passwordForService:kIPKKeychainServiceName account:userID.description];
+        if (!accessToken) {
+            return nil;
+        }
+        
+        __currentUser = [self existingObjectWithRemoteID:userID context:[NSManagedObjectContext MR_contextForCurrentThread]];
+        __currentUser.accessToken = accessToken;
     }
-    
-    __currentUser = [self existingObjectWithRemoteID:userID context:[NSManagedObjectContext MR_defaultContext]];
-    __currentUser.accessToken = accessToken;
 	return __currentUser;
 }
 
