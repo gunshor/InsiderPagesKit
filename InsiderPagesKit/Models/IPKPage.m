@@ -39,8 +39,8 @@
 -(NSDictionary*)packToDictionary{
     NSMutableDictionary * packedDictionary = [NSMutableDictionary dictionary];
     [packedDictionary setSafeObject:self.name forKey:@"name"];
-//    [packedDictionary setSafeObject:self.description_text forKey:@"description_text"];
-//    [packedDictionary setSafeObject:self.id forKey:@"id"];
+    //    [packedDictionary setSafeObject:self.description_text forKey:@"description_text"];
+    //    [packedDictionary setSafeObject:self.id forKey:@"id"];
     [packedDictionary setSafeObject:self.image_content_type forKey:@"image_content_type"];
     [packedDictionary setSafeObject:self.image_file_name forKey:@"image_file_name"];
     [packedDictionary setSafeObject:self.image_file_size forKey:@"image_file_size"];
@@ -48,10 +48,10 @@
     [packedDictionary setSafeObject:self.privacy_setting forKey:@"privacy_setting"];
     [packedDictionary setSafeObject:self.sequence forKey:@"sequence"];
     [packedDictionary setSafeObject:self.sort forKey:@"sort"];
-//    [packedDictionary setSafeObject:self.user_id forKey:@"user_id"];
-//    [packedDictionary setSafeObject:self.providers forKey:@"providers"];
-//    [packedDictionary setSafeObject:self.owner forKey:@"owner"];
-//    [packedDictionary setSafeObject:self.followers forKey:@"followers"];
+    //    [packedDictionary setSafeObject:self.user_id forKey:@"user_id"];
+    //    [packedDictionary setSafeObject:self.providers forKey:@"providers"];
+    //    [packedDictionary setSafeObject:self.owner forKey:@"owner"];
+    //    [packedDictionary setSafeObject:self.followers forKey:@"followers"];
     return packedDictionary;
 }
 
@@ -85,22 +85,25 @@
     else {
         self.is_following = [NSNumber numberWithBool:NO];
     }
-    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *userID = [userDefaults objectForKey:@"IPKUserID"];
     if ([self.is_favorite boolValue]) {
         self.section_header = @"Favorite";
     }else if ([self.is_following boolValue]){
         self.section_header = @"Following";
-    }else if([self.user_id isEqualToNumber: [[IPKUser currentUser] id]]){
+    }else if([self.user_id isEqualToNumber:userID]){
         self.section_header = @"Mine";
     }
 }
 
 -(void)updateSectionHeader{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *userID = [userDefaults objectForKey:@"IPKUserID"];
     if ([self.is_favorite boolValue]) {
         self.section_header = @"Favorite";
     }else if ([self.is_following boolValue]){
         self.section_header = @"Following";
-    }else if([self.user_id isEqualToNumber: [[IPKUser currentUser] id]]){
+    }else if([self.user_id isEqualToNumber:userID]){
         self.section_header = @"Mine";
     }
 }
