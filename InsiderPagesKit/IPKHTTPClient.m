@@ -598,7 +598,7 @@ static BOOL __developmentMode = NO;
 #pragma mark - Providers
 - (void)getPagesForProviderWithId:(NSString*)providerId withCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSString * urlString = [NSString stringWithFormat:@"providers/%@/pages", providerId];
-    NSString * provider_type = [IPKProvider objectWithRemoteID:@([providerId intValue])].cg_listing_id ? @"CgListing": @"Provider";
+    NSString * provider_type = ((IPKProvider*)[IPKProvider objectWithRemoteID:@([providerId intValue])]).cg_listing_id ? @"CgListing": @"Provider";
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:provider_type,@"provider_type", nil];
     [self getPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         for (NSDictionary * pageDictionary in [responseObject objectForKey:@"pages"]) {
