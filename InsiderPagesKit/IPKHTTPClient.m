@@ -598,8 +598,9 @@ static BOOL __developmentMode = NO;
 #pragma mark - Providers
 - (void)getPagesForProviderWithId:(NSString*)providerId withCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSString * urlString = [NSString stringWithFormat:@"providers/%@/pages", providerId];
-    NSString * provider_type = ((IPKProvider*)[IPKProvider objectWithRemoteID:@([providerId intValue])]).cg_listing_id ? @"CgListing": @"Provider";
-    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:provider_type,@"provider_type", nil];
+    NSString * provider_type = ((IPKProvider*)[IPKProvider objectWithRemoteID:@([providerId intValue])]).cg_listing_id ? @"Provider" : @"CgListing";
+    NSLog(@"%@", [IPKProvider objectWithRemoteID:@([providerId intValue])]);
+    NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:provider_type, @"provider_type", nil];
     [self getPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         for (NSDictionary * pageDictionary in [responseObject objectForKey:@"pages"]) {
             IPKPage * page = [IPKPage objectWithDictionary:pageDictionary];
@@ -765,9 +766,9 @@ static BOOL __developmentMode = NO;
 }
 
 - (void)_getScoopsWithParams:(NSDictionary*)params success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
-
+    
     [self getPath:@"scoops" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
+        
         for (NSDictionary* plugDictionary in [responseObject objectForKey:@"scoops"]) {
             for (NSDictionary * scoopDictionary in [responseObject objectForKey:@"scoops"]) {
                 [IPKReview objectWithDictionary:scoopDictionary];
