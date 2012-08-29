@@ -24,7 +24,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="lat" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="lng" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="prime" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="provider_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -166,11 +166,11 @@
     <elements>
         <element name="IPKActivity" positionX="0" positionY="0" width="0" height="0"/>
         <element name="IPKNotification" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKPage" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKProvider" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="IPKPage" positionX="0" positionY="0" width="0" height="375"/>
+        <element name="IPKProvider" positionX="0" positionY="0" width="0" height="345"/>
         <element name="IPKQueryModel" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKReview" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKUser" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKAddress" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="IPKReview" positionX="0" positionY="0" width="0" height="375"/>
+        <element name="IPKUser" positionX="0" positionY="0" width="0" height="585"/>
+        <element name="IPKAddress" positionX="160" positionY="192" width="128" height="255"/>
     </elements>
 </model>
