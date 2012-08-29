@@ -10,6 +10,7 @@
 
 @class IPKPage;
 @class IPKReview;
+@class IPKAddress;
 
 @interface IPKProvider : IPKAbstractModel
 
@@ -33,6 +34,7 @@
 @property (nonatomic, retain) NSSet *pages;
 @property (nonatomic, retain) IPKReview *reviews;
 @property (nonatomic, retain) NSSet *activities;
+@property (nonatomic, retain) IPKAddress * address;
 
 -(NSDictionary*)packToDictionary;
 -(NSString*)full_name;

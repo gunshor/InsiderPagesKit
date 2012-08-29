@@ -7,6 +7,7 @@
 //
 
 #import "IPKProvider.h"
+#import "IPKAddress.h"
 #import "NSMutableDictionary+InsiderPagesKit.h"
 #import "NSDictionary+InsiderPagesKit.h"
 
@@ -32,6 +33,7 @@
 @dynamic pages;
 @dynamic activities;
 @dynamic reviews;
+@dynamic address;
 
 -(NSDictionary*)packToDictionary{
     NSMutableDictionary * packedDictionary = [NSMutableDictionary dictionary];
@@ -66,6 +68,7 @@
     self.url = [dictionary safeObjectForKey:@"url"];
     self.user_id = [dictionary safeObjectForKey:@"user_id"];
     self.updated_from_ip_at = [dictionary safeObjectForKey:@"updated_from_ip_at"];
+    self.address = [IPKAddress objectWithDictionary:[[dictionary objectForKey:@"primary_address"] objectForKey:@"address"]];
 }
 
 -(NSString *)full_name{

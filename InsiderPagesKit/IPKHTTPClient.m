@@ -432,20 +432,11 @@ static BOOL __developmentMode = NO;
 - (void)getProvidersForPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSString *url = [NSString stringWithFormat:@"teams/%@/providers", pageId];
     [self getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
-        //        [context performBlock:^{
         for (NSDictionary * providerDictionary in [responseObject objectForKey:@"providers"]) {
-            if ([providerDictionary objectForKey:@"cg_listing"]) {
-                IPKProvider * provider = [IPKProvider objectWithDictionary:[providerDictionary objectForKey:@"cg_listing"]];
-                [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId integerValue])]];
-                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-            }else{
-                IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
-                [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId integerValue])]];
-                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-            }
+            IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
+            [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId integerValue])]];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
-        //        }];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);

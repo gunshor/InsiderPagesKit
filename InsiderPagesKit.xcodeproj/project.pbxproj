@@ -211,6 +211,9 @@
 		FDDD54F815EBF0A10020CFF1 /* SSRemoteManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FDDD54F315EBF0A10020CFF1 /* SSRemoteManagedObject.h */; };
 		FDDD54F915EBF0A10020CFF1 /* SSRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */; };
 		FDDD54FA15EBF0A10020CFF1 /* SSRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */; };
+		FDFC6B0215EEBCA00071299D /* IPKAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = FDFC6B0015EEBCA00071299D /* IPKAddress.h */; };
+		FDFC6B0315EEBCA00071299D /* IPKAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFC6B0115EEBCA00071299D /* IPKAddress.m */; };
+		FDFC6B0415EEBCA00071299D /* IPKAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFC6B0115EEBCA00071299D /* IPKAddress.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -455,6 +458,8 @@
 		FDDD54F215EBF0A10020CFF1 /* SSManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSManagedObject.m; sourceTree = "<group>"; };
 		FDDD54F315EBF0A10020CFF1 /* SSRemoteManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRemoteManagedObject.h; sourceTree = "<group>"; };
 		FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRemoteManagedObject.m; sourceTree = "<group>"; };
+		FDFC6B0015EEBCA00071299D /* IPKAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPKAddress.h; path = InsiderPagesKit/Models/IPKAddress.h; sourceTree = SOURCE_ROOT; };
+		FDFC6B0115EEBCA00071299D /* IPKAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPKAddress.m; path = InsiderPagesKit/Models/IPKAddress.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -760,6 +765,8 @@
 		FD7656A315CAF2B400A3D10A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FDFC6B0015EEBCA00071299D /* IPKAddress.h */,
+				FDFC6B0115EEBCA00071299D /* IPKAddress.m */,
 				FDB616B815D5F66C00148606 /* IPKReview.h */,
 				FDB616B915D5F66C00148606 /* IPKReview.m */,
 				FD7656DB15CB834000A3D10A /* IPKActivity.h */,
@@ -955,6 +962,7 @@
 				FD9AB92615E40A0F0049B2C0 /* CoreData+MagicalRecord.h in Headers */,
 				FDDD54F515EBF0A10020CFF1 /* SSManagedObject.h in Headers */,
 				FDDD54F815EBF0A10020CFF1 /* SSRemoteManagedObject.h in Headers */,
+				FDFC6B0215EEBCA00071299D /* IPKAddress.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1174,6 +1182,7 @@
 				FD9AB92315E40A0F0049B2C0 /* MagicalRecord.m in Sources */,
 				FDDD54F615EBF0A10020CFF1 /* SSManagedObject.m in Sources */,
 				FDDD54F915EBF0A10020CFF1 /* SSRemoteManagedObject.m in Sources */,
+				FDFC6B0315EEBCA00071299D /* IPKAddress.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1238,6 +1247,7 @@
 				FD9AB92415E40A0F0049B2C0 /* MagicalRecord.m in Sources */,
 				FDDD54F715EBF0A10020CFF1 /* SSManagedObject.m in Sources */,
 				FDDD54FA15EBF0A10020CFF1 /* SSRemoteManagedObject.m in Sources */,
+				FDFC6B0415EEBCA00071299D /* IPKAddress.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
