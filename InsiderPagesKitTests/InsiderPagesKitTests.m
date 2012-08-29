@@ -506,10 +506,9 @@
     NSString * localProviderID = [NSString stringWithFormat:@"%d", 1];
     [[IPKHTTPClient sharedClient] getScoopsForProviderWithId:localProviderID withCurrentPage:@1 perPage:@3 success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
-        for (NSDictionary* plugDictionary in [responseObject objectForKey:@"scoops"]) {
-            for (NSDictionary * scoopDictionary in [responseObject objectForKey:@"scoops"]) {
-                STAssertTrue([[scoopDictionary objectForKey:@"why_recommended"] isKindOfClass:[NSString class]], @"Should contain why_recommended string");
-            }
+        for (NSDictionary * scoopDictionary in [responseObject objectForKey:@"scoops"]) {
+            NSLog(@"%@", [scoopDictionary objectForKey:@"why_recommended"]);
+            STAssertTrue([[scoopDictionary objectForKey:@"why_recommended"] isKindOfClass:[NSString class]], @"Should contain why_recommended string");
         }
         finished = YES;
     } failure:^(AFJSONRequestOperation *operation, NSError *error){
@@ -519,15 +518,25 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
-    
+    [[IPKHTTPClient sharedClient] getScoopsForProviderWithId:localProviderID withCurrentPage:@2 perPage:@3 success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        for (NSDictionary * scoopDictionary in [responseObject objectForKey:@"scoops"]) {
+            NSLog(@"%@", [scoopDictionary objectForKey:@"why_recommended"]);
+            STAssertTrue([[scoopDictionary objectForKey:@"why_recommended"] isKindOfClass:[NSString class]], @"Should contain why_recommended string");
+        }
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        STAssertTrue(NO, [error debugDescription]);
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+        
     finished = NO;
     NSString * localPageId = [(@41) stringValue];
     [[IPKHTTPClient sharedClient] getScoopsForPageWithId:localPageId withCurrentPage:@1 perPage:@3 success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
-        for (NSDictionary* plugDictionary in [responseObject objectForKey:@"scoops"]) {
-            for (NSDictionary * scoopDictionary in [responseObject objectForKey:@"scoops"]) {
-                STAssertTrue([[scoopDictionary objectForKey:@"why_recommended"] isKindOfClass:[NSString class]], @"Should contain why_recommended string");
-            }
+        for (NSDictionary * scoopDictionary in [responseObject objectForKey:@"scoops"]) {
+            STAssertTrue([[scoopDictionary objectForKey:@"why_recommended"] isKindOfClass:[NSString class]], @"Should contain why_recommended string");
         }
         finished = YES;
     } failure:^(AFJSONRequestOperation *operation, NSError *error){

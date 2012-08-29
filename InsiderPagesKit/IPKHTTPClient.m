@@ -760,12 +760,10 @@ static BOOL __developmentMode = NO;
     
     [self getPath:@"scoops" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        for (NSDictionary* plugDictionary in [responseObject objectForKey:@"scoops"]) {
-            for (NSDictionary * scoopDictionary in [responseObject objectForKey:@"scoops"]) {
-                [IPKReview objectWithDictionary:scoopDictionary];
-            }
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        for (NSDictionary * scoopDictionary in [responseObject objectForKey:@"scoops"]) {
+            [IPKReview objectWithDictionary:scoopDictionary];
         }
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
