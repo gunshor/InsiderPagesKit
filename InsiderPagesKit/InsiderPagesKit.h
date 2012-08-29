@@ -13,6 +13,7 @@
 #import <InsiderPagesKit/Models/IPKReview.h>
 #import <InsiderPagesKit/Models/IPKPage.h>
 #import <InsiderPagesKit/Models/IPKProvider.h>
+#import <InsiderPagesKit/Models/IPKAddress.h>
 #import <InsiderPagesKit/IPKQueryModel.h>
 #import <InsiderPagesKit/Models/IPKActivity.h>
 #import <InsiderPagesKit/Models/IPKNotification.h>
