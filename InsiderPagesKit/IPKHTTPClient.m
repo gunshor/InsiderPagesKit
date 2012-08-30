@@ -65,11 +65,10 @@ static BOOL __developmentMode = NO;
 		[self registerHTTPOperationClass:[AFJSONRequestOperation class]];
 		[self setDefaultHeader:@"Accept" value:@"application/json"];
 		
-		if ([IPKUser currentUser]) {
-			[self changeUser:[IPKUser currentUser]];
-		}
+//		if ([IPKUser currentUser]) {
+//			[self changeUser:[IPKUser currentUser]];
+//		}
 		
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_userChanged:) name:kIPKCurrentUserChangedNotificationName object:nil];
 		_callbackQueue = dispatch_queue_create("com.insiderpages.ios.network-callback-queue", 0);
 	}
     [self setDefaultHeader:@"User-Agent" value:@"InsiderPages/1.0"];
@@ -1003,24 +1002,5 @@ static BOOL __developmentMode = NO;
 //		}
 //	}];
 //}
-
-
-#pragma mark - Authentication
-
-- (void)_userChanged:(NSNotification *)notification {
-	[self changeUser:[IPKUser currentUser]];
-}
-
-
-- (void)changeUser:(IPKUser *)user {
-	if (user.accessToken) {
-		[self setDefaultHeader:@"Authorization" value:user.accessToken];
-        NSString * user_id = [NSString stringWithFormat:@"%@", user.id];
-        [self setDefaultHeader:@"User_ID" value:user_id];
-		return;
-	}
-	
-	[self clearAuthorizationHeader];
-}
 
 @end
