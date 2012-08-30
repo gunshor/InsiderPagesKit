@@ -109,19 +109,12 @@ static BOOL __developmentMode = NO;
                             nil];
     
     [self postPath:@"login" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        __weak NSManagedObjectContext *context = [[RHManagedObjectContextManager sharedInstance] managedObjectContext];
-        
-        //        [context performBlock:^{
-        NSDictionary *dictionary = [NSDictionary dictionaryWithDictionary:responseObject];
-        [[NSUserDefaults standardUserDefaults] setObject:[dictionary objectForKey:@"user"] forKey:@"CurrentUserDictionary"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        IPKUser *user = [IPKUser objectWithDictionary:[dictionary objectForKey:@"user"]];
+        IPKUser *user = [IPKUser objectWithDictionary:[responseObject objectForKey:@"user"]];
         user.fb_access_token = fbAccessToken;
         NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
         user.accessToken = [cookie value];
         [IPKUser setCurrentUser:user];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        //        }];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
