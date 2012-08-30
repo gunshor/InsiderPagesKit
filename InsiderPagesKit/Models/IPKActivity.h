@@ -12,20 +12,20 @@
 
 @interface IPKActivity : IPKAbstractModel
 
-@property (nonatomic, retain) NSString * action;
-@property (nonatomic, retain) NSDate * createdAt;
-@property (nonatomic, retain) NSNumber * id;
-@property (nonatomic, retain) NSNumber * remoteID;
-@property (nonatomic, retain) NSNumber * team_id;
-@property (nonatomic, retain) NSNumber * trackable_id;
-@property (nonatomic, retain) NSString * trackable_type;
-@property (nonatomic, retain) NSDate * updatedAt;
-@property (nonatomic, retain) NSNumber * user_id;
-@property (nonatomic, retain) NSNumber * visibility;
-@property (nonatomic, retain) IPKPage *page;
-@property (nonatomic, retain) IPKProvider *provider;
-@property (nonatomic, retain) IPKReview *review;
-@property (nonatomic, retain) IPKUser *user;
+@property (nonatomic, strong) NSString * action;
+@property (nonatomic, strong) NSDate * createdAt;
+@property (nonatomic, strong) NSNumber * id;
+@property (nonatomic, strong) NSNumber * remoteID;
+@property (nonatomic, strong) NSNumber * team_id;
+@property (nonatomic, strong) NSNumber * trackable_id;
+@property (nonatomic, strong) NSString * trackable_type;
+@property (nonatomic, strong) NSDate * updatedAt;
+@property (nonatomic, strong) NSNumber * user_id;
+@property (nonatomic, strong) NSNumber * visibility;
+@property (nonatomic, strong) IPKPage *page;
+@property (nonatomic, strong) IPKProvider *provider;
+@property (nonatomic, strong) IPKReview *review;
+@property (nonatomic, strong) IPKUser *user;
 
 -(enum IPKTrackableType)trackableType;
 -(enum IPKActivityType)activityType;

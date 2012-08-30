@@ -12,15 +12,15 @@
 
 @interface IPKNotification : IPKAbstractModel
 
-@property (nonatomic, retain) NSString * action_text;
-@property (nonatomic, retain) id activity_parent;
-@property (nonatomic, retain) NSDate * createdAt;
-@property (nonatomic, retain) NSNumber * id;
-@property (nonatomic, retain) NSString * path;
-@property (nonatomic, retain) NSNumber * read;
-@property (nonatomic, retain) NSNumber * remoteID;
-@property (nonatomic, retain) NSDate * updatedAt;
-@property (nonatomic, retain) NSNumber * user_id;
-@property (nonatomic, retain) IPKUser *user;
+@property (nonatomic, strong) NSString * action_text;
+@property (nonatomic, strong) id activity_parent;
+@property (nonatomic, strong) NSDate * createdAt;
+@property (nonatomic, strong) NSNumber * id;
+@property (nonatomic, strong) NSString * path;
+@property (nonatomic, strong) NSNumber * read;
+@property (nonatomic, strong) NSNumber * remoteID;
+@property (nonatomic, strong) NSDate * updatedAt;
+@property (nonatomic, strong) NSNumber * user_id;
+@property (nonatomic, strong) IPKUser *user;
 
 @end

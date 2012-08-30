@@ -14,28 +14,28 @@
 
 @interface IPKPage : IPKAbstractModel
 
-@property (nonatomic, retain) NSDate * createdAt;
-@property (nonatomic, retain) NSString * description_text;
-@property (nonatomic, retain) NSNumber * id;
-@property (nonatomic, retain) NSString * image_content_type;
-@property (nonatomic, retain) NSString * image_file_name;
-@property (nonatomic, retain) NSString * image_file_size;
-@property (nonatomic, retain) NSDate * image_updated_at;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * privacy_setting;
-@property (nonatomic, retain) NSNumber * remoteID;
-@property (nonatomic, retain) NSNumber * sequence;
-@property (nonatomic, retain) NSNumber * sort;
-@property (nonatomic, retain) NSDate * updatedAt;
-@property (nonatomic, retain) NSNumber * user_id;
-@property (nonatomic, retain) NSString * section_header;
-@property (nonatomic, retain) NSNumber * is_favorite;
-@property (nonatomic, retain) NSNumber * is_following;
-@property (nonatomic, retain) NSSet *following_users;
-@property (nonatomic, retain) IPKUser *owner;
-@property (nonatomic, retain) NSOrderedSet *providers;
-@property (nonatomic, retain) NSSet *activities;
-@property (nonatomic, retain) IPKReview *reviews;
+@property (nonatomic, strong) NSDate * createdAt;
+@property (nonatomic, strong) NSString * description_text;
+@property (nonatomic, strong) NSNumber * id;
+@property (nonatomic, strong) NSString * image_content_type;
+@property (nonatomic, strong) NSString * image_file_name;
+@property (nonatomic, strong) NSString * image_file_size;
+@property (nonatomic, strong) NSDate * image_updated_at;
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSNumber * privacy_setting;
+@property (nonatomic, strong) NSNumber * remoteID;
+@property (nonatomic, strong) NSNumber * sequence;
+@property (nonatomic, strong) NSNumber * sort;
+@property (nonatomic, strong) NSDate * updatedAt;
+@property (nonatomic, strong) NSNumber * user_id;
+@property (nonatomic, strong) NSString * section_header;
+@property (nonatomic, strong) NSNumber * is_favorite;
+@property (nonatomic, strong) NSNumber * is_following;
+@property (nonatomic, strong) NSSet *following_users;
+@property (nonatomic, strong) IPKUser *owner;
+@property (nonatomic, strong) NSOrderedSet *providers;
+@property (nonatomic, strong) NSSet *activities;
+@property (nonatomic, strong) IPKReview *reviews;
 
 -(NSDictionary*)packToDictionary;
 -(void)updateSectionHeader;

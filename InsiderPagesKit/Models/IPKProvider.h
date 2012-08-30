@@ -14,27 +14,27 @@
 
 @interface IPKProvider : IPKAbstractModel
 
-@property (nonatomic, retain) NSString * attribution_url;
-@property (nonatomic, retain) NSString * business_name;
-@property (nonatomic, retain) NSNumber * cg_listing_id;
-@property (nonatomic, retain) NSNumber * created_by_id;
-@property (nonatomic, retain) NSDate * createdAt;
-@property (nonatomic, retain) NSString * description_text;
-@property (nonatomic, retain) NSString * email_address;
-@property (nonatomic, retain) NSString * first_name;
-@property (nonatomic, retain) NSNumber * id;
-@property (nonatomic, retain) NSString * last_name;
-@property (nonatomic, retain) NSNumber * last_updated_by_id;
-@property (nonatomic, retain) NSNumber * remoteID;
-@property (nonatomic, retain) NSString * state;
-@property (nonatomic, retain) NSDate * updated_from_ip_at;
-@property (nonatomic, retain) NSDate * updatedAt;
-@property (nonatomic, retain) NSString * url;
-@property (nonatomic, retain) NSNumber * user_id;
-@property (nonatomic, retain) NSSet *pages;
-@property (nonatomic, retain) IPKReview *reviews;
-@property (nonatomic, retain) NSSet *activities;
-@property (nonatomic, retain) IPKAddress * address;
+@property (nonatomic, strong) NSString * attribution_url;
+@property (nonatomic, strong) NSString * business_name;
+@property (nonatomic, strong) NSNumber * cg_listing_id;
+@property (nonatomic, strong) NSNumber * created_by_id;
+@property (nonatomic, strong) NSDate * createdAt;
+@property (nonatomic, strong) NSString * description_text;
+@property (nonatomic, strong) NSString * email_address;
+@property (nonatomic, strong) NSString * first_name;
+@property (nonatomic, strong) NSNumber * id;
+@property (nonatomic, strong) NSString * last_name;
+@property (nonatomic, strong) NSNumber * last_updated_by_id;
+@property (nonatomic, strong) NSNumber * remoteID;
+@property (nonatomic, strong) NSString * state;
+@property (nonatomic, strong) NSDate * updated_from_ip_at;
+@property (nonatomic, strong) NSDate * updatedAt;
+@property (nonatomic, strong) NSString * url;
+@property (nonatomic, strong) NSNumber * user_id;
+@property (nonatomic, strong) NSSet *pages;
+@property (nonatomic, strong) IPKReview *reviews;
+@property (nonatomic, strong) NSSet *activities;
+@property (nonatomic, strong) IPKAddress * address;
 
 -(NSDictionary*)packToDictionary;
 -(NSString*)full_name;

@@ -15,52 +15,52 @@ enum IPKUserProfileImageSize {
     IPKUserProfileImageSizeMini = 1,
     IPKUserProfileImageSizeThumb = 2,
     IPKUserProfileImageSizeMedium = 3
-    };
+};
 
 extern NSString *const kIPKCurrentUserChangedNotificationName;
 
 @interface IPKUser : IPKAbstractModel
 
-@property (nonatomic, retain) NSString * fb_access_token;
-@property (nonatomic, retain) NSString * fb_user_id;
+@property (nonatomic, strong) NSString * fb_access_token;
+@property (nonatomic, strong) NSString * fb_user_id;
 
-@property (nonatomic, retain) NSString * about_me;
-@property (nonatomic, retain) NSNumber * add_ip_to_fb;
-@property (nonatomic, retain) NSNumber * admin;
-@property (nonatomic, retain) NSNumber * city_id;
-@property (nonatomic, retain) NSDate * createdAt;
-@property (nonatomic, retain) NSString * email;
-@property (nonatomic, retain) NSString * first_name;
-@property (nonatomic, retain) NSNumber * gender;
-@property (nonatomic, retain) NSNumber * id;
-@property (nonatomic, retain) NSString * image_content_type;
-@property (nonatomic, retain) NSString * image_file_name;
-@property (nonatomic, retain) NSString * image_file_size;
-@property (nonatomic, retain) NSString * image_profile_path;
-@property (nonatomic, retain) NSNumber * image_to_show;
-@property (nonatomic, retain) NSDate * image_updated_at;
-@property (nonatomic, retain) NSString * last_name;
-@property (nonatomic, retain) NSNumber * link_to_twitter;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * remoteID;
-@property (nonatomic, retain) NSNumber * tos;
-@property (nonatomic, retain) NSDate * updatedAt;
-@property (nonatomic, retain) NSNumber * wants_email;
-@property (nonatomic, retain) NSString * website;
-@property (nonatomic, retain) NSString * work_email;
-@property (nonatomic, retain) NSString * zip_code;
-@property (nonatomic, retain) NSNumber * is_following;
-@property (nonatomic, retain) NSNumber * is_collaborator;
+@property (nonatomic, strong) NSString * about_me;
+@property (nonatomic, strong) NSNumber * add_ip_to_fb;
+@property (nonatomic, strong) NSNumber * admin;
+@property (nonatomic, strong) NSNumber * city_id;
+@property (nonatomic, strong) NSDate * createdAt;
+@property (nonatomic, strong) NSString * email;
+@property (nonatomic, strong) NSString * first_name;
+@property (nonatomic, strong) NSNumber * gender;
+@property (nonatomic, strong) NSNumber * id;
+@property (nonatomic, strong) NSString * image_content_type;
+@property (nonatomic, strong) NSString * image_file_name;
+@property (nonatomic, strong) NSString * image_file_size;
+@property (nonatomic, strong) NSString * image_profile_path;
+@property (nonatomic, strong) NSNumber * image_to_show;
+@property (nonatomic, strong) NSDate * image_updated_at;
+@property (nonatomic, strong) NSString * last_name;
+@property (nonatomic, strong) NSNumber * link_to_twitter;
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSNumber * remoteID;
+@property (nonatomic, strong) NSNumber * tos;
+@property (nonatomic, strong) NSDate * updatedAt;
+@property (nonatomic, strong) NSNumber * wants_email;
+@property (nonatomic, strong) NSString * website;
+@property (nonatomic, strong) NSString * work_email;
+@property (nonatomic, strong) NSString * zip_code;
+@property (nonatomic, strong) NSNumber * is_following;
+@property (nonatomic, strong) NSNumber * is_collaborator;
 
-@property (nonatomic, retain) NSSet *followedPages;
-@property (nonatomic, retain) NSSet *followedUsers;
-@property (nonatomic, retain) NSSet *followers;
-@property (nonatomic, retain) NSSet *notifications;
-@property (nonatomic, retain) NSSet *pages;
-@property (nonatomic, retain) NSSet *activities;
-@property (nonatomic, retain) IPKReview *reviews;
+@property (nonatomic, strong) NSSet *followedPages;
+@property (nonatomic, strong) NSSet *followedUsers;
+@property (nonatomic, strong) NSSet *followers;
+@property (nonatomic, strong) NSSet *notifications;
+@property (nonatomic, strong) NSSet *pages;
+@property (nonatomic, strong) NSSet *activities;
+@property (nonatomic, strong) IPKReview *reviews;
 
-@property (nonatomic, retain) NSString *accessToken;
+@property (nonatomic, strong) NSString *accessToken;
 + (IPKUser *)currentUser;
 + (void)setCurrentUser:(IPKUser *)user;
 + (BOOL)userHasLoggedIn;
