@@ -16,7 +16,6 @@
 
 NSString *const kIPKCurrentUserChangedNotificationName = @"IPCurrentUserChangedNotification";
 static NSString *const kIPKUserIDKey = @"IPKUserID";
-static IPKUser *__currentUser = nil;
 
 @implementation IPKUser
 
@@ -79,8 +78,7 @@ static IPKUser *__currentUser = nil;
 }
 
 + (IPKUser *)currentUser {
-    if (!__currentUser) {
-        
+    IPKUser * currentUser = nil;
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSNumber *userID = [userDefaults objectForKey:kIPKUserIDKey];
         if (!userID) {
@@ -92,15 +90,15 @@ static IPKUser *__currentUser = nil;
             return nil;
         }
         if ([self existingObjectWithRemoteID:userID]) {
-            __currentUser = [self existingObjectWithRemoteID:userID];
+            currentUser = [self existingObjectWithRemoteID:userID];
         }else{
-            __currentUser = [self objectWithRemoteID:userID];
-            __currentUser.accessToken = accessToken;
-            [__currentUser updateWithSuccess:nil failure:nil];
+            currentUser = [self objectWithRemoteID:userID];
+            currentUser.accessToken = accessToken;
+            [currentUser updateWithSuccess:nil failure:nil];
             NSLog(@"Forcing user to update from server because nothing was found in core data, userID: %@", userID);
         }
-    }
-	return __currentUser;
+
+	return currentUser;
 }
 
 - (NSString *)imageProfilePathForSize:(enum IPKUserProfileImageSize)size{
@@ -131,24 +129,15 @@ static IPKUser *__currentUser = nil;
 
 
 + (void)setCurrentUser:(IPKUser *)user {
-	if (__currentUser) {
-		[SSKeychain deletePasswordForService:kIPKKeychainServiceName account:__currentUser.remoteID.description];
+	if ([IPKUser currentUser]) {
+		[SSKeychain deletePasswordForService:kIPKKeychainServiceName account:[IPKUser currentUser].remoteID.description];
 	}
-	
-	if (!user.remoteID || !user.accessToken) {
-		__currentUser = nil;
-		return;
-	}
-	
+
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	[userDefaults setObject:user.remoteID forKey:kIPKUserIDKey];
 	[userDefaults synchronize];
 	
 	[SSKeychain setPassword:user.accessToken forService:kIPKKeychainServiceName account:user.remoteID.description];
-	
-	__currentUser = user;
-	
-    //	[[NSNotificationCenter defaultCenter] postNotificationName:kIPKCurrentUserChangedNotificationName object:user];
 }
 
 - (void)unpackDictionary:(NSDictionary *)dictionary {

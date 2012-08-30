@@ -87,7 +87,7 @@
 
 -(void)testUserResources{
     __block BOOL finished = NO;
-    NSString * remoteIDString  = [NSString stringWithFormat:@"%@", [IPKHTTPClient sharedClient].currentUser.id];
+    NSString * remoteIDString  = [NSString stringWithFormat:@"%@", [IPKUser currentUser].id];
     [[IPKHTTPClient sharedClient] getPagesForUserWithId:remoteIDString success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         finished = YES;
@@ -102,7 +102,7 @@
         NSLog(@"%@", responseObject);
         for (NSDictionary * teamDict in [responseObject objectForKey:@"team"]) {
             STAssertTrue([[teamDict objectForKey:@"is_favorite"] boolValue], @"All favorite pages should have their 'is_favorite' property set as such");
-            STAssertFalse([[teamDict objectForKey:@"user_id"] isEqualToNumber:[IPKHTTPClient sharedClient].currentUser.id], @"following pages should not have been created by the user requesting the pages %@", teamDict);
+            STAssertFalse([[teamDict objectForKey:@"user_id"] isEqualToNumber:[IPKUser currentUser].id], @"following pages should not have been created by the user requesting the pages %@", teamDict);
         }
         finished = YES;
     } failure:^(AFJSONRequestOperation *operation, NSError *error){
@@ -231,7 +231,7 @@
 
 -(void)testPublicUserAccess{
     __block BOOL finished = NO;
-    NSString * userID = [NSString stringWithFormat:@"%@", [IPKHTTPClient sharedClient].currentUser.id];
+    NSString * userID = [NSString stringWithFormat:@"%@", [IPKUser currentUser].id];
     [[IPKHTTPClient sharedClient] getUserInfoWithId:userID success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         finished = YES;
@@ -484,7 +484,7 @@
 -(void)testScoops{
 
     __block BOOL finished = NO;
-    NSString * userIDString = [NSString stringWithFormat:@"%@",[IPKHTTPClient sharedClient].currentUser.id];
+    NSString * userIDString = [NSString stringWithFormat:@"%@",[IPKUser currentUser].id];
     [[IPKHTTPClient sharedClient] getScoopsForUserWithId:userIDString withCurrentPage:@1 perPage:@3 success:^(AFJSONRequestOperation *operation, id responseObject){
         NSLog(@"%@", responseObject);
         for (NSDictionary* plugDictionary in [responseObject objectForKey:@"scoops"]) {

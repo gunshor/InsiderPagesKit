@@ -68,7 +68,7 @@ static BOOL __developmentMode = NO;
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
             NSNumber *userID = [userDefaults objectForKey:@"IPKUserID"];
             if ([IPKUser existingObjectWithRemoteID:userID]) {
-                self.currentUser = [IPKUser existingObjectWithRemoteID:userID];
+                [IPKUser setCurrentUser:[IPKUser existingObjectWithRemoteID:userID]];
             }
         }
 		
@@ -115,7 +115,7 @@ static BOOL __developmentMode = NO;
         user.fb_access_token = fbAccessToken;
         NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
         user.accessToken = [cookie value];
-        [self setCurrentUser:user];
+        [IPKUser setCurrentUser:user];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
         if (success) {

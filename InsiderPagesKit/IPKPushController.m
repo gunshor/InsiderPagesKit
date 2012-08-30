@@ -142,7 +142,7 @@ static BOOL __developmentMode = NO;
 	if ((self = [super init])) {
 		_client = [[BLYClient alloc] initWithAppKey:(__developmentMode ? kIPKDevelopmentPusherAPIKey : kIPKPusherAPIKey) delegate:self];
 
-		self.userID = [IPKHTTPClient sharedClient].currentUser.remoteID.description;
+		self.userID = [IPKUser currentUser].remoteID.description;
 
 		NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 		[notificationCenter addObserver:self selector:@selector(_userChanged:) name:kIPKCurrentUserChangedNotificationName object:nil];
@@ -169,7 +169,7 @@ static BOOL __developmentMode = NO;
 #pragma mark - Private
 
 - (void)_userChanged:(NSNotification *)notification {
-	self.userID = [IPKHTTPClient sharedClient].currentUser.remoteID.description;
+	self.userID = [IPKUser currentUser].remoteID.description;
 }
 
 
