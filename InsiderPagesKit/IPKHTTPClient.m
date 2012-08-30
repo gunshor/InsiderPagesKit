@@ -65,10 +65,6 @@ static BOOL __developmentMode = NO;
 		[self registerHTTPOperationClass:[AFJSONRequestOperation class]];
 		[self setDefaultHeader:@"Accept" value:@"application/json"];
 		
-//		if ([IPKUser currentUser]) {
-//			[self changeUser:[IPKUser currentUser]];
-//		}
-		
 		_callbackQueue = dispatch_queue_create("com.insiderpages.ios.network-callback-queue", 0);
 	}
     [self setDefaultHeader:@"User-Agent" value:@"InsiderPages/1.0"];
