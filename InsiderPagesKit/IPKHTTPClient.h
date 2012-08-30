@@ -19,11 +19,12 @@ enum IPKTrackableType;
 
 @interface IPKHTTPClient : AFHTTPClient
 
+@property (nonatomic, strong) IPKUser* currentUser;
+
 + (IPKHTTPClient *)sharedClient;
 + (void)setDevelopmentModeEnabled:(BOOL)enabled;
 + (NSString *)apiVersion;
 
-- (void)changeUser:(IPKUser *)user;
 
 #pragma mark - Current User
 #pragma mark - Registration/Auth/Login

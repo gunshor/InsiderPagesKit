@@ -64,6 +64,13 @@ static BOOL __developmentMode = NO;
 		// Use JSON
 		[self registerHTTPOperationClass:[AFJSONRequestOperation class]];
 		[self setDefaultHeader:@"Accept" value:@"application/json"];
+        if ([IPKUser userHasLoggedIn]) {
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            NSNumber *userID = [userDefaults objectForKey:@"IPKUserID"];
+            if ([IPKUser existingObjectWithRemoteID:userID]) {
+                self.currentUser = [IPKUser existingObjectWithRemoteID:userID];
+            }
+        }
 		
 		_callbackQueue = dispatch_queue_create("com.insiderpages.ios.network-callback-queue", 0);
 	}
@@ -108,7 +115,7 @@ static BOOL __developmentMode = NO;
         user.fb_access_token = fbAccessToken;
         NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
         user.accessToken = [cookie value];
-        [IPKUser setCurrentUser:user];
+        [self setCurrentUser:user];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
         if (success) {
