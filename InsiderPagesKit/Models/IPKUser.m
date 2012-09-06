@@ -101,6 +101,11 @@ static NSString *const kIPKUserIDKey = @"IPKUserID";
 	return currentUser;
 }
 
+-(void)dealloc{
+    NSLog(@"dealloc user with name %@", self.name);
+    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+}
+
 - (NSString *)imageProfilePathForSize:(enum IPKUserProfileImageSize)size{
     NSString * imageProfilePath = nil;
     //    if (self.add_ip_to_fb){
