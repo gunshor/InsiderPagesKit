@@ -101,9 +101,14 @@ static NSString *const kIPKUserIDKey = @"IPKUserID";
 	return currentUser;
 }
 
--(void)dealloc{
+-(void)prepareForDeletion{
+    [super prepareForDeletion];
     NSLog(@"dealloc user with name %@", self.name);
     [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+}
+
+-(void)dealloc{
+
 }
 
 - (NSString *)imageProfilePathForSize:(enum IPKUserProfileImageSize)size{
