@@ -71,7 +71,7 @@
 	[fetchRequest setReturnsObjectsAsFaults:YES];
     
     NSArray *results = [context executeFetchRequest:fetchRequest error:nil];
-
+    
 	// If the object is not found, return nil
 	if (results.count == 0) {
 		return;
@@ -110,6 +110,7 @@
 	if (!object) {
 		object = [self MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 		object.remoteID = remoteID;
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 	}
 	
 	// Return the fetched or new object
@@ -179,7 +180,7 @@
 	if ([object shouldUnpackDictionary:dictionary]) {
 		[object unpackDictionary:dictionary];
 	}
-	
+	[context MR_save];
 	// Return the new or updated object
 	return object;
 }
