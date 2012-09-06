@@ -116,7 +116,7 @@ static BOOL __developmentMode = NO;
         NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
         user.accessToken = [cookie value];
         [IPKUser setCurrentUser:user];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        [[NSManagedObjectContext MR_contextForCurrentThread] save:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
