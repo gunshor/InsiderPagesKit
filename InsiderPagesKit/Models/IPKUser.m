@@ -59,6 +59,8 @@ static NSString *const kIPKUserIDKey = @"IPKUserID";
 
 @synthesize accessToken;
 
+static IPKUser *__currentUser = nil;
+
 + (NSString *)entityName {
 	return @"IPKUser";
 }
@@ -78,7 +80,7 @@ static NSString *const kIPKUserIDKey = @"IPKUserID";
 }
 
 + (IPKUser *)currentUser {
-    IPKUser * currentUser = nil;
+    if (!__currentUser) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSNumber *userID = [userDefaults objectForKey:kIPKUserIDKey];
         if (!userID) {
@@ -89,16 +91,11 @@ static NSString *const kIPKUserIDKey = @"IPKUserID";
         if (!accessToken) {
             return nil;
         }
-        if ([self existingObjectWithRemoteID:userID]) {
-            currentUser = [self existingObjectWithRemoteID:userID];
-        }else{
-            currentUser = [self objectWithRemoteID:userID];
-            currentUser.accessToken = accessToken;
-            [currentUser updateWithSuccess:nil failure:nil];
-            NSLog(@"Forcing user to update from server because nothing was found in core data, userID: %@", userID);
-        }
+        __currentUser = [self existingObjectWithRemoteID:userID];
+        __currentUser.accessToken = accessToken;
+    }
 
-	return currentUser;
+	return __currentUser;
 }
 
 -(void)prepareForDeletion{
