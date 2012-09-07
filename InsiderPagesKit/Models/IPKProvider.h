@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSDate * updated_from_ip_at;
 @property (nonatomic, strong) NSDate * updatedAt;
 @property (nonatomic, strong) NSString * url;
+@property (nonatomic, strong) NSString * cached_slug;
 @property (nonatomic, strong) NSNumber * user_id;
 @property (nonatomic, strong) NSSet *pages;
 @property (nonatomic, strong) IPKReview *reviews;

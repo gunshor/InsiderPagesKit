@@ -69,6 +69,7 @@
     self.user_id = [dictionary safeObjectForKey:@"user_id"];
     self.updated_from_ip_at = [dictionary safeObjectForKey:@"updated_from_ip_at"];
     self.address = [IPKAddress objectWithDictionary:[[dictionary objectForKey:@"primary_address"] objectForKey:@"address"]];
+    self.cached_slug = [dictionary safeObjectForKey:@"cached_slug"];
 }
 
 -(NSString *)full_name{

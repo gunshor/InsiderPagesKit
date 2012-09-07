@@ -71,6 +71,7 @@
     <entity name="IPKProvider" representedClassName="IPKProvider" syncable="YES">
         <attribute name="attribution_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="business_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cached_slug" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cg_listing_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="created_by_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -165,12 +166,12 @@
     </entity>
     <elements>
         <element name="IPKActivity" positionX="0" positionY="0" width="0" height="255"/>
+        <element name="IPKAddress" positionX="160" positionY="192" width="128" height="255"/>
         <element name="IPKNotification" positionX="0" positionY="0" width="0" height="195"/>
         <element name="IPKPage" positionX="0" positionY="0" width="0" height="375"/>
-        <element name="IPKProvider" positionX="0" positionY="0" width="0" height="345"/>
+        <element name="IPKProvider" positionX="0" positionY="0" width="0" height="375"/>
         <element name="IPKQueryModel" positionX="0" positionY="0" width="0" height="0"/>
         <element name="IPKReview" positionX="0" positionY="0" width="0" height="375"/>
         <element name="IPKUser" positionX="0" positionY="0" width="0" height="585"/>
-        <element name="IPKAddress" positionX="160" positionY="192" width="128" height="255"/>
     </elements>
 </model>
