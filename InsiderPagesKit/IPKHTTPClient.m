@@ -15,7 +15,6 @@
 #import "IPKActivity.h"
 #import "IPKReview.h"
 #import "IPKDefines.h"
-#import <Bully/Bully.h>
 
 static BOOL __developmentMode = NO;
 
