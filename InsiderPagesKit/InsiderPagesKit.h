@@ -29,7 +29,7 @@
 // Vendor
 #if TARGET_OS_IPHONE
 #import <InsiderPagesKit/Vendor/SSDataKit/SSDataKit.h>
-#import <InsiderPagesKit/Vendor/AFIncrementalStore/AFNetworking/AFNetworking/AFNetworking.h>
+#import <InsiderPagesKit/Vendor/AFNetworking/AFNetworking/AFNetworking.h>
 #import <InsiderPagesKit/Vendor/Reachability/Reachability.h>
 #import <InsiderPagesKit/Vendor/MagicalRecord/MagicalRecord/CoreData+MagicalRecord.h>
 #else
