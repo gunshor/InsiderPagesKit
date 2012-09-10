@@ -39,43 +39,6 @@
 		FD764C5915C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA415C9CADE00A3D10A /* NSString+InsiderPagesKit.m */; };
 		FD764CE815C9CB1400A3D10A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD764CE715C9CB1400A3D10A /* Cocoa.framework */; };
 		FD764F2B15C9CEA100A3D10A /* InsiderPages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */; };
-		FD7654C915C9D53300A3D10A /* AFIncrementalStore.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764F6B15C9D52E00A3D10A /* AFIncrementalStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7654CA15C9D53300A3D10A /* AFIncrementalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F6C15C9D52E00A3D10A /* AFIncrementalStore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654CB15C9D53300A3D10A /* AFIncrementalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F6C15C9D52E00A3D10A /* AFIncrementalStore.m */; };
-		FD7654CC15C9D53300A3D10A /* AFRESTClient.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764F6D15C9D52E00A3D10A /* AFRESTClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7654CD15C9D53300A3D10A /* AFRESTClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F6E15C9D52E00A3D10A /* AFRESTClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654CE15C9D53300A3D10A /* AFRESTClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F6E15C9D52E00A3D10A /* AFRESTClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654CF15C9D53300A3D10A /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764F7215C9D52E00A3D10A /* AFHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7654D015C9D53300A3D10A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F7315C9D52E00A3D10A /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654D115C9D53300A3D10A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F7315C9D52E00A3D10A /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654D215C9D53300A3D10A /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764F7415C9D52E00A3D10A /* AFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7654D315C9D53300A3D10A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F7515C9D52E00A3D10A /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654D415C9D53300A3D10A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F7515C9D52E00A3D10A /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654D515C9D53300A3D10A /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764F7615C9D52E00A3D10A /* AFImageRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7654D615C9D53300A3D10A /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F7715C9D52E00A3D10A /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654D715C9D53300A3D10A /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F7715C9D52E00A3D10A /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654D815C9D53300A3D10A /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764F7815C9D52E00A3D10A /* AFJSONRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7654D915C9D53300A3D10A /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F7915C9D52E00A3D10A /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654DA15C9D53300A3D10A /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F7915C9D52E00A3D10A /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654DB15C9D53300A3D10A /* AFJSONUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764F7A15C9D52E00A3D10A /* AFJSONUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7654DC15C9D53300A3D10A /* AFJSONUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F7B15C9D52E00A3D10A /* AFJSONUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654DD15C9D53300A3D10A /* AFJSONUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F7B15C9D52E00A3D10A /* AFJSONUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654DE15C9D53300A3D10A /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764F7C15C9D52E00A3D10A /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7654DF15C9D53300A3D10A /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F7D15C9D52E00A3D10A /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654E015C9D53300A3D10A /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F7D15C9D52E00A3D10A /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654E115C9D53300A3D10A /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764F7E15C9D52E00A3D10A /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7654E215C9D53300A3D10A /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764F7F15C9D52E00A3D10A /* AFPropertyListRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7654E315C9D53300A3D10A /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F8015C9D52E00A3D10A /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654E415C9D53300A3D10A /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F8015C9D52E00A3D10A /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654E515C9D53300A3D10A /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764F8115C9D52E00A3D10A /* AFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7654E615C9D53300A3D10A /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F8215C9D52E00A3D10A /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654E715C9D53300A3D10A /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F8215C9D52E00A3D10A /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654E815C9D53300A3D10A /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764F8315C9D52E00A3D10A /* AFXMLRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7654E915C9D53300A3D10A /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F8415C9D52E00A3D10A /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654EA15C9D53300A3D10A /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F8415C9D52E00A3D10A /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654EB15C9D53300A3D10A /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764F8515C9D52E00A3D10A /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7654EC15C9D53300A3D10A /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F8615C9D52E00A3D10A /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FD7654ED15C9D53300A3D10A /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764F8615C9D52E00A3D10A /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FD7655C415C9D53400A3D10A /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76548215C9D53200A3D10A /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD7655C515C9D53400A3D10A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548315C9D53200A3D10A /* Reachability.m */; };
 		FD7655C615C9D53400A3D10A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548315C9D53200A3D10A /* Reachability.m */; };
@@ -83,7 +46,6 @@
 		FD7655E015C9D53400A3D10A /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76549F15C9D53200A3D10A /* SSKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD7655E115C9D53400A3D10A /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7654A015C9D53200A3D10A /* SSKeychain.m */; };
 		FD7655E215C9D53400A3D10A /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7654A015C9D53200A3D10A /* SSKeychain.m */; };
-		FD76560E15C9D5D300A3D10A /* Bully.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7655F015C9D53400A3D10A /* Bully.framework */; };
 		FD76561215C9D6B600A3D10A /* SSFilterableFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548C15C9D53200A3D10A /* SSFilterableFetchedResultsController.m */; };
 		FD76561315C9D6B600A3D10A /* SSFilteredResultsFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548E15C9D53200A3D10A /* SSFilteredResultsFilter.m */; };
 		FD76561415C9D6B600A3D10A /* SSFilteredResultsSection.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76549015C9D53200A3D10A /* SSFilteredResultsSection.m */; };
@@ -217,20 +179,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FD7655ED15C9D53400A3D10A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FD764FD715C9D52E00A3D10A /* Bully.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B2587E4B1579E740009D7B44;
-			remoteInfo = Bully;
-		};
-		FD7655EF15C9D53400A3D10A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FD764FD715C9D52E00A3D10A /* Bully.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B2FB4873158AF9B20067FB00;
-			remoteInfo = BullyMac;
-		};
 		FD76560815C9D53400A3D10A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FD7654A315C9D53200A3D10A /* SSKeychain.xcodeproj */;
@@ -245,26 +193,12 @@
 			remoteGlobalIDString = B2059B681559058C003D2FAC;
 			remoteInfo = SSKeychainTestsARC;
 		};
-		FD76560C15C9D5CD00A3D10A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FD764FD715C9D52E00A3D10A /* Bully.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B2FB4872158AF9B20067FB00;
-			remoteInfo = BullyMac;
-		};
 		FD76568915C9ED0C00A3D10A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B244407C15BE53DC00D4D4CA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B244408415BE53DC00D4D4CA;
 			remoteInfo = InsiderPagesKit;
-		};
-		FDD954B415DF14A700F38150 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FD764FD715C9D52E00A3D10A /* Bully.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B2EB6BBC15DB69FC0035AD92;
-			remoteInfo = BullyMacLibrary;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -310,32 +244,6 @@
 		FD764CE715C9CB1400A3D10A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		FD764DFD15C9CBBE00A3D10A /* InsiderPagesKitMac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "InsiderPagesKitMac-Info.plist"; sourceTree = "<group>"; };
 		FD764F2915C9CEA100A3D10A /* InsiderPages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InsiderPages.xcdatamodel; sourceTree = "<group>"; };
-		FD764F6B15C9D52E00A3D10A /* AFIncrementalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFIncrementalStore.h; sourceTree = "<group>"; };
-		FD764F6C15C9D52E00A3D10A /* AFIncrementalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFIncrementalStore.m; sourceTree = "<group>"; };
-		FD764F6D15C9D52E00A3D10A /* AFRESTClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFRESTClient.h; sourceTree = "<group>"; };
-		FD764F6E15C9D52E00A3D10A /* AFRESTClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFRESTClient.m; sourceTree = "<group>"; };
-		FD764F7215C9D52E00A3D10A /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
-		FD764F7315C9D52E00A3D10A /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
-		FD764F7415C9D52E00A3D10A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
-		FD764F7515C9D52E00A3D10A /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
-		FD764F7615C9D52E00A3D10A /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
-		FD764F7715C9D52E00A3D10A /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
-		FD764F7815C9D52E00A3D10A /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
-		FD764F7915C9D52E00A3D10A /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
-		FD764F7A15C9D52E00A3D10A /* AFJSONUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONUtilities.h; sourceTree = "<group>"; };
-		FD764F7B15C9D52E00A3D10A /* AFJSONUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONUtilities.m; sourceTree = "<group>"; };
-		FD764F7C15C9D52E00A3D10A /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
-		FD764F7D15C9D52E00A3D10A /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
-		FD764F7E15C9D52E00A3D10A /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
-		FD764F7F15C9D52E00A3D10A /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
-		FD764F8015C9D52E00A3D10A /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
-		FD764F8115C9D52E00A3D10A /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		FD764F8215C9D52E00A3D10A /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
-		FD764F8315C9D52E00A3D10A /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
-		FD764F8415C9D52E00A3D10A /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
-		FD764F8515C9D52E00A3D10A /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
-		FD764F8615C9D52E00A3D10A /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		FD764FD715C9D52E00A3D10A /* Bully.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Bully.xcodeproj; sourceTree = "<group>"; };
 		FD76548215C9D53200A3D10A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		FD76548315C9D53200A3D10A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		FD76548915C9D53200A3D10A /* Readme.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.markdown; sourceTree = "<group>"; };
@@ -475,7 +383,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD76560E15C9D5D300A3D10A /* Bully.framework in Frameworks */,
 				FD764CE815C9CB1400A3D10A /* Cocoa.framework in Frameworks */,
 				B2D8D60A15BF809700A61836 /* CoreText.framework in Frameworks */,
 				B2D8D60815BF809300A61836 /* CoreData.framework in Frameworks */,
@@ -587,87 +494,11 @@
 			isa = PBXGroup;
 			children = (
 				FD9AB89B15E40A0F0049B2C0 /* MagicalRecord */,
-				FD764F6815C9D52E00A3D10A /* AFIncrementalStore */,
-				FD764FCB15C9D52E00A3D10A /* Bully */,
 				FD76546015C9D53200A3D10A /* Reachability */,
 				FD76548615C9D53200A3D10A /* SSDataKit */,
 				FD76549915C9D53200A3D10A /* SSKeychain */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		FD764F6815C9D52E00A3D10A /* AFIncrementalStore */ = {
-			isa = PBXGroup;
-			children = (
-				FD764F6A15C9D52E00A3D10A /* AFIncrementalStore */,
-				FD764F7015C9D52E00A3D10A /* AFNetworking */,
-			);
-			path = AFIncrementalStore;
-			sourceTree = "<group>";
-		};
-		FD764F6A15C9D52E00A3D10A /* AFIncrementalStore */ = {
-			isa = PBXGroup;
-			children = (
-				FD764F6B15C9D52E00A3D10A /* AFIncrementalStore.h */,
-				FD764F6C15C9D52E00A3D10A /* AFIncrementalStore.m */,
-				FD764F6D15C9D52E00A3D10A /* AFRESTClient.h */,
-				FD764F6E15C9D52E00A3D10A /* AFRESTClient.m */,
-			);
-			path = AFIncrementalStore;
-			sourceTree = "<group>";
-		};
-		FD764F7015C9D52E00A3D10A /* AFNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				FD764F7115C9D52E00A3D10A /* AFNetworking */,
-			);
-			path = AFNetworking;
-			sourceTree = "<group>";
-		};
-		FD764F7115C9D52E00A3D10A /* AFNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				FD764F7215C9D52E00A3D10A /* AFHTTPClient.h */,
-				FD764F7315C9D52E00A3D10A /* AFHTTPClient.m */,
-				FD764F7415C9D52E00A3D10A /* AFHTTPRequestOperation.h */,
-				FD764F7515C9D52E00A3D10A /* AFHTTPRequestOperation.m */,
-				FD764F7615C9D52E00A3D10A /* AFImageRequestOperation.h */,
-				FD764F7715C9D52E00A3D10A /* AFImageRequestOperation.m */,
-				FD764F7815C9D52E00A3D10A /* AFJSONRequestOperation.h */,
-				FD764F7915C9D52E00A3D10A /* AFJSONRequestOperation.m */,
-				FD764F7A15C9D52E00A3D10A /* AFJSONUtilities.h */,
-				FD764F7B15C9D52E00A3D10A /* AFJSONUtilities.m */,
-				FD764F7C15C9D52E00A3D10A /* AFNetworkActivityIndicatorManager.h */,
-				FD764F7D15C9D52E00A3D10A /* AFNetworkActivityIndicatorManager.m */,
-				FD764F7E15C9D52E00A3D10A /* AFNetworking.h */,
-				FD764F7F15C9D52E00A3D10A /* AFPropertyListRequestOperation.h */,
-				FD764F8015C9D52E00A3D10A /* AFPropertyListRequestOperation.m */,
-				FD764F8115C9D52E00A3D10A /* AFURLConnectionOperation.h */,
-				FD764F8215C9D52E00A3D10A /* AFURLConnectionOperation.m */,
-				FD764F8315C9D52E00A3D10A /* AFXMLRequestOperation.h */,
-				FD764F8415C9D52E00A3D10A /* AFXMLRequestOperation.m */,
-				FD764F8515C9D52E00A3D10A /* UIImageView+AFNetworking.h */,
-				FD764F8615C9D52E00A3D10A /* UIImageView+AFNetworking.m */,
-			);
-			path = AFNetworking;
-			sourceTree = "<group>";
-		};
-		FD764FCB15C9D52E00A3D10A /* Bully */ = {
-			isa = PBXGroup;
-			children = (
-				FD764FD715C9D52E00A3D10A /* Bully.xcodeproj */,
-			);
-			path = Bully;
-			sourceTree = "<group>";
-		};
-		FD764FD815C9D52E00A3D10A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FD7655EE15C9D53400A3D10A /* libBully.a */,
-				FD7655F015C9D53400A3D10A /* Bully.framework */,
-				FDD954B515DF14A700F38150 /* libBullyMacLibrary.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		FD76546015C9D53200A3D10A /* Reachability */ = {
@@ -909,19 +740,6 @@
 				FD7656D815CB834000A3D10A /* IPKProvider.h in Headers */,
 				FD7656DD15CB834100A3D10A /* IPKActivity.h in Headers */,
 				FD7656A015CA053100A3D10A /* IPKQueryModel.h in Headers */,
-				FD7654C915C9D53300A3D10A /* AFIncrementalStore.h in Headers */,
-				FD7654CC15C9D53300A3D10A /* AFRESTClient.h in Headers */,
-				FD7654CF15C9D53300A3D10A /* AFHTTPClient.h in Headers */,
-				FD7654D215C9D53300A3D10A /* AFHTTPRequestOperation.h in Headers */,
-				FD7654D515C9D53300A3D10A /* AFImageRequestOperation.h in Headers */,
-				FD7654D815C9D53300A3D10A /* AFJSONRequestOperation.h in Headers */,
-				FD7654DB15C9D53300A3D10A /* AFJSONUtilities.h in Headers */,
-				FD7654DE15C9D53300A3D10A /* AFNetworkActivityIndicatorManager.h in Headers */,
-				FD7654E115C9D53300A3D10A /* AFNetworking.h in Headers */,
-				FD7654E215C9D53300A3D10A /* AFPropertyListRequestOperation.h in Headers */,
-				FD7654E515C9D53300A3D10A /* AFURLConnectionOperation.h in Headers */,
-				FD7654E815C9D53300A3D10A /* AFXMLRequestOperation.h in Headers */,
-				FD7654EB15C9D53300A3D10A /* UIImageView+AFNetworking.h in Headers */,
 				FD7655C415C9D53400A3D10A /* Reachability.h in Headers */,
 				FD7655E015C9D53400A3D10A /* SSKeychain.h in Headers */,
 				FD32632815D077780050F394 /* NSMutableDictionary+InsiderPagesKit.h in Headers */,
@@ -997,7 +815,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				FD76560D15C9D5CD00A3D10A /* PBXTargetDependency */,
 			);
 			name = InsiderPagesKitMac;
 			productName = CheddarKitMac;
@@ -1044,10 +861,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = FD764FD815C9D52E00A3D10A /* Products */;
-					ProjectRef = FD764FD715C9D52E00A3D10A /* Bully.xcodeproj */;
-				},
-				{
 					ProductGroup = FD7654A415C9D53200A3D10A /* Products */;
 					ProjectRef = FD7654A315C9D53200A3D10A /* SSKeychain.xcodeproj */;
 				},
@@ -1062,20 +875,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		FD7655EE15C9D53400A3D10A /* libBully.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libBully.a;
-			remoteRef = FD7655ED15C9D53400A3D10A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FD7655F015C9D53400A3D10A /* Bully.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Bully.framework;
-			remoteRef = FD7655EF15C9D53400A3D10A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		FD76560915C9D53400A3D10A /* SSKeychainTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
@@ -1088,13 +887,6 @@
 			fileType = wrapper.cfbundle;
 			path = SSKeychainTestsARC.octest;
 			remoteRef = FD76560A15C9D53400A3D10A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FDD954B515DF14A700F38150 /* libBullyMacLibrary.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libBullyMacLibrary.a;
-			remoteRef = FDD954B415DF14A700F38150 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1130,18 +922,6 @@
 				FD764C3F15C9CADE00A3D10A /* IPKHTTPClient.m in Sources */,
 				FD764C4815C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */,
 				FD764C5815C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */,
-				FD7654CA15C9D53300A3D10A /* AFIncrementalStore.m in Sources */,
-				FD7654CD15C9D53300A3D10A /* AFRESTClient.m in Sources */,
-				FD7654D015C9D53300A3D10A /* AFHTTPClient.m in Sources */,
-				FD7654D315C9D53300A3D10A /* AFHTTPRequestOperation.m in Sources */,
-				FD7654D615C9D53300A3D10A /* AFImageRequestOperation.m in Sources */,
-				FD7654D915C9D53300A3D10A /* AFJSONRequestOperation.m in Sources */,
-				FD7654DC15C9D53300A3D10A /* AFJSONUtilities.m in Sources */,
-				FD7654DF15C9D53300A3D10A /* AFNetworkActivityIndicatorManager.m in Sources */,
-				FD7654E315C9D53300A3D10A /* AFPropertyListRequestOperation.m in Sources */,
-				FD7654E615C9D53300A3D10A /* AFURLConnectionOperation.m in Sources */,
-				FD7654E915C9D53300A3D10A /* AFXMLRequestOperation.m in Sources */,
-				FD7654EC15C9D53300A3D10A /* UIImageView+AFNetworking.m in Sources */,
 				FD7655C515C9D53400A3D10A /* Reachability.m in Sources */,
 				FD7655E115C9D53400A3D10A /* SSKeychain.m in Sources */,
 				FD7656A115CA053100A3D10A /* IPKQueryModel.m in Sources */,
@@ -1196,18 +976,6 @@
 				FD764C5615C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m in Sources */,
 				FD764C5915C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */,
 				FD764F2B15C9CEA100A3D10A /* InsiderPages.xcdatamodeld in Sources */,
-				FD7654CB15C9D53300A3D10A /* AFIncrementalStore.m in Sources */,
-				FD7654CE15C9D53300A3D10A /* AFRESTClient.m in Sources */,
-				FD7654D115C9D53300A3D10A /* AFHTTPClient.m in Sources */,
-				FD7654D415C9D53300A3D10A /* AFHTTPRequestOperation.m in Sources */,
-				FD7654D715C9D53300A3D10A /* AFImageRequestOperation.m in Sources */,
-				FD7654DA15C9D53300A3D10A /* AFJSONRequestOperation.m in Sources */,
-				FD7654DD15C9D53300A3D10A /* AFJSONUtilities.m in Sources */,
-				FD7654E015C9D53300A3D10A /* AFNetworkActivityIndicatorManager.m in Sources */,
-				FD7654E415C9D53300A3D10A /* AFPropertyListRequestOperation.m in Sources */,
-				FD7654E715C9D53300A3D10A /* AFURLConnectionOperation.m in Sources */,
-				FD7654EA15C9D53300A3D10A /* AFXMLRequestOperation.m in Sources */,
-				FD7654ED15C9D53300A3D10A /* UIImageView+AFNetworking.m in Sources */,
 				FD7655C615C9D53400A3D10A /* Reachability.m in Sources */,
 				FD7655E215C9D53400A3D10A /* SSKeychain.m in Sources */,
 				FD7656A215CA053100A3D10A /* IPKQueryModel.m in Sources */,
@@ -1266,11 +1034,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FD76560D15C9D5CD00A3D10A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BullyMac;
-			targetProxy = FD76560C15C9D5CD00A3D10A /* PBXContainerItemProxy */;
-		};
 		FD76568A15C9ED0C00A3D10A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B244408415BE53DC00D4D4CA /* InsiderPagesKit */;
