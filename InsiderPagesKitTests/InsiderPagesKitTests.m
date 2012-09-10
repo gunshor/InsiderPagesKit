@@ -172,6 +172,44 @@
         finished = YES;
     }];
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+    
+    
+    finished = NO;
+    
+    IPKQueryModel * pageQueryModel = [IPKQueryModel MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    pageQueryModel.createdAt = [NSDate date];
+    pageQueryModel.updatedAt = [NSDate date];
+    pageQueryModel.queryString = @"Unit Test Mobile";
+    pageQueryModel.state = @"CA";
+    pageQueryModel.city = @"San Francisco";
+    pageQueryModel.filterType = [NSNumber numberWithInt:kIPKQueryModelFilterAll];
+    pageQueryModel.currentPage = @"1";
+    pageQueryModel.perPageNumber = @"20";
+    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+    [[IPKHTTPClient sharedClient] pageSearchWithQueryModel:pageQueryModel success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        for (NSDictionary * pageDictionary in [responseObject objectForKey:@"results"]) {
+            IPKPage * page = [IPKPage objectWithDictionary:pageDictionary];
+            __block BOOL finishedInner = NO;
+            
+            NSString * pageId = [NSString stringWithFormat:@"%@", page.id];
+            [[IPKHTTPClient sharedClient] deletePageWithId:pageId success:^(AFJSONRequestOperation *operation, id responseObject){
+                NSLog(@"%@", responseObject);
+                STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after following page");
+                finishedInner = YES;
+            } failure:^(AFJSONRequestOperation *operation, NSError *error){
+                STAssertTrue(NO, [error debugDescription]);        
+                finishedInner = YES;
+            }];
+            [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finishedInner];
+        }
+
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        STAssertTrue(NO, [error debugDescription]);        
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:500 orFinishedFlag:&finished];
 }
 
 -(void)testUserActions{
@@ -499,9 +537,7 @@
         finished = YES;
     }];
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
-    
-    finished = NO;
-    
+        
     finished = NO;
     NSString * localProviderID = [NSString stringWithFormat:@"%d", 1];
     [[IPKHTTPClient sharedClient] getScoopsForProviderWithId:localProviderID withCurrentPage:@1 perPage:@3 success:^(AFJSONRequestOperation *operation, id responseObject){
