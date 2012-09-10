@@ -30,6 +30,7 @@
 @dynamic updatedAt;
 @dynamic url;
 @dynamic user_id;
+@dynamic cached_slug;
 @dynamic pages;
 @dynamic activities;
 @dynamic reviews;
