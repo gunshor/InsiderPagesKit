@@ -19,3 +19,6 @@
 [submodule "Vendor/AFNetworking"]
 	path = Vendor/AFNetworking
 	url = git://github.com/AFNetworking/AFNetworking.git
+[submodule "InsiderPagesKit/Vendor/AFNetworking"]
+	path = InsiderPagesKit/Vendor/AFNetworking
+	url = git://github.com/AFNetworking/AFNetworking.git
