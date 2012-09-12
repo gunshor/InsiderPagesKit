@@ -26,6 +26,7 @@
 @property (nonatomic, strong) IPKProvider *provider;
 @property (nonatomic, strong) IPKReview *review;
 @property (nonatomic, strong) IPKUser *user;
+@property (nonatomic, strong) IPKUser *user2;
 
 -(enum IPKTrackableType)trackableType;
 -(enum IPKActivityType)activityType;

@@ -56,8 +56,11 @@
     if ([dictionary safeObjectForKey:@"trackable"] && [self.trackable_type isEqualToString:@"Provider"]) {
         self.provider = [IPKProvider objectWithDictionary:[dictionary safeObjectForKey:@"trackable"]];
     }
-    if ([dictionary safeObjectForKey:@"trackable"] && [self.trackable_type isEqualToString:@"Review"]) {
+    else if ([dictionary safeObjectForKey:@"trackable"] && [self.trackable_type isEqualToString:@"Review"]) {
         self.review = [IPKReview objectWithDictionary:[dictionary safeObjectForKey:@"trackable"]];
+    }
+    else if ([dictionary safeObjectForKey:@"trackable"] && [self.trackable_type isEqualToString:@"User"]) {
+        self.user2 = [IPKUser objectWithDictionary:[dictionary safeObjectForKey:@"trackable"]];
     }
     self.visibility = [dictionary safeObjectForKey:@"visibility"];
 }
@@ -80,6 +83,9 @@
 -(enum IPKActivityType)activityType{
     if ([self.action isEqualToString:@"create"]) {
         return IPKActivityTypeCreate;
+    }
+    else if ([self.action isEqualToString:@"add"]){
+        return IPKActivityTypeAdd;
     }
     else if ([self.action isEqualToString:@"update"]){
         return IPKActivityTypeUpdate;
@@ -137,7 +143,7 @@
             actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", [self.trackable_type lowercaseString], self.trackable_id];
             break;
         case IPKTrackableTypeUser:
-            actionText = [actionText stringByAppendingFormat:@"profile"];
+            actionText = [actionText stringByAppendingFormat:@"invited %@", self.user2.name];
             break;
             
         default:
