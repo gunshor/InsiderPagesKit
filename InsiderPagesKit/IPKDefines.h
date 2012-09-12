@@ -65,7 +65,7 @@ enum IPKActivityType {
     IPKActivityTypeUpdate = 3,
     IPKActivityTypeTeam = 4,
     IPKActivityTypeFollow = 5,
-    IPKActivityTypeAdd = 1,
+    IPKActivityTypeAdd = 6,
 };
 
 #endif

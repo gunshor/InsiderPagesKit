@@ -109,6 +109,9 @@
     
     switch ([self activityType]) {
         case IPKActivityTypeCreate:
+            actionText = [NSString stringWithFormat:@"%@ created ", self.user.name];
+            break;
+        case IPKActivityTypeAdd:
             actionText = [NSString stringWithFormat:@"%@ added ", self.user.name];
             break;
         case IPKActivityTypeUpdate:
