@@ -136,7 +136,7 @@
             actionText = [NSString stringWithFormat:@"%@ followed ", self.user.name];
             break;
         case IPKActivityTypeCollaborate:
-            actionText = [NSString stringWithFormat:@"%@ collaborated on ", self.user.name];
+            actionText = [NSString stringWithFormat:@"%@ ", self.user.name];
             break;
         case IPKActivityTypeAll:
             actionText = [NSString stringWithFormat:@"%@ activity ", self.user.name];
