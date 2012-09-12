@@ -53,7 +53,7 @@
     }else{
         self.user = [IPKUser objectWithRemoteID:self.user_id];
     }
-    if ([dictionary safeObjectForKey:@"trackable"] && [self.trackable_type isEqualToString:@"Provider"]) {
+    if ([dictionary safeObjectForKey:@"trackable"] && ([self.trackable_type isEqualToString:@"Provider"] || [self.trackable_type isEqualToString:@"CgListing"])) {
         self.provider = [IPKProvider objectWithDictionary:[dictionary safeObjectForKey:@"trackable"]];
     }
     else if ([dictionary safeObjectForKey:@"trackable"] && [self.trackable_type isEqualToString:@"Review"]) {
