@@ -75,6 +75,9 @@
     else if ([self.trackable_type isEqualToString:@"Review"]){
         return IPKTrackableTypeReview;
     }
+    else if ([self.trackable_type isEqualToString:@"Team"]){
+        return IPKTrackableTypeTeam;
+    }
     else{
         return IPKTrackableTypeAll;
     }
