@@ -55,7 +55,8 @@ enum IPKTrackableType {
     IPKTrackableTypeProvider = 1,
     IPKTrackableTypeReview = 2,
     IPKTrackableTypeUser = 3,
-    IPKTrackableTypeTeam = 4
+    IPKTrackableTypeTeam = 4,
+    IPKTrackableTypeCgListing = 5
 };
 
 enum IPKActivityType {
@@ -66,6 +67,7 @@ enum IPKActivityType {
     IPKActivityTypeTeam = 4,
     IPKActivityTypeFollow = 5,
     IPKActivityTypeAdd = 6,
+    IPKActivityTypeCollaborate =7
 };
 
 #endif

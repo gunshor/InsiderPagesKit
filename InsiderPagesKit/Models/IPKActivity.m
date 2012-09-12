@@ -78,6 +78,9 @@
     else if ([self.trackable_type isEqualToString:@"Team"]){
         return IPKTrackableTypeTeam;
     }
+    else if ([self.trackable_type isEqualToString:@"CgListing"]){
+        return IPKTrackableTypeCgListing;
+    }
     else{
         return IPKTrackableTypeAll;
     }
@@ -101,6 +104,9 @@
     }
     else if ([self.action isEqualToString:@"follow"]){
         return IPKActivityTypeFollow;
+    }
+    else if ([self.action isEqualToString:@"collaborate"]){
+        return IPKActivityTypeCollaborate;
     }
     else{
         return IPKActivityTypeAll;
@@ -129,6 +135,9 @@
         case IPKActivityTypeFollow:
             actionText = [NSString stringWithFormat:@"%@ followed ", self.user.name];
             break;
+        case IPKActivityTypeCollaborate:
+            actionText = [NSString stringWithFormat:@"%@ collaborated on ", self.user.name];
+            break;
         case IPKActivityTypeAll:
             actionText = [NSString stringWithFormat:@"%@ activity ", self.user.name];
             break;
@@ -142,18 +151,21 @@
         case IPKTrackableTypeProvider:
             actionText = [actionText stringByAppendingFormat:@"%@", self.provider.full_name];
             break;
+        case IPKTrackableTypeCgListing:
+            actionText = [actionText stringByAppendingFormat:@"%@", self.provider.full_name];
+            break;
         case IPKTrackableTypeReview:
-            actionText = [actionText stringByAppendingFormat:@"a scoop for %@ ", ((IPKProvider*)[IPKProvider objectWithRemoteID:self.review.listing_id]).full_name];
+            actionText = [actionText stringByAppendingFormat:@"a scoop for %@", ((IPKProvider*)[IPKProvider objectWithRemoteID:self.review.listing_id]).full_name];
             break;
         case IPKTrackableTypeTeam:
-            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", [self.trackable_type lowercaseString], self.trackable_id];
+            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@", [self.trackable_type lowercaseString], self.trackable_id];
             break;
         case IPKTrackableTypeUser:
             actionText = [actionText stringByAppendingFormat:@"invited %@", self.user2.name];
             break;
             
         default:
-            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@ ", [self.trackable_type lowercaseString], self.trackable_id];
+            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@", [self.trackable_type lowercaseString], self.trackable_id];
             break;
     }
     
