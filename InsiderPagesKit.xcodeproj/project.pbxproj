@@ -201,6 +201,7 @@
 		FDDD54F815EBF0A10020CFF1 /* SSRemoteManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FDDD54F315EBF0A10020CFF1 /* SSRemoteManagedObject.h */; };
 		FDDD54F915EBF0A10020CFF1 /* SSRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */; };
 		FDDD54FA15EBF0A10020CFF1 /* SSRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */; };
+		FDF7854616016D1200AFE088 /* InsiderPages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FDF7854416016D1200AFE088 /* InsiderPages.xcdatamodeld */; };
 		FDFC6B0215EEBCA00071299D /* IPKAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = FDFC6B0015EEBCA00071299D /* IPKAddress.h */; };
 		FDFC6B0315EEBCA00071299D /* IPKAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFC6B0115EEBCA00071299D /* IPKAddress.m */; };
 		FDFC6B0415EEBCA00071299D /* IPKAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFC6B0115EEBCA00071299D /* IPKAddress.m */; };
@@ -413,6 +414,7 @@
 		FDDD54F215EBF0A10020CFF1 /* SSManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSManagedObject.m; sourceTree = "<group>"; };
 		FDDD54F315EBF0A10020CFF1 /* SSRemoteManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRemoteManagedObject.h; sourceTree = "<group>"; };
 		FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRemoteManagedObject.m; sourceTree = "<group>"; };
+		FDF7854516016D1200AFE088 /* InsiderPages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InsiderPages.xcdatamodel; sourceTree = "<group>"; };
 		FDFC6B0015EEBCA00071299D /* IPKAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPKAddress.h; path = InsiderPagesKit/Models/IPKAddress.h; sourceTree = SOURCE_ROOT; };
 		FDFC6B0115EEBCA00071299D /* IPKAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPKAddress.m; path = InsiderPagesKit/Models/IPKAddress.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -529,6 +531,7 @@
 		FD764DF915C9CBBE00A3D10A /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				FDF7854416016D1200AFE088 /* InsiderPages.xcdatamodeld */,
 				FD764DFD15C9CBBE00A3D10A /* InsiderPagesKitMac-Info.plist */,
 				FDD955B215E3F94F00F38150 /* InsiderPagesKit-Prefix.h */,
 			);
@@ -1133,6 +1136,7 @@
 				FD260E1915CC91590002C801 /* NSRunLoop+TimeOutAndFlag.m in Sources */,
 				FD76562A15C9D70000A3D10A /* InsiderPagesKitTests.m in Sources */,
 				FD32632B15D078240050F394 /* NSMutableDictionary+InsiderPagesKit.m in Sources */,
+				FDF7854616016D1200AFE088 /* InsiderPages.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1420,6 +1424,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FDF7854416016D1200AFE088 /* InsiderPages.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FDF7854516016D1200AFE088 /* InsiderPages.xcdatamodel */,
+			);
+			currentVersion = FDF7854516016D1200AFE088 /* InsiderPages.xcdatamodel */;
+			name = InsiderPages.xcdatamodeld;
+			path = ../InsiderPages.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B244407C15BE53DC00D4D4CA /* Project object */;
 }
