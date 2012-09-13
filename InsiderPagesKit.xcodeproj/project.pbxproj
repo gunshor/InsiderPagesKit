@@ -13,8 +13,6 @@
 		B2D8D60615BF808E00A61836 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D8D60515BF808E00A61836 /* libicucore.dylib */; };
 		B2D8D60815BF809300A61836 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D8D60715BF809300A61836 /* CoreData.framework */; };
 		B2D8D60A15BF809700A61836 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D8D60915BF809700A61836 /* CoreText.framework */; };
-		FD260E1415CC4F160002C801 /* InsiderPages.xcdatamodeld in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */; };
-		FD260E1515CC5E420002C801 /* InsiderPages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */; };
 		FD260E1915CC91590002C801 /* NSRunLoop+TimeOutAndFlag.m in Sources */ = {isa = PBXBuildFile; fileRef = FD260E1715CC90AE0002C801 /* NSRunLoop+TimeOutAndFlag.m */; };
 		FD32632415D040550050F394 /* NSDictionary+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA215C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m */; };
 		FD32632515D0407F0050F394 /* NSDictionary+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA215C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m */; };
@@ -38,7 +36,6 @@
 		FD764C5815C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA415C9CADE00A3D10A /* NSString+InsiderPagesKit.m */; };
 		FD764C5915C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA415C9CADE00A3D10A /* NSString+InsiderPagesKit.m */; };
 		FD764CE815C9CB1400A3D10A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD764CE715C9CB1400A3D10A /* Cocoa.framework */; };
-		FD764F2B15C9CEA100A3D10A /* InsiderPages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */; };
 		FD7655C415C9D53400A3D10A /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76548215C9D53200A3D10A /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD7655C515C9D53400A3D10A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548315C9D53200A3D10A /* Reachability.m */; };
 		FD7655C615C9D53400A3D10A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548315C9D53200A3D10A /* Reachability.m */; };
@@ -240,7 +237,6 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				FD260E1415CC4F160002C801 /* InsiderPages.xcdatamodeld in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +270,6 @@
 		FD764BA415C9CADE00A3D10A /* NSString+InsiderPagesKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+InsiderPagesKit.m"; sourceTree = "<group>"; };
 		FD764CE715C9CB1400A3D10A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		FD764DFD15C9CBBE00A3D10A /* InsiderPagesKitMac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "InsiderPagesKitMac-Info.plist"; sourceTree = "<group>"; };
-		FD764F2915C9CEA100A3D10A /* InsiderPages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InsiderPages.xcdatamodel; sourceTree = "<group>"; };
 		FD76548215C9D53200A3D10A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		FD76548315C9D53200A3D10A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		FD76548915C9D53200A3D10A /* Readme.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.markdown; sourceTree = "<group>"; };
@@ -535,7 +530,6 @@
 			isa = PBXGroup;
 			children = (
 				FD764DFD15C9CBBE00A3D10A /* InsiderPagesKitMac-Info.plist */,
-				FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */,
 				FDD955B215E3F94F00F38150 /* InsiderPagesKit-Prefix.h */,
 			);
 			name = "Other Sources";
@@ -1078,7 +1072,6 @@
 				FD764C4915C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */,
 				FD764C5615C9CADE00A3D10A /* NSDictionary+InsiderPagesKit.m in Sources */,
 				FD764C5915C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */,
-				FD764F2B15C9CEA100A3D10A /* InsiderPages.xcdatamodeld in Sources */,
 				FD7655C615C9D53400A3D10A /* Reachability.m in Sources */,
 				FD7655E215C9D53400A3D10A /* SSKeychain.m in Sources */,
 				FD7656A215CA053100A3D10A /* IPKQueryModel.m in Sources */,
@@ -1138,7 +1131,6 @@
 			files = (
 				FD32632415D040550050F394 /* NSDictionary+InsiderPagesKit.m in Sources */,
 				FD260E1915CC91590002C801 /* NSRunLoop+TimeOutAndFlag.m in Sources */,
-				FD260E1515CC5E420002C801 /* InsiderPages.xcdatamodeld in Sources */,
 				FD76562A15C9D70000A3D10A /* InsiderPagesKitTests.m in Sources */,
 				FD32632B15D078240050F394 /* NSMutableDictionary+InsiderPagesKit.m in Sources */,
 			);
@@ -1428,19 +1420,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		FD764F2815C9CEA100A3D10A /* InsiderPages.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				FD764F2915C9CEA100A3D10A /* InsiderPages.xcdatamodel */,
-			);
-			currentVersion = FD764F2915C9CEA100A3D10A /* InsiderPages.xcdatamodel */;
-			path = InsiderPages.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = B244407C15BE53DC00D4D4CA /* Project object */;
 }
