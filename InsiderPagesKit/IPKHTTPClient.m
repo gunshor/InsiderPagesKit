@@ -111,12 +111,13 @@ static BOOL __developmentMode = NO;
     
     [self postPath:@"login" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __weak NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
-        [context performBlock:^{
+        [context performBlockAndWait:^{
             IPKUser *user = [IPKUser objectWithDictionary:[responseObject objectForKey:@"user"]];
             user.fb_access_token = fbAccessToken;
             NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
             user.accessToken = [cookie value];
             [IPKUser setCurrentUser:user];
+            [context MR_save];
         }];
         
         if (success) {
@@ -677,10 +678,11 @@ static BOOL __developmentMode = NO;
     
     [self getPath:@"activities" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __weak NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
-        [context performBlock:^{
+        [context performBlockAndWait:^{
             for (NSDictionary* activityDictionary in [responseObject objectForKey:@"activities"]) {
                 [IPKActivity objectWithDictionary:activityDictionary];
             }
+            [context MR_save];
         }];
         
         if (success) {
