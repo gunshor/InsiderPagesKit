@@ -108,7 +108,7 @@
 	
 	// If the object doesn't exist, create it
 	if (!object) {
-		object = [self MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+		object = [self MR_createInContext:context];
 		object.remoteID = remoteID;
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 	}
