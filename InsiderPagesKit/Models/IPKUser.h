@@ -60,7 +60,7 @@ extern NSString *const kIPKCurrentUserChangedNotificationName;
 @property (nonatomic, strong) IPKReview *reviews;
 
 @property (nonatomic, strong) NSString *accessToken;
-+ (IPKUser *)currentUser;
++ (IPKUser *)currentUserInContext:(NSManagedObjectContext*) localContext;
 + (void)setCurrentUser:(IPKUser *)user;
 + (BOOL)userHasLoggedIn;
 

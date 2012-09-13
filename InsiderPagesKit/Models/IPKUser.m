@@ -78,7 +78,7 @@ static IPKUser *__currentUser = nil;
     return YES;
 }
 
-+ (IPKUser *)currentUser {
++ (IPKUser *)currentUserInContext:(NSManagedObjectContext *)localContext {
     if (!__currentUser) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSNumber *userID = [userDefaults objectForKey:kIPKUserIDKey];
@@ -90,8 +90,10 @@ static IPKUser *__currentUser = nil;
         if (!accessToken) {
             return nil;
         }
-        __currentUser = [self existingObjectWithRemoteID:userID];
+        __currentUser = [self existingObjectWithRemoteID:userID context:localContext];
         __currentUser.accessToken = accessToken;
+    }else{
+        return [__currentUser MR_inContext:localContext];
     }
 
 	return __currentUser;
