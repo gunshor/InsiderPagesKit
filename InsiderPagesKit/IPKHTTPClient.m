@@ -131,11 +131,11 @@ static BOOL __developmentMode = NO;
 }
 
 - (void)updateCurrentUserWithSuccess:(void (^)(IPKUser*))success failure:(IPKHTTPClientFailure)failure{    
-    [[IPKUser currentUser] updateWithSuccess:^(){
-        [IPKUser setCurrentUser:[IPKUser currentUser]];
+    [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] updateWithSuccess:^(){
+        [IPKUser setCurrentUser:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]]];
         
         if (success) {
-            success([IPKUser currentUser]);
+            success([IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]]);
         }
     }
                                      failure:^(AFHTTPRequestOperation *operation, NSError *error){
@@ -147,13 +147,13 @@ static BOOL __developmentMode = NO;
 #pragma mark - User Actions
 - (void)followPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            [IPKUser currentUser].remoteID, @"follow_id",
+                            [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID, @"follow_id",
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/followers", pageId];
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [[RHManagedObjectContextManager sharedInstance] managedObjectContext];
         IPKPage * pageToFollow = [IPKPage objectWithRemoteID:@([pageId integerValue])];
-        [[IPKUser currentUser] addFollowedPagesObject:pageToFollow];
+        [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] addFollowedPagesObject:pageToFollow];
         [pageToFollow setIs_following:[NSNumber numberWithBool:YES]];
         [pageToFollow updateSectionHeader];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
@@ -173,13 +173,13 @@ static BOOL __developmentMode = NO;
                             userId, @"follow_id",
                             nil];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString * urlString = [NSString stringWithFormat:@"users/%@/following", [IPKUser currentUser].remoteID ? [IPKUser currentUser].remoteID : [userDefaults objectForKey:@"IPKUserID"]];
+    NSString * urlString = [NSString stringWithFormat:@"users/%@/following", [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID ? [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID : [userDefaults objectForKey:@"IPKUserID"]];
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
         if (operation.response.statusCode != 403) {
             IPKUser * userToFollow = [IPKUser objectWithRemoteID:@([userId integerValue])];
-            [[IPKUser currentUser] addFollowedUsersObject:userToFollow];
+            [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] addFollowedUsersObject:userToFollow];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
         
@@ -197,7 +197,7 @@ static BOOL __developmentMode = NO;
 
 - (void)unfollowPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            [IPKUser currentUser].remoteID, @"follow_id",
+                            [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID, @"follow_id",
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/followers", pageId];
     [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -206,7 +206,7 @@ static BOOL __developmentMode = NO;
         IPKPage * pageToFollow = [IPKPage objectWithRemoteID:@([pageId integerValue])];
         //force fault
         [pageToFollow name];
-        [[IPKUser currentUser] removeFollowedPagesObject:pageToFollow];
+        [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] removeFollowedPagesObject:pageToFollow];
         [pageToFollow setIs_following:[NSNumber numberWithBool:NO]];
         [pageToFollow updateSectionHeader];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
@@ -226,12 +226,12 @@ static BOOL __developmentMode = NO;
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             userId, @"follow_id",
                             nil];
-    NSString * urlString = [NSString stringWithFormat:@"users/%@/following", [IPKUser currentUser].remoteID];
+    NSString * urlString = [NSString stringWithFormat:@"users/%@/following", [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID];
     [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
         IPKUser * userToUnfollow = [IPKUser objectWithRemoteID:@([userId integerValue])];
-        [[IPKUser currentUser] removeFollowedUsersObject:userToUnfollow];
+        [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] removeFollowedUsersObject:userToUnfollow];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         

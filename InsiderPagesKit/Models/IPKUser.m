@@ -137,8 +137,8 @@ static IPKUser *__currentUser = nil;
 
 
 + (void)setCurrentUser:(IPKUser *)user {
-	if ([IPKUser currentUser]) {
-		[SSKeychain deletePasswordForService:kIPKKeychainServiceName account:[IPKUser currentUser].remoteID.description];
+	if ([IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]]) {
+		[SSKeychain deletePasswordForService:kIPKKeychainServiceName account:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID.description];
 	}
 
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
