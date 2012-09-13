@@ -157,7 +157,6 @@ static IPKUser *__currentUser = nil;
     self.admin = [dictionary safeObjectForKey:@"admin"];
     self.city_id = [dictionary safeObjectForKey:@"city_id"];
     self.gender = [dictionary safeObjectForKey:@"gender"];
-    self.id = [dictionary safeObjectForKey:@"id"];
     self.image_profile_path = [dictionary safeObjectForKey:@"image_profile_path"];
     self.image_content_type = [dictionary safeObjectForKey:@"image_content_type"];
     self.image_file_name = [dictionary safeObjectForKey:@"image_file_name"];

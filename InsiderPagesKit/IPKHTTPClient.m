@@ -147,7 +147,7 @@ static BOOL __developmentMode = NO;
 #pragma mark - User Actions
 - (void)followPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            [IPKUser currentUser].id, @"follow_id",
+                            [IPKUser currentUser].remoteID, @"follow_id",
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/followers", pageId];
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -173,7 +173,7 @@ static BOOL __developmentMode = NO;
                             userId, @"follow_id",
                             nil];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString * urlString = [NSString stringWithFormat:@"users/%@/following", [IPKUser currentUser].id ? [IPKUser currentUser].id : [userDefaults objectForKey:@"IPKUserID"]];
+    NSString * urlString = [NSString stringWithFormat:@"users/%@/following", [IPKUser currentUser].remoteID ? [IPKUser currentUser].remoteID : [userDefaults objectForKey:@"IPKUserID"]];
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
@@ -197,7 +197,7 @@ static BOOL __developmentMode = NO;
 
 - (void)unfollowPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            [IPKUser currentUser].id, @"follow_id",
+                            [IPKUser currentUser].remoteID, @"follow_id",
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/followers", pageId];
     [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -226,7 +226,7 @@ static BOOL __developmentMode = NO;
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             userId, @"follow_id",
                             nil];
-    NSString * urlString = [NSString stringWithFormat:@"users/%@/following", [IPKUser currentUser].id];
+    NSString * urlString = [NSString stringWithFormat:@"users/%@/following", [IPKUser currentUser].remoteID];
     [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{

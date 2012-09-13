@@ -58,7 +58,6 @@
 	[super unpackDictionary:dictionary];    
 	self.name = [dictionary safeObjectForKey:@"name"];
     self.description_text = [dictionary safeObjectForKey:@"description_text"];
-    self.id = [dictionary safeObjectForKey:@"id"];
     self.image_content_type = [dictionary safeObjectForKey:@"image_content_type"];
     self.image_file_name = [dictionary safeObjectForKey:@"image_file_name"];
     self.image_file_size = [dictionary safeObjectForKey:@"image_file_size"];

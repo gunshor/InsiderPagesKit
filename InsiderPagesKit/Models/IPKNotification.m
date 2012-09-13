@@ -34,7 +34,6 @@
 	[super unpackDictionary:dictionary];
 	self.action_text = [dictionary safeObjectForKey:@"action_text"];
     self.activity_parent = [dictionary safeObjectForKey:@"activity_parent"];
-    self.id = [dictionary safeObjectForKey:@"id"];
     self.path = [dictionary safeObjectForKey:@"path"];
     self.read = [dictionary safeObjectForKey:@"read"];
     self.read = [dictionary safeObjectForKey:@"user_id"];

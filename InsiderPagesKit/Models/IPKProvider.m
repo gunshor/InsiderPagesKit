@@ -62,7 +62,6 @@
     self.email_address = [dictionary safeObjectForKey:@"email_address"];
     self.first_name = [dictionary safeObjectForKey:@"first_name"];
     self.last_name = [dictionary safeObjectForKey:@"last_name"];
-    self.id = [dictionary safeObjectForKey:@"id"];
     self.last_updated_by_id = [dictionary safeObjectForKey:@"last_updated_by_id"];
     self.state = [dictionary safeObjectForKey:@"state"];
     self.url = [dictionary safeObjectForKey:@"url"];

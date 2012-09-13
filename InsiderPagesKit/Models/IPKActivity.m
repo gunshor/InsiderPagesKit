@@ -38,7 +38,6 @@
 - (void)unpackDictionary:(NSDictionary *)dictionary {
 	[super unpackDictionary:dictionary];    
 	self.action = [dictionary safeObjectForKey:@"action"];
-    self.id = [dictionary safeObjectForKey:@"id"];
     self.team_id = [dictionary safeObjectForKey:@"team_id"];
     if ([dictionary safeObjectForKey:@"team"]) {
         self.page = [IPKPage objectWithDictionary:[dictionary safeObjectForKey:@"team"]];
