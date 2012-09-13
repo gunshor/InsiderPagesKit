@@ -110,17 +110,14 @@ static BOOL __developmentMode = NO;
                             nil];
     
     [self postPath:@"login" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        __block IPKUser *user = [IPKUser objectWithDictionary:[responseObject objectForKey:@"user"]];
-        [MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext){
-            
-            IPKUser * localUser = [user MR_inContext:localContext];
-            localUser.fb_access_token = fbAccessToken;
+        __weak NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
+        [context performBlockAndWait:^{
+            IPKUser *user = [IPKUser objectWithDictionary:[responseObject objectForKey:@"user"]];
+            user.fb_access_token = fbAccessToken;
             NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
-            localUser.accessToken = [cookie value];
-            
-            
-        } completion:^(){
+            user.accessToken = [cookie value];
             [IPKUser setCurrentUser:user];
+            [context MR_save];
         }];
         
         if (success) {
