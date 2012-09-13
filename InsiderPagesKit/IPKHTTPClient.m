@@ -117,7 +117,7 @@ static BOOL __developmentMode = NO;
             NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
             user.accessToken = [cookie value];
             [IPKUser setCurrentUser:user];
-            [[user managedObjectContext] save:nil];
+            [context MR_saveNestedContexts];
         }];
         
         if (success) {
