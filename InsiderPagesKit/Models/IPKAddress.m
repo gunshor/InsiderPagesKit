@@ -12,7 +12,6 @@
 
 @implementation IPKAddress
 
-@dynamic id;
 @dynamic remoteID;
 @dynamic updatedAt;
 @dynamic createdAt;

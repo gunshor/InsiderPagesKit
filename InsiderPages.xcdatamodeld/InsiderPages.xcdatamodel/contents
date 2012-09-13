@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1480" systemVersion="12B19" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1810" systemVersion="12B19" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="IPKActivity" representedClassName="IPKActivity" syncable="YES">
         <attribute name="action" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="id" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="team_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="trackable_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -22,7 +21,6 @@
         <attribute name="address_2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="lat" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="lng" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -37,7 +35,6 @@
         <attribute name="action_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="activity_parent" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="id" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="read" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -48,7 +45,6 @@
     <entity name="IPKPage" representedClassName="IPKPage" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="description_text" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="image_content_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_file_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_file_size" optional="YES" attributeType="String" syncable="YES"/>
@@ -79,7 +75,6 @@
         <attribute name="description_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email_address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="last_updated_by_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -106,7 +101,6 @@
     <entity name="IPKReview" representedClassName="IPKReview" syncable="YES">
         <attribute name="about" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="id" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="image_content_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_file_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_file_size" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -138,7 +132,6 @@
         <attribute name="fb_user_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="id" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="image_content_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_file_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_file_size" optional="YES" attributeType="String" syncable="YES"/>
@@ -166,13 +159,13 @@
         <relationship name="reviews" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKReview" inverseName="reviewer" inverseEntity="IPKReview" syncable="YES"/>
     </entity>
     <elements>
-        <element name="IPKActivity" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKAddress" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKNotification" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKPage" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKProvider" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKQueryModel" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKReview" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="IPKUser" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="IPKActivity" positionX="0" positionY="0" width="128" height="255"/>
+        <element name="IPKAddress" positionX="0" positionY="0" width="128" height="240"/>
+        <element name="IPKNotification" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="IPKPage" positionX="0" positionY="0" width="128" height="360"/>
+        <element name="IPKProvider" positionX="0" positionY="0" width="128" height="360"/>
+        <element name="IPKQueryModel" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="IPKReview" positionX="0" positionY="0" width="128" height="360"/>
+        <element name="IPKUser" positionX="0" positionY="0" width="128" height="570"/>
     </elements>
 </model>

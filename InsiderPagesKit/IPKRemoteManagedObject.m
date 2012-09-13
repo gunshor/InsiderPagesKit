@@ -11,7 +11,6 @@
 @implementation IPKRemoteManagedObject
 
 @dynamic remoteID;
-@dynamic id;
 @dynamic createdAt;
 @dynamic updatedAt;
 
@@ -108,7 +107,7 @@
 	
 	// If the object doesn't exist, create it
 	if (!object) {
-		object = [self MR_createEntity];
+		object = [self MR_createInContext:context];
 		object.remoteID = remoteID;
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 	}

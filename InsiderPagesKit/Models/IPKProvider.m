@@ -21,7 +21,6 @@
 @dynamic description_text;
 @dynamic email_address;
 @dynamic first_name;
-@dynamic id;
 @dynamic last_name;
 @dynamic last_updated_by_id;
 @dynamic remoteID;

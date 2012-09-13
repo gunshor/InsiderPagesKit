@@ -18,7 +18,6 @@
 
 @dynamic action;
 @dynamic createdAt;
-@dynamic id;
 @dynamic remoteID;
 @dynamic team_id;
 @dynamic trackable_id;
@@ -30,6 +29,7 @@
 @dynamic provider;
 @dynamic review;
 @dynamic user;
+@dynamic user2;
 
 + (NSString *)entityName {
 	return @"IPKActivity";

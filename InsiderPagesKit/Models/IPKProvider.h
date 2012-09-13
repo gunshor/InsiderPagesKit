@@ -22,7 +22,6 @@
 @property (nonatomic, strong) NSString * description_text;
 @property (nonatomic, strong) NSString * email_address;
 @property (nonatomic, strong) NSString * first_name;
-@property (nonatomic, strong) NSNumber * id;
 @property (nonatomic, strong) NSString * last_name;
 @property (nonatomic, strong) NSNumber * last_updated_by_id;
 @property (nonatomic, strong) NSNumber * remoteID;

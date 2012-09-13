@@ -12,7 +12,6 @@
 
 @interface IPKAddress : IPKAbstractModel
 
-@property (nonatomic, strong) NSNumber * id;
 @property (nonatomic, strong) NSNumber * remoteID;
 @property (nonatomic, strong) NSDate * updatedAt;
 @property (nonatomic, strong) NSDate * createdAt;

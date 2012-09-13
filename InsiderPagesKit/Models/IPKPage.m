@@ -15,7 +15,6 @@
 
 @dynamic createdAt;
 @dynamic description_text;
-@dynamic id;
 @dynamic image_content_type;
 @dynamic image_file_name;
 @dynamic image_file_size;

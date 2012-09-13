@@ -29,7 +29,6 @@ static NSString *const kIPKUserIDKey = @"IPKUserID";
 @dynamic fb_user_id;
 @dynamic first_name;
 @dynamic gender;
-@dynamic id;
 @dynamic image_content_type;
 @dynamic image_file_name;
 @dynamic image_file_size;

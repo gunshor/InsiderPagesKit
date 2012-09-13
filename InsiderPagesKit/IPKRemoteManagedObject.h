@@ -12,7 +12,6 @@
 
 @interface IPKRemoteManagedObject : NSManagedObject
 @property (nonatomic, strong) NSNumber *remoteID;
-@property (nonatomic, strong) NSNumber *id;
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, strong) NSDate *updatedAt;
 

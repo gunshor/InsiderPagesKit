@@ -15,7 +15,6 @@
 @dynamic action_text;
 @dynamic activity_parent;
 @dynamic createdAt;
-@dynamic id;
 @dynamic path;
 @dynamic read;
 @dynamic remoteID;

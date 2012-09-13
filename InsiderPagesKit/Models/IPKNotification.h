@@ -15,7 +15,6 @@
 @property (nonatomic, strong) NSString * action_text;
 @property (nonatomic, strong) id activity_parent;
 @property (nonatomic, strong) NSDate * createdAt;
-@property (nonatomic, strong) NSNumber * id;
 @property (nonatomic, strong) NSString * path;
 @property (nonatomic, strong) NSNumber * read;
 @property (nonatomic, strong) NSNumber * remoteID;

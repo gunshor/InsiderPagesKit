@@ -14,7 +14,6 @@
 
 @property (nonatomic, strong) NSString * action;
 @property (nonatomic, strong) NSDate * createdAt;
-@property (nonatomic, strong) NSNumber * id;
 @property (nonatomic, strong) NSNumber * remoteID;
 @property (nonatomic, strong) NSNumber * team_id;
 @property (nonatomic, strong) NSNumber * trackable_id;
