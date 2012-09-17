@@ -695,6 +695,31 @@ static BOOL __developmentMode = NO;
     }];
 }
 
+- (void)getPageActivititesWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            perPage, @"per_page",
+                            currentPage, @"page",
+                            nil];
+    
+    [self getPath:@"activities/pages" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __weak NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
+        [context performBlockAndWait:^{
+            for (NSDictionary* activityDictionary in [responseObject objectForKey:@"activities"]) {
+                [IPKActivity objectWithDictionary:activityDictionary];
+            }
+            [context MR_save];
+        }];
+        
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+}
+
 #pragma mark - Notifications
 - (void)getNotificationsWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:

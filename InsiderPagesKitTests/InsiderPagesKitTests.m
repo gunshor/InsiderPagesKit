@@ -502,6 +502,17 @@
         
         finished = NO;
     }
+    
+    [[IPKHTTPClient sharedClient] getPageActivititesWithCurrentPage:@1 perPage:@10 success:^(AFJSONRequestOperation *operation, id responseObject){
+        NSLog(@"%@", responseObject);
+        finished = YES;
+    } failure:^(AFJSONRequestOperation *operation, NSError *error){
+        STAssertTrue(NO, [error debugDescription]);
+        finished = YES;
+    }];
+    [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
+    
+    finished = NO;
 }
 
 -(void)testNotifications{

@@ -179,7 +179,6 @@
 	if ([object shouldUnpackDictionary:dictionary]) {
 		[object unpackDictionary:dictionary];
 	}
-	[context MR_save];
 	// Return the new or updated object
 	return object;
 }
