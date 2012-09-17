@@ -143,6 +143,9 @@
         case IPKActivityTypeFavorite:
             actionText = [NSString stringWithFormat:@"%@ favorited ", self.user.name];
             break;
+        case IPKActivityTypeRank:
+            actionText = [NSString stringWithFormat:@"%@ reranked ", self.user.name];
+            break;
         case IPKActivityTypeAll:
             actionText = [NSString stringWithFormat:@"%@ activity ", self.user.name];
             break;
