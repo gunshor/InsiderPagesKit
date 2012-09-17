@@ -107,6 +107,9 @@
     else if ([self.action isEqualToString:@"collaborate"]){
         return IPKActivityTypeCollaborate;
     }
+    else if ([self.action isEqualToString:@"favorite"]){
+        return IPKActivityTypeFavorite;
+    }
     else{
         return IPKActivityTypeAll;
     }
@@ -136,6 +139,9 @@
             break;
         case IPKActivityTypeCollaborate:
             actionText = [NSString stringWithFormat:@"%@ ", self.user.name];
+            break;
+        case IPKActivityTypeFavorite:
+            actionText = [NSString stringWithFormat:@"%@ favorited ", self.user.name];
             break;
         case IPKActivityTypeAll:
             actionText = [NSString stringWithFormat:@"%@ activity ", self.user.name];
