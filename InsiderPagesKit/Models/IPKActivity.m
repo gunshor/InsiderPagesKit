@@ -110,6 +110,9 @@
     else if ([self.action isEqualToString:@"favorite"]){
         return IPKActivityTypeFavorite;
     }
+    else if ([self.action isEqualToString:@"rank"]){
+        return IPKActivityTypeRank;
+    }
     else{
         return IPKActivityTypeAll;
     }
