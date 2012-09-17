@@ -105,6 +105,10 @@
 	// Look up the object
 	IPKRemoteManagedObject *object = [self existingObjectWithRemoteID:remoteID context:context];
 	
+    if (!context) {
+		context = [NSManagedObjectContext MR_contextForCurrentThread];
+	}
+    
 	// If the object doesn't exist, create it
 	if (!object) {
 		object = [self MR_createInContext:context];

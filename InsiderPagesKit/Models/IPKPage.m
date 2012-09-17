@@ -68,7 +68,7 @@
     self.user_id = [dictionary safeObjectForKey:@"user_id"];
     self.providers = [dictionary safeObjectForKey:@"providers"];
     if ([dictionary safeObjectForKey:@"user_id"]) {
-        self.owner = [IPKUser objectWithRemoteID:self.user_id];
+        self.owner = [IPKUser objectWithRemoteID:self.user_id context:self.managedObjectContext];
     }
     self.following_users = [dictionary safeObjectForKey:@"followers"];
     if ([dictionary safeObjectForKey:@"is_favorite"]) {

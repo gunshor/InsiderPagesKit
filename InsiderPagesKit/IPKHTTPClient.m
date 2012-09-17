@@ -680,7 +680,7 @@ static BOOL __developmentMode = NO;
         __weak NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
         [context performBlockAndWait:^{
             for (NSDictionary* activityDictionary in [responseObject objectForKey:@"activities"]) {
-                [IPKActivity objectWithDictionary:activityDictionary];
+                [IPKActivity objectWithDictionary:activityDictionary context:[NSManagedObjectContext MR_contextForCurrentThread]];
             }
             [context MR_save];
         }];
