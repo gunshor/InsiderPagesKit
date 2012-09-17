@@ -169,7 +169,7 @@
             actionText = [actionText stringByAppendingFormat:@"a scoop for %@", ((IPKProvider*)[IPKProvider objectWithRemoteID:self.review.listing_id]).full_name];
             break;
         case IPKTrackableTypeTeam:
-            actionText = [actionText stringByAppendingFormat:@"%@ with ID %@", [self.trackable_type lowercaseString], self.trackable_id];
+            actionText = [actionText stringByAppendingFormat:@"%@ named %@", @"page", self.page.name];
             break;
         case IPKTrackableTypeUser:
             actionText = [actionText stringByAppendingFormat:@"invited %@", self.user2.name];
