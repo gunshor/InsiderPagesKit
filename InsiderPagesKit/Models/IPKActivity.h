@@ -29,6 +29,5 @@
 
 -(enum IPKTrackableType)trackableType;
 -(enum IPKActivityType)activityType;
--(NSString *)actionText;
 
 @end
