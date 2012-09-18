@@ -66,7 +66,6 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSManagedObjectContext * context = [NSManagedObjectContext MR_contextForCurrentThread];
 	[fetchRequest setEntity:[NSEntityDescription entityForName:NSStringFromClass(self) inManagedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]]];
-	[fetchRequest setIncludesPendingChanges:YES];
 	[fetchRequest setReturnsObjectsAsFaults:YES];
     
     NSArray *results = [context executeFetchRequest:fetchRequest error:nil];
@@ -81,8 +80,28 @@
     [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 }
 
-+ (void)deleteAllLocal:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure{
++ (void)deleteAllLocal:(void(^)(void))success failure:(void(^)(void))failure{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSManagedObjectContext * context = [NSManagedObjectContext MR_contextForCurrentThread];
+	[fetchRequest setEntity:[NSEntityDescription entityForName:NSStringFromClass(self) inManagedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]]];
+	[fetchRequest setReturnsObjectsAsFaults:YES];
     
+    NSArray *results = [context executeFetchRequest:fetchRequest error:nil];
+    
+	// If the object is not found, return nil
+	if (results.count == 0) {
+        if (failure) {
+            failure();
+        }
+		return;
+	}
+    for (IPKRemoteManagedObject * object in results) {
+        [object MR_deleteEntity];
+    }
+    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+    if (success) {
+        success();
+    }
 }
 
 + (void)sortWithObjects:(NSArray *)objects {

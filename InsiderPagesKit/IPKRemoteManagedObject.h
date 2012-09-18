@@ -28,7 +28,7 @@
 - (void)deleteRemoteWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure;
 
 + (void)deleteAllLocal;
-+ (void)deleteAllLocal:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure;
++ (void)deleteAllLocal:(void(^)(void))success failure:(void(^)(void))failure;
 
 + (void)sortWithObjects:(NSArray *)objects;
 + (void)sortWithObjects:(NSArray *)objects success:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure;
