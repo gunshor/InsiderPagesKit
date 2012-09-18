@@ -10,11 +10,11 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="visibility" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="page" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKPage" inverseName="activities" inverseEntity="IPKPage" syncable="YES"/>
-        <relationship name="provider" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKProvider" inverseName="activities" inverseEntity="IPKProvider" syncable="YES"/>
-        <relationship name="review" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKReview" inverseName="activities" inverseEntity="IPKReview" syncable="YES"/>
+        <relationship name="page" optional="YES" minCount="1" maxCount="1" deletionRule="Deny" destinationEntity="IPKPage" inverseName="activities" inverseEntity="IPKPage" syncable="YES"/>
+        <relationship name="provider" optional="YES" minCount="1" maxCount="1" deletionRule="Deny" destinationEntity="IPKProvider" syncable="YES"/>
+        <relationship name="review" optional="YES" minCount="1" maxCount="1" deletionRule="Deny" destinationEntity="IPKReview" inverseName="activities" inverseEntity="IPKReview" syncable="YES"/>
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Deny" destinationEntity="IPKUser" inverseName="activities" inverseEntity="IPKUser" syncable="YES"/>
-        <relationship name="user2" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="activities" inverseEntity="IPKUser" syncable="YES"/>
+        <relationship name="user2" optional="YES" minCount="1" maxCount="1" deletionRule="Deny" destinationEntity="IPKUser" inverseName="activities" inverseEntity="IPKUser" syncable="YES"/>
     </entity>
     <entity name="IPKAddress" representedClassName="IPKAddress" syncable="YES">
         <attribute name="address_1" optional="YES" attributeType="String" syncable="YES"/>
@@ -83,7 +83,7 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKActivity" inverseName="provider" inverseEntity="IPKActivity" syncable="YES"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKActivity" syncable="YES"/>
         <relationship name="address" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKAddress" inverseName="provider" inverseEntity="IPKAddress" syncable="YES"/>
         <relationship name="pages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKPage" inverseName="providers" inverseEntity="IPKPage" syncable="YES"/>
         <relationship name="reviews" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKReview" inverseName="provider" inverseEntity="IPKReview" syncable="YES"/>
