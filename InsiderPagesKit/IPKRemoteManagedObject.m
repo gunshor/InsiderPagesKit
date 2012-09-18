@@ -96,7 +96,7 @@
 		return;
 	}
     for (IPKRemoteManagedObject * object in results) {
-        [object MR_deleteEntity];
+        [context deleteObject:object];
     }
     [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
     if (success) {
