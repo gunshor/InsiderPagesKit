@@ -697,10 +697,6 @@ static BOOL __developmentMode = NO;
 
 - (void)getPageActivititesWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     
-    if ([currentPage isEqualToNumber:@1]) {
-        [IPKActivity deleteAllLocal];
-    }
-    
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             perPage, @"per_page",
                             currentPage, @"page",
