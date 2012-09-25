@@ -18,10 +18,6 @@
 
 static BOOL __developmentMode = NO;
 
-@interface IPKHTTPClient ()
-- (void)_userChanged:(NSNotification *)notification;
-@end
-
 @implementation IPKHTTPClient {
 	dispatch_queue_t _callbackQueue;
 }

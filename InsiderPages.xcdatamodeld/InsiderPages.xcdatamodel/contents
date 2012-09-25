@@ -14,7 +14,7 @@
         <relationship name="provider" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKProvider" inverseName="activities" inverseEntity="IPKProvider" syncable="YES"/>
         <relationship name="review" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKReview" inverseName="activities" inverseEntity="IPKReview" syncable="YES"/>
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="activities" inverseEntity="IPKUser" syncable="YES"/>
-        <relationship name="user2" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" syncable="YES"/>
+        <relationship name="user2" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="referenced_activities" inverseEntity="IPKUser" syncable="YES"/>
     </entity>
     <entity name="IPKAddress" representedClassName="IPKAddress" syncable="YES">
         <attribute name="address_1" optional="YES" attributeType="String" syncable="YES"/>
@@ -160,6 +160,7 @@
         <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="followedUsers" inverseEntity="IPKUser" syncable="YES"/>
         <relationship name="notifications" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IPKNotification" inverseName="user" inverseEntity="IPKNotification" syncable="YES"/>
         <relationship name="pages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IPKPage" inverseName="owner" inverseEntity="IPKPage" syncable="YES"/>
+        <relationship name="referenced_activities" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKActivity" inverseName="user2" inverseEntity="IPKActivity" syncable="YES"/>
         <relationship name="reviews" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="IPKReview" inverseName="reviewer" inverseEntity="IPKReview" syncable="YES"/>
     </entity>
     <elements>
@@ -170,6 +171,6 @@
         <element name="IPKProvider" positionX="0" positionY="0" width="128" height="375"/>
         <element name="IPKQueryModel" positionX="0" positionY="0" width="128" height="165"/>
         <element name="IPKReview" positionX="0" positionY="0" width="128" height="360"/>
-        <element name="IPKUser" positionX="0" positionY="0" width="128" height="570"/>
+        <element name="IPKUser" positionX="0" positionY="0" width="128" height="585"/>
     </elements>
 </model>
