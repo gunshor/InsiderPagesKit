@@ -43,6 +43,9 @@
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="notifications" inverseEntity="IPKUser" syncable="YES"/>
     </entity>
     <entity name="IPKPage" representedClassName="IPKPage" syncable="YES">
+        <attribute name="business_count" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="collaborator_count" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="comment_count" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="description_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_content_type" optional="YES" attributeType="String" syncable="YES"/>
@@ -163,7 +166,7 @@
         <element name="IPKActivity" positionX="0" positionY="0" width="128" height="255"/>
         <element name="IPKAddress" positionX="0" positionY="0" width="128" height="240"/>
         <element name="IPKNotification" positionX="0" positionY="0" width="128" height="180"/>
-        <element name="IPKPage" positionX="0" positionY="0" width="128" height="360"/>
+        <element name="IPKPage" positionX="0" positionY="0" width="128" height="405"/>
         <element name="IPKProvider" positionX="0" positionY="0" width="128" height="375"/>
         <element name="IPKQueryModel" positionX="0" positionY="0" width="128" height="165"/>
         <element name="IPKReview" positionX="0" positionY="0" width="128" height="360"/>

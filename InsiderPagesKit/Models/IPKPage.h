@@ -30,6 +30,9 @@
 @property (nonatomic, strong) NSString * section_header;
 @property (nonatomic, strong) NSNumber * is_favorite;
 @property (nonatomic, strong) NSNumber * is_following;
+@property (nonatomic, strong) NSNumber * collaborator_count;
+@property (nonatomic, strong) NSNumber * business_count;
+@property (nonatomic, strong) NSNumber * comment_count;
 @property (nonatomic, strong) NSSet *following_users;
 @property (nonatomic, strong) IPKUser *owner;
 @property (nonatomic, strong) NSOrderedSet *providers;

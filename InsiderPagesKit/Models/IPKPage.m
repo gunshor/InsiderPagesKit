@@ -29,6 +29,9 @@
 @dynamic section_header;
 @dynamic is_favorite;
 @dynamic is_following;
+@dynamic collaborator_count;
+@dynamic business_count;
+@dynamic comment_count;
 @dynamic following_users;
 @dynamic owner;
 @dynamic providers;
@@ -92,6 +95,9 @@
     }else if([self.user_id isEqualToNumber:userID]){
         self.section_header = @"Mine";
     }
+    self.comment_count = [dictionary safeObjectForKey:@"comment_count"];
+    self.collaborator_count = [dictionary safeObjectForKey:@"collaborator_count"];
+    self.business_count = [dictionary safeObjectForKey:@"business_count"];
 }
 
 -(void)updateSectionHeader{
