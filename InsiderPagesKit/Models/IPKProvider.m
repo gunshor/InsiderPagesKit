@@ -81,7 +81,7 @@
 }
 
 -(NSString*)listing_id{
-    return [self.listing_type stringByAppendingFormat:@"%@", self.remoteID];
+    return [self.listing_type stringByAppendingFormat:@"_%@", self.remoteID];
 }
 
 @end
