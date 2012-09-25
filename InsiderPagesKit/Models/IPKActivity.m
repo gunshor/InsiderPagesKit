@@ -113,6 +113,9 @@
     else if ([self.action isEqualToString:@"rank"]){
         return IPKActivityTypeRank;
     }
+    else if ([self.action isEqualToString:@"accepted"]){
+        return IPKActivityTypeAccept;
+    }
     else{
         return IPKActivityTypeAll;
     }
