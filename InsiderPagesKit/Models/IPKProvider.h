@@ -31,6 +31,7 @@
 @property (nonatomic, strong) NSString * url;
 @property (nonatomic, strong) NSString * cached_slug;
 @property (nonatomic, strong) NSNumber * user_id;
+@property (nonatomic, strong) NSString * listing_type;
 @property (nonatomic, strong) NSSet *pages;
 @property (nonatomic, strong) IPKReview *reviews;
 @property (nonatomic, strong) NSSet *activities;
@@ -38,6 +39,7 @@
 
 -(NSDictionary*)packToDictionary;
 -(NSString*)full_name;
+-(NSString*)listing_id;
 
 @end
 

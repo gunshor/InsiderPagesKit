@@ -30,6 +30,7 @@
 @dynamic url;
 @dynamic user_id;
 @dynamic cached_slug;
+@dynamic listing_type;
 @dynamic pages;
 @dynamic activities;
 @dynamic reviews;
@@ -69,6 +70,7 @@
     self.updated_from_ip_at = [dictionary safeObjectForKey:@"updated_from_ip_at"];
     self.address = [IPKAddress objectWithDictionary:[[dictionary objectForKey:@"primary_address"] objectForKey:@"address"]];
     self.cached_slug = [dictionary safeObjectForKey:@"cached_slug"];
+    self.listing_type = [dictionary safeObjectForKey:@"listing_type"];
 }
 
 -(NSString *)full_name{
@@ -76,6 +78,10 @@
         return [self.first_name stringByAppendingFormat:@" %@", self.last_name];
     }
     return self.business_name;
+}
+
+-(NSString*)listing_id{
+    return [self.listing_type stringByAppendingFormat:@"%@", self.remoteID];
 }
 
 @end
