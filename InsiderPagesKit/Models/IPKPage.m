@@ -64,7 +64,7 @@
     self.image_content_type = [dictionary safeObjectForKey:@"image_content_type"];
     self.image_file_name = [dictionary safeObjectForKey:@"image_file_name"];
     self.image_file_size = [dictionary safeObjectForKey:@"image_file_size"];
-    self.image_updated_at = [dictionary safeObjectForKey:@"image_updated_at"];
+    self.image_updated_at = [dictionary safeObjectForKey:@"image_updated_at"] ? [[IPKRemoteManagedObject class] parseDate:[dictionary objectForKey:@"image_updated_at"]] : nil;
     self.privacy_setting = [dictionary safeObjectForKey:@"privacy_setting"];
     self.sequence = [dictionary safeObjectForKey:@"sequence"];
     self.sort = [dictionary safeObjectForKey:@"sort"];
