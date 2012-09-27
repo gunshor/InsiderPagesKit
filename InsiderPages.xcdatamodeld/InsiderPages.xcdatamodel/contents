@@ -50,7 +50,7 @@
         <attribute name="description_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_content_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_file_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="image_file_size" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image_file_size" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="image_updated_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="is_favorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="is_following" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -138,7 +138,7 @@
         <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="image_content_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_file_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="image_file_size" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image_file_size" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="image_profile_path" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_to_show" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="image_updated_at" optional="YES" attributeType="Date" syncable="YES"/>
