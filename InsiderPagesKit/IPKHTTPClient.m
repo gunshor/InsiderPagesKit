@@ -586,11 +586,18 @@ static BOOL __developmentMode = NO;
     NSLog(@"%@", [IPKProvider objectWithRemoteID:@([providerId intValue])]);
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:provider_type, @"provider_type", nil];
     [self getPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        for (NSDictionary * pageDictionary in [responseObject objectForKey:@"pages"]) {
-            IPKPage * page = [IPKPage objectWithDictionary:pageDictionary];
+        if ([[responseObject objectForKey:@"pages"] isKindOfClass:[NSDictionary class]]) {
+            for (NSDictionary * pageDictionary in [responseObject objectForKey:@"pages"]) {
+                IPKPage * page = [IPKPage objectWithDictionary:pageDictionary];
+                IPKProvider * provider = [IPKProvider objectWithRemoteID:@([providerId intValue])];
+                [page addProvidersObject:provider];
+            }
+        }else{
+            IPKPage * page = [IPKPage objectWithDictionary:[responseObject objectForKey:@"pages"]];
             IPKProvider * provider = [IPKProvider objectWithRemoteID:@([providerId intValue])];
             [page addProvidersObject:provider];
         }
+        
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
