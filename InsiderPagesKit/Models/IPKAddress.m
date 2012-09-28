@@ -17,6 +17,7 @@
 @dynamic createdAt;
 @dynamic provider_id;
 @dynamic city_id;
+@dynamic city;
 @dynamic phone;
 @dynamic address_1;
 @dynamic address_2;
@@ -30,17 +31,28 @@
 	return @"IPKAddress";
 }
 
-- (void)unpackDictionary:(NSDictionary *)dictionary {
-	[super unpackDictionary:dictionary];    
-	self.provider_id = [dictionary safeObjectForKey:@"provider_id"];
-    self.city_id = [dictionary safeObjectForKey:@"city_id"];
-    self.phone = [dictionary safeObjectForKey:@"phone"];
-    self.address_1 = [dictionary safeObjectForKey:@"address_1"];
-    self.address_2 = [dictionary safeObjectForKey:@"address_2"];
-    self.zip_code = [dictionary safeObjectForKey:@"zip_code"];
-    self.prime = [dictionary safeObjectForKey:@"prime"];
-    self.lat = [dictionary safeObjectForKey:@"lat"];
-    self.lng = [dictionary safeObjectForKey:@"lng"];
+-(void)unpackCityGridDictionary:(NSDictionary*)cityGridDictionary{
+    [super unpackDictionary:cityGridDictionary];
+    self.city = [cityGridDictionary safeObjectForKey:@"city"];
+    self.phone = [cityGridDictionary safeObjectForKey:@"phone"];
+    self.address_1 = [cityGridDictionary safeObjectForKey:@"street"];
+    self.address_2 = [cityGridDictionary safeObjectForKey:@"address_2"];
+    self.zip_code = [cityGridDictionary safeObjectForKey:@"postal_code"];
+    self.lat = [cityGridDictionary safeObjectForKey:@"latitude"];
+    self.lng = [cityGridDictionary safeObjectForKey:@"longitude"];
+}
+
+- (void)unpackProviderDictionary:(NSDictionary *)providerDictionary {
+	[super unpackDictionary:providerDictionary];    
+	self.provider_id = [providerDictionary safeObjectForKey:@"provider_id"];
+    self.city_id = [providerDictionary safeObjectForKey:@"city_id"];
+    self.phone = [providerDictionary safeObjectForKey:@"phone"];
+    self.address_1 = [providerDictionary safeObjectForKey:@"address_1"];
+    self.address_2 = [providerDictionary safeObjectForKey:@"address_2"];
+    self.zip_code = [providerDictionary safeObjectForKey:@"zip_code"];
+    self.prime = [providerDictionary safeObjectForKey:@"prime"];
+    self.lat = [providerDictionary safeObjectForKey:@"lat"];
+    self.lng = [providerDictionary safeObjectForKey:@"lng"];
     self.provider = [IPKProvider objectWithRemoteID:self.provider_id];
 }
 

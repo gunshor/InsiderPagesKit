@@ -19,6 +19,7 @@
     <entity name="IPKAddress" representedClassName="IPKAddress" syncable="YES">
         <attribute name="address_1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="address_2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lat" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -162,7 +163,7 @@
     </entity>
     <elements>
         <element name="IPKActivity" positionX="0" positionY="0" width="128" height="255"/>
-        <element name="IPKAddress" positionX="0" positionY="0" width="128" height="240"/>
+        <element name="IPKAddress" positionX="0" positionY="0" width="128" height="255"/>
         <element name="IPKNotification" positionX="0" positionY="0" width="128" height="180"/>
         <element name="IPKPage" positionX="0" positionY="0" width="128" height="390"/>
         <element name="IPKProvider" positionX="0" positionY="0" width="128" height="375"/>

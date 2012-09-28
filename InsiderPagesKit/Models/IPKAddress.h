@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSDate * createdAt;
 @property (nonatomic, strong) NSNumber * provider_id;
 @property (nonatomic, strong) NSNumber * city_id;
+@property (nonatomic, strong) NSString * city;
 @property (nonatomic, strong) NSString * phone;
 @property (nonatomic, strong) NSString * address_1;
 @property (nonatomic, strong) NSString * address_2;
@@ -25,5 +26,9 @@
 @property (nonatomic, strong) NSNumber * lat;
 @property (nonatomic, strong) NSNumber * lng;
 @property (nonatomic, strong) IPKProvider *provider;
+
+-(void)unpackProviderDictionary:(NSDictionary*)providerDictionary;
+
+-(void)unpackCityGridDictionary:(NSDictionary*)cityGridDictionary;
 
 @end
