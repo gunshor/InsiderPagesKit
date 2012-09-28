@@ -45,7 +45,7 @@
     self.image_content_type = [dictionary safeObjectForKey:@"image_content_type"];
     self.image_file_name = [dictionary safeObjectForKey:@"image_file_name"];
     self.image_file_size = [dictionary safeObjectForKey:@"image_file_size"];
-    self.image_updated_at = [dictionary safeObjectForKey:@"image_updated_at"];
+    self.image_updated_at = [dictionary safeObjectForKey:@"image_updated_at"] ? [[IPKRemoteManagedObject class] parseDate:[dictionary objectForKey:@"image_updated_at"]] : nil;
     self.ip_review_id = [dictionary safeObjectForKey:@"ip_review_id"];
     self.listing_id = [dictionary safeObjectForKey:@"listing_id"];
     self.listing_type = [dictionary safeObjectForKey:@"listing_type"];
