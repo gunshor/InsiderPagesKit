@@ -244,8 +244,12 @@ static BOOL __developmentMode = NO;
 #pragma mark - User Resources
 - (void)getPagesForUserWithId:(NSString*)userId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSString *url = [NSString stringWithFormat:@"users/%@/teams", userId];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @100, @"per_page",
+                            @1, @"page",
+                            nil];
     
-    [self getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self getPath:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
         for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
