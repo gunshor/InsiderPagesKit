@@ -323,7 +323,7 @@ static BOOL __developmentMode = NO;
     [self postPath:@"teams" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        [IPKPage objectWithDictionary:responseObject];
+        [IPKPage objectWithDictionary:[responseObject objectForKey:@"team"]];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
