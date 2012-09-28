@@ -44,7 +44,6 @@
     //    [packedDictionary setSafeObject:self.id forKey:@"id"];
     [packedDictionary setSafeObject:self.image_content_type forKey:@"image_content_type"];
     [packedDictionary setSafeObject:self.image_file_name forKey:@"image_file_name"];
-    [packedDictionary setSafeObject:self.image_file_size forKey:@"image_file_size"];
     [packedDictionary setSafeObject:self.image_updated_at forKey:@"image_updated_at"];
     [packedDictionary setSafeObject:self.privacy_setting forKey:@"privacy_setting"];
     [packedDictionary setSafeObject:self.sequence forKey:@"sequence"];
