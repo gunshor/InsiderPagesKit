@@ -586,7 +586,7 @@ static BOOL __developmentMode = NO;
     NSLog(@"%@", [IPKProvider objectWithRemoteID:@([providerId intValue])]);
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:provider_type, @"provider_type", nil];
     [self getPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if ([[responseObject objectForKey:@"pages"] isKindOfClass:[NSDictionary class]]) {
+        if ([[responseObject objectForKey:@"pages"] isKindOfClass:[NSArray class]]) {
             for (NSDictionary * pageDictionary in [responseObject objectForKey:@"pages"]) {
                 IPKPage * page = [IPKPage objectWithDictionary:pageDictionary];
                 IPKProvider * provider = [IPKProvider objectWithRemoteID:@([providerId intValue])];
