@@ -17,7 +17,6 @@
 @property (nonatomic, strong) NSDate * createdAt;
 @property (nonatomic, strong) NSString * image_content_type;
 @property (nonatomic, strong) NSString * image_file_name;
-@property (nonatomic, strong) NSNumber * image_file_size;
 @property (nonatomic, strong) NSDate * image_updated_at;
 @property (nonatomic, strong) NSNumber * ip_review_id;
 @property (nonatomic, strong) NSNumber * listing_id;

@@ -17,7 +17,6 @@
 @dynamic createdAt;
 @dynamic image_content_type;
 @dynamic image_file_name;
-@dynamic image_file_size;
 @dynamic image_updated_at;
 @dynamic ip_review_id;
 @dynamic listing_id;
@@ -44,7 +43,6 @@
 	self.about = [dictionary safeObjectForKey:@"about"];
     self.image_content_type = [dictionary safeObjectForKey:@"image_content_type"];
     self.image_file_name = [dictionary safeObjectForKey:@"image_file_name"];
-    self.image_file_size = [dictionary safeObjectForKey:@"image_file_size"];
     self.image_updated_at = [dictionary safeObjectForKey:@"image_updated_at"] ? [[IPKRemoteManagedObject class] parseDate:[dictionary objectForKey:@"image_updated_at"]] : nil;
     self.ip_review_id = [dictionary safeObjectForKey:@"ip_review_id"];
     self.listing_id = [dictionary safeObjectForKey:@"listing_id"];

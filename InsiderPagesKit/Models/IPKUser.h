@@ -34,7 +34,6 @@ extern NSString *const kIPKCurrentUserChangedNotificationName;
 @property (nonatomic, strong) NSNumber * gender;
 @property (nonatomic, strong) NSString * image_content_type;
 @property (nonatomic, strong) NSString * image_file_name;
-@property (nonatomic, strong) NSNumber * image_file_size;
 @property (nonatomic, strong) NSString * image_profile_path;
 @property (nonatomic, strong) NSNumber * image_to_show;
 @property (nonatomic, strong) NSDate * image_updated_at;

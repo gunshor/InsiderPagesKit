@@ -18,7 +18,6 @@
 @property (nonatomic, strong) NSString * description_text;
 @property (nonatomic, strong) NSString * image_content_type;
 @property (nonatomic, strong) NSString * image_file_name;
-@property (nonatomic, strong) NSNumber * image_file_size;
 @property (nonatomic, strong) NSDate * image_updated_at;
 @property (nonatomic, strong) NSString * name;
 @property (nonatomic, strong) NSNumber * privacy_setting;
