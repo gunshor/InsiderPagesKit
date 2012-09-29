@@ -620,7 +620,7 @@ static BOOL __developmentMode = NO;
         [context performBlock:^{
             for (NSDictionary * providerDictionary in [responseObject objectForKey:@"results"]) {
                 [IPKProvider objectWithDictionary:providerDictionary];
-                
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
         }];
         
