@@ -71,14 +71,13 @@
     self.listing_type = [dictionary safeObjectForKey:@"listing_type"];
     if ([self.listing_type isEqualToString:@"CgListing"]) {
         self.address = [IPKAddress MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         [self.address unpackCityGridDictionary:[dictionary objectForKey:@"primary_address"]];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         self.address.provider = self;
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
     }else{
         self.address = [IPKAddress MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         [self.address unpackProviderDictionary:[[dictionary objectForKey:@"primary_address"] objectForKey:@"address"]];
+        self.address.provider = self;
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
     }
     self.cached_slug = [dictionary safeObjectForKey:@"cached_slug"];
