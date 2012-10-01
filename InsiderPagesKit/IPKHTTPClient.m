@@ -658,8 +658,14 @@ static BOOL __developmentMode = NO;
     [self postPath:@"page_search" parameters:[queryModel packToDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __weak NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
         [context performBlock:^{
-            for (NSDictionary * pageDictionary in [responseObject objectForKey:@"results"]) {
-                [IPKPage objectWithDictionary:pageDictionary];
+            if ([[responseObject objectForKey:@"results"] isKindOfClass:[NSArray class]]) {
+                for (NSDictionary * pageDictionary in [responseObject objectForKey:@"results"]) {
+                    [IPKPage objectWithDictionary:pageDictionary];
+                    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+                }
+            }else{
+                [IPKPage objectWithDictionary:[responseObject objectForKey:@"results"]];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
         }];
         
