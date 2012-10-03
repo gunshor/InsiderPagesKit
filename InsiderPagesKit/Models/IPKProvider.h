@@ -11,6 +11,7 @@
 @class IPKPage;
 @class IPKReview;
 @class IPKAddress;
+@class IPKTeamMembership;
 
 @interface IPKProvider : IPKAbstractModel
 
@@ -36,6 +37,7 @@
 @property (nonatomic, strong) IPKReview *reviews;
 @property (nonatomic, strong) NSSet *activities;
 @property (nonatomic, strong) IPKAddress * address;
+@property (nonatomic, retain) NSSet *teamMemberships;
 
 -(NSDictionary*)packToDictionary;
 -(NSString*)full_name;
@@ -49,5 +51,10 @@
 - (void)removePagesObject:(IPKPage *)value;
 - (void)addPages:(NSSet *)values;
 - (void)removePages:(NSSet *)values;
+
+- (void)addTeamMembershipsObject:(IPKTeamMembership *)value;
+- (void)removeTeamMembershipsObject:(IPKTeamMembership *)value;
+- (void)addTeamMemberships:(NSSet *)values;
+- (void)removeTeamMemberships:(NSSet *)values;
 
 @end

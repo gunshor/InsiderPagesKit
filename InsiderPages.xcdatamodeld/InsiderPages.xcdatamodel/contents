@@ -67,6 +67,8 @@
         <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="pages" inverseEntity="IPKUser" syncable="YES"/>
         <relationship name="providers" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="IPKProvider" inverseName="pages" inverseEntity="IPKProvider" syncable="YES"/>
         <relationship name="reviews" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKReview" inverseName="page" inverseEntity="IPKReview" syncable="YES"/>
+        <relationship name="teamFollowings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKTeamFollowing" inverseName="team" inverseEntity="IPKTeamFollowing" syncable="YES"/>
+        <relationship name="teamMemberships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKTeamMembership" inverseName="team" inverseEntity="IPKTeamMembership" syncable="YES"/>
     </entity>
     <entity name="IPKProvider" representedClassName="IPKProvider" syncable="YES">
         <attribute name="attribution_url" optional="YES" attributeType="String" syncable="YES"/>
@@ -91,6 +93,7 @@
         <relationship name="address" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKAddress" inverseName="provider" inverseEntity="IPKAddress" syncable="YES"/>
         <relationship name="pages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKPage" inverseName="providers" inverseEntity="IPKPage" syncable="YES"/>
         <relationship name="reviews" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKReview" inverseName="provider" inverseEntity="IPKReview" syncable="YES"/>
+        <relationship name="teamMemberships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKTeamMembership" inverseName="listing" inverseEntity="IPKTeamMembership" syncable="YES"/>
     </entity>
     <entity name="IPKQueryModel" representedClassName="IPKQueryModel" syncable="YES">
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
@@ -123,6 +126,22 @@
         <relationship name="page" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKPage" inverseName="reviews" inverseEntity="IPKPage" syncable="YES"/>
         <relationship name="provider" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKProvider" inverseName="reviews" inverseEntity="IPKProvider" syncable="YES"/>
         <relationship name="reviewer" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="reviews" inverseEntity="IPKUser" syncable="YES"/>
+    </entity>
+    <entity name="IPKTeamFollowing" representedClassName="IPKTeamFollowing" syncable="YES">
+        <attribute name="privilege" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="team_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="team" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKPage" inverseName="teamFollowings" inverseEntity="IPKPage" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="teamFollowings" inverseEntity="IPKUser" syncable="YES"/>
+    </entity>
+    <entity name="IPKTeamMembership" representedClassName="IPKTeamMembership" syncable="YES">
+        <attribute name="listing_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="owner_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="team_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="listing" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKProvider" inverseName="teamMemberships" inverseEntity="IPKProvider" syncable="YES"/>
+        <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="teamMemberships" inverseEntity="IPKUser" syncable="YES"/>
+        <relationship name="team" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKPage" inverseName="teamMemberships" inverseEntity="IPKPage" syncable="YES"/>
     </entity>
     <entity name="IPKUser" representedClassName="IPKUser" syncable="YES">
         <attribute name="about_me" optional="YES" attributeType="String" syncable="YES"/>
@@ -160,15 +179,19 @@
         <relationship name="pages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IPKPage" inverseName="owner" inverseEntity="IPKPage" syncable="YES"/>
         <relationship name="referenced_activities" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKActivity" inverseName="user2" inverseEntity="IPKActivity" syncable="YES"/>
         <relationship name="reviews" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="IPKReview" inverseName="reviewer" inverseEntity="IPKReview" syncable="YES"/>
+        <relationship name="teamFollowings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKTeamFollowing" inverseName="user" inverseEntity="IPKTeamFollowing" syncable="YES"/>
+        <relationship name="teamMemberships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKTeamMembership" inverseName="owner" inverseEntity="IPKTeamMembership" syncable="YES"/>
     </entity>
     <elements>
         <element name="IPKActivity" positionX="0" positionY="0" width="128" height="255"/>
         <element name="IPKAddress" positionX="0" positionY="0" width="128" height="255"/>
         <element name="IPKNotification" positionX="0" positionY="0" width="128" height="180"/>
-        <element name="IPKPage" positionX="0" positionY="0" width="128" height="390"/>
-        <element name="IPKProvider" positionX="0" positionY="0" width="128" height="375"/>
+        <element name="IPKPage" positionX="0" positionY="0" width="128" height="420"/>
+        <element name="IPKProvider" positionX="0" positionY="0" width="128" height="390"/>
         <element name="IPKQueryModel" positionX="0" positionY="0" width="128" height="165"/>
         <element name="IPKReview" positionX="0" positionY="0" width="128" height="345"/>
-        <element name="IPKUser" positionX="0" positionY="0" width="128" height="570"/>
+        <element name="IPKUser" positionX="0" positionY="0" width="128" height="600"/>
+        <element name="IPKTeamMembership" positionX="160" positionY="192" width="128" height="150"/>
+        <element name="IPKTeamFollowing" positionX="160" positionY="192" width="128" height="120"/>
     </elements>
 </model>

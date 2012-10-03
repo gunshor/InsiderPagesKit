@@ -35,6 +35,7 @@
 @dynamic activities;
 @dynamic reviews;
 @dynamic address;
+@dynamic teamMemberships;
 
 -(NSDictionary*)packToDictionary{
     NSMutableDictionary * packedDictionary = [NSMutableDictionary dictionary];

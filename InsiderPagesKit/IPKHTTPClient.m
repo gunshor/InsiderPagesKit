@@ -14,6 +14,8 @@
 #import "IPKNotification.h"
 #import "IPKActivity.h"
 #import "IPKReview.h"
+#import "IPKTeamFollowing.h"
+#import "IPKTeamMembership.h"
 #import "IPKDefines.h"
 
 static BOOL __developmentMode = NO;
@@ -385,12 +387,16 @@ static BOOL __developmentMode = NO;
     [self getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
-            IPKUser * user = nil;
-            user = [IPKUser objectWithDictionary:userDictionary];
+        if ([[responseObject objectForKey:@"followers"] isKindOfClass:[NSArray class]]) {
+            for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
+                IPKUser * user = nil;
+                user = [IPKUser objectWithDictionary:userDictionary];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+            }
+        }else{
+            [IPKUser objectWithDictionary:[responseObject objectForKey:@"followers"]];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        }
-        //        }];
+        }        //        }];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -408,9 +414,14 @@ static BOOL __developmentMode = NO;
     [self getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        for (NSDictionary* userDictionary in [responseObject objectForKey:@"following"]) {
-            IPKUser * user = nil;
-            user = [IPKUser objectWithDictionary:userDictionary];
+        if ([[responseObject objectForKey:@"following"] isKindOfClass:[NSArray class]]) {
+            for (NSDictionary* userDictionary in [responseObject objectForKey:@"following"]) {
+                IPKUser * user = nil;
+                user = [IPKUser objectWithDictionary:userDictionary];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+            }
+        }else{
+            [IPKUser objectWithDictionary:[responseObject objectForKey:@"following"]];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
         //        }];
@@ -426,12 +437,20 @@ static BOOL __developmentMode = NO;
 }
 
 #pragma mark - Pages
-- (void)getProvidersForPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+- (void)getProvidersForPageWithId:(NSString*)pageId sortUser:(IPKUser*)sortUser success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSString *url = [NSString stringWithFormat:@"teams/%@/providers", pageId];
-    [self getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSDictionary * params = @{};
+    if (sortUser) {
+        params = @{@"sortOption" : [sortUser sortOption]};
+    }
+
+    [self getPath:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         for (NSDictionary * providerDictionary in [responseObject objectForKey:@"providers"]) {
             IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
-            [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId integerValue])]];
+//            [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId integerValue])]];
+            IPKPage * page = [IPKPage objectWithRemoteID:@([pageId integerValue])];
+            IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:provider.remoteID];
+            [provider addTeamMembershipsObject:teamMembership];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
         
@@ -450,11 +469,17 @@ static BOOL __developmentMode = NO;
     [self getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
-            IPKUser * user = nil;
-            user = [IPKUser objectWithDictionary:userDictionary];
+        if ([[responseObject objectForKey:@"followers"] isKindOfClass:[NSArray class]]) {
+            for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
+                IPKUser * user = nil;
+                user = [IPKUser objectWithDictionary:userDictionary];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+            }
+        }else{
+            [IPKUser objectWithDictionary:[responseObject objectForKey:@"followers"]];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
+        
         //        }];
         
         if (success) {
@@ -478,6 +503,8 @@ static BOOL __developmentMode = NO;
         IPKPage * page = [IPKPage objectWithRemoteID:@([pageId intValue])];
         IPKProvider * providerToAdd = [IPKProvider objectWithRemoteID:@([providerId intValue])];
         [page addProvidersObject:providerToAdd];
+        IPKTeamMembership * teamMembership = [IPKTeamMembership teamMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:providerToAdd.remoteID];
+        
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
@@ -502,6 +529,7 @@ static BOOL __developmentMode = NO;
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
         IPKProvider * providerToAdd = [IPKProvider existingObjectWithRemoteID:@([providerId intValue])];
         [page addProvidersObject:providerToAdd];
+        IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:providerToAdd.remoteID];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
@@ -526,6 +554,130 @@ static BOOL __developmentMode = NO;
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
         IPKProvider * providerToRemove = [IPKProvider existingObjectWithRemoteID:@([providerId intValue])];
         [page removeProvidersObject:providerToRemove];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        IPKTeamMembership * teamMembership = [IPKTeamMembership teamMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:providerToRemove.remoteID];
+        [teamMembership MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        //        }];
+        
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+}
+
+- (void)reorderProvidersForPageWithId:(NSString*)pageId newOrder:(NSArray*)newOrder success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"owner_id == %@", [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID];
+    NSSet *filteredSet = [page.teamMemberships filteredSetUsingPredicate:predicate];
+    
+    NSMutableArray * currentListings = [NSMutableArray array];
+
+    NSArray * sortedArray = [filteredSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]]];
+    for (IPKTeamMembership * teamMembership in sortedArray) {
+        IPKProvider * provider = teamMembership.listing;
+        [currentListings addObject:[provider listing_id]];
+    }
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            newOrder, @"new_listings",
+                            [currentListings componentsJoinedByString:@","], @"listings",
+                            nil];
+    NSString * urlString = [NSString stringWithFormat:@"teams/%@/reorder_providers", pageId];
+    [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
+        //        [context performBlock:^{
+        for (int i = 0; i < sortedArray.count; i++) {
+            for (NSString * listingString in currentListings) {
+                IPKTeamMembership * teamMembership = [sortedArray objectAtIndex:i];
+                if ([listingString isEqualToString:[[teamMembership listing ] listing_id]]) {
+                    teamMembership.position = [newOrder objectAtIndex:i];
+                }
+            }
+        }
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        //        }];
+        
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+}
+
+- (void)getCollaboratorsForPageWithId:(NSString*)pageId sortUser:(IPKUser*)sortUser success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [sortUser.remoteID stringValue], @"collaborator_id",
+                            nil];
+    NSString * urlString = [NSString stringWithFormat:@"teams/%@/collaborators", pageId];
+    [self getPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
+        //        [context performBlock:^{
+        for (NSDictionary* userDictionary in [responseObject objectForKey:@"collaborators"]) {
+            IPKUser * user = nil;
+            user = [IPKUser objectWithDictionary:userDictionary];
+#warning need to set privelege from server.
+            
+            IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId intValue]) privilege:@(0)];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        }
+
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        //        }];
+        
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+}
+
+- (void)addCollaboratorsToPageWithId:(NSString*)pageId userID:(NSString*)userID success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            userID, @"collaborator_id",
+                            nil];
+    NSString * urlString = [NSString stringWithFormat:@"teams/%@/collaborators", pageId];
+    [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
+        //        [context performBlock:^{
+        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
+        IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId intValue]) privilege:@(1)];
+
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        //        }];
+        
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+
+}
+
+- (void)removeCollaboratorsFromPageWithId:(NSString*)pageId userID:(NSString*)userID success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            userID, @"collaborator_id",
+                            nil];
+    NSString * urlString = [NSString stringWithFormat:@"teams/%@/collaborators", pageId];
+    [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
+        //        [context performBlock:^{
+        IPKTeamFollowing * teamFollowing = [IPKTeamFollowing teamFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId intValue])];
+        [teamFollowing MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+        
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
@@ -587,7 +739,6 @@ static BOOL __developmentMode = NO;
 - (void)getPagesForProviderWithId:(NSString*)providerId withCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSString * urlString = [NSString stringWithFormat:@"providers/%@/pages", providerId];
     NSString * provider_type = ((IPKProvider*)[IPKProvider objectWithRemoteID:@([providerId intValue])]).cg_listing_id ? @"Provider" : @"CgListing";
-    NSLog(@"%@", [IPKProvider objectWithRemoteID:@([providerId intValue])]);
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:provider_type, @"provider_type", nil];
     [self getPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if ([[responseObject objectForKey:@"pages"] isKindOfClass:[NSArray class]]) {

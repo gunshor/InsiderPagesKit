@@ -9,6 +9,8 @@
 
 @class IPKPage;
 @class IPKReview;
+@class IPKTeamMembership;
+@class IPKTeamFollowing;
 
 enum IPKUserProfileImageSize {
     IPKUserProfileImageSizeNano = 0,
@@ -57,14 +59,18 @@ extern NSString *const kIPKCurrentUserChangedNotificationName;
 @property (nonatomic, strong) NSSet *pages;
 @property (nonatomic, strong) NSSet *activities;
 @property (nonatomic, strong) IPKReview *reviews;
+@property (nonatomic, strong) NSSet *teamMemberships;
+@property (nonatomic, strong) NSSet *teamFollowings;
 
 @property (nonatomic, strong) NSString *accessToken;
+
 + (IPKUser *)currentUserInContext:(NSManagedObjectContext*) localContext;
 + (void)setCurrentUser:(IPKUser *)user;
 + (BOOL)userHasLoggedIn;
 
 // Helpers
 - (NSString *)imageProfilePathForSize:(enum IPKUserProfileImageSize)size;
+- (NSString *)sortOption;
 @end
 
 @interface IPKUser (CoreDataGeneratedAccessors)
@@ -93,5 +99,15 @@ extern NSString *const kIPKCurrentUserChangedNotificationName;
 - (void)removeFollowedUsersObject:(IPKUser *)value;
 - (void)addFollowedUsers:(NSSet *)values;
 - (void)removeFollowedUsers:(NSSet *)values;
+
+- (void)addTeamMembershipsObject:(IPKTeamMembership *)value;
+- (void)removeTeamMembershipsObject:(IPKTeamMembership *)value;
+- (void)addTeamMemberships:(NSSet *)values;
+- (void)removeTeamMemberships:(NSSet *)values;
+
+- (void)addTeamFollowingsObject:(IPKTeamFollowing *)value;
+- (void)removeTeamFollowingsObject:(IPKTeamFollowing *)value;
+- (void)addTeamFollowings:(NSSet *)values;
+- (void)removeTeamFollowings:(NSSet *)values;
 
 @end

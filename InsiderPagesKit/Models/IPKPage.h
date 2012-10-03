@@ -11,6 +11,8 @@
 @class IPKUser;
 @class IPKProvider;
 @class IPKReview;
+@class IPKTeamMembership;
+@class IPKTeamFollowing;
 
 @interface IPKPage : IPKAbstractModel
 
@@ -37,6 +39,8 @@
 @property (nonatomic, strong) NSOrderedSet *providers;
 @property (nonatomic, strong) NSSet *activities;
 @property (nonatomic, strong) IPKReview *reviews;
+@property (nonatomic, retain) NSSet *teamMemberships;
+@property (nonatomic, retain) NSSet *teamFollowings;
 
 -(NSDictionary*)packToDictionary;
 -(void)updateSectionHeader;
@@ -53,12 +57,25 @@
 - (void)insertObject:(IPKProvider *)value inProvidersAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromProvidersAtIndex:(NSUInteger)idx;
 - (void)insertProviders:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+
 - (void)removeProvidersAtIndexes:(NSIndexSet *)indexes;
 - (void)replaceObjectInProvidersAtIndex:(NSUInteger)idx withObject:(IPKProvider *)value;
 - (void)replaceProvidersAtIndexes:(NSIndexSet *)indexes withProviders:(NSArray *)values;
+
 - (void)addProvidersObject:(IPKProvider *)value;
 - (void)removeProvidersObject:(IPKProvider *)value;
+
 - (void)addProviders:(NSOrderedSet *)values;
 - (void)removeProviders:(NSOrderedSet *)values;
+
+- (void)addTeamMembershipsObject:(IPKTeamMembership *)value;
+- (void)removeTeamMembershipsObject:(IPKTeamMembership *)value;
+- (void)addTeamMemberships:(NSSet *)values;
+- (void)removeTeamMemberships:(NSSet *)values;
+
+- (void)addTeamFollowingsObject:(IPKTeamFollowing *)value;
+- (void)removeTeamFollowingsObject:(IPKTeamFollowing *)value;
+- (void)addTeamFollowings:(NSSet *)values;
+- (void)removeTeamFollowings:(NSSet *)values;
 
 @end

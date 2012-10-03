@@ -54,6 +54,8 @@ static NSString *const kIPKUserIDKey = @"IPKUserID";
 @dynamic pages;
 @dynamic activities;
 @dynamic reviews;
+@dynamic teamMemberships;
+@dynamic teamFollowings;
 
 @synthesize accessToken;
 
@@ -104,6 +106,7 @@ static IPKUser *__currentUser = nil;
     [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 }
 
+
 -(void)dealloc{
 
 }
@@ -134,6 +137,10 @@ static IPKUser *__currentUser = nil;
     return imageProfilePath;
 }
 
+- (NSString *)sortOption{
+    NSString * sortOption = [NSString stringWithFormat:@"polluser_%@", self.remoteID];
+    return sortOption;
+}
 
 + (void)setCurrentUser:(IPKUser *)user {
 	if ([IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]]) {

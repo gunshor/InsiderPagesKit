@@ -52,7 +52,6 @@
 		FD76562115C9D6FF00A3D10A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B244408815BE53DC00D4D4CA /* Foundation.framework */; };
 		FD76562A15C9D70000A3D10A /* InsiderPagesKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76562915C9D70000A3D10A /* InsiderPagesKitTests.m */; };
 		FD76568B15C9ED1100A3D10A /* libInsiderPagesKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B244408515BE53DC00D4D4CA /* libInsiderPagesKit.a */; };
-		FD76568C15C9F0C000A3D10A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76568215C9E80100A3D10A /* CoreData.framework */; };
 		FD7656A015CA053100A3D10A /* IPKQueryModel.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76569E15CA052F00A3D10A /* IPKQueryModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD7656A115CA053100A3D10A /* IPKQueryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76569F15CA053000A3D10A /* IPKQueryModel.m */; };
 		FD7656A215CA053100A3D10A /* IPKQueryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76569F15CA053000A3D10A /* IPKQueryModel.m */; };
@@ -193,7 +192,6 @@
 		FDD955B415E3F9B900F38150 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD955B315E3F9B800F38150 /* UIKit.framework */; };
 		FDD955B915E3FCA500F38150 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD955B815E3FCA400F38150 /* CoreGraphics.framework */; };
 		FDD955BB15E3FCEF00F38150 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD955BA15E3FCEE00F38150 /* CFNetwork.framework */; };
-		FDD955BD15E3FD1100F38150 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD955BC15E3FD1000F38150 /* SystemConfiguration.framework */; };
 		FDD955BE15E3FD5400F38150 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD76568F15C9F0D100A3D10A /* Security.framework */; };
 		FDDD54F515EBF0A10020CFF1 /* SSManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FDDD54F115EBF0A10020CFF1 /* SSManagedObject.h */; };
 		FDDD54F615EBF0A10020CFF1 /* SSManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD54F215EBF0A10020CFF1 /* SSManagedObject.m */; };
@@ -201,6 +199,14 @@
 		FDDD54F815EBF0A10020CFF1 /* SSRemoteManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FDDD54F315EBF0A10020CFF1 /* SSRemoteManagedObject.h */; };
 		FDDD54F915EBF0A10020CFF1 /* SSRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */; };
 		FDDD54FA15EBF0A10020CFF1 /* SSRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */; };
+		FDE189B3161B7A3F00E3DDBE /* IPKTeamFollowing.h in Headers */ = {isa = PBXBuildFile; fileRef = FDE189AF161B7A3F00E3DDBE /* IPKTeamFollowing.h */; };
+		FDE189B4161B7A3F00E3DDBE /* IPKTeamFollowing.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE189B0161B7A3F00E3DDBE /* IPKTeamFollowing.m */; };
+		FDE189B5161B7A3F00E3DDBE /* IPKTeamFollowing.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE189B0161B7A3F00E3DDBE /* IPKTeamFollowing.m */; };
+		FDE189B6161B7A3F00E3DDBE /* IPKTeamMembership.h in Headers */ = {isa = PBXBuildFile; fileRef = FDE189B1161B7A3F00E3DDBE /* IPKTeamMembership.h */; };
+		FDE189B7161B7A3F00E3DDBE /* IPKTeamMembership.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE189B2161B7A3F00E3DDBE /* IPKTeamMembership.m */; };
+		FDE189B8161B7A3F00E3DDBE /* IPKTeamMembership.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE189B2161B7A3F00E3DDBE /* IPKTeamMembership.m */; };
+		FDE189D8161B9A0300E3DDBE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE189D7161B9A0300E3DDBE /* CoreData.framework */; };
+		FDE189DA161B9A0D00E3DDBE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE189D9161B9A0D00E3DDBE /* SystemConfiguration.framework */; };
 		FDF7854616016D1200AFE088 /* InsiderPages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FDF7854416016D1200AFE088 /* InsiderPages.xcdatamodeld */; };
 		FDFC6B0215EEBCA00071299D /* IPKAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = FDFC6B0015EEBCA00071299D /* IPKAddress.h */; };
 		FDFC6B0315EEBCA00071299D /* IPKAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFC6B0115EEBCA00071299D /* IPKAddress.m */; };
@@ -305,7 +311,6 @@
 		FD76562815C9D70000A3D10A /* InsiderPagesKitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsiderPagesKitTests.h; sourceTree = "<group>"; };
 		FD76562915C9D70000A3D10A /* InsiderPagesKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsiderPagesKitTests.m; sourceTree = "<group>"; };
 		FD76562B15C9D70000A3D10A /* InsiderPagesKitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InsiderPagesKitTests-Prefix.pch"; sourceTree = "<group>"; };
-		FD76568215C9E80100A3D10A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FD76568F15C9F0D100A3D10A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FD76569E15CA052F00A3D10A /* IPKQueryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKQueryModel.h; sourceTree = "<group>"; };
 		FD76569F15CA053000A3D10A /* IPKQueryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKQueryModel.m; sourceTree = "<group>"; };
@@ -409,11 +414,16 @@
 		FDD955B315E3F9B800F38150 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FDD955B815E3FCA400F38150 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FDD955BA15E3FCEE00F38150 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		FDD955BC15E3FD1000F38150 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FDDD54F115EBF0A10020CFF1 /* SSManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSManagedObject.h; sourceTree = "<group>"; };
 		FDDD54F215EBF0A10020CFF1 /* SSManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSManagedObject.m; sourceTree = "<group>"; };
 		FDDD54F315EBF0A10020CFF1 /* SSRemoteManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSRemoteManagedObject.h; sourceTree = "<group>"; };
 		FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSRemoteManagedObject.m; sourceTree = "<group>"; };
+		FDE189AF161B7A3F00E3DDBE /* IPKTeamFollowing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKTeamFollowing.h; sourceTree = "<group>"; };
+		FDE189B0161B7A3F00E3DDBE /* IPKTeamFollowing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKTeamFollowing.m; sourceTree = "<group>"; };
+		FDE189B1161B7A3F00E3DDBE /* IPKTeamMembership.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKTeamMembership.h; sourceTree = "<group>"; };
+		FDE189B2161B7A3F00E3DDBE /* IPKTeamMembership.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKTeamMembership.m; sourceTree = "<group>"; };
+		FDE189D7161B9A0300E3DDBE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FDE189D9161B9A0D00E3DDBE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FDF7854516016D1200AFE088 /* InsiderPages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InsiderPages.xcdatamodel; sourceTree = "<group>"; };
 		FDFC6B0015EEBCA00071299D /* IPKAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPKAddress.h; path = InsiderPagesKit/Models/IPKAddress.h; sourceTree = SOURCE_ROOT; };
 		FDFC6B0115EEBCA00071299D /* IPKAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPKAddress.m; path = InsiderPagesKit/Models/IPKAddress.m; sourceTree = SOURCE_ROOT; };
@@ -445,12 +455,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDE189DA161B9A0D00E3DDBE /* SystemConfiguration.framework in Frameworks */,
+				FDE189D8161B9A0300E3DDBE /* CoreData.framework in Frameworks */,
 				FDD955BE15E3FD5400F38150 /* Security.framework in Frameworks */,
-				FDD955BD15E3FD1100F38150 /* SystemConfiguration.framework in Frameworks */,
 				FDD955BB15E3FCEF00F38150 /* CFNetwork.framework in Frameworks */,
 				FDD955B915E3FCA500F38150 /* CoreGraphics.framework in Frameworks */,
 				FDD955B415E3F9B900F38150 /* UIKit.framework in Frameworks */,
-				FD76568C15C9F0C000A3D10A /* CoreData.framework in Frameworks */,
 				FD76568B15C9ED1100A3D10A /* libInsiderPagesKit.a in Frameworks */,
 				FD76561E15C9D6FF00A3D10A /* SenTestingKit.framework in Frameworks */,
 				FD76562115C9D6FF00A3D10A /* Foundation.framework in Frameworks */,
@@ -463,13 +473,6 @@
 		B244407A15BE53DC00D4D4CA = {
 			isa = PBXGroup;
 			children = (
-				FDD955BC15E3FD1000F38150 /* SystemConfiguration.framework */,
-				FDD955BA15E3FCEE00F38150 /* CFNetwork.framework */,
-				FDD955B815E3FCA400F38150 /* CoreGraphics.framework */,
-				FDD955B315E3F9B800F38150 /* UIKit.framework */,
-				FD76568F15C9F0D100A3D10A /* Security.framework */,
-				FD76568215C9E80100A3D10A /* CoreData.framework */,
-				FD764CE715C9CB1400A3D10A /* Cocoa.framework */,
 				FD764B8F15C9CADE00A3D10A /* InsiderPagesKit */,
 				FD76562215C9D6FF00A3D10A /* InsiderPagesKitTests */,
 				B244408715BE53DC00D4D4CA /* Frameworks */,
@@ -490,6 +493,13 @@
 		B244408715BE53DC00D4D4CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FDE189D9161B9A0D00E3DDBE /* SystemConfiguration.framework */,
+				FDE189D7161B9A0300E3DDBE /* CoreData.framework */,
+				FDD955BA15E3FCEE00F38150 /* CFNetwork.framework */,
+				FDD955B815E3FCA400F38150 /* CoreGraphics.framework */,
+				FDD955B315E3F9B800F38150 /* UIKit.framework */,
+				FD76568F15C9F0D100A3D10A /* Security.framework */,
+				FD764CE715C9CB1400A3D10A /* Cocoa.framework */,
 				B2D8D60915BF809700A61836 /* CoreText.framework */,
 				B2D8D60715BF809300A61836 /* CoreData.framework */,
 				B2D8D60515BF808E00A61836 /* libicucore.dylib */,
@@ -646,6 +656,10 @@
 		FD7656A315CAF2B400A3D10A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FDE189AF161B7A3F00E3DDBE /* IPKTeamFollowing.h */,
+				FDE189B0161B7A3F00E3DDBE /* IPKTeamFollowing.m */,
+				FDE189B1161B7A3F00E3DDBE /* IPKTeamMembership.h */,
+				FDE189B2161B7A3F00E3DDBE /* IPKTeamMembership.m */,
 				FDFC6B0015EEBCA00071299D /* IPKAddress.h */,
 				FDFC6B0115EEBCA00071299D /* IPKAddress.m */,
 				FDB616B815D5F66C00148606 /* IPKReview.h */,
@@ -871,6 +885,8 @@
 				FDC056B515FE995B00D70678 /* AFURLConnectionOperation.h in Headers */,
 				FDC056B815FE995B00D70678 /* AFXMLRequestOperation.h in Headers */,
 				FDC056BB15FE995B00D70678 /* UIImageView+AFNetworking.h in Headers */,
+				FDE189B3161B7A3F00E3DDBE /* IPKTeamFollowing.h in Headers */,
+				FDE189B6161B7A3F00E3DDBE /* IPKTeamMembership.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,9 +951,9 @@
 		B244407C15BE53DC00D4D4CA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = CDK;
+				CLASSPREFIX = IPK;
 				LastUpgradeCheck = 0450;
-				ORGANIZATIONNAME = "Nothing Magical";
+				ORGANIZATIONNAME = Insiderpages;
 			};
 			buildConfigurationList = B244407F15BE53DC00D4D4CA /* Build configuration list for PBXProject "InsiderPagesKit" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1063,6 +1079,8 @@
 				FDC056B615FE995B00D70678 /* AFURLConnectionOperation.m in Sources */,
 				FDC056B915FE995B00D70678 /* AFXMLRequestOperation.m in Sources */,
 				FDC056BC15FE995B00D70678 /* UIImageView+AFNetworking.m in Sources */,
+				FDE189B4161B7A3F00E3DDBE /* IPKTeamFollowing.m in Sources */,
+				FDE189B7161B7A3F00E3DDBE /* IPKTeamMembership.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1125,6 +1143,8 @@
 				FDC056B715FE995B00D70678 /* AFURLConnectionOperation.m in Sources */,
 				FDC056BA15FE995B00D70678 /* AFXMLRequestOperation.m in Sources */,
 				FDC056BD15FE995B00D70678 /* UIImageView+AFNetworking.m in Sources */,
+				FDE189B5161B7A3F00E3DDBE /* IPKTeamFollowing.m in Sources */,
+				FDE189B8161B7A3F00E3DDBE /* IPKTeamMembership.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
