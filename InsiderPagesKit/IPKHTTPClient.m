@@ -448,7 +448,9 @@ static BOOL __developmentMode = NO;
     NSString *url = [NSString stringWithFormat:@"teams/%@/providers", pageId];
     NSDictionary * params = @{};
     if (sortUser) {
-        params = @{@"sortOption" : [sortUser sortOption]};
+        params = @{@"sort_option" : [sortUser sortOption]};
+    }else{
+        params = @{@"sort_option" : @"pollaverage"};
     }
 
     [self getPath:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
