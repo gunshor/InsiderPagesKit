@@ -17,7 +17,8 @@
 #import <InsiderPagesKit/IPKQueryModel.h>
 #import <InsiderPagesKit/Models/IPKActivity.h>
 #import <InsiderPagesKit/Models/IPKNotification.h>
-
+#import <InsiderPagesKit/Models/IPKTeamMembership.h>
+#import <InsiderPagesKit/Models/IPKTeamFollowing.h>
 // Networking
 #import <InsiderPagesKit/IPKHTTPClient.h>
 //#import <InsiderPagesKit/IPKPushController.h>
