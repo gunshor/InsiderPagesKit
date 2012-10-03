@@ -256,7 +256,7 @@ static BOOL __developmentMode = NO;
         //        [context performBlock:^{
         if ([[responseObject objectForKey:@"teams"] isKindOfClass:[NSArray class]]) {
             for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
-                if ([pageDictionary allKeys].count > 1) {
+                if ([pageDictionary isKindOfClass:[NSDictionary class]]) {
                     IPKPage * page = nil;
                     page = [IPKPage objectWithDictionary:pageDictionary];
                 }
