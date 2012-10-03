@@ -199,10 +199,10 @@
 		FDDD54F815EBF0A10020CFF1 /* SSRemoteManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FDDD54F315EBF0A10020CFF1 /* SSRemoteManagedObject.h */; };
 		FDDD54F915EBF0A10020CFF1 /* SSRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */; };
 		FDDD54FA15EBF0A10020CFF1 /* SSRemoteManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDD54F415EBF0A10020CFF1 /* SSRemoteManagedObject.m */; };
-		FDE189B3161B7A3F00E3DDBE /* IPKTeamFollowing.h in Headers */ = {isa = PBXBuildFile; fileRef = FDE189AF161B7A3F00E3DDBE /* IPKTeamFollowing.h */; };
+		FDE189B3161B7A3F00E3DDBE /* IPKTeamFollowing.h in Headers */ = {isa = PBXBuildFile; fileRef = FDE189AF161B7A3F00E3DDBE /* IPKTeamFollowing.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FDE189B4161B7A3F00E3DDBE /* IPKTeamFollowing.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE189B0161B7A3F00E3DDBE /* IPKTeamFollowing.m */; };
 		FDE189B5161B7A3F00E3DDBE /* IPKTeamFollowing.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE189B0161B7A3F00E3DDBE /* IPKTeamFollowing.m */; };
-		FDE189B6161B7A3F00E3DDBE /* IPKTeamMembership.h in Headers */ = {isa = PBXBuildFile; fileRef = FDE189B1161B7A3F00E3DDBE /* IPKTeamMembership.h */; };
+		FDE189B6161B7A3F00E3DDBE /* IPKTeamMembership.h in Headers */ = {isa = PBXBuildFile; fileRef = FDE189B1161B7A3F00E3DDBE /* IPKTeamMembership.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FDE189B7161B7A3F00E3DDBE /* IPKTeamMembership.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE189B2161B7A3F00E3DDBE /* IPKTeamMembership.m */; };
 		FDE189B8161B7A3F00E3DDBE /* IPKTeamMembership.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE189B2161B7A3F00E3DDBE /* IPKTeamMembership.m */; };
 		FDE189D8161B9A0300E3DDBE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE189D7161B9A0300E3DDBE /* CoreData.framework */; };
