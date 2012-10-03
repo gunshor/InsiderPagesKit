@@ -254,10 +254,15 @@ static BOOL __developmentMode = NO;
     [self getPath:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
-            IPKPage * page = nil;
-            page = [IPKPage objectWithDictionary:pageDictionary];
+        if ([[responseObject objectForKey:@"teams"] isKindOfClass:[NSArray class]]) {
+            for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
+                IPKPage * page = nil;
+                page = [IPKPage objectWithDictionary:pageDictionary];
+            }
+        }else{
+            [IPKPage objectWithDictionary:[responseObject objectForKey:@"teams"]];
         }
+        
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
