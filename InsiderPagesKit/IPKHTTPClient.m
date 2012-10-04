@@ -631,10 +631,8 @@ static BOOL __developmentMode = NO;
         //        [context performBlock:^{
         for (NSDictionary* userDictionary in [responseObject objectForKey:@"collaborators"]) {
             IPKUser * user = nil;
-            user = [IPKUser objectWithDictionary:userDictionary];
-#warning need to set privelege from server.
-            
-            IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId intValue]) privilege:@(0)];
+            user = [IPKUser objectWithDictionary:userDictionary];            
+            IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId intValue]) privilege:@(1)];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
 
