@@ -632,7 +632,7 @@ static BOOL __developmentMode = NO;
         for (NSDictionary* userDictionary in [responseObject objectForKey:@"collaborators"]) {
             IPKUser * user = nil;
             user = [IPKUser objectWithDictionary:userDictionary];            
-            IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId intValue]) privilege:@(1)];
+            IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:user.remoteID andTeamID:@([pageId intValue]) privilege:@(1)];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
 
