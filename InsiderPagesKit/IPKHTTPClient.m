@@ -623,7 +623,7 @@ static BOOL __developmentMode = NO;
     }];
 }
 
-- (void)getCollaboratorsForPageWithId:(NSString*)pageId sortUser:(IPKUser*)sortUser success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+- (void)getCollaboratorsForPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             [sortUser.remoteID stringValue], @"collaborator_id",
                             nil];

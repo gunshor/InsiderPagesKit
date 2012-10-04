@@ -71,7 +71,7 @@ enum IPKTrackableType;
 
 - (void)reorderProvidersForPageWithId:(NSString*)pageId newOrder:(NSArray*)newOrder success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
-- (void)getCollaboratorsForPageWithId:(NSString*)pageId sortUser:(IPKUser*)sortUser success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+- (void)getCollaboratorsForPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 - (void)addCollaboratorsToPageWithId:(NSString*)pageId userID:(NSString*)userID success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
