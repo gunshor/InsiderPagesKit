@@ -454,13 +454,16 @@ static BOOL __developmentMode = NO;
     }
 
     [self getPath:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        int increment = 1;
         for (NSDictionary * providerDictionary in [responseObject objectForKey:@"providers"]) {
             IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
 //            [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId integerValue])]];
             IPKPage * page = [IPKPage objectWithRemoteID:@([pageId integerValue])];
             IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:provider.remoteID];
+            [teamMembership setPosition:@(increment)];
             [provider addTeamMembershipsObject:teamMembership];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+            increment++;
         }
         
         if (success) {
