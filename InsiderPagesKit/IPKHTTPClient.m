@@ -624,11 +624,9 @@ static BOOL __developmentMode = NO;
 }
 
 - (void)getCollaboratorsForPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            [sortUser.remoteID stringValue], @"collaborator_id",
-                            nil];
+
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/collaborators", pageId];
-    [self getPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self getPath:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
         for (NSDictionary* userDictionary in [responseObject objectForKey:@"collaborators"]) {
