@@ -20,7 +20,7 @@
 #import <InsiderPagesKit/IPKQueryModel.h>
 #import <InsiderPagesKit/IPKActivity.h>
 #import <InsiderPagesKit/IPKNotification.h>
-#import <InsiderPagesKit/IPKTeamMeberships.h>
+#import <InsiderPagesKit/IPKTeamMembership.h>
 #import <InsiderPagesKit/IPKTeamFollowing.h>
 
 // Networking

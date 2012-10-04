@@ -59,7 +59,7 @@ static BOOL __developmentMode = NO;
 	
 	if ((self = [super initWithBaseURL:base])) {
 		// Use JSON
-		[self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+        NSLog(@"%@", [AFHTTPRequestOperation acceptableStatusCodes]);
 		[self setDefaultHeader:@"Accept" value:@"application/json"];
         if ([IPKUser userHasLoggedIn]) {
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -461,7 +461,6 @@ static BOOL __developmentMode = NO;
             IPKPage * page = [IPKPage objectWithRemoteID:@([pageId integerValue])];
             IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:sortUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
             [teamMembership setPosition:@(increment)];
-            [provider addTeamMembershipsObject:teamMembership];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             increment++;
         }
