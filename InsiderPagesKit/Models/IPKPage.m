@@ -48,8 +48,8 @@
     [packedDictionary setSafeObject:self.image_file_name forKey:@"image_file_name"];
     [packedDictionary setSafeObject:self.image_updated_at forKey:@"image_updated_at"];
     [packedDictionary setSafeObject:self.privacy_setting forKey:@"privacy_setting"];
-    [packedDictionary setSafeObject:self.sequence forKey:@"sequence"];
-    [packedDictionary setSafeObject:self.sort forKey:@"sort"];
+//    [packedDictionary setSafeObject:self.sequence forKey:@"sequence"];
+//    [packedDictionary setSafeObject:self.sort forKey:@"sort"];
     //    [packedDictionary setSafeObject:self.user_id forKey:@"user_id"];
     //    [packedDictionary setSafeObject:self.providers forKey:@"providers"];
     //    [packedDictionary setSafeObject:self.owner forKey:@"owner"];
