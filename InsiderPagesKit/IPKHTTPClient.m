@@ -459,7 +459,7 @@ static BOOL __developmentMode = NO;
             IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
 //            [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId integerValue])]];
             IPKPage * page = [IPKPage objectWithRemoteID:@([pageId integerValue])];
-            IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:provider.remoteID];
+            IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:sortUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
             [teamMembership setPosition:@(increment)];
             [provider addTeamMembershipsObject:teamMembership];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
