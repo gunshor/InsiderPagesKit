@@ -59,7 +59,7 @@ static BOOL __developmentMode = NO;
 	
 	if ((self = [super initWithBaseURL:base])) {
 		// Use JSON
-        NSLog(@"%@", [AFHTTPRequestOperation acceptableStatusCodes]);
+        [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
 		[self setDefaultHeader:@"Accept" value:@"application/json"];
         if ([IPKUser userHasLoggedIn]) {
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
