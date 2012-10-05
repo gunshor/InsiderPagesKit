@@ -132,7 +132,6 @@
 	if (!object) {
 		object = [self MR_createInContext:context];
 		object.remoteID = remoteID;
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
 	}
 	
 	// Return the fetched or new object

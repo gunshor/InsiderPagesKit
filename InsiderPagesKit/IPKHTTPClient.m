@@ -398,12 +398,13 @@ static BOOL __developmentMode = NO;
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
                 IPKUser * user = nil;
                 user = [IPKUser objectWithDictionary:userDictionary];
-                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
         }else{
             [IPKUser objectWithDictionary:[responseObject objectForKey:@"followers"]];
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        }        //        }];
+        }
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+
+        //        }];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -425,12 +426,11 @@ static BOOL __developmentMode = NO;
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"following"]) {
                 IPKUser * user = nil;
                 user = [IPKUser objectWithDictionary:userDictionary];
-                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
         }else{
             [IPKUser objectWithDictionary:[responseObject objectForKey:@"following"]];
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
         if (success) {
@@ -461,9 +461,9 @@ static BOOL __developmentMode = NO;
             IPKPage * page = [IPKPage objectWithRemoteID:@([pageId integerValue])];
             IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:sortUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
             [teamMembership setPosition:@(increment)];
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             increment++;
         }
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -484,13 +484,12 @@ static BOOL __developmentMode = NO;
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
                 IPKUser * user = nil;
                 user = [IPKUser objectWithDictionary:userDictionary];
-                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
         }else{
             [IPKUser objectWithDictionary:[responseObject objectForKey:@"followers"]];
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
-        
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+
         //        }];
         
         if (success) {
@@ -633,7 +632,6 @@ static BOOL __developmentMode = NO;
             IPKUser * user = nil;
             user = [IPKUser objectWithDictionary:userDictionary];            
             IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:user.remoteID andTeamID:@([pageId intValue]) privilege:@(1)];
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
 
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
@@ -778,8 +776,8 @@ static BOOL __developmentMode = NO;
         [context performBlock:^{
             for (NSDictionary * providerDictionary in [responseObject objectForKey:@"results"]) {
                 [IPKProvider objectWithDictionary:providerDictionary];
-                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }];
         
         if (success) {
@@ -798,8 +796,8 @@ static BOOL __developmentMode = NO;
         [context performBlock:^{
             for (NSDictionary * insiderDictionary in [responseObject objectForKey:@"results"]) {
                 [IPKUser objectWithDictionary:insiderDictionary];
-                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }];
         
         if (success) {
@@ -819,12 +817,11 @@ static BOOL __developmentMode = NO;
             if ([[responseObject objectForKey:@"results"] isKindOfClass:[NSArray class]]) {
                 for (NSDictionary * pageDictionary in [responseObject objectForKey:@"results"]) {
                     [IPKPage objectWithDictionary:pageDictionary];
-                    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
                 }
             }else{
                 [IPKPage objectWithDictionary:[responseObject objectForKey:@"results"]];
-                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }];
         
         if (success) {
@@ -904,8 +901,8 @@ static BOOL __developmentMode = NO;
         if ([[responseObject objectForKey:@"notifications"] isKindOfClass:[NSArray class]]) {
             for (NSDictionary* notificationDictionary in [responseObject objectForKey:@"notifications"]) {
                 [IPKNotification objectWithDictionary:notificationDictionary];
-                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
         //        }];
         
