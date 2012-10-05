@@ -62,7 +62,6 @@
         teamMembership.team = [IPKPage objectWithRemoteID:teamID context:context];
         teamMembership.listing_id = listingID;
         teamMembership.listing = [IPKProvider objectWithRemoteID:listingID context:context];
-        [context MR_save];
         return teamMembership;
     }
 

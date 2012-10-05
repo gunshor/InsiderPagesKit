@@ -55,7 +55,6 @@
         teamFollowing.team_id = teamID;
         teamFollowing.team = [IPKPage objectWithRemoteID:teamID context:context];
         teamFollowing.privilege = privilege;
-        [context MR_save];
         return teamFollowing;
     }
 }
