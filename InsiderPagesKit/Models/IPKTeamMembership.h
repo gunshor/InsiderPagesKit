@@ -13,6 +13,7 @@
 @property (nonatomic, retain) NSNumber * listing_id;
 @property (nonatomic, retain) NSNumber * owner_id;
 @property (nonatomic, retain) NSNumber * position;
+@property (nonatomic, retain) NSNumber * pollaverage;
 @property (nonatomic, retain) IPKPage *team;
 @property (nonatomic, retain) IPKProvider *listing;
 @property (nonatomic, retain) IPKUser *owner;

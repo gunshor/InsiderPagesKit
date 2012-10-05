@@ -137,6 +137,7 @@
     <entity name="IPKTeamMembership" representedClassName="IPKTeamMembership" syncable="YES">
         <attribute name="listing_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="owner_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="pollaverage" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="position" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="team_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="listing" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKProvider" inverseName="teamMemberships" inverseEntity="IPKProvider" syncable="YES"/>
@@ -190,8 +191,8 @@
         <element name="IPKProvider" positionX="0" positionY="0" width="128" height="390"/>
         <element name="IPKQueryModel" positionX="0" positionY="0" width="128" height="165"/>
         <element name="IPKReview" positionX="0" positionY="0" width="128" height="345"/>
-        <element name="IPKUser" positionX="0" positionY="0" width="128" height="600"/>
-        <element name="IPKTeamMembership" positionX="160" positionY="192" width="128" height="150"/>
         <element name="IPKTeamFollowing" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="IPKTeamMembership" positionX="160" positionY="192" width="128" height="165"/>
+        <element name="IPKUser" positionX="0" positionY="0" width="128" height="600"/>
     </elements>
 </model>

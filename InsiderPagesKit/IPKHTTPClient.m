@@ -461,6 +461,9 @@ static BOOL __developmentMode = NO;
             IPKPage * page = [IPKPage objectWithRemoteID:@([pageId integerValue])];
             IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:sortUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
             [teamMembership setPosition:@(increment)];
+            if (sortUser == nil) {
+                [teamMembership setPollaverage:@(YES)];
+            }
             increment++;
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];

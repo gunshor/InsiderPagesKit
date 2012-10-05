@@ -17,6 +17,7 @@
 @dynamic listing_id;
 @dynamic owner_id;
 @dynamic position;
+@dynamic pollaverage;
 @dynamic team;
 @dynamic listing;
 @dynamic owner;
