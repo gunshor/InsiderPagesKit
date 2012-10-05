@@ -128,7 +128,7 @@ static BOOL __developmentMode = NO;
     }];
 }
 
-- (void)updateCurrentUserWithSuccess:(void (^)(IPKUser*))success failure:(IPKHTTPClientFailure)failure{    
+- (void)updateCurrentUserWithSuccess:(void (^)(IPKUser*))success failure:(IPKHTTPClientFailure)failure{
     [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] updateWithSuccess:^(){
         [IPKUser setCurrentUser:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]]];
         
@@ -136,10 +136,10 @@ static BOOL __developmentMode = NO;
             success([IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]]);
         }
     }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error){
-                                         if (failure) {
-                                             failure((AFJSONRequestOperation *)operation, error);
-                                         }}];
+                                                                                                  failure:^(AFHTTPRequestOperation *operation, NSError *error){
+                                                                                                      if (failure) {
+                                                                                                          failure((AFJSONRequestOperation *)operation, error);
+                                                                                                      }}];
 }
 
 #pragma mark - User Actions
@@ -403,7 +403,7 @@ static BOOL __developmentMode = NO;
             [IPKUser objectWithDictionary:[responseObject objectForKey:@"followers"]];
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-
+        
         //        }];
         
         if (success) {
@@ -452,12 +452,12 @@ static BOOL __developmentMode = NO;
     }else{
         params = @{@"sort_option" : @"pollaverage"};
     }
-
+    
     [self getPath:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         int increment = 1;
         for (NSDictionary * providerDictionary in [responseObject objectForKey:@"providers"]) {
             IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
-//            [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId integerValue])]];
+            //            [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId integerValue])]];
             IPKPage * page = [IPKPage objectWithRemoteID:@([pageId integerValue])];
             IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:sortUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
             [teamMembership setPosition:@(increment)];
@@ -492,7 +492,7 @@ static BOOL __developmentMode = NO;
             [IPKUser objectWithDictionary:[responseObject objectForKey:@"followers"]];
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-
+        
         //        }];
         
         if (success) {
@@ -590,7 +590,7 @@ static BOOL __developmentMode = NO;
     NSSet *filteredSet = [page.teamMemberships filteredSetUsingPredicate:predicate];
     
     NSMutableArray * currentListings = [NSMutableArray array];
-
+    
     NSArray * sortedArray = [filteredSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]]];
     for (IPKTeamMembership * teamMembership in sortedArray) {
         IPKProvider * provider = teamMembership.listing;
@@ -626,17 +626,21 @@ static BOOL __developmentMode = NO;
 }
 
 - (void)getCollaboratorsForPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
-
+    
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/collaborators", pageId];
     [self getPath:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        for (NSDictionary* userDictionary in [responseObject objectForKey:@"collaborators"]) {
-            IPKUser * user = nil;
-            user = [IPKUser objectWithDictionary:userDictionary];            
+        if ([[responseObject objectForKey:@"collaborators"] isKindOfClass:[NSArray class]]) {
+            for (NSDictionary* userDictionary in [responseObject objectForKey:@"collaborators"]) {
+                IPKUser * user = [IPKUser objectWithDictionary:userDictionary];
+                IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:user.remoteID andTeamID:@([pageId intValue]) privilege:@(1)];
+            }
+        }else if ([[responseObject objectForKey:@"collaborators"] isKindOfClass:[NSDictionary class]]) {
+            IPKUser * user = [IPKUser objectWithDictionary:[responseObject objectForKey:@"collaborators"]];
             IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:user.remoteID andTeamID:@([pageId intValue]) privilege:@(1)];
         }
-
+        
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
@@ -660,7 +664,7 @@ static BOOL __developmentMode = NO;
         //        [context performBlock:^{
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
         IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId intValue]) privilege:@(1)];
-
+        
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
         
@@ -672,7 +676,7 @@ static BOOL __developmentMode = NO;
             failure((AFJSONRequestOperation *)operation, error);
         }
     }];
-
+    
 }
 
 - (void)removeCollaboratorsFromPageWithId:(NSString*)pageId userID:(NSString*)userID success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
@@ -979,7 +983,7 @@ static BOOL __developmentMode = NO;
 //			}
 //			[context save:nil];
 //		}];
-//		
+//
 //		if (success) {
 //			success((AFJSONRequestOperation *)operation, responseObject);
 //		}
@@ -995,14 +999,14 @@ static BOOL __developmentMode = NO;
 //	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 //							list.title, @"list[title]",
 //							nil];
-//	
+//
 //	__weak NSManagedObjectContext *context = [IPKList mainContext];
 //	[self postPath:@"lists" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //		[context performBlockAndWait:^{
 //			[list unpackDictionary:responseObject];
 //			[list save];
 //		}];
-//		
+//
 //		if (success) {
 //			success((AFJSONRequestOperation *)operation, responseObject);
 //		}
@@ -1010,7 +1014,7 @@ static BOOL __developmentMode = NO;
 //		[context performBlockAndWait:^{
 //			[list delete];
 //		}];
-//		
+//
 //		if (failure) {
 //			failure((AFJSONRequestOperation *)operation, error);
 //		}
@@ -1025,14 +1029,14 @@ static BOOL __developmentMode = NO;
 //							list.title, @"list[title]",
 //							archivedAt, @"list[archived_at]",
 //							nil];
-//	
+//
 //	[self putPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //		__weak NSManagedObjectContext *context = [IPKList mainContext];
 //		[context performBlockAndWait:^{
 //			[list unpackDictionary:responseObject];
 //			[list save];
 //		}];
-//		
+//
 //		if (success) {
 //			success((AFJSONRequestOperation *)operation, responseObject);
 //		}
@@ -1047,14 +1051,14 @@ static BOOL __developmentMode = NO;
 //- (void)sortLists:(NSArray *)lists success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 //	NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"lists/sort" parameters:nil];
 //	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-//	
+//
 //	// Build the array of indexs
 //	NSMutableArray *components = [[NSMutableArray alloc] init];
 //	for (IPKList *list in lists) {
 //		[components addObject:[NSString stringWithFormat:@"list[]=%@", list.remoteID]];
 //	}
 //	request.HTTPBody = [[components componentsJoinedByString:@"&"] dataUsingEncoding:NSUTF8StringEncoding];
-//	
+//
 //	AFJSONRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:request];
 //	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
 //		if (success) {
@@ -1075,14 +1079,14 @@ static BOOL __developmentMode = NO;
 //	NSString *path = [NSString stringWithFormat:@"lists/%@/tasks?all=true", list.remoteID];
 //	[self getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //		__weak NSManagedObjectContext *context = [IPKTask mainContext];
-//		[context performBlockAndWait:^{		
+//		[context performBlockAndWait:^{
 //			for (NSDictionary *taskDictionary in responseObject) {
 //				IPKTask *task = [IPKTask objectWithDictionary:taskDictionary];
 //				task.list = list;
 //			}
 //			[context save:nil];
 //		}];
-//		
+//
 //		if (success) {
 //			success((AFJSONRequestOperation *)operation, responseObject);
 //		}
@@ -1099,14 +1103,14 @@ static BOOL __developmentMode = NO;
 //	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 //							task.text, @"task[text]",
 //							nil];
-//	
+//
 //	__weak NSManagedObjectContext *context = [IPKTask mainContext];
 //	[self postPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //		[context performBlockAndWait:^{
 //			[task unpackDictionary:responseObject];
 //			[task save];
 //		}];
-//		
+//
 //		if (success) {
 //			success((AFJSONRequestOperation *)operation, responseObject);
 //		}
@@ -1114,7 +1118,7 @@ static BOOL __developmentMode = NO;
 //		[context performBlockAndWait:^{
 //			[task delete];
 //		}];
-//		
+//
 //		if (failure) {
 //			failure((AFJSONRequestOperation *)operation, error);
 //		}
@@ -1131,14 +1135,14 @@ static BOOL __developmentMode = NO;
 //							completedAt, @"task[completed_at]",
 //							archivedAt, @"task[archived_at]",
 //							nil];
-//	
+//
 //	[self putPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //		__weak NSManagedObjectContext *context = [IPKTask mainContext];
 //		[context performBlockAndWait:^{
 //			[task unpackDictionary:responseObject];
 //			[task save];
 //		}];
-//		
+//
 //		if (success) {
 //			success((AFJSONRequestOperation *)operation, responseObject);
 //		}
@@ -1154,14 +1158,14 @@ static BOOL __developmentMode = NO;
 //	NSString *path = [NSString stringWithFormat:@"lists/%@/tasks/sort", list.remoteID];
 //	NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:path parameters:nil];
 //	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-//	
+//
 //	// Build the array of indexs
 //	NSMutableArray *components = [[NSMutableArray alloc] init];
 //	for (IPKTask *task in tasks) {
 //		[components addObject:[NSString stringWithFormat:@"task[]=%@", task.remoteID]];
 //	}
 //	request.HTTPBody = [[components componentsJoinedByString:@"&"] dataUsingEncoding:NSUTF8StringEncoding];
-//	
+//
 //	AFJSONRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:request];
 //	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
 //		if (success) {
