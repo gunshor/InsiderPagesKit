@@ -403,11 +403,12 @@ static BOOL __developmentMode = NO;
                         [requestedUser addFollowersObject:user];
                         [user addFollowedUsersObject:requestedUser];
                     }
+                } else {
+                    IPKUser * user = [IPKUser objectWithDictionary:userDictionary];
+                    IPKUser * requestedUser = [IPKUser objectWithRemoteID:@([userId longLongValue])];
+                    [requestedUser addFollowersObject:user];
+                    [user addFollowedUsersObject:requestedUser];
                 }
-                IPKUser * user = [IPKUser objectWithDictionary:userDictionary];
-                IPKUser * requestedUser = [IPKUser objectWithRemoteID:@([userId longLongValue])];
-                [requestedUser addFollowersObject:user];
-                [user addFollowedUsersObject:requestedUser];
             }
         }else{
             IPKUser * user = [IPKUser objectWithDictionary:[responseObject objectForKey:@"followers"]];
