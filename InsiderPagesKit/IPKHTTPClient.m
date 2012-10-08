@@ -400,11 +400,13 @@ static BOOL __developmentMode = NO;
                 IPKUser * user = [IPKUser objectWithDictionary:userDictionary];
                 IPKUser * requestedUser = [IPKUser objectWithRemoteID:@([userId intValue])];
                 [requestedUser addFollowersObject:user];
+                [user addFollowedUsersObject:requestedUser];
             }
         }else{
             IPKUser * user = [IPKUser objectWithDictionary:[responseObject objectForKey:@"followers"]];
             IPKUser * requestedUser = [IPKUser objectWithRemoteID:@([userId intValue])];
             [requestedUser addFollowersObject:user];
+            [user addFollowedUsersObject:requestedUser];
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
