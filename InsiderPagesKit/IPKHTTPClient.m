@@ -398,6 +398,8 @@ static BOOL __developmentMode = NO;
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
                 IPKUser * user = nil;
                 user = [IPKUser objectWithDictionary:userDictionary];
+                IPKUser * requestedUser = [IPKUser objectWithRemoteID:@([userId intValue])];
+                [requestedUser addFollowersObject:requestedUser];
             }
         }else{
             [IPKUser objectWithDictionary:[responseObject objectForKey:@"followers"]];
