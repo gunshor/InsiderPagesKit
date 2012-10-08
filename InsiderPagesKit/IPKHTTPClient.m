@@ -396,7 +396,14 @@ static BOOL __developmentMode = NO;
         //        [context performBlock:^{
         if ([[responseObject objectForKey:@"followers"] isKindOfClass:[NSArray class]]) {
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
-                
+                if ([userDictionary isKindOfClass:[NSArray class]]) {
+                    for (NSDictionary* innerUserDictionary in userDictionary){
+                        IPKUser * user = [IPKUser objectWithDictionary:innerUserDictionary];
+                        IPKUser * requestedUser = [IPKUser objectWithRemoteID:@([userId longLongValue])];
+                        [requestedUser addFollowersObject:user];
+                        [user addFollowedUsersObject:requestedUser];
+                    }
+                }
                 IPKUser * user = [IPKUser objectWithDictionary:userDictionary];
                 IPKUser * requestedUser = [IPKUser objectWithRemoteID:@([userId longLongValue])];
                 [requestedUser addFollowersObject:user];
