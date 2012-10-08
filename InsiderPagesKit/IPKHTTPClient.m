@@ -351,7 +351,7 @@ static BOOL __developmentMode = NO;
     [self deletePath:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
+        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
         [page MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         //        }];
         
@@ -398,13 +398,13 @@ static BOOL __developmentMode = NO;
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
                 
                 IPKUser * user = [IPKUser objectWithDictionary:userDictionary];
-                IPKUser * requestedUser = [IPKUser objectWithRemoteID:@([userId intValue])];
+                IPKUser * requestedUser = [IPKUser objectWithRemoteID:@([userId longLongValue])];
                 [requestedUser addFollowersObject:user];
                 [user addFollowedUsersObject:requestedUser];
             }
         }else{
             IPKUser * user = [IPKUser objectWithDictionary:[responseObject objectForKey:@"followers"]];
-            IPKUser * requestedUser = [IPKUser objectWithRemoteID:@([userId intValue])];
+            IPKUser * requestedUser = [IPKUser objectWithRemoteID:@([userId longLongValue])];
             [requestedUser addFollowersObject:user];
             [user addFollowedUsersObject:requestedUser];
         }
@@ -519,8 +519,8 @@ static BOOL __developmentMode = NO;
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        IPKPage * page = [IPKPage objectWithRemoteID:@([pageId intValue])];
-        IPKProvider * providerToAdd = [IPKProvider objectWithRemoteID:@([providerId intValue])];
+        IPKPage * page = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
+        IPKProvider * providerToAdd = [IPKProvider objectWithRemoteID:@([providerId longLongValue])];
         [page addProvidersObject:providerToAdd];
         IPKTeamMembership * teamMembership = [IPKTeamMembership teamMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:providerToAdd.remoteID];
         
@@ -545,8 +545,8 @@ static BOOL __developmentMode = NO;
     [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
-        IPKProvider * providerToAdd = [IPKProvider existingObjectWithRemoteID:@([providerId intValue])];
+        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
+        IPKProvider * providerToAdd = [IPKProvider existingObjectWithRemoteID:@([providerId longLongValue])];
         [page addProvidersObject:providerToAdd];
         IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:providerToAdd.remoteID];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
@@ -570,8 +570,8 @@ static BOOL __developmentMode = NO;
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
-        IPKProvider * providerToRemove = [IPKProvider existingObjectWithRemoteID:@([providerId intValue])];
+        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
+        IPKProvider * providerToRemove = [IPKProvider existingObjectWithRemoteID:@([providerId longLongValue])];
         [page removeProvidersObject:providerToRemove];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         IPKTeamMembership * teamMembership = [IPKTeamMembership teamMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:providerToRemove.remoteID];
@@ -590,7 +590,7 @@ static BOOL __developmentMode = NO;
 }
 
 - (void)reorderProvidersForPageWithId:(NSString*)pageId newOrder:(NSArray*)newOrder success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
-    IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
+    IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"owner_id == %@", [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID];
     NSSet *filteredSet = [page.teamMemberships filteredSetUsingPredicate:predicate];
@@ -640,11 +640,11 @@ static BOOL __developmentMode = NO;
         if ([[responseObject objectForKey:@"collaborators"] isKindOfClass:[NSArray class]]) {
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"collaborators"]) {
                 IPKUser * user = [IPKUser objectWithDictionary:userDictionary];
-                IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:user.remoteID andTeamID:@([pageId intValue]) privilege:@(1)];
+                IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:user.remoteID andTeamID:@([pageId longLongValue]) privilege:@(1)];
             }
         }else if ([[responseObject objectForKey:@"collaborators"] isKindOfClass:[NSDictionary class]]) {
             IPKUser * user = [IPKUser objectWithDictionary:[responseObject objectForKey:@"collaborators"]];
-            IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:user.remoteID andTeamID:@([pageId intValue]) privilege:@(1)];
+            IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:user.remoteID andTeamID:@([pageId longLongValue]) privilege:@(1)];
         }
         
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
@@ -668,8 +668,8 @@ static BOOL __developmentMode = NO;
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
-        IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId intValue]) privilege:@(1)];
+        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
+        IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId longLongValue]) privilege:@(1)];
         
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
@@ -693,7 +693,7 @@ static BOOL __developmentMode = NO;
     [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        IPKTeamFollowing * teamFollowing = [IPKTeamFollowing teamFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId intValue])];
+        IPKTeamFollowing * teamFollowing = [IPKTeamFollowing teamFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId longLongValue])];
         [teamFollowing MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
@@ -714,7 +714,7 @@ static BOOL __developmentMode = NO;
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
+        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
         [page setIs_favorite:[NSNumber numberWithBool:YES]];
         [page updateSectionHeader];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
@@ -736,7 +736,7 @@ static BOOL __developmentMode = NO;
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId intValue])];
+        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
         [page setIs_favorite:[NSNumber numberWithBool:NO]];
         [page updateSectionHeader];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
@@ -756,18 +756,18 @@ static BOOL __developmentMode = NO;
 #pragma mark - Providers
 - (void)getPagesForProviderWithId:(NSString*)providerId withCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSString * urlString = [NSString stringWithFormat:@"providers/%@/pages", providerId];
-    NSString * provider_type = ((IPKProvider*)[IPKProvider objectWithRemoteID:@([providerId intValue])]).cg_listing_id ? @"Provider" : @"CgListing";
+    NSString * provider_type = ((IPKProvider*)[IPKProvider objectWithRemoteID:@([providerId longLongValue])]).cg_listing_id ? @"Provider" : @"CgListing";
     NSDictionary * params = [NSDictionary dictionaryWithObjectsAndKeys:provider_type, @"provider_type", nil];
     [self getPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if ([[responseObject objectForKey:@"pages"] isKindOfClass:[NSArray class]]) {
             for (NSDictionary * pageDictionary in [responseObject objectForKey:@"pages"]) {
                 IPKPage * page = [IPKPage objectWithDictionary:pageDictionary];
-                IPKProvider * provider = [IPKProvider objectWithRemoteID:@([providerId intValue])];
+                IPKProvider * provider = [IPKProvider objectWithRemoteID:@([providerId longLongValue])];
                 [page addProvidersObject:provider];
             }
         }else{
             IPKPage * page = [IPKPage objectWithDictionary:[responseObject objectForKey:@"pages"]];
-            IPKProvider * provider = [IPKProvider objectWithRemoteID:@([providerId intValue])];
+            IPKProvider * provider = [IPKProvider objectWithRemoteID:@([providerId longLongValue])];
             [page addProvidersObject:provider];
         }
         
