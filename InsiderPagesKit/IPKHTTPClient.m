@@ -674,13 +674,10 @@ static BOOL __developmentMode = NO;
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/collaborators", pageId];
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
-        //        [context performBlock:^{
-        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
-        IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId longLongValue]) privilege:@(1)];
-        
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        //        }];
+        //only invite do not accept and create team following
+//        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
+//        IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId longLongValue]) privilege:@(1)];
+//        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -699,13 +696,10 @@ static BOOL __developmentMode = NO;
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/collaborators", pageId];
     [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
-        //        [context performBlock:^{
         IPKTeamFollowing * teamFollowing = [IPKTeamFollowing teamFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId longLongValue])];
         [teamFollowing MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        //        }];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -720,13 +714,10 @@ static BOOL __developmentMode = NO;
 - (void)favoritePageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure  {  NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:pageId, @"id", nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/favorite", pageId];
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
-        //        [context performBlock:^{
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
         [page setIs_favorite:[NSNumber numberWithBool:YES]];
         [page updateSectionHeader];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        //        }];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
