@@ -928,6 +928,22 @@ static BOOL __developmentMode = NO;
     }];
 }
 
+- (void)registerForNotificationsWithToken:(NSString*)token success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            token, @"apn_token",
+                            nil];
+    [self postPath:@"register_notifications" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+}
+
 #pragma mark - Scoops
 
 - (void)getScoopsForUserWithId:(NSString*)userId withCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
