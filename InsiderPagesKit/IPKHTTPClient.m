@@ -928,9 +928,10 @@ static BOOL __developmentMode = NO;
     }];
 }
 
-- (void)registerForNotificationsWithToken:(NSString*)token success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+- (void)registerForNotificationsWithToken:(NSString*)token uuid:(NSString*)uuidString success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             token, @"apn_token",
+                            uuidString, @"uuid",
                             nil];
     [self postPath:@"register_notifications" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
