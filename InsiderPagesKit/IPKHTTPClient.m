@@ -492,7 +492,7 @@ static BOOL __developmentMode = NO;
                 [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             }
         }else if (sortUser != nil){
-            NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && owner_id == %@", sortUser.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && owner_id == %@", @([pageId integerValue]), sortUser.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             for (IPKTeamMembership * tm  in teamMemberships) {
                 [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             }
