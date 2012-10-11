@@ -481,6 +481,7 @@ static BOOL __developmentMode = NO;
             }
             increment++;
         }
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         if (sortUser == nil) {
             NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollaverage == YES", @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             for (IPKTeamMembership * tm  in teamMemberships) {
