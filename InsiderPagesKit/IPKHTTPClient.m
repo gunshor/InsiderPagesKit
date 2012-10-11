@@ -480,7 +480,7 @@ static BOOL __developmentMode = NO;
             increment++;
         }
         if (((NSArray*)[responseObject objectForKey:@"providers"]).count == 0 && sortUser == nil) {
-            NSArray * teamMemberships = [IPKTeamMembership MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollAverage == YES", @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            NSArray * teamMemberships = [IPKTeamMembership MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollaverage == YES", @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             for (IPKTeamMembership * tm  in teamMemberships) {
                 [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             }
