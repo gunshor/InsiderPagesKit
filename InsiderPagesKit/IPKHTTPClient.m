@@ -608,8 +608,7 @@ static BOOL __developmentMode = NO;
             NSLog(@"tm position:%@ teamMembership position %@", tm.position, teamMembership.position);
             if (tm.position.intValue > teamMembership.position.intValue) {
                 ((IPKTeamMembership*)[tm MR_inThreadContext]).position = @(tm.position.intValue - 1);
-            }else if (tm.position.intValue > teamMembership.position.intValue){
-                ((IPKTeamMembership*)[tm MR_inThreadContext]).position = @(tm.position.intValue + 1);
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             }
         }
         [teamMembership MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
