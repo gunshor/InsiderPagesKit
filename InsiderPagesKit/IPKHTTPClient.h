@@ -15,7 +15,7 @@ enum IPKTrackableType;
 
 @class IPKUser;
 @class IPKPage;
-@class BLYChannel;
+@class IPKProvider;
 
 @interface IPKHTTPClient : AFHTTPClient
 
