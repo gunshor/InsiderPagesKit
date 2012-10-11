@@ -550,7 +550,7 @@ static BOOL __developmentMode = NO;
                             providerId, @"provider_id",scoopText, @"scoop",
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/providers", pageId];
-    [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
@@ -575,7 +575,7 @@ static BOOL __developmentMode = NO;
                             providerId, @"provider_id",
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/providers", pageId];
-    [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
