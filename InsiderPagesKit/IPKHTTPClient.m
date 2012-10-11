@@ -497,15 +497,17 @@ static BOOL __developmentMode = NO;
             }
         }else if (sortUser != nil){
             NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && owner_id == %@", @([pageId integerValue]), sortUser.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-            BOOL isStillValid = NO;
-            for (IPKProvider * provider in providers) {
-                if ([tm.listing.remoteID isEqualToNumber:provider.remoteID]) {
-                    isStillValid = YES;
-                    break;
+            for (IPKTeamMembership * tm  in teamMemberships) {
+                BOOL isStillValid = NO;
+                for (IPKProvider * provider in providers) {
+                    if ([tm.listing.remoteID isEqualToNumber:provider.remoteID]) {
+                        isStillValid = YES;
+                        break;
+                    }
                 }
-            }
-            if (!isStillValid) {
-                [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+                if (!isStillValid) {
+                    [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+                }
             }
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
