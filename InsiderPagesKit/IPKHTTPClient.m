@@ -588,6 +588,7 @@ static BOOL __developmentMode = NO;
             NSLog(@"tm position:%@  teamMembership %@", tm.position, teamMembership.position);
             if (tm.position.intValue > teamMembership.position.intValue) {
                 tm.position = @(tm.position.intValue - 1);
+                NSLog(@"%@",tm);
             }else if (tm.position.intValue > teamMembership.position.intValue){
                 tm.position = @(tm.position.intValue + 1);
             }
