@@ -63,9 +63,9 @@ enum IPKTrackableType;
 
 - (void)getFollowersForPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
-- (void)addProvidersToPageWithId:(NSString*)pageId providerId:(NSString*)providerId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+- (void)addProvidersToPageWithId:(NSString*)pageId provider:(IPKProvider*)provider success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
-- (void)addProvidersToPageWithId:(NSString*)pageId providerId:(NSString*)providerId scoopText:(NSString*)scoopText success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+- (void)addProvidersToPageWithId:(NSString*)pageId provider:(IPKProvider*)provider scoopText:(NSString*)scoopText success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 - (void)removeProvidersFromPageWithId:(NSString*)pageId provider:(IPKProvider*)provider success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 

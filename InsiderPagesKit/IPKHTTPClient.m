@@ -519,17 +519,16 @@ static BOOL __developmentMode = NO;
     }];
 }
 
-- (void)addProvidersToPageWithId:(NSString*)pageId providerId:(NSString*)providerId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+- (void)addProvidersToPageWithId:(NSString*)pageId provider:(IPKProvider*)provider success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            providerId, @"provider_id",
+                            [provider listing_id], @"provider_id",
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/providers", pageId];
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
         IPKPage * page = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
-        IPKProvider * providerToAdd = [IPKProvider objectWithRemoteID:@([providerId longLongValue])];
-        [page addProvidersObject:providerToAdd];
+        IPKProvider * providerToAdd = provider;
         IPKTeamMembership * teamMembership = [IPKTeamMembership teamMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:providerToAdd.remoteID];
         
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
@@ -545,16 +544,17 @@ static BOOL __developmentMode = NO;
     }];
 }
 
-- (void)addProvidersToPageWithId:(NSString*)pageId providerId:(NSString*)providerId scoopText:(NSString*)scoopText success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+- (void)addProvidersToPageWithId:(NSString*)pageId provider:(IPKProvider*)provider scoopText:(NSString*)scoopText success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            providerId, @"provider_id",scoopText, @"scoop",
+                            [provider listing_id], @"provider_id",
+                            scoopText, @"scoop",
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/providers", pageId];
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
-        IPKProvider * providerToAdd = [IPKProvider existingObjectWithRemoteID:@([providerId longLongValue])];
+        IPKProvider * providerToAdd = provider;
         IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:providerToAdd.remoteID];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
