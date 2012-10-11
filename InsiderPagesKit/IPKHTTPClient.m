@@ -576,11 +576,16 @@ static BOOL __developmentMode = NO;
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/providers", pageId];
     [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
-        //        [context performBlock:^{
+        IPKUser * currentUser = [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
         IPKProvider * providerToRemove = provider;
-        IPKTeamMembership * teamMembership = [IPKTeamMembership teamMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:providerToRemove.remoteID];
+        IPKTeamMembership * teamMembership = [IPKTeamMembership teamMembershipForUserID:currentUser.remoteID teamID:page.remoteID listingID:providerToRemove.remoteID];
+         NSArray * teamMemberships = [IPKTeamMembership MR_findByAttribute:@"user_id" withValue:currentUser.remoteID inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+        for (IPKTeamMembership * tm in teamMemberships) {
+            if (tm.position < teamMembership.position) {
+                tm.position = @(tm.position.intValue + 1);
+            }
+        }
         [teamMembership MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
