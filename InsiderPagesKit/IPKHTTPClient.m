@@ -469,8 +469,10 @@ static BOOL __developmentMode = NO;
     
     [self getPath:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         int increment = 1;
+        NSMutableArray * providers = [NSMutableArray array];
         for (NSDictionary * providerDictionary in [responseObject objectForKey:@"providers"]) {
             IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
+            [providers addObject:provider];
             IPKPage * page = [IPKPage objectWithRemoteID:@([pageId integerValue])];
             IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:sortUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
             [teamMembership setPosition:@(increment)];
@@ -479,12 +481,17 @@ static BOOL __developmentMode = NO;
             }
             increment++;
         }
-        if (((NSArray*)[responseObject objectForKey:@"providers"]).count == 0 && sortUser == nil) {
+        if (sortUser == nil) {
             NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollaverage == YES", @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             for (IPKTeamMembership * tm  in teamMemberships) {
+                for (IPKProvider * provider in providers) {
+                    if ([tm.listing.remoteID isEqualToNumber:provider.remoteID]) {
+                        break;
+                    }
+                }
                 [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             }
-        }else if (((NSArray*)[responseObject objectForKey:@"providers"]).count == 0 && sortUser != nil){
+        }else if (sortUser != nil){
             NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && owner_id == %@", sortUser.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             for (IPKTeamMembership * tm  in teamMemberships) {
                 [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
