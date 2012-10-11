@@ -555,7 +555,6 @@ static BOOL __developmentMode = NO;
         //        [context performBlock:^{
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
         IPKProvider * providerToAdd = [IPKProvider existingObjectWithRemoteID:@([providerId longLongValue])];
-        [page addProvidersObject:providerToAdd];
         IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:providerToAdd.remoteID];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
@@ -580,8 +579,6 @@ static BOOL __developmentMode = NO;
         //        [context performBlock:^{
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
         IPKProvider * providerToRemove = [IPKProvider existingObjectWithRemoteID:@([providerId longLongValue])];
-        [page removeProvidersObject:providerToRemove];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         IPKTeamMembership * teamMembership = [IPKTeamMembership teamMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:providerToRemove.remoteID];
         [teamMembership MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
