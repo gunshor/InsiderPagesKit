@@ -480,12 +480,12 @@ static BOOL __developmentMode = NO;
             increment++;
         }
         if (((NSArray*)[responseObject objectForKey:@"providers"]).count == 0 && sortUser == nil) {
-            NSArray * teamMemberships = [IPKTeamMembership MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollaverage == YES", @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollaverage == YES", @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             for (IPKTeamMembership * tm  in teamMemberships) {
                 [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             }
         }else if (((NSArray*)[responseObject objectForKey:@"providers"]).count == 0 && sortUser != nil){
-            NSArray * teamMemberships = [IPKTeamMembership MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && owner_id == %@", sortUser.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && owner_id == %@", sortUser.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             for (IPKTeamMembership * tm  in teamMemberships) {
                 [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             }
@@ -585,7 +585,7 @@ static BOOL __developmentMode = NO;
         IPKTeamMembership * teamMembership = [IPKTeamMembership teamMembershipForUserID:currentUser.remoteID teamID:page.remoteID listingID:providerToRemove.remoteID];
          NSArray * teamMemberships = [IPKTeamMembership MR_findByAttribute:@"owner_id" withValue:currentUser.remoteID inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         for (IPKTeamMembership * tm in teamMemberships) {
-            if (tm.position < teamMembership.position) {
+            if (tm.position.intValue < teamMembership.position.intValue) {
                 tm.position = @(tm.position.intValue + 1);
             }
         }
