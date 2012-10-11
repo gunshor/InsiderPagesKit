@@ -471,7 +471,6 @@ static BOOL __developmentMode = NO;
         int increment = 1;
         for (NSDictionary * providerDictionary in [responseObject objectForKey:@"providers"]) {
             IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
-            //            [provider addPagesObject:[IPKPage objectWithRemoteID:@([pageId integerValue])]];
             IPKPage * page = [IPKPage objectWithRemoteID:@([pageId integerValue])];
             IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:sortUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
             [teamMembership setPosition:@(increment)];
@@ -479,6 +478,17 @@ static BOOL __developmentMode = NO;
                 [teamMembership setPollaverage:@(YES)];
             }
             increment++;
+        }
+        if (((NSArray*)[responseObject objectForKey:@"providers"]).count == 0 && sortUser == nil) {
+            NSArray * teamMemberships = [IPKTeamMembership MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollAverage == YES", @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            for (IPKTeamMembership * tm  in teamMemberships) {
+                [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            }
+        }else if (((NSArray*)[responseObject objectForKey:@"providers"]).count == 0 && sortUser != nil){
+            NSArray * teamMemberships = [IPKTeamMembership MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && owner_id == %@", sortUser.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            for (IPKTeamMembership * tm  in teamMemberships) {
+                [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            }
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
@@ -495,8 +505,7 @@ static BOOL __developmentMode = NO;
 - (void)getFollowersForPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSString *url = [NSString stringWithFormat:@"teams/%@/followers", pageId];
     [self getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
-        //        [context performBlock:^{
+
         if ([[responseObject objectForKey:@"followers"] isKindOfClass:[NSArray class]]) {
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
                 IPKUser * user = nil;
@@ -506,9 +515,7 @@ static BOOL __developmentMode = NO;
             [IPKUser objectWithDictionary:[responseObject objectForKey:@"followers"]];
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        
-        //        }];
-        
+                
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
         }
@@ -525,14 +532,11 @@ static BOOL __developmentMode = NO;
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/providers", pageId];
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
-        //        [context performBlock:^{
         IPKPage * page = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
         IPKProvider * providerToAdd = provider;
         IPKTeamMembership * teamMembership = [IPKTeamMembership teamMembershipForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID teamID:page.remoteID listingID:providerToAdd.remoteID];
         
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        //        }];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -558,7 +562,6 @@ static BOOL __developmentMode = NO;
         IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:currentUser.remoteID teamID:page.remoteID listingID:providerToAdd.remoteID];
         teamMembership.position = @(teamMemberships.count + 1);
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        //        }];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
