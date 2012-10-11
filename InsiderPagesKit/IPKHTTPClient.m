@@ -604,13 +604,13 @@ static BOOL __developmentMode = NO;
         IPKProvider * providerToRemove = provider;
         IPKTeamMembership * teamMembership = [IPKTeamMembership teamMembershipForUserID:currentUser.remoteID teamID:page.remoteID listingID:providerToRemove.remoteID];
          NSArray * teamMemberships = [IPKTeamMembership MR_findByAttribute:@"owner_id" withValue:currentUser.remoteID inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-        for (IPKTeamMembership * tm in teamMemberships) {
-            NSLog(@"tm position:%@  teamMembership %@", tm.position, teamMembership.position);
+        for (int i = 0; i < teamMemberships.count; i++) {
+            IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
+            NSLog(@"tm position:%@ teamMembership position %@", tm.position, teamMembership.position);
             if (tm.position.intValue > teamMembership.position.intValue) {
-                tm.position = @(tm.position.intValue - 1);
-                NSLog(@"%@",tm);
+                ((IPKTeamMembership*)[tm MR_inThreadContext]).position = @(tm.position.intValue - 1);
             }else if (tm.position.intValue > teamMembership.position.intValue){
-                tm.position = @(tm.position.intValue + 1);
+                ((IPKTeamMembership*)[tm MR_inThreadContext]).position = @(tm.position.intValue + 1);
             }
         }
         [teamMembership MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
