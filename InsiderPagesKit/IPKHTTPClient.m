@@ -484,12 +484,16 @@ static BOOL __developmentMode = NO;
         if (sortUser == nil) {
             NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollaverage == YES", @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             for (IPKTeamMembership * tm  in teamMemberships) {
+                BOOL isStillValid = NO;
                 for (IPKProvider * provider in providers) {
                     if ([tm.listing.remoteID isEqualToNumber:provider.remoteID]) {
+                        isStillValid = YES;
                         break;
                     }
                 }
-                [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+                if (!isStillValid) {
+                    [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+                }
             }
         }else if (sortUser != nil){
             NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && owner_id == %@", @([pageId integerValue]), sortUser.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
