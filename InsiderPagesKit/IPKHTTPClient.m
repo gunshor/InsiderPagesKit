@@ -553,7 +553,7 @@ static BOOL __developmentMode = NO;
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         IPKUser * currentUser = [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
-        NSArray * teamMemberships = [IPKTeamMembership MR_findByAttribute:@"user_id" withValue:currentUser.remoteID inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+        NSArray * teamMemberships = [IPKTeamMembership MR_findByAttribute:@"owner_id" withValue:currentUser.remoteID inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         IPKProvider * providerToAdd = provider;
         IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:currentUser.remoteID teamID:page.remoteID listingID:providerToAdd.remoteID];
         teamMembership.position = @(teamMemberships.count + 1);
@@ -580,7 +580,7 @@ static BOOL __developmentMode = NO;
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
         IPKProvider * providerToRemove = provider;
         IPKTeamMembership * teamMembership = [IPKTeamMembership teamMembershipForUserID:currentUser.remoteID teamID:page.remoteID listingID:providerToRemove.remoteID];
-         NSArray * teamMemberships = [IPKTeamMembership MR_findByAttribute:@"user_id" withValue:currentUser.remoteID inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+         NSArray * teamMemberships = [IPKTeamMembership MR_findByAttribute:@"owner_id" withValue:currentUser.remoteID inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         for (IPKTeamMembership * tm in teamMemberships) {
             if (tm.position < teamMembership.position) {
                 tm.position = @(tm.position.intValue + 1);
