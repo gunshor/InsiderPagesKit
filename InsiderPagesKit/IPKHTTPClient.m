@@ -562,7 +562,7 @@ static BOOL __developmentMode = NO;
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@  && listing_id != %@",currentUser.remoteID, @([pageId integerValue]), provider.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
         for (int i = 0; i < teamMemberships.count; i++) {
-            IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
+            IPKTeamMembership * tm = [[teamMemberships objectAtIndex:i] MR_inThreadContext];
             tm.position = @(tm.position.intValue + 1);
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
