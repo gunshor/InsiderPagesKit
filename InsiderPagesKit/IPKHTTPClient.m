@@ -628,6 +628,10 @@ static BOOL __developmentMode = NO;
 
 - (void)reorderProvidersForPageWithId:(NSString*)pageId newOrder:(NSArray*)newOrder success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
+    NSMutableArray * stringOrderArray = [NSMutableArray array];
+    for (NSNumber * num in newOrder) {
+        [stringOrderArray addObject:[num stringValue]];
+    }
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"owner_id == %@", [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID];
     NSSet *filteredSet = [page.teamMemberships filteredSetUsingPredicate:predicate];
@@ -640,7 +644,7 @@ static BOOL __developmentMode = NO;
         [currentListings addObject:[provider listing_id]];
     }
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            newOrder, @"new_listings",
+                            stringOrderArray, @"new_listings",
                             [currentListings componentsJoinedByString:@","], @"listings",
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/reorder_providers", pageId];
