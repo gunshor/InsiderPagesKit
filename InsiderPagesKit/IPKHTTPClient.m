@@ -560,7 +560,7 @@ static BOOL __developmentMode = NO;
         teamMembership.position = @(1);
         teamMembership.pollaverage = @(NO);
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id",currentUser.remoteID, @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
+        NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@",currentUser.remoteID, @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
         [teamMemberships removeObject:teamMembership];
         for (IPKTeamMembership * tm in teamMemberships) {
             tm.position = @(tm.position.intValue + 1);
@@ -591,7 +591,7 @@ static BOOL __developmentMode = NO;
         teamMembership.position = @(1);
         teamMembership.pollaverage = @(NO);
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id",currentUser.remoteID, @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
+        NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@",currentUser.remoteID, @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
         [teamMemberships removeObject:teamMembership];
         for (IPKTeamMembership * tm in teamMemberships) {
             tm.position = @(tm.position.intValue + 1);
