@@ -560,7 +560,11 @@ static BOOL __developmentMode = NO;
         teamMembership.position = @(1);
         teamMembership.pollaverage = @(NO);
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        
+        NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findByAttribute:@"owner_id" withValue:currentUser.remoteID inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
+        [teamMemberships removeObject:teamMembership];
+        for (IPKTeamMembership * tm in teamMemberships) {
+            tm.position = @(tm.position.intValue + 1);
+        }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
         if (success) {
