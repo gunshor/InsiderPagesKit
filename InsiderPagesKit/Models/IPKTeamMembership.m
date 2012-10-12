@@ -32,7 +32,11 @@
 	// Create the fetch request for the ID
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	fetchRequest.entity = [self MR_entityDescriptionInContext:context];
-	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"owner_id = %@ && team_id == %@ && listing_id == %@", userID, teamID, listingID];
+    if (userID) {
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@ && listing_id == %@", userID, teamID, listingID];
+    }else{
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"pollaverage == YES && team_id == %@ && listing_id == %@", teamID, listingID];
+    }
     fetchRequest.includesPendingChanges = YES;
 	fetchRequest.fetchLimit = 1;
 	
