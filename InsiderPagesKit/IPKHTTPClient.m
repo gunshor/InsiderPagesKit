@@ -630,7 +630,7 @@ static BOOL __developmentMode = NO;
     IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
     NSMutableArray * stringOrderArray = [NSMutableArray array];
     for (NSNumber * num in newOrder) {
-        [stringOrderArray addObject:[num stringValue]];
+        [stringOrderArray addObject:[@(num.intValue - 1) stringValue]];
     }
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"owner_id == %@", [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID];
