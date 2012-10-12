@@ -561,7 +561,7 @@ static BOOL __developmentMode = NO;
         teamMembership.pollaverage = @(NO);
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@",currentUser.remoteID, @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
-        [teamMemberships removeObject:teamMembership];
+        [teamMemberships removeLastObject];
         for (IPKTeamMembership * tm in teamMemberships) {
             tm.position = @(tm.position.intValue + 1);
         }
@@ -592,7 +592,7 @@ static BOOL __developmentMode = NO;
         teamMembership.pollaverage = @(NO);
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@",currentUser.remoteID, @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
-        [teamMemberships removeObject:teamMembership];
+        [teamMemberships removeLastObject];
         for (IPKTeamMembership * tm in teamMemberships) {
             tm.position = @(tm.position.intValue + 1);
         }
