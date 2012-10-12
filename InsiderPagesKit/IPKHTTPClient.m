@@ -560,7 +560,7 @@ static BOOL __developmentMode = NO;
         teamMembership.position = @(1);
         teamMembership.pollaverage = @(NO);
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@  && listing_id == %@",currentUser.remoteID, @([pageId integerValue]), provider.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
+        NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@  && listing_id != %@",currentUser.remoteID, @([pageId integerValue]), provider.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
         for (IPKTeamMembership * tm in teamMemberships) {
             tm.position = @(tm.position.intValue + 1);
         }
@@ -590,7 +590,7 @@ static BOOL __developmentMode = NO;
         teamMembership.position = @(1);
         teamMembership.pollaverage = @(NO);
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@  && listing_id == %@",currentUser.remoteID, @([pageId integerValue]), provider.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
+        NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@  && listing_id != %@",currentUser.remoteID, @([pageId integerValue]), provider.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
         for (IPKTeamMembership * tm in teamMemberships) {
             tm.position = @(tm.position.intValue + 1);
         }
