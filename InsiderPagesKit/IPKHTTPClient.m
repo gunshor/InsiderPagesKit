@@ -564,8 +564,8 @@ static BOOL __developmentMode = NO;
         for (int i = 0; i < teamMemberships.count; i++) {
             IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
             tm.position = @(tm.position.intValue + 1);
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -595,8 +595,8 @@ static BOOL __developmentMode = NO;
         for (int i = 0; i < teamMemberships.count; i++) {
             IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
             tm.position = @(tm.position.intValue + 1);
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
