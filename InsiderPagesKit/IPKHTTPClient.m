@@ -660,7 +660,7 @@ static BOOL __developmentMode = NO;
     NSArray * sortedArray = [membershipArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]]];
     for (IPKTeamMembership * teamMembership in sortedArray) {
         IPKProvider * provider = teamMembership.listing;
-        [currentListings addObject:[[provider listing_id] lowercaseString]];
+        [currentListings addObject:[provider listing_id]];
     }
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             stringOrderArray, @"new_listings",
@@ -704,7 +704,7 @@ static BOOL __developmentMode = NO;
     NSArray * sortedArray = [membershipArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]]];
     for (IPKTeamMembership * teamMembership in sortedArray) {
         IPKProvider * provider = teamMembership.listing;
-        [currentListings addObject:[[provider listing_id] lowercaseString]];
+        [currentListings addObject:[provider listing_id]];
     }
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             stringOrderArray, @"new_listings",
