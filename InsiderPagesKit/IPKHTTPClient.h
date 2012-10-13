@@ -69,6 +69,8 @@ enum IPKTrackableType;
 
 - (void)removeProvidersFromPageWithId:(NSString*)pageId provider:(IPKProvider*)provider success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
+- (void)createCollaboratorRankingForPageWithId:(NSString*)pageId userId:(NSString*)userId newOrder:(NSArray*)newOrder success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+
 - (void)reorderProvidersForPageWithId:(NSString*)pageId newOrder:(NSArray*)newOrder success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 - (void)getCollaboratorsForPageWithId:(NSString*)pageId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
