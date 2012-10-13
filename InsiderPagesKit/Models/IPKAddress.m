@@ -3,7 +3,6 @@
 //  InsiderPagesKit
 //
 //  Created by Truman, Christopher on 8/29/12.
-//  Copyright (c) 2012 Nothing Magical. All rights reserved.
 //
 
 #import "IPKAddress.h"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1810" systemVersion="12C54" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="IPKActivity" representedClassName="IPKActivity" syncable="YES">
         <attribute name="action" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -52,6 +52,7 @@
         <attribute name="image_content_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_file_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="is_collaborator" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="is_favorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="is_following" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" attributeType="String" defaultValueString=" " syncable="YES"/>
@@ -187,7 +188,7 @@
         <element name="IPKActivity" positionX="0" positionY="0" width="128" height="255"/>
         <element name="IPKAddress" positionX="0" positionY="0" width="128" height="255"/>
         <element name="IPKNotification" positionX="0" positionY="0" width="128" height="180"/>
-        <element name="IPKPage" positionX="0" positionY="0" width="128" height="420"/>
+        <element name="IPKPage" positionX="0" positionY="0" width="128" height="435"/>
         <element name="IPKProvider" positionX="0" positionY="0" width="128" height="390"/>
         <element name="IPKQueryModel" positionX="0" positionY="0" width="128" height="165"/>
         <element name="IPKReview" positionX="0" positionY="0" width="128" height="345"/>

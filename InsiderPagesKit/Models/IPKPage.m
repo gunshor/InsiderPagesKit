@@ -85,6 +85,12 @@
     else {
         self.is_following = [NSNumber numberWithBool:NO];
     }
+    if ([dictionary safeObjectForKey:@"is_collaborator"]) {
+        self.is_collaborator = [dictionary safeObjectForKey:@"is_collaborator"];
+    }
+    else {
+        self.is_collaborator = [NSNumber numberWithBool:NO];
+    }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSNumber *userID = [userDefaults objectForKey:@"IPKUserID"];
     if ([self.is_favorite boolValue]) {

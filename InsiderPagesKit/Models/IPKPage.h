@@ -1,9 +1,8 @@
 //
-//  Page.h
+//  IPKPage.h
 //  InsiderPagesKit
 //
 //  Created by Truman, Christopher on 8/2/12.
-//  Copyright (c) 2012 Nothing Magical. All rights reserved.
 //
 
 #import "IPKAbstractModel.h"
@@ -31,6 +30,7 @@
 @property (nonatomic, strong) NSString * section_header;
 @property (nonatomic, strong) NSNumber * is_favorite;
 @property (nonatomic, strong) NSNumber * is_following;
+@property (nonatomic, strong) NSNumber * is_collaborator;
 @property (nonatomic, strong) NSNumber * collaborator_count;
 @property (nonatomic, strong) NSNumber * business_count;
 @property (nonatomic, strong) NSNumber * comment_count;
