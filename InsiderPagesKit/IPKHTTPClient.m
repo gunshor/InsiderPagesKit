@@ -676,6 +676,7 @@ static BOOL __developmentMode = NO;
                 }
             }
         }
+        page.is_collaborator = @(YES);
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
         if (success) {
