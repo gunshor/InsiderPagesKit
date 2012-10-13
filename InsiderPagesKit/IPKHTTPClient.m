@@ -649,15 +649,15 @@ static BOOL __developmentMode = NO;
     }
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@", @([userId longLongValue]), @([pageId longLongValue])];
-    NSSet *filteredSet = [page.teamMemberships filteredSetUsingPredicate:predicate];
-    if (filteredSet.count == 0) {
+    NSArray *membershipArray = [IPKTeamMembership MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    if (membershipArray.count == 0) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pollaverage == YES && team_id == %@", @([pageId longLongValue])];
-        filteredSet = [page.teamMemberships filteredSetUsingPredicate:predicate];
+        membershipArray = [IPKTeamMembership MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     }
     
     NSMutableArray * currentListings = [NSMutableArray array];
     
-    NSArray * sortedArray = [filteredSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]]];
+    NSArray * sortedArray = [membershipArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]]];
     for (IPKTeamMembership * teamMembership in sortedArray) {
         IPKProvider * provider = teamMembership.listing;
         [currentListings addObject:[provider listing_id]];
@@ -697,11 +697,11 @@ static BOOL __developmentMode = NO;
     }
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@", [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID, @([pageId longLongValue])];
-    NSSet *filteredSet = [page.teamMemberships filteredSetUsingPredicate:predicate];
+    NSArray *membershipArray = [IPKTeamMembership MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     
     NSMutableArray * currentListings = [NSMutableArray array];
     
-    NSArray * sortedArray = [filteredSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]]];
+    NSArray * sortedArray = [membershipArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]]];
     for (IPKTeamMembership * teamMembership in sortedArray) {
         IPKProvider * provider = teamMembership.listing;
         [currentListings addObject:[provider listing_id]];
