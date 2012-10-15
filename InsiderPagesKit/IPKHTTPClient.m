@@ -650,16 +650,15 @@ static BOOL __developmentMode = NO;
     }
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@", @([userId longLongValue]), @([pageId longLongValue])];
-    NSArray *membershipArray = [IPKTeamMembership MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    NSArray *membershipArray = [IPKTeamMembership MR_findAllSortedBy:@"position" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     if (membershipArray.count == 0) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pollaverage == 1 && team_id == %@", @([pageId longLongValue])];
-        membershipArray = [IPKTeamMembership MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+        membershipArray = [IPKTeamMembership MR_findAllSortedBy:@"position" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     }
     
     NSMutableArray * currentListings = [NSMutableArray array];
     
-    NSArray * sortedArray = [membershipArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]]];
-    for (IPKTeamMembership * teamMembership in sortedArray) {
+    for (IPKTeamMembership * teamMembership in membershipArray) {
         IPKProvider * provider = teamMembership.listing;
         [currentListings addObject:[provider listing_id]];
     }
@@ -669,9 +668,9 @@ static BOOL __developmentMode = NO;
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/reorder_providers", pageId];
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        for (int i = 0; i < sortedArray.count; i++) {
+        for (int i = 0; i < membershipArray.count; i++) {
             for (NSString * listingString in currentListings) {
-                IPKTeamMembership * teamMembership = [sortedArray objectAtIndex:i];
+                IPKTeamMembership * teamMembership = [membershipArray objectAtIndex:i];
                 if ([listingString isEqualToString:[[teamMembership listing ] listing_id]]) {
                     teamMembership.position = [newOrder objectAtIndex:i];
                 }
@@ -691,14 +690,13 @@ static BOOL __developmentMode = NO;
 }
 
 - (void)reorderProvidersForPageWithId:(NSString*)pageId newOrder:(NSArray*)newOrder success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
-    IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
     NSMutableArray * stringOrderArray = [NSMutableArray array];
     for (NSNumber * num in newOrder) {
         [stringOrderArray addObject:[@(num.intValue - 1) stringValue]];
     }
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@", [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID, @([pageId longLongValue])];
-    NSArray *membershipArray = [IPKTeamMembership MR_findAllWithPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    NSArray *membershipArray = [IPKTeamMembership MR_findAllSortedBy:@"position" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     
     NSMutableArray * currentListings = [NSMutableArray array];
     
