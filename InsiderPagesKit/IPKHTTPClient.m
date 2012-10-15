@@ -150,7 +150,7 @@ static BOOL __developmentMode = NO;
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/followers", pageId];
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [[RHManagedObjectContextManager sharedInstance] managedObjectContext];
-        IPKPage * pageToFollow = [IPKPage objectWithRemoteID:@([pageId integerValue])];
+        IPKPage * pageToFollow = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
         [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] addFollowedPagesObject:pageToFollow];
         [pageToFollow setIs_following:[NSNumber numberWithBool:YES]];
         [pageToFollow updateSectionHeader];
@@ -176,7 +176,7 @@ static BOOL __developmentMode = NO;
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
         if (operation.response.statusCode != 403) {
-            IPKUser * userToFollow = [IPKUser objectWithRemoteID:@([userId integerValue])];
+            IPKUser * userToFollow = [IPKUser objectWithRemoteID:@([userId longLongValue])];
             [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] addFollowedUsersObject:userToFollow];
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
@@ -201,7 +201,7 @@ static BOOL __developmentMode = NO;
     [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        IPKPage * pageToFollow = [IPKPage objectWithRemoteID:@([pageId integerValue])];
+        IPKPage * pageToFollow = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
         //force fault
         [pageToFollow name];
         [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] removeFollowedPagesObject:pageToFollow];
@@ -228,7 +228,7 @@ static BOOL __developmentMode = NO;
     [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
-        IPKUser * userToUnfollow = [IPKUser objectWithRemoteID:@([userId integerValue])];
+        IPKUser * userToUnfollow = [IPKUser objectWithRemoteID:@([userId longLongValue])];
         [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] removeFollowedUsersObject:userToUnfollow];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         //        }];
@@ -473,7 +473,7 @@ static BOOL __developmentMode = NO;
         for (NSDictionary * providerDictionary in [responseObject objectForKey:@"providers"]) {
             IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
             [providers addObject:provider];
-            IPKPage * page = [IPKPage objectWithRemoteID:@([pageId integerValue])];
+            IPKPage * page = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
             IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:sortUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
             [teamMembership setPosition:@(increment)];
             if (sortUser == nil) {
@@ -483,7 +483,7 @@ static BOOL __developmentMode = NO;
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
         if (sortUser == nil) {
-            NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollaverage == YES", @([pageId integerValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollaverage == YES", @([pageId longLongValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             for (IPKTeamMembership * tm  in teamMemberships) {
                 BOOL isStillValid = NO;
                 for (IPKProvider * provider in providers) {
@@ -497,7 +497,7 @@ static BOOL __developmentMode = NO;
                 }
             }
         }else if (sortUser != nil){
-            NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && owner_id == %@", @([pageId integerValue]), sortUser.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && owner_id == %@", @([pageId longLongValue]), sortUser.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             for (IPKTeamMembership * tm  in teamMemberships) {
                 BOOL isStillValid = NO;
                 for (IPKProvider * provider in providers) {
@@ -560,7 +560,7 @@ static BOOL __developmentMode = NO;
         teamMembership.position = @(1);
         teamMembership.pollaverage = @(NO);
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        NSArray * teamMemberships = [IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@ && listing_id != %@",currentUser.remoteID, @([pageId integerValue]), provider.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+        NSArray * teamMemberships = [IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@ && listing_id != %@",currentUser.remoteID, @([pageId longLongValue]), provider.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         for (int i = 0; i < teamMemberships.count; i++) {
             IPKTeamMembership * tm = [[teamMemberships objectAtIndex:i] MR_inThreadContext];
             tm.position = @(tm.position.intValue + 1);
@@ -590,7 +590,7 @@ static BOOL __developmentMode = NO;
         teamMembership.position = @(1);
         teamMembership.pollaverage = @(NO);
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@ && listing_id != %@",currentUser.remoteID, @([pageId integerValue]), provider.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
+        NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@ && listing_id != %@",currentUser.remoteID, @([pageId longLongValue]), provider.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
         for (int i = 0; i < teamMemberships.count; i++) {
             IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
             tm.position = @(tm.position.intValue + 1);
