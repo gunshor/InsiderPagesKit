@@ -52,7 +52,7 @@
         <attribute name="image_content_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_file_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_updated_at" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="is_collaborator" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="is_collaborator" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="is_favorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="is_following" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" attributeType="String" defaultValueString=" " syncable="YES"/>

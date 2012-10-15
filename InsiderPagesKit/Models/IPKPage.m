@@ -28,6 +28,7 @@
 @dynamic section_header;
 @dynamic is_favorite;
 @dynamic is_following;
+@dynamic is_collaborator;
 @dynamic collaborator_count;
 @dynamic business_count;
 @dynamic comment_count;
