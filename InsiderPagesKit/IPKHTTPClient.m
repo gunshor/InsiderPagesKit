@@ -650,10 +650,10 @@ static BOOL __developmentMode = NO;
     }
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@", @([userId longLongValue]), @([pageId longLongValue])];
-    NSArray *membershipArray = [IPKTeamMembership MR_findAllSortedBy:@"position" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    NSArray *membershipArray = [IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     if (membershipArray.count == 0) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pollaverage == 1 && team_id == %@", @([pageId longLongValue])];
-        membershipArray = [IPKTeamMembership MR_findAllSortedBy:@"position" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+        membershipArray = [IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     }
     
     NSMutableArray * currentListings = [NSMutableArray array];
@@ -696,7 +696,7 @@ static BOOL __developmentMode = NO;
     }
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@", [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID, @([pageId longLongValue])];
-    NSArray *membershipArray = [IPKTeamMembership MR_findAllSortedBy:@"position" ascending:YES withPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    __block NSArray *membershipArray = [IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:predicate inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
     
     NSMutableArray * currentListings = [NSMutableArray array];
     
