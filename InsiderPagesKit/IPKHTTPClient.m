@@ -476,8 +476,8 @@ static BOOL __developmentMode = NO;
             [providers addObject:provider];
             IPKPage * page = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
             IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:sortUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
-            [teamMembership setPosition:[NSNumber numberWithInt:i]];
-            NSLog(@"Moving %@ to position %@", teamMembership.listing.full_name, @(i));
+            [teamMembership setPosition:[NSNumber numberWithInt:i+1]];
+            NSLog(@"Moving %@ to position %@", teamMembership.listing.full_name, @(i+1));
             if (sortUser == nil) {
                 [teamMembership setPollaverage:@(YES)];
             }
