@@ -475,7 +475,6 @@ static BOOL __developmentMode = NO;
             [providers addObject:provider];
             IPKPage * page = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
             IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:sortUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
-            NSLog(@"%@ %@", teamMembership.position, teamMembership.listing.full_name);
             [teamMembership setPosition:@(increment)];
             NSLog(@"Moving %@ to position %@", teamMembership.listing.full_name, @(increment));
             if (sortUser == nil) {
@@ -484,6 +483,7 @@ static BOOL __developmentMode = NO;
             increment++;
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        
         if (sortUser == nil) {
             NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollaverage == 1", @([pageId longLongValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             for (IPKTeamMembership * tm  in teamMemberships) {
