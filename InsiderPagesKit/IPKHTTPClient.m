@@ -558,6 +558,7 @@ static BOOL __developmentMode = NO;
             IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
 
             tm.position = @(tm.position.intValue + 1);
+            NSLog(@"%@ %@", tm.managedObjectContext, [NSManagedObjectContext MR_contextForCurrentThread]);
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
         
