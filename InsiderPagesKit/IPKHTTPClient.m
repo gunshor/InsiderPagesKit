@@ -482,7 +482,9 @@ static BOOL __developmentMode = NO;
                 [teamMembership setPollaverage:@(YES)];
             }
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        });
         
         if (sortUser == nil) {
             NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollaverage == 1", @([pageId longLongValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
