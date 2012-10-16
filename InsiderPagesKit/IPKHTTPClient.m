@@ -477,7 +477,6 @@ static BOOL __developmentMode = NO;
             IPKPage * page = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
             IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:sortUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
             [teamMembership setPosition:[NSNumber numberWithInt:i+1]];
-            NSLog(@"Moving %@ to position %@", teamMembership.listing.full_name, @(i+1));
             if (sortUser == nil) {
                 [teamMembership setPollaverage:@(YES)];
             }
@@ -566,7 +565,7 @@ static BOOL __developmentMode = NO;
         NSArray * teamMemberships = [IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@ && listing_id != %@",currentUser.remoteID, @([pageId longLongValue]), provider.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         for (int i = 0; i < teamMemberships.count; i++) {
             IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
-            NSLog(@"Moving %@ to position %@", tm.listing.full_name, @(tm.position.intValue + 1));
+
             tm.position = @(tm.position.intValue + 1);
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
@@ -624,7 +623,6 @@ static BOOL __developmentMode = NO;
         NSArray * teamMemberships = [IPKTeamMembership MR_findByAttribute:@"owner_id" withValue:currentUser.remoteID inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         for (int i = 0; i < teamMemberships.count; i++) {
             IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
-            NSLog(@"tm position:%@ teamMembership position %@", tm.position, teamMembership.position);
             if (tm.position.intValue > teamMembership.position.intValue) {
                 ((IPKTeamMembership*)[tm MR_inThreadContext]).position = @(tm.position.intValue - 1);
                 [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
@@ -1090,7 +1088,6 @@ static BOOL __developmentMode = NO;
 //
 //- (void)getListsWithSuccess:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure {
 //	[self getPath:@"teams/1" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"%@", responseObject);
 //		__weak NSManagedObjectContext *context = [IPKList mainContext];
 //		[context performBlockAndWait:^{
 //			for (NSDictionary *dictionary in responseObject) {
