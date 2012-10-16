@@ -22,12 +22,6 @@
 @dynamic listing;
 @dynamic owner;
 
--(void)setPosition:(NSNumber *)position{
-    [self willChangeValueForKey:@"position"];
-    [self setPrimitiveValue:position forKey:@"position"];
-    [self didChangeValueForKey:@"position"];
-    NSLog(@"Setting position to %@ for %@", position, self.listing.full_name);
-}
 +(IPKTeamMembership *)teamMembershipForUserID:(NSNumber*)userID teamID:(NSNumber*)teamID listingID:(NSNumber *)listingID{
     // Default to the main context
     NSManagedObjectContext * context;
