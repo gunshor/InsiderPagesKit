@@ -392,8 +392,6 @@ static BOOL __developmentMode = NO;
     NSString *url = [NSString stringWithFormat:@"users/%@/followers", userId];
     
     [self getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
-        //        [context performBlock:^{
         if ([[responseObject objectForKey:@"followers"] isKindOfClass:[NSArray class]]) {
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"followers"]) {
                 if ([userDictionary isKindOfClass:[NSArray class]]) {
@@ -417,9 +415,7 @@ static BOOL __developmentMode = NO;
             [user addFollowedUsersObject:requestedUser];
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        
-        //        }];
-        
+                
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
         }
@@ -434,8 +430,6 @@ static BOOL __developmentMode = NO;
     NSString *url = [NSString stringWithFormat:@"users/%@/following", userId];
     
     [self getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
-        //        [context performBlock:^{
         if ([[responseObject objectForKey:@"following"] isKindOfClass:[NSArray class]]) {
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"following"]) {
                 IPKUser * user = nil;
@@ -445,7 +439,6 @@ static BOOL __developmentMode = NO;
             [IPKUser objectWithDictionary:[responseObject objectForKey:@"following"]];
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        //        }];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -482,7 +475,7 @@ static BOOL __developmentMode = NO;
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^(){
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
         });
         
         if (sortUser == nil) {
@@ -514,7 +507,7 @@ static BOOL __developmentMode = NO;
                 }
             }
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -568,7 +561,7 @@ static BOOL __developmentMode = NO;
 
             tm.position = @(tm.position.intValue + 1);
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -597,7 +590,7 @@ static BOOL __developmentMode = NO;
         for (int i = 0; i < teamMemberships.count; i++) {
             IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
             tm.position = @(tm.position.intValue + 1);
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
         }
         
         if (success) {
@@ -629,8 +622,7 @@ static BOOL __developmentMode = NO;
             }
         }
         [teamMembership MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-        //        }];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -677,7 +669,7 @@ static BOOL __developmentMode = NO;
             }
         }
         page.is_collaborator = @(YES);
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -718,7 +710,7 @@ static BOOL __developmentMode = NO;
                 }
             }
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
