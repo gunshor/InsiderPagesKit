@@ -672,7 +672,7 @@ static BOOL __developmentMode = NO;
             for (NSString * listingString in currentListings) {
                 IPKTeamMembership * teamMembership = [membershipArray objectAtIndex:i];
                 if ([listingString isEqualToString:[[teamMembership listing ] listing_id]]) {
-                    teamMembership.position = [newOrder objectAtIndex:i];
+                    teamMembership.position = @(((NSNumber*)[newOrder objectAtIndex:i]).intValue + 1);
                 }
             }
         }
@@ -714,7 +714,7 @@ static BOOL __developmentMode = NO;
             for (NSString * listingString in currentListings) {
                 IPKTeamMembership * teamMembership = [membershipArray objectAtIndex:i];
                 if ([listingString isEqualToString:[[teamMembership listing ] listing_id]]) {
-                    teamMembership.position = [newOrder objectAtIndex:i];
+                    teamMembership.position = @(((NSNumber*)[newOrder objectAtIndex:i]).intValue + 1);
                 }
             }
         }
