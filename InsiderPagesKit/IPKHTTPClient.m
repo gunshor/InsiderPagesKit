@@ -468,19 +468,19 @@ static BOOL __developmentMode = NO;
     }
     
     [self getPath:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        int increment = 1;
         NSMutableArray * providers = [NSMutableArray array];
-        for (NSDictionary * providerDictionary in [responseObject objectForKey:@"providers"]) {
+        NSMutableArray * providerDictionariesArray = [responseObject objectForKey:@"providers"];
+        for (int i = 0; i < providerDictionariesArray.count; i++) {
+            NSDictionary * providerDictionary  = [providerDictionariesArray objectAtIndex:i];
             IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
             [providers addObject:provider];
             IPKPage * page = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
             IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:sortUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
-            [teamMembership setPosition:@(increment)];
-            NSLog(@"Moving %@ to position %@", teamMembership.listing.full_name, @(increment));
+            [teamMembership setPosition:[NSNumber numberWithInt:i]];
+            NSLog(@"Moving %@ to position %@", teamMembership.listing.full_name, @(i));
             if (sortUser == nil) {
                 [teamMembership setPollaverage:@(YES)];
             }
-            increment++;
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
