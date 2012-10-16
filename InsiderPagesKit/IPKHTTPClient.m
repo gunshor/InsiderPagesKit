@@ -700,8 +700,7 @@ static BOOL __developmentMode = NO;
     
     NSMutableArray * currentListings = [NSMutableArray array];
     
-    NSArray * sortedArray = [membershipArray sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]]];
-    for (IPKTeamMembership * teamMembership in sortedArray) {
+    for (IPKTeamMembership * teamMembership in membershipArray) {
         IPKProvider * provider = teamMembership.listing;
         [currentListings addObject:[provider listing_id]];
     }
@@ -711,9 +710,9 @@ static BOOL __developmentMode = NO;
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/reorder_providers", pageId];
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        for (int i = 0; i < sortedArray.count; i++) {
+        for (int i = 0; i < membershipArray.count; i++) {
             for (NSString * listingString in currentListings) {
-                IPKTeamMembership * teamMembership = [sortedArray objectAtIndex:i];
+                IPKTeamMembership * teamMembership = [membershipArray objectAtIndex:i];
                 if ([listingString isEqualToString:[[teamMembership listing ] listing_id]]) {
                     teamMembership.position = [newOrder objectAtIndex:i];
                 }
