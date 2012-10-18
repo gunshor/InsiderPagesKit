@@ -558,11 +558,9 @@ static BOOL __developmentMode = NO;
         NSArray * teamMemberships = [IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@ && listing_id != %@",currentUser.remoteID, @([pageId longLongValue]), provider.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         for (int i = 0; i < teamMemberships.count; i++) {
             IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
-            
             tm.position = @(tm.position.intValue + 1);
-            NSLog(@"%@ %@", tm.managedObjectContext, [NSManagedObjectContext MR_contextForCurrentThread]);
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
