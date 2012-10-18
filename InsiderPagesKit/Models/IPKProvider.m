@@ -100,11 +100,11 @@
 
 - (void)updateWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure {
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            self.remoteID, @"id",
                             self.listing_type, @"provider_type",
                             nil];
     
-    [[IPKHTTPClient sharedClient] getPath:@"providers" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSString * path = [NSString stringWithFormat:@"providers/%@",self.remoteID];
+    [[IPKHTTPClient sharedClient] getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         [self unpackDictionary:[responseObject objectForKey:@"team"]];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];

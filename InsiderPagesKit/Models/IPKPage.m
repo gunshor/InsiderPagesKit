@@ -123,10 +123,10 @@
 
 - (void)updateWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure {
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            self.remoteID, @"id",
+                            @"pollaverage", @"sort_option",
                             nil];
-    
-    [[IPKHTTPClient sharedClient] getPath:@"teams" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSString * path = [NSString stringWithFormat:@"teams/%@",self.remoteID];
+    [[IPKHTTPClient sharedClient] getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         [self unpackDictionary:[responseObject objectForKey:@"team"]];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
