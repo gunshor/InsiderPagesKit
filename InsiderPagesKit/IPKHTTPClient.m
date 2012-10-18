@@ -1003,15 +1003,15 @@ static BOOL __developmentMode = NO;
                             currentPage, @"page",
                             nil];
     [self getPath:@"notifications" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
-        //        [context performBlock:^{
+
         if ([[responseObject objectForKey:@"notifications"] isKindOfClass:[NSArray class]]) {
+            IPKUser * currentUser = [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             for (NSDictionary* notificationDictionary in [responseObject objectForKey:@"notifications"]) {
-                [IPKNotification objectWithDictionary:notificationDictionary];
+                IPKNotification * n = [IPKNotification objectWithDictionary:notificationDictionary];
+                [currentUser addNotificationsObject:n];
             }
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
-        //        }];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);

@@ -11,6 +11,7 @@
 @class IPKReview;
 @class IPKTeamMembership;
 @class IPKTeamFollowing;
+@class IPKNotification;
 
 enum IPKUserProfileImageSize {
     IPKUserProfileImageSizeNano = 0,
@@ -80,8 +81,8 @@ extern NSString *const kIPKCurrentUserChangedNotificationName;
 - (void)addPages:(NSSet *)values;
 - (void)removePages:(NSSet *)values;
 
-- (void)addNotificationsObject:(IPKUser *)value;
-- (void)removeNotificationsObject:(IPKUser *)value;
+- (void)addNotificationsObject:(IPKNotification *)value;
+- (void)removeNotificationsObject:(IPKNotification *)value;
 - (void)addNotifications:(NSSet *)values;
 - (void)removeNotifications:(NSSet *)values;
 
