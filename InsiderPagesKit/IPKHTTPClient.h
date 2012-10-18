@@ -20,7 +20,7 @@ enum IPKTrackableType;
 @interface IPKHTTPClient : AFHTTPClient
 
 + (IPKHTTPClient *)sharedClient;
-+ (void)setDevelopmentModeEnabled:(BOOL)enabled;
++ (void)setBaseAPIHost:(NSString*)baseAPIHost;
 + (NSString *)apiVersion;
 
 

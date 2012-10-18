@@ -18,7 +18,7 @@
 #import "IPKTeamMembership.h"
 #import "IPKDefines.h"
 
-static BOOL __developmentMode = NO;
+static NSString* __baseAPIHost = @"";
 
 @implementation IPKHTTPClient {
 	dispatch_queue_t _callbackQueue;
@@ -36,8 +36,8 @@ static BOOL __developmentMode = NO;
 }
 
 
-+ (void)setDevelopmentModeEnabled:(BOOL)enabled {
-	__developmentMode = enabled;
++ (void)setBaseAPIHost:(NSString *)baseAPIHost {
+	__baseAPIHost = baseAPIHost;
 }
 
 
@@ -51,11 +51,7 @@ static BOOL __developmentMode = NO;
 - (id)init {
 	NSURL *base = nil;
 	NSString *version = [[self class] apiVersion];
-	if (__developmentMode) {
-		base = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@/%@/", kIPKDevelopmentAPIScheme, kIPKDevelopmentAPIHost, version]];
-	} else {
-		base = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@/%@/", kIPKAPIScheme, kIPKAPIHost, version]];
-	}
+		base = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@/%@/", kIPKDevelopmentAPIScheme, __baseAPIHost, version]];
 	
 	if ((self = [super initWithBaseURL:base])) {
 		// Use JSON
