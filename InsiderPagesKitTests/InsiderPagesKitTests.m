@@ -60,7 +60,7 @@
                                       @"Truman",@"last_name",
                                       @"09/10/1990",@"birthday",
                                       [NSDictionary dictionaryWithObjectsAndKeys:@"103122293060974", @"id", @"Gardena, California", @"name", nil],  @"location", @"cleetruman@gmail.com", @"email", nil];
-    [[IPKHTTPClient sharedClient] signInWithFacebookUserID:@"1574820006" accessToken:@"BAADT9DxG8csBALZCAWzmNfqa8EcaEpGU4ekoNhtfkdYtynCZCQlA1VZBUGxeZBz7DUS4M1enge8i3CDCIwfLrWTusbayH66B3Q10OFAinyhDo4BAeeQJcuSgJvuxmtciDwnuGH1uNwZDZD" facebookMeResponse:results success:^(AFJSONRequestOperation *operation, id responseObject){
+    [[IPKHTTPClient sharedClient] signInWithFacebookUserID:@"1574820006" accessToken:@"BAAC4zZAGNmZBUBADxLdsPHm0idD4l5FMnPBrmQww0UZBZBILZCZCQH9ASe9aMpAhwWLlrwz5Dds0z4o2ZAzpZB4WNzP9o3hPXc0ZAO1hy5LsD9RlR2vbBWfBrEZCxBHUqF5GcWM8jbtgZBmZCAZDZD" facebookMeResponse:results success:^(AFJSONRequestOperation *operation, id responseObject){
         // NSLog(@"%@", responseObject);
 
         finished = YES;
@@ -325,6 +325,8 @@
     //    http://qa.insiderpages.com/users/cleetruman/teams/810
     NSString * myPageID = [NSString stringWithFormat:@"%d", 810];
     NSString * providerID = [NSString stringWithFormat:@"CgListing_%d", 670507540];
+    IPKProvider * provider = [IPKProvider objectWithRemoteID:@(670507540)];
+    [provider setListing_type:@"CgListing"];
     [[IPKHTTPClient sharedClient] getProvidersForPageWithId:myPageID sortUser:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] success:^(AFJSONRequestOperation *operation, id responseObject){
         // NSLog(@"%@", responseObject);
 
@@ -350,7 +352,7 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
-    [[IPKHTTPClient sharedClient] addProvidersToPageWithId:myPageID providerId:providerID success:^(AFJSONRequestOperation *operation, id responseObject){
+    [[IPKHTTPClient sharedClient] addProvidersToPageWithId:myPageID provider:provider success:^(AFJSONRequestOperation *operation, id responseObject){
         // NSLog(@"%@", responseObject);
 
         STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after adding provider to page");
@@ -363,7 +365,7 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
-    [[IPKHTTPClient sharedClient] addProvidersToPageWithId:myPageID providerId:providerID scoopText:@"scoop" success:^(AFJSONRequestOperation *operation, id responseObject){
+    [[IPKHTTPClient sharedClient] addProvidersToPageWithId:myPageID provider:provider scoopText:@"scoop" success:^(AFJSONRequestOperation *operation, id responseObject){
         // NSLog(@"%@", responseObject);
 
         STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after adding provider to page");
@@ -375,7 +377,7 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
-    [[IPKHTTPClient sharedClient] removeProvidersFromPageWithId:myPageID providerId:providerID success:^(AFJSONRequestOperation *operation, id responseObject){
+    [[IPKHTTPClient sharedClient] removeProvidersFromPageWithId:myPageID provider:provider success:^(AFJSONRequestOperation *operation, id responseObject){
         // NSLog(@"%@", responseObject);
 
         STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after removing provider from page");
@@ -459,7 +461,7 @@
     [[NSRunLoop mainRunLoop] runUntilTimeout:5 orFinishedFlag:&finished];
     
     finished = NO;
-    [[IPKHTTPClient sharedClient] getCollaboratorsForPageWithId:myPageID sortUser:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] success:^(AFJSONRequestOperation *operation, id responseObject){
+    [[IPKHTTPClient sharedClient] getCollaboratorsForPageWithId:myPageID success:^(AFJSONRequestOperation *operation, id responseObject){
         // NSLog(@"%@", responseObject);
 
 //        STAssertTrue([[responseObject objectForKey:@"success"] boolValue], @"Server should respond with success after removing provider from page");
