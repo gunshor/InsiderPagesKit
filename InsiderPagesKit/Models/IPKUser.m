@@ -113,26 +113,28 @@ static IPKUser *__currentUser = nil;
 
 - (NSString *)imageProfilePathForSize:(enum IPKUserProfileImageSize)size{
     NSString * imageProfilePath = nil;
-    //    if (self.add_ip_to_fb){
+    if ([[[self.image_profile_path stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] isEqualToString:@"https://graph.facebook.com/"]){
     NSString * fb_size = nil;
-    switch (size) {
-        case IPKUserProfileImageSizeNano:
-            fb_size = @"nano";
-            break;
-        case IPKUserProfileImageSizeMini:
-            fb_size = @"nano";
-            break;
-        case IPKUserProfileImageSizeThumb:
-            fb_size = @"normal";
-            break;
-        case IPKUserProfileImageSizeMedium:
-            fb_size = @"normal";
-            break;
-        default:
-            break;
-    }
+        switch (size) {
+            case IPKUserProfileImageSizeNano:
+                fb_size = @"nano";
+                break;
+            case IPKUserProfileImageSizeMini:
+                fb_size = @"nano";
+                break;
+            case IPKUserProfileImageSizeThumb:
+                fb_size = @"normal";
+                break;
+            case IPKUserProfileImageSizeMedium:
+                fb_size = @"normal";
+                break;
+            default:
+                break;
+        }
     imageProfilePath = [self.image_profile_path stringByAppendingString:fb_size];
-    //    }
+    }else{
+        imageProfilePath = [@"http://s3.amazonaws.com/ip2-storage/qa/user_images/5359006813/mini/" stringByAppendingString:self.image_profile_path];
+    }
     
     return imageProfilePath;
 }
