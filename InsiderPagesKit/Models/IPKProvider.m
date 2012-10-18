@@ -5,6 +5,7 @@
 //  Created by Truman, Christopher on 8/2/12.
 //
 
+#import "IPKHTTPClient.h"
 #import "IPKProvider.h"
 #import "IPKAddress.h"
 #import "NSMutableDictionary+InsiderPagesKit.h"
@@ -95,6 +96,27 @@
 
 -(NSString*)listing_id{
     return [self.listing_type stringByAppendingFormat:@"_%@", self.remoteID];
+}
+
+- (void)updateWithSuccess:(void(^)(void))success failure:(void(^)(AFJSONRequestOperation *remoteOperation, NSError *error))failure {
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            self.remoteID, @"id",
+                            self.listing_type, @"provider_type",
+                            nil];
+    
+    [[IPKHTTPClient sharedClient] getPath:@"providers" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [self unpackDictionary:[responseObject objectForKey:@"team"]];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        
+        if (success) {
+            success();
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
 }
 
 @end
