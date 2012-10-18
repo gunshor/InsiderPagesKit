@@ -136,10 +136,10 @@ static BOOL __developmentMode = NO;
             success([IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]]);
         }
     }
-  failure:^(AFHTTPRequestOperation *operation, NSError *error){
-      if (failure) {
-          failure((AFJSONRequestOperation *)operation, error);
-      }}];
+                                                                                                  failure:^(AFHTTPRequestOperation *operation, NSError *error){
+                                                                                                      if (failure) {
+                                                                                                          failure((AFJSONRequestOperation *)operation, error);
+                                                                                                      }}];
 }
 
 #pragma mark - User Actions
@@ -415,7 +415,7 @@ static BOOL __developmentMode = NO;
             [user addFollowedUsersObject:requestedUser];
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
-                
+        
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
         }
@@ -461,52 +461,54 @@ static BOOL __developmentMode = NO;
     }
     
     [self getPath:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSMutableArray * providers = [NSMutableArray array];
-        NSMutableArray * providerDictionariesArray = [responseObject objectForKey:@"providers"];
-        for (int i = 0; i < providerDictionariesArray.count; i++) {
-            NSDictionary * providerDictionary  = [providerDictionariesArray objectAtIndex:i];
-            IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
-            [providers addObject:provider];
-            IPKPage * page = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
-            IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:sortUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
-            [teamMembership setPosition:[NSNumber numberWithInt:i+1]];
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            NSMutableArray * providers = [NSMutableArray array];
+            NSMutableArray * providerDictionariesArray = [responseObject objectForKey:@"providers"];
+            for (int i = 0; i < providerDictionariesArray.count; i++) {
+                NSDictionary * providerDictionary  = [providerDictionariesArray objectAtIndex:i];
+                IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary];
+                [providers addObject:provider];
+                IPKPage * page = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
+                IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:sortUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
+                [teamMembership setPosition:[NSNumber numberWithInt:i+1]];
+                if (sortUser == nil) {
+                    [teamMembership setPollaverage:@(YES)];
+                }
+            }
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+            
             if (sortUser == nil) {
-                [teamMembership setPollaverage:@(YES)];
-            }
-        }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
-        
-        if (sortUser == nil) {
-            NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollaverage == 1", @([pageId longLongValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-            for (IPKTeamMembership * tm  in teamMemberships) {
-                BOOL isStillValid = NO;
-                for (IPKProvider * provider in providers) {
-                    if ([tm.listing.remoteID isEqualToNumber:provider.remoteID]) {
-                        isStillValid = YES;
-                        break;
+                NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollaverage == 1", @([pageId longLongValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+                for (IPKTeamMembership * tm  in teamMemberships) {
+                    BOOL isStillValid = NO;
+                    for (IPKProvider * provider in providers) {
+                        if ([tm.listing.remoteID isEqualToNumber:provider.remoteID]) {
+                            isStillValid = YES;
+                            break;
+                        }
+                    }
+                    if (!isStillValid) {
+                        [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
                     }
                 }
-                if (!isStillValid) {
-                    [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-                }
-            }
-        }else if (sortUser != nil){
-            NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && owner_id == %@", @([pageId longLongValue]), sortUser.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-            for (IPKTeamMembership * tm  in teamMemberships) {
-                BOOL isStillValid = NO;
-                for (IPKProvider * provider in providers) {
-                    if ([tm.listing.remoteID isEqualToNumber:provider.remoteID]) {
-                        isStillValid = YES;
-                        break;
+            }else if (sortUser != nil){
+                NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && owner_id == %@", @([pageId longLongValue]), sortUser.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+                for (IPKTeamMembership * tm  in teamMemberships) {
+                    BOOL isStillValid = NO;
+                    for (IPKProvider * provider in providers) {
+                        if ([tm.listing.remoteID isEqualToNumber:provider.remoteID]) {
+                            isStillValid = YES;
+                            break;
+                        }
+                    }
+                    if (!isStillValid) {
+                        [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
                     }
                 }
-                if (!isStillValid) {
-                    [tm MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-                }
             }
-        }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
-        
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        });
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
         }
@@ -553,11 +555,10 @@ static BOOL __developmentMode = NO;
         IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:currentUser.remoteID teamID:page.remoteID listingID:providerToAdd.remoteID];
         teamMembership.position = @(1);
         teamMembership.pollaverage = @(0);
-        [teamMembership.managedObjectContext MR_save];
         NSArray * teamMemberships = [IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@ && listing_id != %@",currentUser.remoteID, @([pageId longLongValue]), provider.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         for (int i = 0; i < teamMemberships.count; i++) {
             IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
-
+            
             tm.position = @(tm.position.intValue + 1);
             NSLog(@"%@ %@", tm.managedObjectContext, [NSManagedObjectContext MR_contextForCurrentThread]);
         }
@@ -609,20 +610,23 @@ static BOOL __developmentMode = NO;
                             nil];
     NSString * urlString = [NSString stringWithFormat:@"teams/%@/providers", pageId];
     [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        IPKUser * currentUser = [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
-        IPKProvider * providerToRemove = provider;
-        IPKTeamMembership * teamMembership = [IPKTeamMembership teamMembershipForUserID:currentUser.remoteID teamID:page.remoteID listingID:providerToRemove.remoteID];
-        NSArray * teamMemberships = [IPKTeamMembership MR_findByAttribute:@"owner_id" withValue:currentUser.remoteID inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-        for (int i = 0; i < teamMemberships.count; i++) {
-            IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
-            if (tm.position.intValue > teamMembership.position.intValue) {
-                ((IPKTeamMembership*)[tm MR_inThreadContext]).position = @(tm.position.intValue - 1);
-                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            IPKUser * currentUser = [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
+            IPKProvider * providerToRemove = provider;
+            IPKTeamMembership * teamMembership = [IPKTeamMembership teamMembershipForUserID:currentUser.remoteID teamID:page.remoteID listingID:providerToRemove.remoteID];
+            NSArray * teamMemberships = [IPKTeamMembership MR_findByAttribute:@"owner_id" withValue:currentUser.remoteID inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            for (int i = 0; i < teamMemberships.count; i++) {
+                IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
+                if (tm.position.intValue > teamMembership.position.intValue) {
+                    
+                    ((IPKTeamMembership*)[tm MR_inThreadContext]).position = @(tm.position.intValue - 1);
+                    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+                }
             }
-        }
-        [teamMembership MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+            [teamMembership MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        });
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
