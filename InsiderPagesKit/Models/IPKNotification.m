@@ -35,7 +35,7 @@
     self.activity_parent = [dictionary safeObjectForKey:@"activity_parent"];
     self.path = [dictionary safeObjectForKey:@"path"];
     self.read = [dictionary safeObjectForKey:@"read"];
-    self.read = [dictionary safeObjectForKey:@"user_id"];
+    self.user_id = [dictionary safeObjectForKey:@"user_id"];
     self.user = [IPKUser objectWithRemoteID:self.user_id];
 }
 
