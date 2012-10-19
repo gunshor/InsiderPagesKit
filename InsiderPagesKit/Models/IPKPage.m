@@ -141,6 +141,7 @@
     }];
 }
 
+//http://stackoverflow.com/a/7922993/150920
 - (void)addProvidersObject:(IPKProvider *)value {
     NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.providers];
     [tempSet addObject:value];
