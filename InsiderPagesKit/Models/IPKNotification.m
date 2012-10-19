@@ -38,6 +38,14 @@
     self.read = [dictionary safeObjectForKey:@"read"];
     self.user_id = [dictionary safeObjectForKey:@"user_id"];
     self.user = [IPKUser objectWithRemoteID:self.user_id];
+    
+    if ([dictionary safeObjectForKey:@"users"]) {
+        NSArray * mentionedUsers = [dictionary safeObjectForKey:@"users"];
+        for (NSDictionary * userDictionary in mentionedUsers) {
+            IPKUser * user = [IPKUser objectWithDictionary:userDictionary];
+            [self addMentioned_usersObject:user];
+        }
+    }
 }
 
 
