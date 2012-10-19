@@ -813,12 +813,13 @@ static NSString* __baseAPIHost = @"";
         if ([[responseObject objectForKey:@"pages"] isKindOfClass:[NSArray class]]) {
             for (NSDictionary * pageDictionary in [responseObject objectForKey:@"pages"]) {
                 IPKPage * page = [IPKPage objectWithDictionary:pageDictionary];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
                 IPKProvider * provider = [IPKProvider objectWithRemoteID:@([providerId longLongValue])];
-                [provider full_name];
                 [page addProvidersObject:provider];
             }
         }else{
             IPKPage * page = [IPKPage objectWithDictionary:[responseObject objectForKey:@"pages"]];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
             IPKProvider * provider = [IPKProvider objectWithRemoteID:@([providerId longLongValue])];
             [page addProvidersObject:provider];
         }
