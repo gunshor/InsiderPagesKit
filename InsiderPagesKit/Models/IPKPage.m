@@ -141,4 +141,10 @@
     }];
 }
 
+- (void)addProvidersObject:(IPKProvider *)value {
+    NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.providers];
+    [tempSet addObject:value];
+    self.providers = tempSet;
+}
+
 @end
