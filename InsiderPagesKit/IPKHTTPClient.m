@@ -814,7 +814,7 @@ static NSString* __baseAPIHost = @"";
             for (NSDictionary * pageDictionary in [responseObject objectForKey:@"pages"]) {
                 IPKPage * page = [IPKPage objectWithDictionary:pageDictionary];
                 IPKProvider * provider = [IPKProvider objectWithRemoteID:@([providerId longLongValue])];
-                [provider objectID];
+                [provider full_name];
                 [page addProvidersObject:provider];
             }
         }else{
