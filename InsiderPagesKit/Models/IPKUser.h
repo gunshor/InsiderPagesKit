@@ -62,6 +62,7 @@ extern NSString *const kIPKCurrentUserChangedNotificationName;
 @property (nonatomic, strong) IPKReview *reviews;
 @property (nonatomic, strong) NSSet *teamMemberships;
 @property (nonatomic, strong) NSSet *teamFollowings;
+@property (nonatomic, retain) NSSet *notifications_mentioned_in;
 
 @property (nonatomic, strong) NSString *accessToken;
 
@@ -110,5 +111,10 @@ extern NSString *const kIPKCurrentUserChangedNotificationName;
 - (void)removeTeamFollowingsObject:(IPKTeamFollowing *)value;
 - (void)addTeamFollowings:(NSSet *)values;
 - (void)removeTeamFollowings:(NSSet *)values;
+
+- (void)addNotifications_mentioned_inObject:(IPKNotification *)value;
+- (void)removeNotifications_mentioned_inObject:(IPKNotification *)value;
+- (void)addNotifications_mentioned_in:(NSSet *)values;
+- (void)removeNotifications_mentioned_in:(NSSet *)values;
 
 @end

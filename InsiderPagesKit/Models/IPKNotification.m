@@ -20,6 +20,7 @@
 @dynamic updatedAt;
 @dynamic user_id;
 @dynamic user;
+@dynamic mentioned_users;
 
 #pragma mark - SSManagedObject
 

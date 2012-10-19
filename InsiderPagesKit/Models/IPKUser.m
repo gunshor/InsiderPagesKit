@@ -56,6 +56,7 @@ static NSString *const kIPKUserIDKey = @"IPKUserID";
 @dynamic reviews;
 @dynamic teamMemberships;
 @dynamic teamFollowings;
+@dynamic notifications_mentioned_in;
 
 @synthesize accessToken;
 

@@ -20,5 +20,15 @@
 @property (nonatomic, strong) NSDate * updatedAt;
 @property (nonatomic, strong) NSNumber * user_id;
 @property (nonatomic, strong) IPKUser *user;
+@property (nonatomic, retain) NSSet *mentioned_users;
+
+@end
+
+@interface IPKNotification (CoreDataGeneratedAccessors)
+
+- (void)addMentioned_usersObject:(IPKUser *)value;
+- (void)removeMentioned_usersObject:(IPKUser *)value;
+- (void)addMentioned_users:(NSSet *)values;
+- (void)removeMentioned_users:(NSSet *)values;
 
 @end

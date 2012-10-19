@@ -41,6 +41,7 @@
         <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="mentioned_users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="notifications_mentioned_in" inverseEntity="IPKUser" syncable="YES"/>
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="notifications" inverseEntity="IPKUser" syncable="YES"/>
     </entity>
     <entity name="IPKPage" representedClassName="IPKPage" syncable="YES">
@@ -178,6 +179,7 @@
         <relationship name="followedUsers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IPKUser" inverseName="followers" inverseEntity="IPKUser" syncable="YES"/>
         <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKUser" inverseName="followedUsers" inverseEntity="IPKUser" syncable="YES"/>
         <relationship name="notifications" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IPKNotification" inverseName="user" inverseEntity="IPKNotification" syncable="YES"/>
+        <relationship name="notifications_mentioned_in" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IPKNotification" inverseName="mentioned_users" inverseEntity="IPKNotification" syncable="YES"/>
         <relationship name="pages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IPKPage" inverseName="owner" inverseEntity="IPKPage" syncable="YES"/>
         <relationship name="referenced_activities" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="IPKActivity" inverseName="user2" inverseEntity="IPKActivity" syncable="YES"/>
         <relationship name="reviews" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="IPKReview" inverseName="reviewer" inverseEntity="IPKReview" syncable="YES"/>
@@ -187,13 +189,13 @@
     <elements>
         <element name="IPKActivity" positionX="0" positionY="0" width="128" height="255"/>
         <element name="IPKAddress" positionX="0" positionY="0" width="128" height="255"/>
-        <element name="IPKNotification" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="IPKNotification" positionX="0" positionY="0" width="128" height="195"/>
         <element name="IPKPage" positionX="0" positionY="0" width="128" height="435"/>
         <element name="IPKProvider" positionX="0" positionY="0" width="128" height="390"/>
         <element name="IPKQueryModel" positionX="0" positionY="0" width="128" height="165"/>
         <element name="IPKReview" positionX="0" positionY="0" width="128" height="345"/>
         <element name="IPKTeamFollowing" positionX="160" positionY="192" width="128" height="120"/>
         <element name="IPKTeamMembership" positionX="160" positionY="192" width="128" height="165"/>
-        <element name="IPKUser" positionX="0" positionY="0" width="128" height="600"/>
+        <element name="IPKUser" positionX="0" positionY="0" width="128" height="615"/>
     </elements>
 </model>
