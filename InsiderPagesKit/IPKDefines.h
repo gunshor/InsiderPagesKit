@@ -12,14 +12,14 @@
 
 // IPKDispatchRelease
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 60000 || MAC_OS_X_VERSION_MIN_REQUIRED >= 1080
-	#define IPKDispatchRelease(queue)
+#define IPKDispatchRelease(queue)
 #else
-	#define IPKDispatchRelease(queue) dispatch_release(queue)
+#define IPKDispatchRelease(queue) dispatch_release(queue)
 #endif
 
 // Always use development on the simulator or Mac app (for now)
 #if !TARGET_IPHONE_SIMULATOR && !TARGET_OS_MAC
-	#define INSIDER_PAGES_PRODUCTION_MODE 1
+#define INSIDER_PAGES_PRODUCTION_MODE 1
 #endif
 
 #pragma mark - API
@@ -70,7 +70,8 @@ enum IPKActivityType {
     IPKActivityTypeCollaborate = 7,
     IPKActivityTypeFavorite = 8,
     IPKActivityTypeRank = 9,
-    IPKActivityTypeAccept = 10
+    IPKActivityTypeAccept = 10,
+    IPKActivityTypeComment = 11
 };
 
 #endif
