@@ -115,6 +115,9 @@
     else if ([self.action isEqualToString:@"accepted"]){
         return IPKActivityTypeAccept;
     }
+    else if ([self.action isEqualToString:@"disqus_create"]){
+        return IPKActivityTypeComment;
+    }
     else{
         return IPKActivityTypeAll;
     }
