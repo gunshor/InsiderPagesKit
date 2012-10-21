@@ -85,6 +85,7 @@
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="last_updated_by_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="listing_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="remoteID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updated_from_ip_at" optional="YES" attributeType="Date" syncable="YES"/>
@@ -191,7 +192,7 @@
         <element name="IPKAddress" positionX="0" positionY="0" width="128" height="255"/>
         <element name="IPKNotification" positionX="0" positionY="0" width="128" height="195"/>
         <element name="IPKPage" positionX="0" positionY="0" width="128" height="435"/>
-        <element name="IPKProvider" positionX="0" positionY="0" width="128" height="390"/>
+        <element name="IPKProvider" positionX="0" positionY="0" width="128" height="405"/>
         <element name="IPKQueryModel" positionX="0" positionY="0" width="128" height="165"/>
         <element name="IPKReview" positionX="0" positionY="0" width="128" height="345"/>
         <element name="IPKTeamFollowing" positionX="160" positionY="192" width="128" height="120"/>

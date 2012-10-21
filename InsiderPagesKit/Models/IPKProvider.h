@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSString * attribution_url;
 @property (nonatomic, strong) NSString * business_name;
+@property (nonatomic, strong) NSString * name;
 @property (nonatomic, strong) NSNumber * cg_listing_id;
 @property (nonatomic, strong) NSNumber * created_by_id;
 @property (nonatomic, strong) NSDate * createdAt;

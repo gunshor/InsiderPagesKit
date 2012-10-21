@@ -20,6 +20,7 @@
 @dynamic createdAt;
 @dynamic description_text;
 @dynamic email_address;
+@dynamic name;
 @dynamic first_name;
 @dynamic last_name;
 @dynamic last_updated_by_id;
@@ -62,6 +63,7 @@
     self.created_by_id = [dictionary safeObjectForKey:@"created_by_id"];
     self.description_text = [dictionary safeObjectForKey:@"description"];
     self.email_address = [dictionary safeObjectForKey:@"email_address"];
+    self.name = [dictionary safeObjectForKey:@"name"];
     self.first_name = [dictionary safeObjectForKey:@"first_name"];
     self.last_name = [dictionary safeObjectForKey:@"last_name"];
     self.last_updated_by_id = [dictionary safeObjectForKey:@"last_updated_by_id"];
