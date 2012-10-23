@@ -74,12 +74,12 @@
     self.listing_type = [dictionary safeObjectForKey:@"listing_type"];
     if (![[dictionary objectForKey:@"primary_address"] isKindOfClass:[NSNull class]]) {
         if ([self.listing_type isEqualToString:@"CgListing"]) {
-            self.address = [IPKAddress MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            self.address = [IPKAddress MR_createInContext:self.managedObjectContext];
             [self.address unpackCityGridDictionary:[dictionary objectForKey:@"primary_address"]];
             self.address.provider = self;
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }else{
-            self.address = [IPKAddress MR_createInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            self.address = [IPKAddress MR_createInContext:self.managedObjectContext];
             [self.address unpackProviderDictionary:[[dictionary objectForKey:@"primary_address"] objectForKey:@"address"]];
             self.address.provider = self;
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
