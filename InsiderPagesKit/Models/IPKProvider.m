@@ -107,10 +107,9 @@
     
     NSString * path = [NSString stringWithFormat:@"providers/%@",self.remoteID];
     [[IPKHTTPClient sharedClient] getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        IPKProvider * threadedProvider = [self MR_inThreadContext];
         NSDictionary * responseDictionary = responseObject;
         NSString * key = [[responseDictionary allKeys] objectAtIndex:0];
-        [threadedProvider unpackDictionary:[responseDictionary objectForKey:key]];
+        [self unpackDictionary:[responseDictionary objectForKey:key]];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         if (success) {
             success();
