@@ -257,7 +257,8 @@
 
 
 - (BOOL)shouldUnpackDictionary:(NSDictionary *)dictionary {
-	return self.updatedAt == nil || [self.updatedAt isEqualToDate:[[self class] parseDate:[dictionary objectForKey:@"updated_at"]]] == NO;
+//	return self.updatedAt == nil || [self.updatedAt isEqualToDate:[[self class] parseDate:[dictionary objectForKey:@"updated_at"]]] == NO;
+    return YES;
 }
 
 
