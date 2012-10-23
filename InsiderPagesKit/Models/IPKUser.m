@@ -114,7 +114,7 @@ static IPKUser *__currentUser = nil;
 
 - (NSString *)imageProfilePathForSize:(enum IPKUserProfileImageSize)size{
     NSString * imageProfilePath = nil;
-    if (self.image_file_name == nil){
+//    if (self.image_file_name == nil){
         NSString * fb_size = nil;
         switch (size) {
             case IPKUserProfileImageSizeNano:
@@ -133,9 +133,9 @@ static IPKUser *__currentUser = nil;
                 break;
         }
         imageProfilePath = [self.image_profile_path stringByAppendingString:fb_size];
-    }else{
-        imageProfilePath = [@"http://s3.amazonaws.com/ip2-storage/qa/user_images/5359006813/mini/" stringByAppendingString:self.image_file_name];
-    }
+//    }else{
+//        imageProfilePath = [@"http://s3.amazonaws.com/ip2-storage/qa/user_images/5359006813/mini/" stringByAppendingString:self.image_file_name];
+//    }
     
     return imageProfilePath;
 }
