@@ -102,6 +102,8 @@ enum IPKTrackableType;
 #pragma mark - Notifications
 - (void)getNotificationsWithCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
+- (void)markNotificationsReadWithSuccess:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
+
 - (void)registerForNotificationsWithToken:(NSString*)token uuid:(NSString*)uuidString success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure;
 
 #pragma mark - Scoops

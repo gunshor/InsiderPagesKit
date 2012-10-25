@@ -972,6 +972,31 @@ static NSString* __baseAPIHost = @"";
     }];
 }
 
+- (void)markNotificationsReadWithSuccess:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            perPage, @"per_page",
+                            currentPage, @"page",
+                            nil];
+    [self getPath:@"mark_notifications_read" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if ([responseObject objectForKey:@"success"]) {
+            IPKUser * currentUser = [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            [currentUser.notifications enumerateObjectsUsingBlock:^(IPKNotification * n, BOOL * stop){
+                n.read = @(YES);
+            }];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        }
+        
+        if (success) {
+            success((AFJSONRequestOperation *)operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure((AFJSONRequestOperation *)operation, error);
+        }
+    }];
+}
+
 - (void)registerForNotificationsWithToken:(NSString*)token uuid:(NSString*)uuidString success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             token, @"apn_token",
