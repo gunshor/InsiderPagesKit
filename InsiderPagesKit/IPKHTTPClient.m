@@ -973,11 +973,8 @@ static NSString* __baseAPIHost = @"";
 }
 
 - (void)markNotificationsReadWithSuccess:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            perPage, @"per_page",
-                            currentPage, @"page",
-                            nil];
-    [self getPath:@"mark_notifications_read" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+    [self getPath:@"mark_notifications_read" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if ([responseObject objectForKey:@"success"]) {
             IPKUser * currentUser = [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
