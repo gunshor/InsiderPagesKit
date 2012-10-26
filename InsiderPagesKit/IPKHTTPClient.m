@@ -304,7 +304,7 @@ static NSString* __baseAPIHost = @"";
                             , @"team",
                             nil];
     [self postPath:@"teams" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [IPKPage objectWithDictionary:[responseObject objectForKey:@"team"]];
+        [page unpackDictionary:[responseObject objectForKey:@"team"]];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
         if (success) {
