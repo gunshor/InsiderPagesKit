@@ -957,7 +957,9 @@ static NSString* __baseAPIHost = @"";
             IPKUser * currentUser = [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             for (NSDictionary* notificationDictionary in [responseObject objectForKey:@"notifications"]) {
                 IPKNotification * n = [IPKNotification objectWithDictionary:notificationDictionary];
-                [currentUser addNotificationsObject:n];
+                if (![currentUser.notifications containsObject:n]) {
+                    [currentUser addNotificationsObject:n];
+                }
             }
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
