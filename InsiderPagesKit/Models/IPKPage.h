@@ -12,6 +12,7 @@
 @class IPKReview;
 @class IPKTeamMembership;
 @class IPKTeamFollowing;
+@class IPKActivity;
 
 @interface IPKPage : IPKAbstractModel
 
