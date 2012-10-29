@@ -705,10 +705,14 @@ static NSString* __baseAPIHost = @"";
             for (NSDictionary* userDictionary in [responseObject objectForKey:@"collaborators"]) {
                 IPKUser * user = [IPKUser objectWithDictionary:userDictionary];
                 IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:user.remoteID andTeamID:@([pageId longLongValue]) privilege:@(1)];
+                IPKPage * page = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
+                [page addFollowersObject:user];
             }
         }else if ([[responseObject objectForKey:@"collaborators"] isKindOfClass:[NSDictionary class]]) {
             IPKUser * user = [IPKUser objectWithDictionary:[responseObject objectForKey:@"collaborators"]];
             IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:user.remoteID andTeamID:@([pageId longLongValue]) privilege:@(1)];
+            IPKPage * page = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
+            [page addFollowersObject:user];
         }
         
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
