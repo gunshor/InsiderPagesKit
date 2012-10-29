@@ -130,6 +130,7 @@ static IPKUser *__currentUser = nil;
                 fb_size = @"normal";
                 break;
             default:
+                fb_size = @"normal";
                 break;
         }
         imageProfilePath = [self.image_profile_path stringByAppendingString:fb_size];
