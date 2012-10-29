@@ -49,33 +49,34 @@
 
 @interface IPKPage (CoreDataGeneratedAccessors)
 
-- (void)addFollowersObject:(IPKUser *)value;
-- (void)removeFollowersObject:(IPKUser *)value;
-- (void)addFollowers:(NSSet *)values;
-- (void)removeFollowers:(NSSet *)values;
+- (void)addActivitiesObject:(IPKActivity *)value;
+- (void)removeActivitiesObject:(IPKActivity *)value;
+- (void)addActivities:(NSSet *)values;
+- (void)removeActivities:(NSSet *)values;
+
+- (void)addFollowing_usersObject:(IPKUser *)value;
+- (void)removeFollowing_usersObject:(IPKUser *)value;
+- (void)addFollowing_users:(NSSet *)values;
+- (void)removeFollowing_users:(NSSet *)values;
 
 - (void)insertObject:(IPKProvider *)value inProvidersAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromProvidersAtIndex:(NSUInteger)idx;
 - (void)insertProviders:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
-
 - (void)removeProvidersAtIndexes:(NSIndexSet *)indexes;
 - (void)replaceObjectInProvidersAtIndex:(NSUInteger)idx withObject:(IPKProvider *)value;
 - (void)replaceProvidersAtIndexes:(NSIndexSet *)indexes withProviders:(NSArray *)values;
-
 - (void)addProvidersObject:(IPKProvider *)value;
 - (void)removeProvidersObject:(IPKProvider *)value;
-
 - (void)addProviders:(NSOrderedSet *)values;
 - (void)removeProviders:(NSOrderedSet *)values;
+- (void)addTeamFollowingsObject:(IPKTeamFollowing *)value;
+- (void)removeTeamFollowingsObject:(IPKTeamFollowing *)value;
+- (void)addTeamFollowings:(NSSet *)values;
+- (void)removeTeamFollowings:(NSSet *)values;
 
 - (void)addTeamMembershipsObject:(IPKTeamMembership *)value;
 - (void)removeTeamMembershipsObject:(IPKTeamMembership *)value;
 - (void)addTeamMemberships:(NSSet *)values;
 - (void)removeTeamMemberships:(NSSet *)values;
-
-- (void)addTeamFollowingsObject:(IPKTeamFollowing *)value;
-- (void)removeTeamFollowingsObject:(IPKTeamFollowing *)value;
-- (void)addTeamFollowings:(NSSet *)values;
-- (void)removeTeamFollowings:(NSSet *)values;
 
 @end
