@@ -25,7 +25,6 @@
 @dynamic sort;
 @dynamic updatedAt;
 @dynamic user_id;
-@dynamic section_header;
 @dynamic is_favorite;
 @dynamic is_following;
 @dynamic is_collaborator;
