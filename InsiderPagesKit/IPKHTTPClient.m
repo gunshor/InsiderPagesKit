@@ -285,6 +285,8 @@ static NSString* __baseAPIHost = @"";
         for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
             IPKPage * page = nil;
             page = [IPKPage objectWithDictionary:pageDictionary];
+            IPKUser * user = [IPKUser objectWithRemoteID:@([userId longLongValue])];
+            [page addFollowing_usersObject:user];
         }
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         
