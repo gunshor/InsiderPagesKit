@@ -92,28 +92,10 @@
     else {
         self.is_collaborator = [NSNumber numberWithBool:NO];
     }
-    if ([self.is_favorite boolValue]) {
-        self.section_header = @"Favorite";
-    }else if ([self.is_following boolValue]){
-        self.section_header = @"Following";
-    }else if([self.user_id isEqualToNumber:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID]){
-        self.section_header = @"Mine";
-    }
+
     self.comment_count = [dictionary safeObjectForKey:@"comment_count"];
     self.collaborator_count = [dictionary safeObjectForKey:@"collaborator_count"];
     self.business_count = [dictionary safeObjectForKey:@"business_count"];
-}
-
--(void)updateSectionHeader{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *userID = [userDefaults objectForKey:@"IPKUserID"];
-    if ([self.is_favorite boolValue]) {
-        self.section_header = @"Favorite";
-    }else if ([self.is_following boolValue]){
-        self.section_header = @"Following";
-    }else if([self.user_id isEqualToNumber:userID]){
-        self.section_header = @"Mine";
-    }
 }
 
 - (void)update {
