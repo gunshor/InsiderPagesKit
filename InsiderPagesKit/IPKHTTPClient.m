@@ -278,10 +278,14 @@ static NSString* __baseAPIHost = @"";
     }];
 }
 
-- (void)getFollowingPagesForUserWithId:(NSString*)userId success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+- (void)getFollowingPagesForUserWithId:(NSString*)userId withCurrentPage:(NSNumber*)currentPage perPage:(NSNumber*)perPage success:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            perPage, @"per_page",
+                            currentPage, @"page",
+                            nil];
     NSString *url = [NSString stringWithFormat:@"users/%@/following_teams", userId];
     
-    [self getPath:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self getPath:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         for (NSDictionary* pageDictionary in [responseObject objectForKey:@"teams"]) {
             IPKPage * page = nil;
             page = [IPKPage objectWithDictionary:pageDictionary];
