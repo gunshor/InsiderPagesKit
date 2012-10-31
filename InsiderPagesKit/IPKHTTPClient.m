@@ -986,9 +986,10 @@ static NSString* __baseAPIHost = @"";
         
         if ([responseObject objectForKey:@"success"]) {
             IPKUser * currentUser = [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-            [currentUser.notifications enumerateObjectsUsingBlock:^(IPKNotification * n, BOOL * stop){
+            NSArray * unreadNotificationsArray = [[currentUser.notifications filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"read == NO"]] allObjects];
+            for (IPKNotification * n  in unreadNotificationsArray) {
                 n.read = @(YES);
-            }];
+            }
             [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
         }
         
