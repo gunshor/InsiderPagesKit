@@ -133,4 +133,13 @@
     }
 }
 
+- (void)insertObject:(IPKProvider *)value inTop_listingsAtIndex:(NSUInteger)idx {
+    NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
+    [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"top_listings"];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self mutableOrderedSetValueForKey:@"top_listings"]];
+    [tmpOrderedSet insertObject:value atIndex:idx];
+    [self setPrimitiveValue:tmpOrderedSet forKey:@"top_listings"];
+    [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"top_listings"];
+}
+
 @end
