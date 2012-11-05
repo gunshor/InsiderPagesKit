@@ -11,6 +11,7 @@
 @class IPKReview;
 @class IPKAddress;
 @class IPKTeamMembership;
+@class IPKActivity;
 
 @interface IPKProvider : IPKAbstractModel
 
