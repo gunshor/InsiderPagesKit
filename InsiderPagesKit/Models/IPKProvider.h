@@ -38,6 +38,7 @@
 @property (nonatomic, strong) NSSet *activities;
 @property (nonatomic, strong) IPKAddress * address;
 @property (nonatomic, retain) NSSet *teamMemberships;
+@property (nonatomic, retain) NSSet *rank_activities;
 
 -(NSDictionary*)packToDictionary;
 -(NSString*)full_name;
@@ -46,6 +47,11 @@
 @end
 
 @interface IPKProvider (CoreDataGeneratedAccessors)
+
+- (void)addActivitiesObject:(IPKActivity *)value;
+- (void)removeActivitiesObject:(IPKActivity *)value;
+- (void)addActivities:(NSSet *)values;
+- (void)removeActivities:(NSSet *)values;
 
 - (void)addPagesObject:(IPKPage *)value;
 - (void)removePagesObject:(IPKPage *)value;
@@ -56,5 +62,10 @@
 - (void)removeTeamMembershipsObject:(IPKTeamMembership *)value;
 - (void)addTeamMemberships:(NSSet *)values;
 - (void)removeTeamMemberships:(NSSet *)values;
+
+- (void)addRank_activitiesObject:(IPKActivity *)value;
+- (void)removeRank_activitiesObject:(IPKActivity *)value;
+- (void)addRank_activities:(NSSet *)values;
+- (void)removeRank_activities:(NSSet *)values;
 
 @end

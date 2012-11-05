@@ -22,11 +22,26 @@
 @property (nonatomic, strong) NSNumber * visibility;
 @property (nonatomic, strong) IPKPage *page;
 @property (nonatomic, strong) IPKProvider *provider;
-@property (nonatomic, strong) IPKReview *review;
+@property (nonatomic, retain) IPKReview *review;
 @property (nonatomic, strong) IPKUser *user;
 @property (nonatomic, strong) IPKUser *user2;
+@property (nonatomic, retain) NSOrderedSet *top_listings;
 
 -(enum IPKTrackableType)trackableType;
 -(enum IPKActivityType)activityType;
-
 @end
+
+@interface IPKActivity (CoreDataGeneratedAccessors)
+
+- (void)insertObject:(IPKProvider *)value inTop_listingsAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromTop_listingsAtIndex:(NSUInteger)idx;
+- (void)insertTop_listings:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removeTop_listingsAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInTop_listingsAtIndex:(NSUInteger)idx withObject:(IPKProvider *)value;
+- (void)replaceTop_listingsAtIndexes:(NSIndexSet *)indexes withTop_listings:(NSArray *)values;
+- (void)addTop_listingsObject:(IPKProvider *)value;
+- (void)removeTop_listingsObject:(IPKProvider *)value;
+- (void)addTop_listings:(NSOrderedSet *)values;
+- (void)removeTop_listings:(NSOrderedSet *)values;
+@end
+

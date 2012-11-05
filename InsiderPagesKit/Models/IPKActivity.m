@@ -61,6 +61,16 @@
         self.user2 = [IPKUser objectWithDictionary:[dictionary safeObjectForKey:@"trackable"]];
     }
     self.visibility = [dictionary safeObjectForKey:@"visibility"];
+    
+    if ([dictionary safeObjectForKey:@"top_listings"]){
+        for (int i = 0; i < 3; i++ ) {
+            NSDictionary * providerDictionary = [[dictionary safeObjectForKey:@"top_listings"] objectAtIndex:i];
+            IPKProvider * provider = [IPKProvider objectWithDictionary:providerDictionary context:self.managedObjectContext];
+            if (![self.top_listings containsObject:provider]) {
+                [self insertObject:provider inTop_listingsAtIndex:i];
+            }
+        }
+    }
 }
 
 -(enum IPKTrackableType)trackableType{
