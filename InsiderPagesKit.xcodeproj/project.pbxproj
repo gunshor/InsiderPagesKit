@@ -48,9 +48,6 @@
 		FD67CD861649F1D0000D3F49 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = FD67CD6B1649F1D0000D3F49 /* UIImageView+AFNetworking.h */; };
 		FD67CD871649F1D0000D3F49 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FD67CD6C1649F1D0000D3F49 /* UIImageView+AFNetworking.m */; };
 		FD67CD881649F1D0000D3F49 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = FD67CD6C1649F1D0000D3F49 /* UIImageView+AFNetworking.m */; };
-		FD67CD8C1649F1F4000D3F49 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = FD67CD8A1649F1F4000D3F49 /* Reachability.h */; };
-		FD67CD8D1649F1F4000D3F49 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FD67CD8B1649F1F4000D3F49 /* Reachability.m */; };
-		FD67CD8E1649F1F4000D3F49 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FD67CD8B1649F1F4000D3F49 /* Reachability.m */; };
 		FD764C3B15C9CADE00A3D10A /* IPKDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = FD764B9015C9CADE00A3D10A /* IPKDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD764C3C15C9CADE00A3D10A /* IPKDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9115C9CADE00A3D10A /* IPKDefines.m */; };
 		FD764C3D15C9CADE00A3D10A /* IPKDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764B9115C9CADE00A3D10A /* IPKDefines.m */; };
@@ -280,8 +277,6 @@
 		FD67CD6A1649F1D0000D3F49 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		FD67CD6B1649F1D0000D3F49 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		FD67CD6C1649F1D0000D3F49 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		FD67CD8A1649F1F4000D3F49 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Reachability/Reachability.h; sourceTree = "<group>"; };
-		FD67CD8B1649F1F4000D3F49 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Reachability/Reachability.m; sourceTree = "<group>"; };
 		FD764B9015C9CADE00A3D10A /* IPKDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKDefines.h; sourceTree = "<group>"; };
 		FD764B9115C9CADE00A3D10A /* IPKDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPKDefines.m; sourceTree = "<group>"; };
 		FD764B9215C9CADE00A3D10A /* IPKHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPKHTTPClient.h; sourceTree = "<group>"; };
@@ -510,15 +505,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FD67CD891649F1E7000D3F49 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				FD67CD8A1649F1F4000D3F49 /* Reachability.h */,
-				FD67CD8B1649F1F4000D3F49 /* Reachability.m */,
-			);
-			name = Reachability;
-			sourceTree = "<group>";
-		};
 		FD764B8F15C9CADE00A3D10A /* InsiderPagesKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -560,7 +546,6 @@
 		FD764F6715C9D52E00A3D10A /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				FD67CD891649F1E7000D3F49 /* Reachability */,
 				FDC0568915FE995B00D70678 /* AFNetworking */,
 				FD9AB89B15E40A0F0049B2C0 /* MagicalRecord */,
 				FD76546015C9D53200A3D10A /* Reachability */,
@@ -893,7 +878,6 @@
 				FD67CD801649F1D0000D3F49 /* AFURLConnectionOperation.h in Headers */,
 				FD67CD831649F1D0000D3F49 /* AFXMLRequestOperation.h in Headers */,
 				FD67CD861649F1D0000D3F49 /* UIImageView+AFNetworking.h in Headers */,
-				FD67CD8C1649F1F4000D3F49 /* Reachability.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1086,7 +1070,6 @@
 				FD67CD811649F1D0000D3F49 /* AFURLConnectionOperation.m in Sources */,
 				FD67CD841649F1D0000D3F49 /* AFXMLRequestOperation.m in Sources */,
 				FD67CD871649F1D0000D3F49 /* UIImageView+AFNetworking.m in Sources */,
-				FD67CD8D1649F1F4000D3F49 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1150,7 +1133,6 @@
 				FD67CD821649F1D0000D3F49 /* AFURLConnectionOperation.m in Sources */,
 				FD67CD851649F1D0000D3F49 /* AFXMLRequestOperation.m in Sources */,
 				FD67CD881649F1D0000D3F49 /* UIImageView+AFNetworking.m in Sources */,
-				FD67CD8E1649F1F4000D3F49 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
