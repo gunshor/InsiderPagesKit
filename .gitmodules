@@ -3,7 +3,7 @@
 	url = https://github.com/samsoffes/sskeychain.git
 [submodule "InsiderPagesKit/Vendor/SSDataKit"]
 	path = InsiderPagesKit/Vendor/SSDataKit
-	url = git@github.com:jstart/ssdatakit.git
+	url = git://github.com/jstart/ssdatakit.git
 [submodule "InsiderPagesKit/Vendor/AFIncrementalStore"]
 	path = InsiderPagesKit/Vendor/AFIncrementalStore
 	url = https://github.com/AFNetworking/AFIncrementalStore.git

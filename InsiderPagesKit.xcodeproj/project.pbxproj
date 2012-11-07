@@ -37,7 +37,6 @@
 		FD764C5915C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FD764BA415C9CADE00A3D10A /* NSString+InsiderPagesKit.m */; };
 		FD764CE815C9CB1400A3D10A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD764CE715C9CB1400A3D10A /* Cocoa.framework */; };
 		FD7655C415C9D53400A3D10A /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76548215C9D53200A3D10A /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD7655C515C9D53400A3D10A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548315C9D53200A3D10A /* Reachability.m */; };
 		FD7655C615C9D53400A3D10A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76548315C9D53200A3D10A /* Reachability.m */; };
 		FD7655CA15C9D53400A3D10A /* SSDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76548A15C9D53200A3D10A /* SSDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD7655E015C9D53400A3D10A /* SSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = FD76549F15C9D53200A3D10A /* SSKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1028,7 +1027,6 @@
 				FD764C3F15C9CADE00A3D10A /* IPKHTTPClient.m in Sources */,
 				FD764C4815C9CADE00A3D10A /* IPKRemoteManagedObject.m in Sources */,
 				FD764C5815C9CADE00A3D10A /* NSString+InsiderPagesKit.m in Sources */,
-				FD7655C515C9D53400A3D10A /* Reachability.m in Sources */,
 				FD7655E115C9D53400A3D10A /* SSKeychain.m in Sources */,
 				FD7656A115CA053100A3D10A /* IPKQueryModel.m in Sources */,
 				FD7656BA15CAF2B500A3D10A /* IPKTag.m in Sources */,
