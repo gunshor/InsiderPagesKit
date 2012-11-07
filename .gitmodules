@@ -12,7 +12,7 @@
 	url = https://github.com/samsoffes/bully.git
 [submodule "InsiderPagesKit/Vendor/Reachability"]
 	path = InsiderPagesKit/Vendor/Reachability
-	url = https://github.com/samsoffes/Reachability.git
+	url = git://github.com/tonymillion/Reachability.git
 [submodule "InsiderPagesKit/Vendor/MagicalRecord"]
 	path = InsiderPagesKit/Vendor/MagicalRecord
 	url = git://github.com/magicalpanda/MagicalRecord.git
