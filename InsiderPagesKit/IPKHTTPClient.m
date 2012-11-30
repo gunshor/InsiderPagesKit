@@ -109,9 +109,9 @@ static NSString* __baseAPIHost = @"";
         user.fb_access_token = fbAccessToken;
         NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
         user.accessToken = [cookie value];
-        [IPKUser setCurrentUser:user];
         [context MR_save];
-        
+        [IPKUser setCurrentUser:user];
+
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
         }
