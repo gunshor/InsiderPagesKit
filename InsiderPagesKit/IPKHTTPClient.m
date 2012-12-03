@@ -105,7 +105,7 @@ static NSString* __baseAPIHost = @"";
     
     [self postPath:@"login" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
-        IPKUser *user = [IPKUser objectWithDictionary:[responseObject objectForKey:@"user"]];
+        IPKUser *user = [IPKUser objectWithDictionary:[responseObject objectForKey:@"user"] context:context];
         user.fb_access_token = fbAccessToken;
         NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
         user.accessToken = [cookie value];

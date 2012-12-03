@@ -97,7 +97,7 @@ static IPKUser *__currentUser = nil;
     }else{
         return [__currentUser MR_inContext:localContext];
     }
-
+    
 	return __currentUser;
 }
 
@@ -109,34 +109,34 @@ static IPKUser *__currentUser = nil;
 
 
 -(void)dealloc{
-
+    
 }
 
 - (NSString *)imageProfilePathForSize:(enum IPKUserProfileImageSize)size{
     NSString * imageProfilePath = nil;
-//    if (self.image_file_name == nil){
-        NSString * fb_size = nil;
-        switch (size) {
-            case IPKUserProfileImageSizeNano:
-                fb_size = @"nano";
-                break;
-            case IPKUserProfileImageSizeMini:
-                fb_size = @"nano";
-                break;
-            case IPKUserProfileImageSizeThumb:
-                fb_size = @"normal";
-                break;
-            case IPKUserProfileImageSizeMedium:
-                fb_size = @"normal";
-                break;
-            default:
-                fb_size = @"normal";
-                break;
-        }
-        imageProfilePath = [self.image_profile_path stringByAppendingString:fb_size];
-//    }else{
-//        imageProfilePath = [@"http://s3.amazonaws.com/ip2-storage/qa/user_images/5359006813/mini/" stringByAppendingString:self.image_file_name];
-//    }
+    //    if (self.image_file_name == nil){
+    NSString * fb_size = nil;
+    switch (size) {
+        case IPKUserProfileImageSizeNano:
+            fb_size = @"nano";
+            break;
+        case IPKUserProfileImageSizeMini:
+            fb_size = @"nano";
+            break;
+        case IPKUserProfileImageSizeThumb:
+            fb_size = @"normal";
+            break;
+        case IPKUserProfileImageSizeMedium:
+            fb_size = @"normal";
+            break;
+        default:
+            fb_size = @"normal";
+            break;
+    }
+    imageProfilePath = [self.image_profile_path stringByAppendingString:fb_size];
+    //    }else{
+    //        imageProfilePath = [@"http://s3.amazonaws.com/ip2-storage/qa/user_images/5359006813/mini/" stringByAppendingString:self.image_file_name];
+    //    }
     
     return imageProfilePath;
 }
@@ -147,14 +147,14 @@ static IPKUser *__currentUser = nil;
 }
 
 + (void)setCurrentUser:(IPKUser *)user {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	[userDefaults setObject:user.remoteID forKey:kIPKUserIDKey];
+	[userDefaults synchronize];
+    
 	if ([IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]]) {
 		[SSKeychain deletePasswordForService:kIPKKeychainServiceName account:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID.description];
 	}
-
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	[userDefaults setObject:user.remoteID forKey:kIPKUserIDKey];
-	[userDefaults synchronize];
-	
+    
 	[SSKeychain setPassword:user.accessToken forService:kIPKKeychainServiceName account:user.remoteID.description];
 }
 
