@@ -109,7 +109,9 @@ static NSString* __baseAPIHost = @"";
         user.fb_access_token = fbAccessToken;
         NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
         user.accessToken = [cookie value];
-        [context MR_save];
+        [context MR_saveInBackgroundErrorHandler:^(NSError *error){
+            NSLog(@"%@", error);
+        }];
         [IPKUser setCurrentUser:user];
 
         if (success) {
