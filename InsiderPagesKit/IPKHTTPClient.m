@@ -51,7 +51,7 @@ static NSString* __baseAPIHost = @"";
 - (id)init {
 	NSURL *base = nil;
 	NSString *version = [[self class] apiVersion];
-		base = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@/%@/", kIPKDevelopmentAPIScheme, __baseAPIHost, version]];
+    base = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@/%@/", kIPKDevelopmentAPIScheme, __baseAPIHost, version]];
 	
 	if ((self = [super initWithBaseURL:base])) {
 		// Use JSON
@@ -104,16 +104,18 @@ static NSString* __baseAPIHost = @"";
                             nil];
     
     [self postPath:@"login" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
-        IPKUser *user = [IPKUser objectWithDictionary:[responseObject objectForKey:@"user"] context:context];
-        user.fb_access_token = fbAccessToken;
-        NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
-        user.accessToken = [cookie value];
-        [context MR_saveInBackgroundErrorHandler:^(NSError *error){
-            NSLog(@"%@", error);
+        
+        NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
+        [context performBlockAndWait:^() {
+            IPKUser *user = [IPKUser objectWithDictionary:[responseObject objectForKey:@"user"]];
+            user.fb_access_token = fbAccessToken;
+            NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
+            user.accessToken = [cookie value];
+            [context MR_saveNestedContexts];
+            [IPKUser setCurrentUser:user];
         }];
-        [IPKUser setCurrentUser:user];
-
+        
+        
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
         }
@@ -964,7 +966,7 @@ static NSString* __baseAPIHost = @"";
                             currentPage, @"page",
                             nil];
     [self getPath:@"notifications" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
+        
         if ([[responseObject objectForKey:@"notifications"] isKindOfClass:[NSArray class]]) {
             IPKUser * currentUser = [IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             for (NSDictionary* notificationDictionary in [responseObject objectForKey:@"notifications"]) {
@@ -987,7 +989,7 @@ static NSString* __baseAPIHost = @"";
 }
 
 - (void)markNotificationsReadWithSuccess:(IPKHTTPClientSuccess)success failure:(IPKHTTPClientFailure)failure{
-
+    
     [self getPath:@"mark_notifications_read" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if ([responseObject objectForKey:@"success"]) {
