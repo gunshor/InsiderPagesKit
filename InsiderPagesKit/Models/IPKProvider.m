@@ -93,7 +93,7 @@
     if (![self.first_name isEqualToString:@""] && ![self.last_name isEqualToString:@""] && self.first_name != nil && self.last_name != nil) {
         return [self.first_name stringByAppendingFormat:@" %@", self.last_name];
     }
-    return self.business_name;
+    return self.name;
 }
 
 -(NSString*)listing_id{
