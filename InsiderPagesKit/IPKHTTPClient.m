@@ -111,7 +111,7 @@ static NSString* __baseAPIHost = @"";
             user.fb_access_token = fbAccessToken;
             NSHTTPCookie *cookie = [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] objectAtIndex:0];
             user.accessToken = [cookie value];
-            [context MR_saveNestedContexts];
+            [context MR_saveToPersistentStoreWithCompletion:nil];
             [IPKUser setCurrentUser:user];
         }];
         
@@ -152,7 +152,7 @@ static NSString* __baseAPIHost = @"";
         [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] addFollowedPagesObject:pageToFollow];
         [pageToFollow setIs_following:[NSNumber numberWithBool:YES]];
         [pageToFollow updateSectionHeader];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -174,7 +174,7 @@ static NSString* __baseAPIHost = @"";
         if (operation.response.statusCode != 403) {
             IPKUser * userToFollow = [IPKUser objectWithRemoteID:@([userId longLongValue])];
             [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] addFollowedUsersObject:userToFollow];
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         }
         
         if (success) {
@@ -199,7 +199,7 @@ static NSString* __baseAPIHost = @"";
         [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] removeFollowedPagesObject:pageToFollow];
         [pageToFollow setIs_following:[NSNumber numberWithBool:NO]];
         [pageToFollow updateSectionHeader];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -219,7 +219,7 @@ static NSString* __baseAPIHost = @"";
     [self deletePath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         IPKUser * userToUnfollow = [IPKUser objectWithRemoteID:@([userId longLongValue])];
         [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] removeFollowedUsersObject:userToUnfollow];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -250,7 +250,7 @@ static NSString* __baseAPIHost = @"";
         }else{
             [IPKPage objectWithDictionary:[responseObject objectForKey:@"teams"]];
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -270,7 +270,7 @@ static NSString* __baseAPIHost = @"";
             IPKPage * page = nil;
             page = [IPKPage objectWithDictionary:pageDictionary];
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -296,7 +296,7 @@ static NSString* __baseAPIHost = @"";
             IPKUser * user = [IPKUser objectWithRemoteID:@([userId longLongValue])];
             [page addFollowing_usersObject:user];
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -315,7 +315,7 @@ static NSString* __baseAPIHost = @"";
                             nil];
     [self postPath:@"teams" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [page unpackDictionary:[responseObject objectForKey:@"team"]];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -351,7 +351,7 @@ static NSString* __baseAPIHost = @"";
     
     [[IPKHTTPClient sharedClient] getPath:@"users" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [IPKUser objectWithDictionary:responseObject];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -389,7 +389,7 @@ static NSString* __baseAPIHost = @"";
             [requestedUser addFollowersObject:user];
             [user addFollowedUsersObject:requestedUser];
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -413,7 +413,7 @@ static NSString* __baseAPIHost = @"";
         }else{
             [IPKUser objectWithDictionary:[responseObject objectForKey:@"following"]];
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -451,7 +451,7 @@ static NSString* __baseAPIHost = @"";
                     [teamMembership setPollaverage:@(YES)];
                 }
             }
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
             
             if (sortUser == nil) {
                 NSArray * teamMemberships = [IPKTeamMembership MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"team_id == %@ && pollaverage == 1", @([pageId longLongValue])] inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
@@ -482,7 +482,7 @@ static NSString* __baseAPIHost = @"";
                     }
                 }
             }
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         });
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -506,7 +506,7 @@ static NSString* __baseAPIHost = @"";
         }else{
             [IPKUser objectWithDictionary:[responseObject objectForKey:@"followers"]];
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -535,7 +535,7 @@ static NSString* __baseAPIHost = @"";
             IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
             tm.position = @(tm.position.intValue + 1);
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -559,12 +559,12 @@ static NSString* __baseAPIHost = @"";
         IPKTeamMembership * teamMembership = [IPKTeamMembership createMembershipForUserID:currentUser.remoteID teamID:page.remoteID listingID:provider.remoteID];
         teamMembership.position = @(1);
         teamMembership.pollaverage = @(NO);
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         NSMutableArray * teamMemberships = [[IPKTeamMembership MR_findAllSortedBy:@"position" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"owner_id == %@ && team_id == %@ && listing_id != %@",currentUser.remoteID, @([pageId longLongValue]), provider.remoteID] inContext:[NSManagedObjectContext MR_contextForCurrentThread]] mutableCopy];
         for (int i = 0; i < teamMemberships.count; i++) {
             IPKTeamMembership * tm = [teamMemberships objectAtIndex:i];
             tm.position = @(tm.position.intValue + 1);
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         }
         
         if (success) {
@@ -594,11 +594,11 @@ static NSString* __baseAPIHost = @"";
                 if (tm.position.intValue > teamMembership.position.intValue) {
                     
                     ((IPKTeamMembership*)[tm MR_inThreadContext]).position = @(tm.position.intValue - 1);
-                    [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+                    [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
                 }
             }
             [teamMembership MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         });
         
         if (success) {
@@ -652,7 +652,7 @@ static NSString* __baseAPIHost = @"";
             }
         }
         page.is_collaborator = @(YES);
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -695,7 +695,7 @@ static NSString* __baseAPIHost = @"";
                 }
             }
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -725,7 +725,7 @@ static NSString* __baseAPIHost = @"";
             [page addFollowing_usersObject:user];
         }
         
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -746,7 +746,7 @@ static NSString* __baseAPIHost = @"";
         //only invite do not accept and create team following
         //        IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
         //        IPKTeamFollowing * teamFollowing = [IPKTeamFollowing createFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId longLongValue]) privilege:@(1)];
-        //        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        //        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -768,7 +768,7 @@ static NSString* __baseAPIHost = @"";
         IPKTeamFollowing * teamFollowing = [IPKTeamFollowing teamFollowingForUserID:[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]].remoteID andTeamID:@([pageId longLongValue])];
         [teamFollowing MR_deleteInContext:[NSManagedObjectContext MR_contextForCurrentThread]];
         
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -786,7 +786,7 @@ static NSString* __baseAPIHost = @"";
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
         [page setIs_favorite:[NSNumber numberWithBool:YES]];
         [page updateSectionHeader];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -805,7 +805,7 @@ static NSString* __baseAPIHost = @"";
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
         [page setIs_favorite:[NSNumber numberWithBool:NO]];
         [page updateSectionHeader];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -827,18 +827,18 @@ static NSString* __baseAPIHost = @"";
         if ([[responseObject objectForKey:@"pages"] isKindOfClass:[NSArray class]]) {
             for (NSDictionary * pageDictionary in [responseObject objectForKey:@"pages"]) {
                 IPKPage * page = [IPKPage objectWithDictionary:pageDictionary];
-                [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+                [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
                 IPKProvider * provider = [IPKProvider objectWithRemoteID:@([providerId longLongValue])];
                 [page addProvidersObject:provider];
             }
         }else{
             IPKPage * page = [IPKPage objectWithDictionary:[responseObject objectForKey:@"pages"]];
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
             IPKProvider * provider = [IPKProvider objectWithRemoteID:@([providerId longLongValue])];
             [page addProvidersObject:provider];
         }
         
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
         }
@@ -856,7 +856,7 @@ static NSString* __baseAPIHost = @"";
         for (NSDictionary * providerDictionary in [responseObject objectForKey:@"results"]) {
             [IPKProvider objectWithDictionary:providerDictionary];
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -874,7 +874,7 @@ static NSString* __baseAPIHost = @"";
         for (NSDictionary * insiderDictionary in [responseObject objectForKey:@"results"]) {
             [IPKUser objectWithDictionary:insiderDictionary];
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -896,7 +896,7 @@ static NSString* __baseAPIHost = @"";
         }else{
             [IPKPage objectWithDictionary:[responseObject objectForKey:@"results"]];
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -923,7 +923,7 @@ static NSString* __baseAPIHost = @"";
         for (NSDictionary* activityDictionary in [responseObject objectForKey:@"activities"]) {
             [IPKActivity objectWithDictionary:activityDictionary context:[NSManagedObjectContext MR_contextForCurrentThread]];
         }
-        [context MR_saveNestedContexts];
+        [context MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -947,7 +947,7 @@ static NSString* __baseAPIHost = @"";
         for (NSDictionary* activityDictionary in [responseObject objectForKey:@"activities"]) {
             [IPKActivity objectWithDictionary:activityDictionary];
         }
-        [context MR_saveNestedContexts];
+        [context MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
@@ -975,7 +975,7 @@ static NSString* __baseAPIHost = @"";
                     [currentUser addNotificationsObject:n];
                 }
             }
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         }
         
         if (success) {
@@ -998,7 +998,7 @@ static NSString* __baseAPIHost = @"";
             for (IPKNotification * n  in unreadNotificationsArray) {
                 n.read = @(YES);
             }
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         }
         
         if (success) {
@@ -1064,7 +1064,7 @@ static NSString* __baseAPIHost = @"";
         for (NSDictionary * scoopDictionary in [responseObject objectForKey:@"scoops"]) {
             [IPKReview objectWithDictionary:scoopDictionary];
         }
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveNestedContexts];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
             success((AFJSONRequestOperation *)operation, responseObject);
