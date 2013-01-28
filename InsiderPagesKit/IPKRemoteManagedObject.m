@@ -77,7 +77,7 @@
     for (IPKRemoteManagedObject * object in results) {
         [object MR_deleteEntity];
     }
-    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+    [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreAndWait];
 }
 
 + (void)deleteAllLocal:(void(^)(void))success failure:(void(^)(void))failure{
@@ -98,7 +98,7 @@
     for (IPKRemoteManagedObject * object in results) {
         [context deleteObject:object];
     }
-    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+    [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreAndWait];
     if (success) {
         success();
     }

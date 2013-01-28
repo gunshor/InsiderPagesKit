@@ -109,7 +109,7 @@
     NSString * path = [NSString stringWithFormat:@"teams/%@",self.remoteID];
     [[IPKHTTPClient sharedClient] getPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self unpackDictionary:[responseObject objectForKey:@"team"]];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreAndWait];
         
         if (success) {
             success();

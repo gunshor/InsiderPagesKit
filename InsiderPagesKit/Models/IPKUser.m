@@ -104,7 +104,7 @@ static IPKUser *__currentUser = nil;
 -(void)prepareForDeletion{
     [super prepareForDeletion];
     NSLog(@"dealloc user with name %@", self.name);
-    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+    [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreAndWait];
 }
 
 
@@ -207,7 +207,7 @@ static IPKUser *__currentUser = nil;
         //        __weak NSManagedObjectContext *context = [IPKUser mainContext];
         //        [context performBlock:^{
         [self unpackDictionary:[responseObject objectForKey:@"user"]];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreAndWait];
         //        }];
         
         if (success) {

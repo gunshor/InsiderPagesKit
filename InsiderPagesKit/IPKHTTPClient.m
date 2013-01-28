@@ -151,7 +151,6 @@ static NSString* __baseAPIHost = @"";
         IPKPage * pageToFollow = [IPKPage objectWithRemoteID:@([pageId longLongValue])];
         [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] addFollowedPagesObject:pageToFollow];
         [pageToFollow setIs_following:[NSNumber numberWithBool:YES]];
-        [pageToFollow updateSectionHeader];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
@@ -198,7 +197,6 @@ static NSString* __baseAPIHost = @"";
         [pageToFollow name];
         [[IPKUser currentUserInContext:[NSManagedObjectContext MR_contextForCurrentThread]] removeFollowedPagesObject:pageToFollow];
         [pageToFollow setIs_following:[NSNumber numberWithBool:NO]];
-        [pageToFollow updateSectionHeader];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
@@ -785,7 +783,6 @@ static NSString* __baseAPIHost = @"";
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
         [page setIs_favorite:[NSNumber numberWithBool:YES]];
-        [page updateSectionHeader];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {
@@ -804,7 +801,6 @@ static NSString* __baseAPIHost = @"";
     [self postPath:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         IPKPage * page = [IPKPage existingObjectWithRemoteID:@([pageId longLongValue])];
         [page setIs_favorite:[NSNumber numberWithBool:NO]];
-        [page updateSectionHeader];
         [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
         
         if (success) {

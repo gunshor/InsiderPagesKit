@@ -43,7 +43,6 @@
 @property (nonatomic, retain) NSSet *teamFollowings;
 
 -(NSDictionary*)packToDictionary;
--(void)updateSectionHeader;
 
 @end
 

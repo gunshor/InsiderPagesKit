@@ -37,6 +37,7 @@
 @dynamic reviews;
 @dynamic address;
 @dynamic teamMemberships;
+@dynamic rank_activities;
 
 -(NSDictionary*)packToDictionary{
     NSMutableDictionary * packedDictionary = [NSMutableDictionary dictionary];
@@ -77,12 +78,12 @@
             self.address = [IPKAddress MR_createInContext:self.managedObjectContext];
             [self.address unpackCityGridDictionary:[dictionary objectForKey:@"primary_address"]];
             self.address.provider = self;
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreAndWait];
         }else{
             self.address = [IPKAddress MR_createInContext:self.managedObjectContext];
             [self.address unpackProviderDictionary:[[dictionary objectForKey:@"primary_address"] objectForKey:@"address"]];
             self.address.provider = self;
-            [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+            [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreAndWait];
         }
     }
     
@@ -110,7 +111,7 @@
         NSDictionary * responseDictionary = responseObject;
         NSString * key = [[responseDictionary allKeys] objectAtIndex:0];
         [self unpackDictionary:[responseDictionary objectForKey:key]];
-        [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+        [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreAndWait];
         if (success) {
             success();
         }

@@ -29,6 +29,7 @@
 @dynamic review;
 @dynamic user;
 @dynamic user2;
+@dynamic top_listings;
 
 + (NSString *)entityName {
 	return @"IPKActivity";
